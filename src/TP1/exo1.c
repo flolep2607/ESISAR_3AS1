@@ -84,6 +84,7 @@ void note3(char note)
 int main(int argc, char const *argv[])
 {
     char note='\0';
+    printf("Merci de rentrer une note.\n");
     scanf("%c", &note);
     note1(note);
     note2(note);
