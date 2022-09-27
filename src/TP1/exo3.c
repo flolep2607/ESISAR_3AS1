@@ -28,7 +28,7 @@ void iterationV2(int n)
 int main()
 {
     int n;
-    printf("Rentrez un entier n : \n");
+    printf("Rentrez un entier n :");
     scanf("%d", &n);
     iterationV1(n);
     iterationV2(n);

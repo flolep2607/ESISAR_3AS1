@@ -24,7 +24,8 @@ void bissextile(int annee)
 int main()
 {
     int annee;
-    printf("Merci de rentrer une année.\n");
+    printf("Merci de rentrer une année:");
     scanf("%d", &annee);
     bissextile(annee);
+    return 0;
 }

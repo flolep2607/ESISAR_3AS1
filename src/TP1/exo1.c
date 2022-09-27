@@ -81,10 +81,10 @@ void note3(char note)
         break;
     }
 }
-int main(int argc, char const *argv[])
+int main()
 {
     char note='\0';
-    printf("Merci de rentrer une note.\n");
+    printf("Merci de rentrer une note:");
     scanf("%c", &note);
     note1(note);
     note2(note);
