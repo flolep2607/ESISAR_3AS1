@@ -3,7 +3,9 @@
         "stdio.h": "c",
         "chrono": "c",
         "variant": "c",
-        "functional": "c"
+        "functional": "c",
+        "graphlib.h": "c",
+        "xutil.h": "c"
     },
     "C_Cpp.errorSquiggles": "Disabled"
 }
