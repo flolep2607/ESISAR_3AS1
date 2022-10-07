@@ -27,11 +27,18 @@ int additionnerMatrices(int ligne, int colonne, int mat1[ligne][colonne], int ma
     return 0;
 }
 
-/*int transposee(){
-
+int transposee(int ligne, int colonne, int matrice[ligne][colonne]){
+    int matTransposee[colonne][ligne];
+    for(int i = 0; i < ligne; i++){
+        for(int j = 0; j < colonne; j++){
+            matTransposee[j][i] = matrice[i][j];
+        }
+    }
+    afficherMatrice(colonne, ligne, matTransposee);
+    return 0;
 }
 
-int produitMatriciel(){
+/*int produitMatriciel(){
 
 }*/
 
@@ -42,4 +49,5 @@ int main(){
     int row = sizeof(matrice)/sizeof(matrice[0]);
     afficherMatrice(row, column, matrice);
     additionnerMatrices(row, column, matrice, matrice2);
+    transposee(row, column, matrice);
 }
