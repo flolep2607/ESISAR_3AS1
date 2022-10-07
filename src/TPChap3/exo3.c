@@ -9,4 +9,5 @@ int main(int argc, char * argv[]) {
     return 0;
 }
 
-//Le programme retourne le nombre d'arguments donnés, avec au moins un étant argv[0]. Il retourne ensuite tous les arguments, dans l'ordre décroissant.
+//Le programme retourne le nombre d'arguments donnés, avec au moins un étant argv[0].
+// Il retourne ensuite tous les arguments, dans l'ordre décroissant.
