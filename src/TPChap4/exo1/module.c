@@ -28,6 +28,7 @@ void afficherTableau(int T[], int nb)
         printf("index: %d => value: %d\n", i, T[i]);
     }
 }
+
 void trieABulles(int T[], int nb)
 {
     int tmp;
@@ -53,13 +54,4 @@ void enregistrerdonnees(char nomfichier[], int T[], int nb)
         fprintf(file_pointer,"%d\n", T[i]);
     }
     fclose(file_pointer);
-}
-
-int main()
-{
-    int T[10] = {0};
-    int nb = lireDonnes("fichier.txt", T);
-    trieABulles(T, nb);
-    afficherTableau(T, nb);
-    enregistrerdonnees("fichiertrie.txt",T,nb);
 }

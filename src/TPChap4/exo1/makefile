@@ -5,7 +5,7 @@ CC = gcc
 
 all: $(OBJECTS)
 	$(CC) $(CFLAGS) $(OBJECTS) -o $(BIN)
-	./$(BIN)
+	./$(BIN) fichier.txt fichiertrie.txt
 main.o: main.c
 	$(CC) $(CFLAGS) -c main.c
 module.o: module.c module.h
