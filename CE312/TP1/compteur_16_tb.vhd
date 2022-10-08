@@ -5,10 +5,10 @@
 library ieee;
 use ieee.std_logic_1164.all;
 
-entity tb_compteur_16 is
-end tb_compteur_16;
+entity compteur_16_tb is
+end compteur_16_tb;
 
-architecture tb of tb_compteur_16 is
+architecture tb of compteur_16_tb is
 
     component compteur_16
         port (clk       : in std_logic;
@@ -24,7 +24,7 @@ architecture tb of tb_compteur_16 is
     signal deb       : std_logic;
     signal out_count : std_logic_vector (3 downto 0);
 
-    constant TbPeriod : time := 1000 ns; -- EDIT Put right period here
+    constant TbPeriod : time := 10 ns; -- EDIT Put right period here
     signal TbClock : std_logic := '0';
     signal TbSimEnded : std_logic := '0';
 
@@ -54,9 +54,14 @@ begin
         wait for 100 ns;
         rst <= '0';
         wait for 100 ns;
+        enable <= '1';
 
         -- EDIT Add stimuli here
-        wait for 100 * TbPeriod;
+        wait for 100 * TbPeriod/2;
+        rst <= '1';
+        wait for 100 ns;
+        rst <= '0';
+        wait for 100 * TbPeriod/2;
 
         -- Stop the clock and hence terminate the simulation
         TbSimEnded <= '1';
@@ -67,7 +72,7 @@ end tb;
 
 -- Configuration block below is required by some simulators. Usually no need to edit.
 
-configuration cfg_tb_compteur_16 of tb_compteur_16 is
+configuration cfg_compteur_16_tb of compteur_16_tb is
     for tb
     end for;
-end cfg_tb_compteur_16;
+end cfg_compteur_16_tb;
