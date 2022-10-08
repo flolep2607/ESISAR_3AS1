@@ -2,29 +2,18 @@
 #include <stdio.h>
 
 float valeurPolynome(float A[], int N, float x0){
-    int compteur = 1;
-    int resultat = A[0];
-    //int tmp;
+    int compteur = 0;
+    int resultat = 0;
     while (compteur < N)
     {
-        /*tmp = A[compteur];
-        for (int i = 0; i < compteur; i++)
-        {
-            tmp *= x0;
-        }
-        resultat += tmp;*/
-        for(int i = 0; i < x0; i++){
-            resultat += A[compteur];
-        }
-        x0 *= x0; 
+        resultat = resultat * x0 + A[N-1-compteur];
+        compteur ++;
     }
     return resultat;
 }
 
 int main(){
-    float test[] = {1, 3, 5, 6};
+    float test[] = {1, 3, 5, 6}; 
     int degre = sizeof(test)/sizeof(float);
-    printf("%f\n", valeurPolynome(test, degre, 1));
+    printf("%f\n", valeurPolynome(test, degre, 2)); //valeur : 15 pour x0 = 1; 75 pour x0 = 2; 217 pour x0 = 3
 }
-
-//gcc -o prog exo2.c -Wall
