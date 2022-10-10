@@ -54,7 +54,7 @@ float calculeEcartType(int nbNotes, float tableauNotes[]){
     return EcartType;
 }
 
-float rechercherValeur(int nbNotes, float tableauNotes[], float valeur){
+int rechercherValeur(int nbNotes, float tableauNotes[], float valeur){
     for(int i = 0; i < nbNotes; i++){
         if(tableauNotes[i] == valeur){
             return i+1;
@@ -63,7 +63,7 @@ float rechercherValeur(int nbNotes, float tableauNotes[], float valeur){
     return -1;
 }
 
-float histogrammeHorizontal(int nbNotes, float tableauNotes[]){
+void histogrammeHorizontal(int nbNotes, float tableauNotes[]){
     for(int i = 2; i <= 20; i+=2){
         if(i == 2){
             printf("[");
@@ -83,7 +83,46 @@ float histogrammeHorizontal(int nbNotes, float tableauNotes[]){
         }
         printf("\n");
     }
-    return 0;
+}
+
+void histogrammeVertical(int nbNotes, float tableauNotes[]){
+    int temparray[10]={0};
+    for(int i = 1; i <= 10; i++){
+        for(int j = 0; j < nbNotes; j++){
+            if((tableauNotes[j] <= i*2) && (tableauNotes[j] > i*2-2)){
+                temparray[i-1]++;
+            }
+            else if (i == 2 && tableauNotes[j] == 0)
+            {
+                temparray[i-1]++;
+            } 
+        }
+    }
+    int max=0;
+    for (int i = 0; i < 10; i++){
+        if (temparray[i] > max){
+            max = temparray[i];
+        }
+    }    
+    for(;max>0;max--){
+        //printf("    ");
+        for(int i=0;i<10;i++){
+            if(temparray[i]>=max){
+                printf("    *    ");
+            }else{
+                printf("         ");
+            }
+        }
+        printf("\n");
+    }
+    for(int i=2;i<=20;i+=2){
+        if(i == 2){
+            printf(" [");
+        }else{
+            printf(" ]");
+        }
+        printf("%d; %d] ", i-2, i);
+    }
 }
 
 int main(){
@@ -97,5 +136,5 @@ int main(){
     //printf("Écart Type : %f\n", calculeEcartType(sizeTest, tableauTest));
     //printf("Position dans le tableau : %f\n", rechercherValeur(sizeTest, tableauTest, 12));
     //printf("Position dans le tableau : %f\n", rechercherValeur(sizeTest, tableauTest, 15));
-    histogrammeHorizontal(sizeTest, tableauTest);
+    histogrammeVertical(sizeTest, tableauTest);
 }
