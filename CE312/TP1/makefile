@@ -1,8 +1,9 @@
 GHDL = ghdl
 WORK= --workdir=work
 GHDLFLAGS= --ieee=synopsys 
-test: compteur_16 compteur_16_tb
-	$(GHDL) -r $(WORK) compteur_16_tb --vcd=compteur_16_tb.vcd
+FILE=compteur_16
+test: $(FILE) $(FILE)_tb
+	$(GHDL) -r $(WORK) $(FILE)_tb --vcd=compteur_16_tb.vcd
 
 # Binary depends on the object file
 %: %.o
@@ -15,5 +16,5 @@ test: compteur_16 compteur_16_tb
 clean:
 	echo "Cleaning up..."
 	cd work
-	rm -f *.o *_tb compteur16 work*.cf e*.lst
+	rm -f *.o *_tb $(FILE) work*.cf e*.lst
 	cd ..
