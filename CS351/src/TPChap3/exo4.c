@@ -1,11 +1,6 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-/*int **creationMatrice(int ligne, int colonne){
-    int matrice[ligne][colonne];
-    return 0;
-}*/
-
 int afficherMatrice(int ligne, int colonne, int matrice[ligne][colonne]){
     for(int i = 0; i < ligne; i++){
         for(int j = 0; j < colonne; j++){
