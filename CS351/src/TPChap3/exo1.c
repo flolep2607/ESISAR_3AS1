@@ -71,14 +71,14 @@ void histogrammeHorizontal(int nbNotes, float tableauNotes[]){
         else{
             printf("]");
         }
-        printf("%-2d; %-2d]\t", i-2, i);
+        printf("%-2d; %-2d]  ", i-2, i);
         for(int j = 0; j < nbNotes; j++){
             if((tableauNotes[j] <= i) && (tableauNotes[j] > i-2)){
-                printf("*\t");
+                printf("══════════════");
             }
             else if (i == 2 && tableauNotes[j] == 0)
             {
-                printf("*\t");
+                printf("══════════════");
             } 
         }
         printf("\n");
@@ -105,10 +105,9 @@ void histogrammeVertical(int nbNotes, float tableauNotes[]){
         }
     }    
     for(;max>0;max--){
-        //printf("    ");
         for(int i=0;i<10;i++){
             if(temparray[i]>=max){
-                printf("    *    ");
+                printf("    █    ");
             }else{
                 printf("         ");
             }
@@ -121,8 +120,9 @@ void histogrammeVertical(int nbNotes, float tableauNotes[]){
         }else{
             printf(" ]");
         }
-        printf("%d; %d] ", i-2, i);
+        printf("%-2d;%-2d] ", i-2, i);
     }
+    printf("\n");
 }
 
 int main(){
@@ -137,4 +137,5 @@ int main(){
     //printf("Position dans le tableau : %f\n", rechercherValeur(sizeTest, tableauTest, 12));
     //printf("Position dans le tableau : %f\n", rechercherValeur(sizeTest, tableauTest, 15));
     histogrammeVertical(sizeTest, tableauTest);
+    histogrammeHorizontal(sizeTest, tableauTest);
 }
