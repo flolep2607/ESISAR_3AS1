@@ -1,37 +1,11 @@
 #include <stdio.h>
-#include <conio.h>
 #include <stdlib.h>
 //TODO chercher  sur chamillo pile.c/pile.h
-typedef struct
-{
-    char info;
-    Pile *suiv;
-} Pile;
 
-Pile *sommet;
 char p1;
 char ch[20], c;
 int i = 0, code = 0;
 char tempo[2];
-
-Pile *Init(Pile **sommet)
-{
-
-    sommet = NULL;
-
-    return *sommet;
-}
-
-int char_to_int(char c)
-{
-    if (c == '0')
-        return code == 0;
-    else
-    {
-        code = c - 48;
-        return code;
-    }
-}
 
 char int_to_char(int int_to_ch)
 {
@@ -40,34 +14,6 @@ char int_to_char(int int_to_ch)
     return c;
 }
 
-void empiler(char x, Pile **sommet)
-{
-    Pile *p;
-
-    p = (Pile *)malloc(sizeof(Pile));
-    p->info = x;
-    p->suiv = *sommet;
-
-    sommet = p;
-}
-
-int depiler(Pile **sommet)
-{
-    if (*sommet == NULL)
-        printf("E R R E U R ! LA PILE EST VIDE");
-    else
-    {
-        Pile *p = *sommet;
-        p1 = p->info;
-
-        sommet = p->suiv;
-
-        free(p);
-        printf("\nOPERATION SUCCESS\n");
-        printf("VALEUR depilerILEE :%d\n", char_to_int(p1));
-        return p1;
-    }
-}
 
 void saisie(char t[1])
 {
@@ -167,7 +113,6 @@ void Traitement(char t[1])
 }
 void main()
 {
-    clrscr();
     saisie(ch);
     Init(&sommet);
     Traitement(ch);
