@@ -17,16 +17,23 @@ int fibonacci(int n){
     return somme;
 }
 
-/*int pgcd(int a, int b){
-
+int pgcd_rec(int a, int b){
+    int r = a%b;
+    if(r == 0){
+        r = b;
+        return r;
+    }
+    else{
+        pgcd_rec(b, r);
+    }
 }
 
-char palindrome(char mot[], int taille){
+/*char palindrome(char mot[], int taille){
 
 }*/
 
 int main(){
-    printf("%d\n", fibonacci(3));
-    //pgcd(95,42);
+    //printf("%d\n", fibonacci(3));
+    printf("%d\n", pgcd_rec(16,4));
     //palindrome("kayak", 5);
 }
