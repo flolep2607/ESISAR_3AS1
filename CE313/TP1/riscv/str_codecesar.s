@@ -11,8 +11,9 @@ main:
 	ld a1, dec
 	call caesar
 	la a0, s
-	#call println_string
-	#call newline
+	call newline
+	call println_string
+	call newline
         ld      ra,8(sp)
         addi    sp,sp,16
         ret
@@ -23,30 +24,29 @@ caesar:
 	mv t2, a0 # l'argument de la routine contient l'adresse de début
 	mv t1, a1
 loop:
-	lw t6, 0(t2)
+	lb t6, 0(t2)
 	beq t6,zero,end
 	# on calcule la nouvelle valeur
 	add t6, t6, t1
 	li t0,122
-	blt t0,t6,continue
-	mv a0,t6
-	call print_char
-	call newline
+	blt t6,t0,continue
 	addi t6, t6, -26
 continue:
+	#mv a0,t6
+	#call println_string
+	#call newline
+	#sb t6, 0(t2)
 	mv a0,t6
 	call print_char
-	call newline
-	sw t6, 0(t2)
 	addi t2,t2,1
 	j loop
 end:
 	## fin du code fonctionnel
-    	 ld      ra,8(sp)
-    	 addi    sp,sp,16	
+		ld      ra,8(sp)
+		addi    sp,sp,16	
 	ret
 
 s:
-	.string "abc"
+	.string "abcz"
 dec:
-    .dword 1
+    .dword 2
