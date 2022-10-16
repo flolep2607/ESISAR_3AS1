@@ -1,7 +1,8 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-int fibonacci(int n){
+int fibonacci(int n)
+{
     int somme;
     if (n == 0)
     {
@@ -11,52 +12,52 @@ int fibonacci(int n){
     {
         somme = 1;
     }
-    else{
-        somme = fibonacci(n-1) + fibonacci(n-2);
+    else
+    {
+        somme = fibonacci(n - 1) + fibonacci(n - 2);
     }
     return somme;
 }
 
-int pgcd_rec(int a, int b){
-    int r = a%b;
-    if(r == 0){
+int pgcd_rec(int a, int b)
+{
+    int r = a % b;
+    if (r == 0)
+    {
         r = b;
         return r;
     }
-    else{
+    else
+    {
         pgcd_rec(b, r);
     }
 }
 
-char palindrome(char mot[], int taille, int compteur){ // compteur = 0
-    int myBool = 1;
-    if(mot[compteur] != mot[taille - 2 - compteur]){
-        myBool = -1;
-        printf("%s n'est pas un palindrome\n", mot);
-        return myBool;
-    }
-    else if(compteur == (taille-2)/2){
-        myBool = -1;
-        printf("%s n'est pas un palindrome\n", mot);
-        return myBool;
-    }
-    else{
-        palindrome(mot, taille, compteur+1);
-        //printf("%s est un palindrome\n", mot);
-    }
-    /*if (myBool == 1)
+char palindrome(char *mot, int taille)
+{
+    if (taille <= 2)
     {
-        printf("%s est un palindrome\n", mot);
+        printf("C'est un palindrome.\n");
     }
-    else{
-        printf("%s n'est pas un palindrome\n", mot);
-    }*/
-    return myBool;
+    else
+    {
+        if (mot[0] != mot[taille - 2])
+        {
+            printf("Ce n'est pas un palindrome.\n");
+        }
+        else
+        {
+            char *p = (char *)(mot + 1);
+            palindrome(p, taille - 2);
+        }
+    }
 }
 
-int main(){
-    //printf("%d\n", fibonacci(3));
-    //printf("%d\n", pgcd_rec(16,4));
-    int size = sizeof("kayak")/sizeof(char);
-    palindrome("kayak", size, 0);
+int main()
+{
+    // printf("%d\n", fibonacci(3));
+    // printf("%d\n", pgcd_rec(16,4));
+    char word[] = "kayak";
+    int size = sizeof(word) / sizeof(char);
+    palindrome(word, size);
 }
