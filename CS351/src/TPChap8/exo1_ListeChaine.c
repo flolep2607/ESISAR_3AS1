@@ -10,6 +10,30 @@ element* suivant ; /* adresse du successeur */
 
 typedef element* liste ;
 
+void afficherListe(liste *l){
+	int size = sizeof(*l)/sizeof(l[0]);
+}
+
+void insererElement(int x, liste *l){
+	element* newOne = (element *)malloc(sizeof(element));
+	newOne->valeur = x;
+	newOne->suivant = NULL;
+	element* ptr;
+	ptr = *l;
+	while(ptr->suivant != NULL){
+		if(ptr->suivant->valeur < newOne->valeur){
+			newOne->suivant = ptr;
+		}
+		else{
+			ptr = ptr->suivant;
+		}
+	}
+}
+
+void supprimerElement(int i, liste *l){
+
+}
+
 /* Ici, on est oblig� d'utiliser la notation struct xxx,
 car la structure s'auto-r�f�rence!*/
 typedef struct node {
@@ -74,25 +98,5 @@ void suppressionQueue(Lnode **ph){
 
 /* Programme principal. Ne doit pas �tre modifi�!!! */
 int main(void) {
-	Lnode *tete = NULL ;
-
-	listeAffiche(tete) ;
-	insertionTete(&tete,'a') ;
-	listeAffiche(tete) ;
-	insertionTete(&tete,'c') ;
-	listeAffiche(tete) ;
-	insertionQueue(&tete,'t') ;
-	listeAffiche(tete) ;
-	insertionQueue(&tete,'s') ;
-	listeAffiche(tete) ;
-	suppressionTete(&tete) ;
-	listeAffiche(tete) ;
-	suppressionTete(&tete) ;
-	listeAffiche(tete) ;
-	suppressionQueue(&tete) ;
-	listeAffiche(tete) ;
-	suppressionTete(&tete) ;
-	listeAffiche(tete) ;
-
-   return EXIT_SUCCESS;
+	liste l = NULL;
    }	
