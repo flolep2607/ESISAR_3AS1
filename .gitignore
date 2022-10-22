@@ -54,3 +54,4 @@ dkms.conf
 obj/*
 .vscode/*
 *.code-workspace
+CS351/obj/*
