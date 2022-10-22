@@ -62,7 +62,23 @@ void supprimerElement(int x, liste l)
     l[index_before].suivant=l[index_to_remove].suivant;
     l[index_to_remove].suivant=-1;
 }
-
+void compacterListe(liste l){
+    int done=1;
+    while(done!=0){
+        done=0;
+        for(int i=1;i+0<TAILLEMAX;i++){
+            if(l[i].suivant==-1&&l[i+1].suivant!=-1){
+                //x->l[i+1]->l[i]
+                int x=0;
+                while(l[x].suivant!=i+1) x++;
+                l[x].suivant=i;
+                l[i].valeur=l[i+1].valeur;
+                l[i].suivant=l[i+1].suivant;
+                done++;
+            }
+        }
+    }
+}
 void afficherListe(liste l)
 {
     int index=0;
