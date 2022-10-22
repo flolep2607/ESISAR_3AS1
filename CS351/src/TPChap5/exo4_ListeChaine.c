@@ -7,88 +7,48 @@ typedef struct {
 int valeur ;
 int suivant ;
 } element ;
-typedef element* liste 
 
-typedef struct node {
-		char data ;
-		struct node *link ;
-		} Lnode ;
+typedef element* liste;
 
-/* Insertion en "t�te de liste" */
-void insertionTete(Lnode **ph,char item){
-	Lnode* node = (Lnode*) malloc(sizeof(Lnode));
-	node->data = item;
-	node->link = *ph;
-	*ph = node;
-	}
+int elementLibre(liste l){
+	
+}
 
-/* Insertion en "queue de liste" */
-void insertionQueue(Lnode **ph,char item)	{
-	Lnode* node = (Lnode*) malloc(sizeof(Lnode));
-	node->data = item;
-	node->link = NULL;
-	Lnode* ptr;
-	ptr = *ph;
-	while (ptr->link != NULL)
+void creerListeVide(liste l){
+	liste *L;
+	element *premier;
+	L[0] = premier;
+}
+
+void afficherListe(liste l){
+	int size = sizeof(l)/sizeof(l[0]);
+	printf("(");
+	for (int i = 0; i < size; i++)
 	{
-		ptr = ptr->link;		
+		printf("%d; ", l[i].valeur);
 	}
-	ptr->link = node;
-	}
+	printf(")\n");
+}
 
-/* Suppression en "t�te de liste" */
-void suppressionTete(Lnode **ph){
-	if (*ph != NULL)
-	{
-		*ph = (*ph)->link;
-	}
-	}
+void insererElement(int x, liste l){
+	
+}
 
-/* Suppression en "Queue" de liste" */
-void suppressionQueue(Lnode **ph){
-	Lnode* ptr;
-	ptr = *ph;
-	while (ptr != NULL)
-	{
-		ptr = ptr->link;		
-	}
-	ptr->link = NULL;
-	}
+void supprimerElement(int i, liste l){
 
-/* Proc�dure d'affichage de la liste. Ne doit pas �tre modifi�e!!! */
-void listeAffiche(Lnode * ptr){
-	if ( NULL == ptr )
-		printf("Liste vide!") ;
-	else 
-		printf("Contenu de la liste : ") ;
-	while ( NULL != ptr ) 	{
-		printf("%c ",ptr->data);
-		ptr = ptr->link ;
-		}
-	printf("\n") ;
-	}
+}
 
-/* Programme principal. Ne doit pas �tre modifi�!!! */
-int main(void) {
-	Lnode *tete = NULL ;
-
-	listeAffiche(tete) ;
-	insertionTete(&tete,'a') ;
-	listeAffiche(tete) ;
-	insertionTete(&tete,'c') ;
-	listeAffiche(tete) ;
-	insertionQueue(&tete,'t') ;
-	listeAffiche(tete) ;
-	insertionQueue(&tete,'s') ;
-	listeAffiche(tete) ;
-	suppressionTete(&tete) ;
-	listeAffiche(tete) ;
-	suppressionTete(&tete) ;
-	listeAffiche(tete) ;
-	suppressionQueue(&tete) ;
-	listeAffiche(tete) ;
-	suppressionTete(&tete) ;
-	listeAffiche(tete) ;
-
-   return EXIT_SUCCESS;
-   }	
+int main(){
+	element premier;
+	premier.valeur = 6;
+	element deuxieme;
+	deuxieme.valeur = 7;
+	premier.suivant = deuxieme.valeur;
+	deuxieme.valeur = 0;
+	liste l_test;
+	l_test[0].valeur = premier.valeur;
+	l_test[0].suivant = premier.suivant;
+	l_test[1].valeur = deuxieme.valeur;
+	l_test[1].suivant = deuxieme.suivant;
+	afficherListe(l_test);
+}
