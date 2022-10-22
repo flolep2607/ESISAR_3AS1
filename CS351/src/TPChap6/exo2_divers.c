@@ -1,5 +1,6 @@
 #include <stdlib.h>
 #include <stdio.h>
+#include <stdbool.h>
 
 int fibonacci(int n)
 {
@@ -29,26 +30,28 @@ int pgcd_rec(int a, int b)
     }
     else
     {
-        pgcd_rec(b, r);
+        return pgcd_rec(b, r);
     }
 }
 
-char palindrome(char *mot, int taille)
+bool palindrome(char *mot, int taille)
 {
     if (taille <= 2)
     {
         printf("C'est un palindrome.\n");
+        return true;
     }
     else
     {
         if (mot[0] != mot[taille - 2])
         {
             printf("Ce n'est pas un palindrome.\n");
+            return false;
         }
         else
         {
             char *p = (char *)(mot + 1);
-            palindrome(p, taille - 2);
+            return palindrome(p, taille - 2);
         }
     }
 }
