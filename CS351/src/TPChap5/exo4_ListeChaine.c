@@ -1,7 +1,5 @@
 #include <stdlib.h>
 #include <stdio.h>
-#include <assert.h>
-
 
 typedef struct {
 int valeur ;
@@ -45,10 +43,10 @@ int main(){
 	deuxieme.valeur = 7;
 	premier.suivant = deuxieme.valeur;
 	deuxieme.valeur = 0;
-	liste l_test;
-	l_test[0].valeur = premier.valeur;
-	l_test[0].suivant = premier.suivant;
-	l_test[1].valeur = deuxieme.valeur;
-	l_test[1].suivant = deuxieme.suivant;
-	afficherListe(l_test);
+	liste *l_test;
+	l_test[0]->valeur = premier.valeur;
+	l_test[0]->suivant = premier.suivant;
+	l_test[1]->valeur = deuxieme.valeur;
+	l_test[1]->suivant = deuxieme.suivant;
+	afficherListe(*l_test);
 }
