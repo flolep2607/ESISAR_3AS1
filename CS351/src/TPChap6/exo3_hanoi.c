@@ -1,10 +1,20 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-int hanoi(int nb_disques, char A, char B, char C){
-    return 0;
+void hanoi(int nb_disques, char from, char to, char cache)
+{
+    if (nb_disques == 1)
+    {
+        printf("%c->%c\n", from, to);
+        return;
+    }
+    hanoi(nb_disques-1, from, cache, to);
+    printf("%c->%c\n", from, to);
+    hanoi(nb_disques-1, cache, to, from);
 }
 
-int main(){
-
+int main()
+{
+    int n = 1; // Number of disks
+    hanoi(n, 'A','B','C');
 }
