@@ -15,6 +15,6 @@ void hanoi(int nb_disques, char from, char to, char cache)
 
 int main()
 {
-    int n = 1; // Number of disks
+    int n = 1;
     hanoi(n, 'A','B','C');
 }
