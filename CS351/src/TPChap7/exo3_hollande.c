@@ -15,28 +15,6 @@
 // 	fintantque ;
 // Fin
 
-/*void tri(int tab[],int size){
-    printf("size:%d\n",size);
-    int b=0,w=0,r=size-1;
-    int tmp;
-    while(w<=r){
-        if(tab[w]>=3 && tab[w]<=6){
-            w++;
-        }else if(tab[w]<3){
-            tmp=tab[b];
-            tab[b]=tab[w];
-            tab[w]=tmp;
-            b++;
-            w++;
-        }else{
-            tmp=tab[r];
-            tab[r]=tab[w];
-            tab[w]=tmp;
-            r--;
-        }
-    }
-}*/
-
 void tri(int *tab, int size)
 {
     printf("size:%d\n", size);
