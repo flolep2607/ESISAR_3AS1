@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include "pile.h"
 //TODO chercher  sur chamillo pile.c/pile.h
 
 char p1;
