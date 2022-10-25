@@ -53,10 +53,11 @@ void freeAll(element* list)
         current = nextElem;
     }
 }
-element * find_next_x(int x,int y,int max_x,element* list){
+element * find_next_x(int x,int y,element* list){
     element* elem_found;
-    int dist=max_x+1;
     element* elem = list;
+    int max_x=list->x;
+    int dist=max_x+1;
     while(elem->next !=NULL)
     {
         elem = elem->next;
@@ -67,10 +68,11 @@ element * find_next_x(int x,int y,int max_x,element* list){
     }
     return elem_found;
 }
-element * find_next_y(int x,int y,int max_y,element* list){
+element * find_next_y(int x,int y,element* list){
     element* elem_found;
-    int dist=max_y+1;
     element* elem = list;
+    int max_y=list->y;
+    int dist=max_y+1;
     while(elem->next !=NULL)
     {
         elem = elem->next;
@@ -91,9 +93,11 @@ int find_x_y(int x,int y,element* list){
     }
     return 0;
 }
-element* create_liste(){
+element* create_liste(int max_x,int max_y){
     element* elem = malloc(sizeof(element)/sizeof(int));
     elem->next = NULL;
     elem->val = 0;
+    elem->x=max_x;
+    elem->x=max_y;
     return elem;
 }
