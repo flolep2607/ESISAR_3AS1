@@ -44,7 +44,7 @@ element* prod_matrice(element* mat1,element* mat2){
             {
                 elem = elem->next;
                 if(elem->y==y){
-                    value+=find_x_y(x,elem->x,mat2)+elem->val;
+                    value+=find_x_y(x,elem->x,mat2)*elem->val;
                 }
             }
             insertelement(value,x,y,prod_somme);
