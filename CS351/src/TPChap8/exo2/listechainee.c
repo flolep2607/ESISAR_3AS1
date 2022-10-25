@@ -53,7 +53,15 @@ void freeAll(element* list)
         current = nextElem;
     }
 }
+element * find_next_x(int x,int y,element* list){
+    
+}
+element * find_next_y(int x,int y,element* list){
 
+}
+element * find_x_y(int x,int y,element* list){
+
+}
 element* create_liste(){
     element* elem = malloc(sizeof(element)/sizeof(char));
     elem->next = NULL;
