@@ -53,11 +53,33 @@ void freeAll(element* list)
         current = nextElem;
     }
 }
-element * find_next_x(int x,int y,element* list){
-    
+element * find_next_x(int x,int y,int max_x,int max_y,element* list){
+    element* elem_found;
+    int dist=max_x+1;
+    element* elem = list;
+    while(elem->next !=NULL)
+    {
+        elem = elem->next;
+        if(elem->y==y && (elem->x-x)%(max_x+1)<dist){
+            elem_found=elem;
+            dist=(elem_found->x-x)%(max_x+1);
+        }
+    }
+    return elem_found;
 }
-element * find_next_y(int x,int y,element* list){
-
+element * find_next_y(int x,int y,int max_x,int max_y,element* list){
+    element* elem_found;
+    int dist=max_y+1;
+    element* elem = list;
+    while(elem->next !=NULL)
+    {
+        elem = elem->next;
+        if(elem->x==x && (elem->x-x)%(max_y+1)<dist){
+            elem_found=elem;
+            dist=(elem_found->x-x)%(max_y+1);
+        }
+    }
+    return elem_found;
 }
 element * find_x_y(int x,int y,element* list){
 
