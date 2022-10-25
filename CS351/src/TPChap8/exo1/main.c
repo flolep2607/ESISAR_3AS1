@@ -22,6 +22,10 @@ int main(){
     affList(liste);
     delelement(7, liste);
     affList(liste);
+    insertelement(0, liste);
+    affList(liste);
+    insertelement(8, liste);
+    affList(liste);
 
     freeAll(liste);
     return 0;
