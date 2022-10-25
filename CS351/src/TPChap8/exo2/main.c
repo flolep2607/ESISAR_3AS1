@@ -11,6 +11,7 @@ void insertator2(element* liste){
     for(int x=0;x<liste->x;x++){
         insertelement(1,x,x,liste);
     }
+    insertelement(1,0,2,liste);
 }
 element* somme_matrice(element* mat1,element* mat2){
     int max_x=mat1->x;
@@ -66,3 +67,7 @@ int main(){
     freeAll(mat_sommed);
     return 0;
 }
+/*
+? avant: h^2*m^2
+? apres: (0.1*h)^2*(0.1*m)^2
+*/
