@@ -1,8 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
-void triInsertion(int tab[])
+void triInsertion(int tab[],int size)
 {
-    int size = sizeof(tab);
     printf("size:%d\n",size);
     int j, tmp;
     for (int i = 1; i <= size - 1; i++)
@@ -18,8 +17,8 @@ void triInsertion(int tab[])
 int main()
 {
     int tab[] = {6, 5, 3, 1, 8, 7, 2, 4};
-    triInsertion(tab);
     int size = sizeof(tab) / sizeof(*tab);
+    triInsertion(tab,size);
     for (int i = 0; i < size; i++){
         printf("%4d", tab[i]);
     }
