@@ -10,7 +10,7 @@ typedef struct elem
 void insertelement(int value,element* list)
 {
     element* currentAdd = list;
-    element* newElem=malloc(sizeof(element)/sizeof(char));
+    element* newElem=malloc(sizeof(element)/sizeof(int));
     newElem->val = value;
     while (currentAdd->next != NULL && (currentAdd->next)->val < value)
     {
