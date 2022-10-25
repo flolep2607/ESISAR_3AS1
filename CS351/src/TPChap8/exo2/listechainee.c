@@ -37,7 +37,7 @@ void affList(element* list)
     while(elem->next !=NULL)
     {
         elem = elem->next;
-        printf("%d ",elem->val);
+        printf("%d-%d:%d ",elem->val);
     }
     printf("\n");
 }
@@ -82,17 +82,14 @@ element * find_next_y(int x,int y,int max_y,element* list){
     return elem_found;
 }
 element * find_x_y(int x,int y,element* list){
-    element* nextElem = list;
     element* current = list;
     while (current!= NULL){
         if(current->x == x && current->y == y){
             return current;
-        }else{
-            nextElem = current->next;
-            free(current);
-            current = nextElem;
         }
+        current = current->next;
     }
+    return NULL;
 }
 element* create_liste(){
     element* elem = malloc(sizeof(element)/sizeof(int));
