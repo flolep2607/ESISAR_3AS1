@@ -1,19 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h> 
 #include "pile.h"
-#define iscalc(X)  (X=='+' || X=='-' || X=='*' || X=='/')
-void init(pileInt maPile){
-    char string[]="1 1+";
-    int n=0;
-    int size = strlen(string);
-    for(int i=size;i>=0;i--){
-        if(string[i]!=' '){
-            empiler(maPile,string[i]);
-        }
-    }
-}
-int calcul(int x,int y,int calc){
+#define isnum(X)  (X>='0' && X<='9')
+
+int calcul(int y,int x,int calc){
     switch (calc)
     {
         case '+':
@@ -21,24 +11,34 @@ int calcul(int x,int y,int calc){
         case '-':
             return x-y;
         case '/':
-            return x*y;
-        case '*':
             return x/y;
+        case '*':
+        case 'x':
+            return x*y;
         default:
             break;
     }
     return 0;
 }
-int calculer(pileInt maPile){
-   
-    return 0;
-}
 int main()
 {
-    pileInt maPile = creerPile();
-    init(maPile);
-    int res=calculer(maPile);
-    printf("ress:%d\n",res);
+    pileInt numbers = creerPile();
+    char string[]="4 2 + 5 * 6 7 - /";
+    int num=0;
+    for(int i=0;string[i]!=0;i++){
+        if(string[i]==' '){continue;}
+        if(isnum(string[i])){
+            empiler(numbers,string[i]-'0');
+            num++;
+        }else{
+            int x =depiler(numbers);
+            int y = depiler(numbers);
+            int result=calcul(x,y,string[i]);
+            printf("%d %c %d=%d\n",y,string[i],x,result);
+            empiler(numbers,result);
+        }
+    }
+    printf("ress:%d\n",depiler(numbers));
     /*while(!estPileVide(maPile)){
         printf("%c",depiler(maPile));
     }*/
