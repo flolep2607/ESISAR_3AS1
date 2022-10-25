@@ -87,8 +87,7 @@ element * find_x_y(int x,int y,element* list){
     while (current!= NULL){
         if(current->x == x && current->y == y){
             return current;
-        }
-        else{
+        }else{
             nextElem = current->next;
             free(current);
             current = nextElem;
