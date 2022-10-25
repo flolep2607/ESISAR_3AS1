@@ -81,15 +81,15 @@ element * find_next_y(int x,int y,int max_y,element* list){
     }
     return elem_found;
 }
-element * find_x_y(int x,int y,element* list){
+int find_x_y(int x,int y,element* list){
     element* current = list;
     while (current!= NULL){
         if(current->x == x && current->y == y){
-            return current;
+            return current->val;
         }
         current = current->next;
     }
-    return NULL;
+    return 0;
 }
 element* create_liste(){
     element* elem = malloc(sizeof(element)/sizeof(int));

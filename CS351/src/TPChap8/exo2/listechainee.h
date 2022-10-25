@@ -16,6 +16,6 @@ void affList(element* list);
 void freeAll(element* list);
 element * find_next_x(int x,int y,int max_x,element* list);
 element * find_next_y(int x,int y,int max_y,element* list);
-element * find_x_y(int x,int y,element* list);
+int find_x_y(int x,int y,element* list);
 
 element* create_liste();
