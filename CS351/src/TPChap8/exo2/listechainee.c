@@ -1,12 +1,14 @@
 #include "listechainee.h"
-void insertelement(int value,element* list)
+void insertelement(int value,int x, int y,element* list)
 {
     element* currentAdd = list;
     element* newElem=malloc(sizeof(element)/sizeof(int));
     newElem->val = value;
+    newElem->x = x;
+    newElem->y = y;
     while (currentAdd->next != NULL && (currentAdd->next)->val < value)
     {
-        currentAdd= currentAdd->next;
+        currentAdd=currentAdd->next;
     }
     newElem->next=currentAdd->next;
     currentAdd->next = newElem;
@@ -33,11 +35,13 @@ void delelement(int position,element* list)
 }
 void affList(element* list)
 {
-    element* elem = list;
-    while(elem->next !=NULL)
-    {
-        elem = elem->next;
-        printf("%d-%d:%d ",elem->val);
+    int max_x=list->x;
+    int max_y=list->y;
+    for(int y=0;y<max_y;y++){
+        for(int x=0;x<max_x;x++){
+            printf("%4d",find_x_y(x,y,list));
+        }
+        printf("\n");
     }
     printf("\n");
 }
@@ -98,6 +102,6 @@ element* create_liste(int max_x,int max_y){
     elem->next = NULL;
     elem->val = 0;
     elem->x=max_x;
-    elem->x=max_y;
+    elem->y=max_y;
     return elem;
 }
