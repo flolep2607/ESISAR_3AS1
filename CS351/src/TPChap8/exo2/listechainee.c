@@ -2,7 +2,7 @@
 void insertelement(int value,element* list)
 {
     element* currentAdd = list;
-    element* newElem=malloc(sizeof(element)/sizeof(char));
+    element* newElem=malloc(sizeof(element)/sizeof(int));
     newElem->val = value;
     while (currentAdd->next != NULL && (currentAdd->next)->val < value)
     {
@@ -82,10 +82,21 @@ element * find_next_y(int x,int y,int max_x,int max_y,element* list){
     return elem_found;
 }
 element * find_x_y(int x,int y,element* list){
-
+    element* nextElem = list;
+    element* current = list;
+    while (current!= NULL){
+        if(current->x == x && current->y == y){
+            return current;
+        }
+        else{
+            nextElem = current->next;
+            free(current);
+            current = nextElem;
+        }
+    }
 }
 element* create_liste(){
-    element* elem = malloc(sizeof(element)/sizeof(char));
+    element* elem = malloc(sizeof(element)/sizeof(int));
     elem->next = NULL;
     elem->val = 0;
     return elem;
