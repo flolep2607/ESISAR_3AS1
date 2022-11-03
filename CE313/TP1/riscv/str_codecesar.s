@@ -7,6 +7,7 @@ main:
         sd      ra,8(sp)
 	li t1,0
 	## your assembly code here
+	la t3, result
 	la a0, s    # convention: a0 contient le premier argument
 	ld a1, dec
 	call caesar
@@ -32,9 +33,6 @@ loop:
 	blt t6,t0,continue
 	addi t6, t6, -26
 continue:
-	#mv a0,t6
-	#call println_string
-	#call newline
 	#sb t6, 0(t2)
 	mv a0,t6
 	call print_char
@@ -50,3 +48,4 @@ s:
 	.string "abcz"
 dec:
     .dword 2
+
