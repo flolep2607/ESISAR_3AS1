@@ -1,120 +1,48 @@
 #include <stdio.h>
 #include <stdlib.h>
-//TODO chercher  sur chamillo pile.c/pile.h
+#include "pile.h"
+#define isnum(X)  (X>='0' && X<='9')
 
-char p1;
-char ch[20], c;
-int i = 0, code = 0;
-char tempo[2];
-
-char int_to_char(int int_to_ch)
-{
-    int_to_ch += 48;
-    c = (char)int_to_ch;
-    return c;
-}
-
-
-void saisie(char t[1])
-{
-    char c;
-    int j1 = 0;
-
-    do
+int calcul(int y,int x,int calc){
+    switch (calc)
     {
-        c = getch();
-        if (((c >= '0') && (c <= '9')) || ((c == '*') || (c == '-') || (c == '+') || (c == '/')))
-        {
-            if ((c >= '0') && (c <= '9'))
-            {
-                j1++; // comptabilise les caracteres entre '0' et '9'
-                if (j1 > 2)
-                    printf("ACTION NON AUTORISEE\n");
-                else
-                {
-                    t[i] = c;
-                    printf("%c\n", t[i]);
-                    i++;
-                }
-            }
-
-            if ((c == '*') || (c == '-') || (c == '+') || (c == '/'))
-            {
-                j1 = 0;
-                t[i] = c;
-                printf("%c\n", t[i]);
-                i++;
-            }
-        }
-    } while (c != 13);
+        case '+':
+            return x+y;
+        case '-':
+            return x-y;
+        case '/':
+            return x/y;
+        case '*':
+        case 'x':
+            return x*y;
+        default:
+            break;
+    }
+    return 0;
 }
-
-void VISU(Pile *sommet)
+int main()
 {
-    if (sommet != NULL)
-    {
-        Pile *p = sommet;
-        while (p)
-        {
-            printf("%c ->", p->info);
-            p = p->suiv;
+    pileInt numbers = creerPile();
+    char string[]="4 2 + 5 * 6 7 - /";
+    int num=0;
+    for(int i=0;string[i]!=0;i++){
+        if(string[i]==' '){continue;}
+        if(isnum(string[i])){
+            empiler(numbers,string[i]-'0');
+            num++;
+        }else{
+            int x =depiler(numbers);
+            int y = depiler(numbers);
+            int result=calcul(x,y,string[i]);
+            printf("%d %c %d=%d\n",y,string[i],x,result);
+            empiler(numbers,result);
         }
     }
-    else{
-        printf("il faut rempiler avant");
-    }
+    printf("ress:%d\n",depiler(numbers));
+    /*while(!estPileVide(maPile)){
+        printf("%c",depiler(maPile));
+    }*/
+    printf("\n");
+    return 0;
 }
-
-void Traitement(char t[1])
-{
-    int k, k1, code2 = 0, code1 = 0, resultat = 0;
-
-    char c;
-    for (k = 0; k < i; k++)
-    {
-        if ((t[k] >= '0') && (t[k] <= '9'))
-            empiler(t[k], &sommet);
-
-        if ((t[k] == '*') || (t[k] == '-') || (t[k] == '+') || (t[k] == '/'))
-        {
-            k1 = 1;
-            while ((sommet != NULL) && (k1 >= 0)) 
-            {
-                depiler(&sommet);
-                tempo[k1] = p1;
-                k1--;
-            }
-            code1 = char_to_int(tempo[0]);
-            code2 = char_to_int(tempo[1]);
-
-            switch (t[k])
-            {
-            case '+':
-                resultat = code1 + code2;
-                printf("%d+%d=%d\n", code1, code2, resultat);
-                break;
-            case '-':
-                resultat = code1 - code2;
-                printf("%d-%d=%d\n", code1, code2, resultat);
-                break;
-            case '*':
-                resultat = code1 * code2;
-                printf("%d*%d=%d\n", code1, code2, resultat);
-                break;
-            case '/':
-                resultat = code1 / code2;
-                printf("%d/%d=%d   il s'agit d'une division enti?re\n", code1, code2, resultat);
-                break;
-            }
-
-            empiler(int_to_char(resultat), &sommet);
-        }
-    }
-}
-void main()
-{
-    saisie(ch);
-    Init(&sommet);
-    Traitement(ch);
-    getch();
-}
+//? 4 2 + 5 x 6 7 - /.
