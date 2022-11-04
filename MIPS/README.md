@@ -2,7 +2,7 @@
 
 ---
 title: Projet CS351 (2022-2023): Émulateur MIPS
-author: [COMPLÉTER ICI]
+author: MONCORGE Lukas x LEPRAT Florian
 date: [COMPLÉTER ICI]
 ---
 
@@ -11,7 +11,7 @@ date: [COMPLÉTER ICI]
 * Cochez (en remplaçant `[ ]` par `[x]`) si vous avez :
   - [x] Vérifié que `make test-cli` ne renvoie pas d'erreur.
   - [x] Vérifié que `make tests` se plaint sur le nombre d'instructions et pas sur l'existence des fichiers de sortie.
-  - [ ] Vu que les soumissions se font avec `make tar`.
+  - [x] Vu que les soumissions se font avec `make tar`.
 
 
 ## Rendu 2
