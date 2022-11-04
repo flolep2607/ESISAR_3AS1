@@ -1,7 +1,3 @@
-#include <stdbool.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-
+#include "default.h"
 void mode_interactif();
 void mode_fichier(char* fichierin,char* fichierout,bool pasapas);

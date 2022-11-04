@@ -11,8 +11,10 @@ OBJDIR = obj
 SRCDIR = src
 INCDIR = includes
 LIBDIR = lib
+RESULTDIR = out
 DATADIR = data
-MAIN = main
+# MAIN = main
+MAIN = memory
 
 D ?= 
 
@@ -44,10 +46,26 @@ $(OBJDIR)/%.o: $(SRCDIR)/%.c $(HEADER)
 clean:
 	@rm -rf $(OBJDIR)/*.o
 
+test:
+	@echo non implémenté mais recup ca sur chamillo
 run: $(EXEC)
 	@./$(EXEC) $(ARGS)
 
+pasapas: $(EXEC) data/test.txt
+	@./$(EXEC) data/test.txt
+
+pasapas: $(EXEC) data/test.txt
+	@./$(EXEC) data/test.txt -pas
+
+filespas: $(EXEC) data/test.txt
+	@mkdir -p $(RESULTDIR)
+	@./$(EXEC) data/test.txt $(RESULTDIR)/bin $(RESULTDIR)/stdout -pas
+
+files: $(EXEC) data/test.txt
+	@mkdir -p $(RESULTDIR)
+	@./$(EXEC) data/test.txt $(RESULTDIR)/bin $(RESULTDIR)/stdout
+
 create:
-	@mkdir -p {$(DATADIR),$(SRCDIR),$(INCDIR),$(LIBDIR)}
+	@mkdir -p {$(DATADIR),$(SRCDIR),$(INCDIR),$(LIBDIR),$(LIBDIR),$(RESULTDIR)}
 
 debug:

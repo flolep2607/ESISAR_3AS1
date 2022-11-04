@@ -55,3 +55,4 @@ obj/*
 .vscode/*
 *.code-workspace
 CS351/obj/*
+MIPS/emul-mips
