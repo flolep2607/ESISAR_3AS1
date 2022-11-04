@@ -56,3 +56,4 @@ obj/*
 *.code-workspace
 CS351/obj/*
 MIPS/emul-mips
+MIPS/docs/*

@@ -1,4 +1,4 @@
-#include "../includes/memory.h"
+#include "memory.h"
 // #define data_type unsigned char // unsigned char data;//char => 1octets 
 /**
  * @brief Get the element object
@@ -168,11 +168,11 @@ memory* create_memory(){
     return elem;
 }
 
-int main(){
-    memory* mem=create_memory();
-    insert_value(mem,0x4,1);
-    printf("0x%08x\n",get_value(mem,0x4));
-    aff_memory(mem);
-    free_memory(mem);
-    return 0;
-}
+// int main(){
+//     memory* mem=create_memory();
+//     insert_value(mem,0x4,1);
+//     printf("0x%08x\n",get_value(mem,0x4));
+//     aff_memory(mem);
+//     free_memory(mem);
+//     return 0;
+// }
