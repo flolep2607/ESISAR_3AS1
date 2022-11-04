@@ -69,3 +69,6 @@ create:
 	@mkdir -p {$(DATADIR),$(SRCDIR),$(INCDIR),$(LIBDIR),$(LIBDIR),$(RESULTDIR)}
 
 debug:
+
+doc:
+	doxygen doxy_config

@@ -1,8 +1,8 @@
-#include <stdbool.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-
+/* binome
+Lukas Moncorgé
+Florian Leprat
+*/
+#include "default.h"
 #include "process.h"
 #include "translate.h"
 
