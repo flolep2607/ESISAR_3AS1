@@ -14,8 +14,8 @@ INCDIR = includes
 LIBDIR = lib
 RESULTDIR = out
 DATADIR = data
-MAIN = main
-# MAIN = memory
+# MAIN = main
+MAIN = translate
 
 D ?= 
 

@@ -1,13 +1,13 @@
 #include "memory.h"
-// #define data_type unsigned char // unsigned char data;//char => 1octets 
+// #define int32_t unsigned char // unsigned char data;//char => 1octets 
 /**
  * @brief Get the element object
  * 
  * @param mem 
  * @param address 
- * @return data_type 
+ * @return int32_t 
  */
-data_type get_element(memory* mem,unsigned long int address)
+int32_t get_element(memory* mem,unsigned long int address)
 {
     bool done=false;
     memory* elem = mem;
@@ -18,11 +18,11 @@ data_type get_element(memory* mem,unsigned long int address)
             done=true;
         }
     }
-    data_type value;
+    int32_t value;
     if(done){
         value=elem->data;
     }else{
-        value=(data_type)(rand()%0xFF);
+        value=(int32_t)(rand()%0xFF);
     }
     return value;
 }
@@ -35,7 +35,7 @@ void checks(unsigned long int address){
     if(address>max_memory){
         //!ERROR c'est en dehors des 4Go
         exit(-1);
-    }else if(address%sizeof(data_type)!=0){
+    }else if(address%sizeof(int32_t)!=0){
         //!ERROR c'est pas aligné
         exit(-2);
     }
@@ -45,13 +45,13 @@ void checks(unsigned long int address){
  * 
  * @param address 
  * @param octets 
- * @return data_type 
+ * @return int32_t 
  */
-data_type gen_mask(unsigned long int* address,int octets){
+int32_t gen_mask(unsigned long int* address,int octets){
     // 0000111100000000
     // (actual_value & (~mask)) | (value & mask)
-    data_type mask=0;
-    short decalage = (*address)%sizeof(data_type);//1 => 1 en trop
+    int32_t mask=0;
+    short decalage = (*address)%sizeof(int32_t);//1 => 1 en trop
     unsigned long int start_address=*address-decalage;
     address=&start_address;
     for(short i=0;i<=octets;i++){
@@ -66,7 +66,7 @@ data_type gen_mask(unsigned long int* address,int octets){
  * @param address 
  * @param data 
  */
-void insert_element(memory* mem,unsigned long int address,data_type data)
+void insert_element(memory* mem,unsigned long int address,int32_t data)
 {
   memory* currentAdd = mem;
   while (currentAdd->next != NULL && (currentAdd->next)->address < address) {
@@ -87,9 +87,9 @@ void insert_element(memory* mem,unsigned long int address,data_type data)
  * 
  * @param mem 
  * @param address 
- * @return data_type 
+ * @return int32_t 
  */
-data_type get_value(memory* mem,unsigned long int address){
+int32_t get_value(memory* mem,unsigned long int address){
     checks(address);
     return get_element(mem,address);
 }
@@ -100,7 +100,7 @@ data_type get_value(memory* mem,unsigned long int address){
  * @param address 
  * @param data 
  */
-void insert_value(memory* mem,unsigned long int address,data_type data){
+void insert_value(memory* mem,unsigned long int address,int32_t data){
     checks(address);
     insert_element(mem,address,data);
 }

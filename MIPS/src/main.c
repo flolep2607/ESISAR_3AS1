@@ -14,7 +14,7 @@ FILE *openfile(char *filename, const char *open_mode) {
   }
   return file;
 }
-
+/*
 int main(int argc, char *argv[]) {
   //* - interactif
   //* - fichier(?pas a pas) -> console
@@ -57,3 +57,4 @@ int main(int argc, char *argv[]) {
   }
   return 0;
 }
+*/
