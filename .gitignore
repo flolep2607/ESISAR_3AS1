@@ -57,3 +57,5 @@ obj/*
 CS351/obj/*
 MIPS/emul-mips
 MIPS/docs/*
+key
+key.pub
