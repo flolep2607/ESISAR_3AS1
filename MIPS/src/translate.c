@@ -39,27 +39,30 @@ uint32_t format_J(uint8_t opcode, uint32_t address)
 
 void translate(char *line) {}
 // string : (" $4,$3,2",1)=> "3"
-uint8_t get_args(char *string, int arg_number)
+/*uint8_t get_args(char *string, int arg_number)
 {
-  char ARG1[20];
-  char ARG2[20];
-  char ARG3[20];
-  switch (expression)
+  printf(">%s\n",string);
+  char ARG[20]={0};
+  uint8_t resultat;
+  switch (arg_number)
   {
-  case arg_number = 1:
-    scanf("%s", ARG1);
+  case 0:
+    sscanf(string,"%s", ARG);
     break;
-  case arg_number = 2:
-    scanf("%s, %s", ARG1, ARG2);
+  case 1:
+    sscanf(string,"%s,%s", NULL, ARG);
     break;
-  case arg_number = 3:
-    scanf("%s, %s, %s", ARG1, ARG2, ARG3);
+  case 2:
+    sscanf(string,"%s,%s,%s", NULL, NULL, ARG);
     break;
   default:
     printf("Invalid.\n");
     break;
   }
-}
+  printf(">%s\n",ARG);
+  sscanf("%d", ARG, resultat);
+  return resultat;
+}*/
 /*uint8_t get_args(char* string){
     uint8_t args=0;
     for (int i=0; string[i];i++){
@@ -77,7 +80,7 @@ int main()
   // printf("%08x\n", format_I(0b100000, 2, 3, 4, 0));
   // ADDI $2, $3, 200
   // 206200C8
-  char string[] = "ADDI 2, 3, 200";
+  char string[] = "ADDI $2, $3, 200";
   uint8_t index = 0, i = 0;
   bool found = false;
   while (!found && LISTE_INSTRUCT[index].name != NULL)
@@ -89,6 +92,12 @@ int main()
     if (string[i] == ' ' && LISTE_INSTRUCT[index].name[i] == 0)
     {
       found = true;
+      int j=i;
+      for (; string[j]!=0;j++)
+      {
+        string[j-i]=string[j];
+      }
+      string[j]=0;
     }
     else
     {
@@ -98,20 +107,24 @@ int main()
   printf("is found: %d\n", found);
   uint8_t number_args = 0;
   uint16_t resultat = 0;
-  uint8_t args = get_args(string);
+  //uint8_t args = get_args(string);
+  uint8_t arg8_1,arg8_2,arg8_3;
+  uint32_t arg32;
+  uint16_t arg16;
+  //! faut refaire ce truc
   switch (LISTE_INSTRUCT[index].format)
   {
   case J:
-    number_args = 1;
-    resultat = format_J(LISTE_INSTRUCT[index].opcode, 42);
+    printf(">%d\n",sscanf("%d",string, &arg32));
+    resultat = format_J(LISTE_INSTRUCT[index].opcode, arg32);
     break;
   case I:
-    number_args = 3;
-    resultat = format_I(LISTE_INSTRUCT[index].opcode, 2, 3, LISTE_INSTRUCT[index].special);
+    printf(">%d\n",sscanf("$%d,$%d,%d",string, &arg8_1,&arg8_2,&arg8_3));
+    resultat = format_I(LISTE_INSTRUCT[index].opcode,arg8_1,arg8_2,arg8_3, LISTE_INSTRUCT[index].special);
     break;
   case R:
-    number_args = 3;
-    resultat = format_R(LISTE_INSTRUCT[index].opcode, 2, 3, 200);
+    printf(">%d\n",sscanf(" $%d, $%d, %d",string, &arg8_1,&arg8_2,&arg8_3));
+    resultat = format_R(LISTE_INSTRUCT[index].opcode,arg8_1,arg8_2,arg8_3);
     break;
   default:
     printf("IDK this command\n");
