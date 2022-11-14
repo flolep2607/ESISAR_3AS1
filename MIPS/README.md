@@ -3,7 +3,7 @@
 ---
 title: Projet CS351 (2022-2023): Émulateur MIPS
 author: MONCORGE Lukas x LEPRAT Florian
-date: [COMPLÉTER ICI]
+date: 14/11/22
 ---
 
 ## Rendu 1
