@@ -16,9 +16,9 @@ FILE *openfile(char *filename, const char *open_mode) {
 }
 /*
 int main(int argc, char *argv[]) {
-  //* - interactif
-  //* - fichier(?pas a pas) -> console
-  //* - fichier(?pas a pas) -> fichiers
+  // - interactif
+  // - fichier(?pas a pas) -> console
+  // - fichier(?pas a pas) -> fichiers
   bool pasapas = false;
   char *fichier_nom_entree = "";
   char *fichier_nom_bin = "";

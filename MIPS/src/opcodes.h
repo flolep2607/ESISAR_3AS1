@@ -8,9 +8,10 @@ typedef struct _instruction
     char* name;
     instruction_format format;
     uint8_t opcode; //6 bits
+    uint8_t special;
 } instruction;
 
 instruction LISTE_INSTRUCT []={
-    {"ADDI",R,0b001000},
+    {"ADDI",R,0b001000,NULL},
     NULL
 };

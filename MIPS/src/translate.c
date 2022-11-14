@@ -25,15 +25,30 @@ uint32_t format_R(uint8_t opcode, uint8_t rt, uint8_t rs, uint16_t i) {
   result |= i & mask(0, 15);
   return result;
 }
-void translate(char *line) {}
+uint32_t format_J(uint8_t opcode, uint32_t address) {
+  uint32_t result = 0;
+  result |= (opcode << 26) & mask(26, 31);
+  result |= address & mask(0, 26);
+  return result;
+}
 
-uint8_t get_args(char* string){
+void translate(char *line) {}
+// string : (" $4,$3,2",1)=> "4"
+uint8_t get_args(char* string,int arg_number){
+  int start=0;
+  int end=0;
+  for(int i=0;;i++){
+
+  }
+  return args+1;
+}
+/*uint8_t get_args(char* string){
     uint8_t args=0;
     for (int i=0; string[i];i++){
         if(string[i]==',') args++;
     }
     return args+1;
-}
+}*/
 
 int main() {
   // ADD $7, $5, $2
@@ -50,21 +65,35 @@ int main() {
     i = 0;
     for (; LISTE_INSTRUCT[index].name[i] != 0 && LISTE_INSTRUCT[index].name[i] == string[i]; i++) {
     }
-    if (string[i] == ' ') {
+    if (string[i] == ' ' && LISTE_INSTRUCT[index].name[i]==0) {
       found = true;
+    }else{
+      index++;
     }
   }
-  uint8_t args = 0;
+  printf("is found: %d\n",found);
+  uint8_t number_args = 0;
+  uint16_t resultat=0;
+  uint8_t args = get_args(string);
   switch (LISTE_INSTRUCT[index].format) {
   case J:
-    args = 1;
+    number_args = 1;
+    resultat=format_J(LISTE_INSTRUCT[index].opcode,42);
+    break;
+  case I:
+    number_args = 3;
+    resultat=format_I(LISTE_INSTRUCT[index].opcode, 2, 3,LISTE_INSTRUCT[index].special);
+    break;
+  case R:
+    number_args = 3;
+    resultat=format_R(LISTE_INSTRUCT[index].opcode, 2, 3, 200);
     break;
   default:
-    args = 3;
+    printf("IDK this command\n");
+    exit(-1);
     break;
   }
-  uint8_t args = get_args(string);
-  uint16_t
-  printf("%08x\n", format_R(0b001000, 2, 3, 200));
+  
+  printf("%08x\n", resultat);
   return 0;
 }
