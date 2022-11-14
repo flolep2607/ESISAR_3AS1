@@ -1,14 +1,17 @@
 #include "translate.h"
 #include "opcodes.h"
 
-uint32_t mask(uint8_t start, uint8_t end) {
+uint32_t mask(uint8_t start, uint8_t end)
+{
   uint32_t result = 0;
-  for (int i = start; i <= end; i++) {
+  for (int i = start; i <= end; i++)
+  {
     result |= 1u << i;
   }
   return result;
 }
-uint32_t format_I(uint8_t opcode, uint8_t rd, uint8_t rs, uint8_t rt, uint16_t special) {
+uint32_t format_I(uint8_t opcode, uint8_t rd, uint8_t rs, uint8_t rt, uint16_t special)
+{
   uint32_t result = 0;
   result |= (special << 26) & mask(26, 30);
   result |= (rs << 21) & mask(21, 25);
@@ -17,7 +20,8 @@ uint32_t format_I(uint8_t opcode, uint8_t rd, uint8_t rs, uint8_t rt, uint16_t s
   result |= opcode & mask(0, 10);
   return result;
 }
-uint32_t format_R(uint8_t opcode, uint8_t rt, uint8_t rs, uint16_t i) {
+uint32_t format_R(uint8_t opcode, uint8_t rt, uint8_t rs, uint16_t i)
+{
   uint32_t result = 0;
   result |= (opcode << 26) & mask(26, 31);
   result |= (rs << 21) & mask(21, 25);
@@ -25,7 +29,8 @@ uint32_t format_R(uint8_t opcode, uint8_t rt, uint8_t rs, uint16_t i) {
   result |= i & mask(0, 15);
   return result;
 }
-uint32_t format_J(uint8_t opcode, uint32_t address) {
+uint32_t format_J(uint8_t opcode, uint32_t address)
+{
   uint32_t result = 0;
   result |= (opcode << 26) & mask(26, 31);
   result |= address & mask(0, 26);
@@ -33,14 +38,27 @@ uint32_t format_J(uint8_t opcode, uint32_t address) {
 }
 
 void translate(char *line) {}
-// string : (" $4,$3,2",1)=> "4"
-uint8_t get_args(char* string,int arg_number){
-  int start=0;
-  int end=0;
-  for(int i=0;;i++){
-
+// string : (" $4,$3,2",1)=> "3"
+uint8_t get_args(char *string, int arg_number)
+{
+  char ARG1[20];
+  char ARG2[20];
+  char ARG3[20];
+  switch (expression)
+  {
+  case arg_number = 1:
+    scanf("%s", ARG1);
+    break;
+  case arg_number = 2:
+    scanf("%s, %s", ARG1, ARG2);
+    break;
+  case arg_number = 3:
+    scanf("%s, %s, %s", ARG1, ARG2, ARG3);
+    break;
+  default:
+    printf("Invalid.\n");
+    break;
   }
-  return args+1;
 }
 /*uint8_t get_args(char* string){
     uint8_t args=0;
@@ -50,7 +68,8 @@ uint8_t get_args(char* string,int arg_number){
     return args+1;
 }*/
 
-int main() {
+int main()
+{
   // ADD $7, $5, $2
   // 00a23820
   // ADD $2,$3,$4
@@ -61,39 +80,45 @@ int main() {
   char string[] = "ADDI 2, 3, 200";
   uint8_t index = 0, i = 0;
   bool found = false;
-  while (!found && LISTE_INSTRUCT[index].name != NULL) {
+  while (!found && LISTE_INSTRUCT[index].name != NULL)
+  {
     i = 0;
-    for (; LISTE_INSTRUCT[index].name[i] != 0 && LISTE_INSTRUCT[index].name[i] == string[i]; i++) {
+    for (; LISTE_INSTRUCT[index].name[i] != 0 && LISTE_INSTRUCT[index].name[i] == string[i]; i++)
+    {
     }
-    if (string[i] == ' ' && LISTE_INSTRUCT[index].name[i]==0) {
+    if (string[i] == ' ' && LISTE_INSTRUCT[index].name[i] == 0)
+    {
       found = true;
-    }else{
+    }
+    else
+    {
       index++;
     }
   }
-  printf("is found: %d\n",found);
+  printf("is found: %d\n", found);
   uint8_t number_args = 0;
-  uint16_t resultat=0;
+  uint16_t resultat = 0;
   uint8_t args = get_args(string);
-  switch (LISTE_INSTRUCT[index].format) {
+  switch (LISTE_INSTRUCT[index].format)
+  {
   case J:
     number_args = 1;
-    resultat=format_J(LISTE_INSTRUCT[index].opcode,42);
+    resultat = format_J(LISTE_INSTRUCT[index].opcode, 42);
     break;
   case I:
     number_args = 3;
-    resultat=format_I(LISTE_INSTRUCT[index].opcode, 2, 3,LISTE_INSTRUCT[index].special);
+    resultat = format_I(LISTE_INSTRUCT[index].opcode, 2, 3, LISTE_INSTRUCT[index].special);
     break;
   case R:
     number_args = 3;
-    resultat=format_R(LISTE_INSTRUCT[index].opcode, 2, 3, 200);
+    resultat = format_R(LISTE_INSTRUCT[index].opcode, 2, 3, 200);
     break;
   default:
     printf("IDK this command\n");
     exit(-1);
     break;
   }
-  
+
   printf("%08x\n", resultat);
   return 0;
 }
