@@ -6,6 +6,7 @@ char *get_string_from_file(FILE *fichier){
   bool stop = false;
   bool skip = false;
   while (!stop && (c = fgetc(fichier)) != EOF) {
+    //TODO skip first spaces
     if (c == '\n') {
       stop = true;
     } else if (skip || c == '#') {
