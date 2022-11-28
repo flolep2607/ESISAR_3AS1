@@ -40,10 +40,7 @@ int translate_test(){
   }
   printf("is found: %d\n", found);
   uint16_t resultat = 0;
-  //uint8_t args = get_args(string);
-  uint8_t arg8_1,arg8_2,arg8_3;
-  uint32_t arg32;
-  uint16_t arg16;
+  uint32_t arg1,arg2,arg3;
   //! faut refaire ce truc
   switch (LISTE_INSTRUCT[index].format)
   {
