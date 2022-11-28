@@ -4,3 +4,4 @@ __pycache__
 *.o
 *.state
 *.bck
+emul-mips
