@@ -23,7 +23,6 @@ uint32_t format_I(uint8_t opcode, int args[], uint32_t special)
 }
 uint32_t format_R(uint8_t opcode, int args[])
 {
-  printf(">>%d,%d,%d\n", args[0], args[1], args[2]);
   uint32_t result = 0;
   result |= (opcode << 26) & mask(26, 31);
   result |= (args[1] << 21) & mask(21, 25);
@@ -115,7 +114,6 @@ uint32_t* parse_parameters(char *string, int index, int nb_arg_max){
 }
 
 uint32_t translate_line(char string[]){
-    printf("operande:%s\n",string);
     uint8_t index_instruction=find_instruction(string);
     uint32_t resultat = 0;
     uint32_t arg1, arg2, arg3;
@@ -124,24 +122,16 @@ uint32_t translate_line(char string[]){
     switch (LISTE_INSTRUCT[index_instruction].format)
     {
     case J:
-        printf("J\n");
         parameters=parse_parameters(string, strlen(LISTE_INSTRUCT[index_instruction].name), 2);
-        printf(">%d,%d\n", parameters[0], parameters[1]);
         resultat = format_J(LISTE_INSTRUCT[index_instruction].opcode, parameters);
         break;
     case I:
-        printf("I\n");
         parameters=parse_parameters(string, strlen(LISTE_INSTRUCT[index_instruction].name), 3);
-        printf(">%d,%d,%d\n", parameters[0], parameters[1], parameters[2]);
         resultat = format_I(LISTE_INSTRUCT[index_instruction].opcode, parameters, LISTE_INSTRUCT[index_instruction].special);
         break;
     case R:
-        printf("R\n");
         parameters=parse_parameters(string, strlen(LISTE_INSTRUCT[index_instruction].name), 3);
-        printf(">%d,%d,%d\n", parameters[0], parameters[1], parameters[2]);
         resultat = format_R(LISTE_INSTRUCT[index_instruction].opcode, parameters);
-        //printf(">%d\n", sscanf(" $%d, $%d, %d", string, &arg8_1, &arg8_2, &arg8_3));
-        //resultat = format_R(LISTE_INSTRUCT[index_instruction].opcode, arg8_1, arg8_2, arg8_3);
         break;
     default:
         printf("IDK this command\n");
