@@ -62,6 +62,10 @@ int find_instruction(char string[])
             index_instruction++;
         }
     }
+    if(!found){
+      printf("[ERROR] Instruction not found: %s",string);
+      exit(-1);
+    }
     return index_instruction;
 }
 

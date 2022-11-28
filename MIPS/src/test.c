@@ -6,6 +6,7 @@
 #include "translate.h"
 #include "utils.h"
 //#ifdef TEST
+// http://mipsconverter.com/instruction.html
 char* translate_test_list[][2]={
     {"ADD $7, $5, $2","00a23820"},
     {"ADD $2,$3,$4","00641020"},
@@ -13,18 +14,12 @@ char* translate_test_list[][2]={
     {"ADD $7,$5, $2","00a23820"},
     {"ADD             $2,$3,$4","00641020"},
     {"ADDI $2, $3,200 ","206200c8"},
+    {"P $2, $3,200 ","206200c8"},
     NULL
 };
 
 int translate_test()
 {
-    // ADD $7, $5, $2
-    // 00a23820
-    // ADD $2,$3,$4
-    // 00641020
-    // printf("%08x\n", format_I(0b100000, 2, 3, 4, 0));
-    // ADDI $2, $3, 200
-    // 206200c8
     int i=0;
     int is_valid=0;
     uint32_t good_resultat,tmp_resultat;
