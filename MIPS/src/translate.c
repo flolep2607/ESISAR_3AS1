@@ -37,6 +37,53 @@ uint32_t format_J(uint8_t opcode, uint32_t address)
   return result;
 }
 
+int* parse_parameters(char *string, int index, int nb_arg_max){
+  bool address = false;
+  int* args = malloc(sizeof(int)*nb_arg_max);
+  int length;
+  int nb_arg = 0;
+  while (string[index] != '\0' && nb_arg < nb_arg_max)
+  {
+    if (string[index] == ' ')
+    {
+      index ++;
+    }
+    else if (string[index] == '$')
+    {
+      address = true;
+      index++;
+    }
+    else if (string[index] == ',')
+    {
+      index++;
+    }
+    else {
+      if (address)
+      {
+        scanf("%x%n", &args[nb_arg], &length);
+      }
+      else {
+        scanf("%d%n", &args[nb_arg], &length);
+      }
+      if (length == 0){
+        if (address)
+        {
+          args[nb_arg] = 0;
+        }
+        //TODO
+        // else {
+        //   char *stringmachin;
+        //   scanf("%s", stringmachin);
+        //   args[nb_arg] = label_to_adress(stringmachin);
+        // }
+      }
+      nb_arg++;
+      index += length;
+    }
+  }
+  return args;
+}
+
 void translate(char *line) {}
 // string : (" $4,$3,2",1)=> "3"
 /*uint8_t get_args(char *string, int arg_number)
