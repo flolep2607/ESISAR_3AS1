@@ -16,8 +16,13 @@ typedef struct
 static const instruction LISTE_INSTRUCT []={
     {"ADDI",R,0b001000,NULL},
     {"ADD",I,0,0b100000},
-    {"AND",R,0b000000,NULL},
-    {"BEQ",R,0b000100,NULL},
+    {"AND",R,0,0b100100},
+    {"BEQ",I,0b000100,NULL},
+    {"BGTZ",I,0b000111,NULL},
+    {"BLEZ",I,0b000110,NULL},
+    {"BNE",I,0b000101,NULL},
+    {"DIV",I,0,0b011010},
+    {"J",J,0b000010,NULL},
     NULL
 };
 #endif
