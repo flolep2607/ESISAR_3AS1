@@ -25,9 +25,9 @@ int translate_test()
     int i=0;
     bool is_valid=true;
     uint32_t good_resultat,tmp_resultat;
-    while(translate_test_list[i]!=NULL){
+    while(translate_test_list[i]!=NULL && translate_test_list[i][0]!=NULL){
         printf("operande:%s\n",translate_test_list[i][0]);
-        sscanf(translate_test_list[i][0],"%x",&good_resultat);
+        sscanf(translate_test_list[i][1],"%x",&good_resultat);
         tmp_resultat=translate_line(translate_test_list[i][0]);
         if(tmp_resultat!=good_resultat){
             printf("resultat recu:%08x\nresult atendu:%08x\n",tmp_resultat,good_resultat);

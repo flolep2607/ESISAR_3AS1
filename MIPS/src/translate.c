@@ -63,7 +63,6 @@ int find_instruction(char string[])
             index_instruction++;
         }
     }
-    printf("is found: %d\n", found);
     return index_instruction;
 }
 
@@ -112,7 +111,6 @@ uint32_t* parse_parameters(char *string, int index, int nb_arg_max){
       address=false;
     }
   }
-  printf("this is the end of ur life\n");
   return args;
 }
 
@@ -150,6 +148,7 @@ uint32_t translate_line(char string[]){
         exit(-1);
         break;
     }
+    free(parameters);
     return resultat;
 }
 // string : (" $4,$3,2",1)=> "3"
