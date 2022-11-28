@@ -3,7 +3,7 @@
 void mode_interactif() {
   bool stop = false;
   while (!stop) {
-    char* string = get_input();
+    char* string = get_string_from_input();
     if (strcmp(string, "EXIT") == 0) {
       stop = true;
     } else {
