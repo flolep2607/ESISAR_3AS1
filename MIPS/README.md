@@ -21,25 +21,25 @@ date: 14/11/22
 * Comment avez-vous choisi de programmer l'analyse de texte (dont la lecture
 des opérandes entières) ?
 
-[COMPLÉTER ICI]
+Pour cela, nous avons une fonction qui prend l'instruction en paramètre, et nous avons une liste d'opcodes, la fonction compare les premiers caractères de cette instruction avec les éléments de notre liste.
 
 * Avez-vous vu des motifs récurrents émerger ? Avez-vous "factorisé" ces motifs
 pour éviter de les répéter ? Si non, serait-ce difficile ?
 
-[COMPLÉTER ICI]
+Oui, il y a 3 types différents d'instructions : I, J et R. Nous avons classé les différents types entre eux, puis nous avons fait une boucle. Sans ça, ce serait plus pénible que difficile.
 
 * Comment avez-vous procédé pour écrire les tests ? Étes-vous confiant·e·s que
 toutes les instructions gérées sont couvertes ? 
 
-[COMPLÉTER ICI]
+Nous avons testé avec un jeu d'instructions assez varié. Nous sommes confiants que toutes les instructions soient couvertes, car notre jeu était assez large.
 
 * Quelle a été votre expérience avec l'utilisation et la compréhension de la
 documentation (ie. des annexes) ?
 
-[COMPLÉTER ICI]
+Tout n'était pas forcément très clair.
 
 * Cochez (en remplaçant `[ ]` par `[x]`) si vous avez :
-  - [ ] Implémenté la traduction pour des instructions de toutes les catéories
+  - [ ] Implémenté la traduction pour des instructions de toutes les catégories
       (calcul, comparaisons, sauts, HI/LO, mémoire)
   - [ ] Implémenté la traduction pour toutes les instructions de l'annexe 2
   - [ ] Pris en compte les cas particuliers : valeurs négatives, hors limites,
