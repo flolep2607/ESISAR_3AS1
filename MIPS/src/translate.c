@@ -129,11 +129,11 @@ uint32_t translate_line(char string[]){
         parameters=parse_parameters(string, strlen(LISTE_INSTRUCT[index_instruction].name), 2);
         resultat = format_J(LISTE_INSTRUCT[index_instruction].opcode, parameters);
         break;
-    case I:
+    case R:
         parameters=parse_parameters(string, strlen(LISTE_INSTRUCT[index_instruction].name), 3);
         resultat = format_I(LISTE_INSTRUCT[index_instruction].opcode, parameters, LISTE_INSTRUCT[index_instruction].special);
         break;
-    case R:
+    case I:
         parameters=parse_parameters(string, strlen(LISTE_INSTRUCT[index_instruction].name), 3);
         resultat = format_R(LISTE_INSTRUCT[index_instruction].opcode, parameters);
         break;

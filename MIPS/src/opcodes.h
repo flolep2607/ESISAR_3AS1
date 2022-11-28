@@ -15,14 +15,14 @@ typedef struct
 #define LISTE_INSTRUCT_H
 //TODO invert R et I lol
 static const instruction LISTE_INSTRUCT []={
-    {"ADDI",R,0b001000,NULL},
-    {"ADD",I,0b100000,0},
-    {"AND",R,0b100100,0},
-    {"BEQ",I,0b000100,NULL},
-    {"BGTZ",I,0b000111,NULL},
-    {"BLEZ",I,0b000110,NULL},
-    {"BNE",I,0b000101,NULL},
-    {"DIV",I,0b011010,0},
+    {"ADDI",I,0b001000,NULL},
+    {"ADD",R,0b100000,0},
+    {"AND",I,0b100100,0},
+    {"BEQ",R,0b000100,NULL},
+    {"BGTZ",R,0b000111,NULL},
+    {"BLEZ",R,0b000110,NULL},
+    {"BNE",R,0b000101,NULL},
+    {"DIV",R,0b011010,0},
     {"J",J,0b000010,NULL},
     NULL
 };
