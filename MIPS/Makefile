@@ -15,7 +15,7 @@ LIBDIR = lib
 RESULTDIR = out
 DATADIR = data
 # MAIN = main
-MAIN = translate
+MAIN = test
 
 D ?= 
 
@@ -41,7 +41,7 @@ $(EXEC):$(OBJS) $(HEADER)
 
 $(OBJDIR)/%.o: $(SRCDIR)/%.c $(HEADER)
 	@mkdir -p $(OBJDIR)
-	$(CC) -o $@ -c $< $(CFLAGS)
+	$(CC) $(CFLAGS) -o $@ -c $< 
 
 .PHONY: clean run create debug tests doc filespas files pasapas test-cli
 clean:

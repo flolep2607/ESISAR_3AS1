@@ -8,12 +8,12 @@ char *get_string_from_file(FILE *fichier){
   while (!stop && (c = fgetc(fichier)) != EOF) {
     if (c == '\n') {
       stop = true;
-    } else if (skip) {
-    } else if (c == '#') {
+    } else if (skip || c == '#') {
       // skip until \n cause useless
       skip = true;
     } else {
       char *newp = realloc(p, i + sizeof(char));
+      //! if error return NULL
       if (newp == NULL) {
         free(p);
         return NULL;
