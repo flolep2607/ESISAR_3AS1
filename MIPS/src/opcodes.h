@@ -16,13 +16,13 @@ typedef struct
 //TODO invert R et I lol
 static const instruction LISTE_INSTRUCT []={
     {"ADDI",R,0b001000,NULL},
-    {"ADD",I,0,0b100000},
-    {"AND",R,0,0b100100},
+    {"ADD",I,0b100000,0},
+    {"AND",R,0b100100,0},
     {"BEQ",I,0b000100,NULL},
     {"BGTZ",I,0b000111,NULL},
     {"BLEZ",I,0b000110,NULL},
     {"BNE",I,0b000101,NULL},
-    {"DIV",I,0,0b011010},
+    {"DIV",I,0b011010,0},
     {"J",J,0b000010,NULL},
     NULL
 };
