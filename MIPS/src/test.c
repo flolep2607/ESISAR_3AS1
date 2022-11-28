@@ -6,34 +6,12 @@
 #include "translate.h"
 #include "utils.h"
 //#ifdef TEST
-int find_instruction(char string[])
-{
-    uint8_t index_instruction = 0, i = 0;
-    bool found = false;
-    while (!found && LISTE_INSTRUCT[index_instruction].name != NULL)
-    {
-        i = 0;
-        for (; LISTE_INSTRUCT[index_instruction].name[i] != 0 && LISTE_INSTRUCT[index_instruction].name[i] == string[i]; i++)
-        {
-        }
-        if (string[i] == ' ' && LISTE_INSTRUCT[index_instruction].name[i] == 0)
-        {
-            found = true;
-            int j = i;
-            for (; string[j] != 0; j++)
-            {
-                string[j - i] = string[j];
-            }
-            string[j] = 0;
-        }
-        else
-        {
-            index_instruction++;
-        }
-    }
-    printf("is found: %d\n", found);
-    return index_instruction;
-}
+char* translate_test_list[][2]={
+    {"ADD $7, $5, $2","00a23820"},
+    {"ADD $2,$3,$4","00641020"},
+    {"ADDI $2, $3, 200","206200c8"},
+    NULL
+};
 
 int translate_test()
 {
@@ -43,34 +21,21 @@ int translate_test()
     // 00641020
     // printf("%08x\n", format_I(0b100000, 2, 3, 4, 0));
     // ADDI $2, $3, 200
-    // 206200C8
-    char string[] = "ADDI $2, $3, 200";
-    uint8_t index_instruction=find_instruction(string);
-    uint16_t resultat = 0;
-    uint32_t arg1, arg2, arg3;
-    //! faut refaire ce truc
-    switch (LISTE_INSTRUCT[index_instruction].format)
-    {
-    case J:
-        printf(">%d\n", sscanf("%d", string, &arg32));
-        resultat = format_J(LISTE_INSTRUCT[index_instruction].opcode, arg32);
-        break;
-    case I:
-        printf(">%d\n", sscanf("$%d,$%d,%d", string, &arg8_1, &arg8_2, &arg8_3));
-        resultat = format_I(LISTE_INSTRUCT[index_instruction].opcode, arg8_1, arg8_2, arg8_3, LISTE_INSTRUCT[index_instruction].special);
-        break;
-    case R:
-        printf(">%d\n", sscanf(" $%d, $%d, %d", string, &arg8_1, &arg8_2, &arg8_3));
-        resultat = format_R(LISTE_INSTRUCT[index_instruction].opcode, arg8_1, arg8_2, arg8_3);
-        break;
-    default:
-        printf("IDK this command\n");
-        exit(-1);
-        break;
+    // 206200c8
+    int i=0;
+    bool is_valid=true;
+    uint32_t good_resultat,tmp_resultat;
+    while(translate_test_list[i]!=NULL){
+        printf("operande:%s\n",translate_test_list[i][0]);
+        sscanf(translate_test_list[i][0],"%x",&good_resultat);
+        tmp_resultat=translate_line(translate_test_list[i][0]);
+        if(tmp_resultat!=good_resultat){
+            printf("resultat recu:%08x\nresult atendu:%08x\n",tmp_resultat,good_resultat);
+            is_valid=false;
+        }
+        i++;
     }
-
-    printf("%08x\n", resultat);
-    return 0;
+    return is_valid;
 }
 
 int main()
