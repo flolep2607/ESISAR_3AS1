@@ -11,7 +11,7 @@ uint32_t mask(uint8_t start, uint8_t end)
   return result;
 }
 
-uint32_t format_I(uint8_t opcode, int args[], uint16_t special)
+uint32_t format_I(uint8_t opcode, int args[], uint32_t special)
 {
   uint32_t result = 0;
   result |= (special << 26) & mask(26, 30);

@@ -9,7 +9,7 @@ typedef struct
     char* name;
     instruction_format format;
     uint8_t opcode; //6 bits
-    uint8_t special;
+    uint32_t special;
 } instruction;
 #ifndef LISTE_INSTRUCT_H
 #define LISTE_INSTRUCT_H
