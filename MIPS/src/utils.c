@@ -1,4 +1,5 @@
 #include "utils.h"
+#include "default.h"
 char *get_string_from_file(FILE *fichier){
   char *p = '\0';
   int i = 1;
@@ -53,4 +54,23 @@ char *get_string_from_input() {
     }
   }
   return p;
+}
+
+char *ltrim(char *s)
+{
+    while(isspace(*s)) s++;
+    return s;
+}
+
+char *rtrim(char *s)
+{
+    char* back = s + strlen(s);
+    while(isspace(*--back));
+    *(back+1) = '\0';
+    return s;
+}
+
+char *trim(char *s)
+{
+    return rtrim(ltrim(s)); 
 }

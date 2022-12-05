@@ -1,5 +1,6 @@
 #include "translate.h"
 #include "opcodes.h"
+#include "default.h"
 
 uint32_t mask(uint8_t start, uint8_t end)
 {
@@ -10,8 +11,30 @@ uint32_t mask(uint8_t start, uint8_t end)
   }
   return result;
 }
-
-uint32_t format_I(uint8_t opcode, int args[], uint32_t special)
+uint32_t format_R_aled(uint8_t opcode, uint32_t args[], uint32_t special)
+{
+  uint32_t result = 0;
+  result |= (args[0] << 11) & mask(11, 15);
+  result |= opcode & mask(0, 10);
+  return result;
+}
+uint32_t format_R_alternative(uint8_t opcode, uint32_t args[], uint32_t special)
+{
+  uint32_t result = 0;
+  result |= (special << 26) & mask(26, 30);
+  result |= (args[0] << 21) & mask(21, 25);
+  result |= (args[1] << 16) & mask(16, 20);
+  result |= opcode & mask(0, 10);
+  return result;
+}
+uint32_t format_R_inversed(uint8_t opcode, uint32_t args[], uint32_t special)
+{
+  uint32_t tmp=args[0];
+  args[0]=args[1];
+  args[1]=args[0];
+  return format_R(opcode,args, special);
+}
+uint32_t format_R(uint8_t opcode, uint32_t args[], uint32_t special)
 {
   uint32_t result = 0;
   result |= (special << 26) & mask(26, 30);
@@ -21,7 +44,15 @@ uint32_t format_I(uint8_t opcode, int args[], uint32_t special)
   result |= opcode & mask(0, 10);
   return result;
 }
-uint32_t format_R(uint8_t opcode, int args[])
+uint32_t format_I_no_first(uint8_t opcode, uint32_t args[])
+{
+  uint32_t result = 0;
+  result |= (opcode << 26) & mask(26, 31);
+  result |= (args[0] << 16) & mask(16, 20);
+  result |= args[1] & mask(0, 15);
+  return result;
+}
+uint32_t format_I(uint8_t opcode, uint32_t args[])
 {
   uint32_t result = 0;
   result |= (opcode << 26) & mask(26, 31);
@@ -30,7 +61,7 @@ uint32_t format_R(uint8_t opcode, int args[])
   result |= args[2] & mask(0, 15);
   return result;
 }
-uint32_t format_J(uint8_t opcode, int args[])
+uint32_t format_J(uint8_t opcode, uint32_t args[])
 {
   uint32_t result = 0;
   result |= (opcode << 26) & mask(26, 31);
@@ -44,10 +75,10 @@ int find_instruction(char string[])
     while (!found && LISTE_INSTRUCT[index_instruction].name != NULL)
     {
         i = 0;
-        for (; LISTE_INSTRUCT[index_instruction].name[i] != 0 && LISTE_INSTRUCT[index_instruction].name[i] == string[i]; i++)
+        for (; LISTE_INSTRUCT[index_instruction].name[i] != 0 && string[i]!=0 && LISTE_INSTRUCT[index_instruction].name[i] == toupper(string[i]); i++)
         {
         }
-        if (string[i] == ' ' && LISTE_INSTRUCT[index_instruction].name[i] == 0)
+        if ((string[i] == ' ' || string[i] == 0) && LISTE_INSTRUCT[index_instruction].name[i] == 0)
         {
             found = true;
             /*int j = i;
@@ -92,7 +123,7 @@ uint32_t* parse_parameters(char *string, int index, int nb_arg_max){
     else {
       if (address)
       {
-        sscanf(string+index,"%x%n", &args[nb_arg], &length);
+        sscanf(string+index,"%u%n", &args[nb_arg], &length);
       }
       else {
         sscanf(string+index,"%u%n", &args[nb_arg], &length);
@@ -120,23 +151,42 @@ uint32_t* parse_parameters(char *string, int index, int nb_arg_max){
 uint32_t translate_line(char string[]){
     uint8_t index_instruction=find_instruction(string);
     uint32_t resultat = 0;
-    uint32_t arg1, arg2, arg3;
+    // uint32_t arg1, arg2, arg3;
     //! faut refaire ce truc
-    int* parameters;
+    uint32_t* parameters;
+    //TODO just 1 R malloc here
+    //TODO 
     switch (LISTE_INSTRUCT[index_instruction].format)
     {
     case J:
         parameters=parse_parameters(string, strlen(LISTE_INSTRUCT[index_instruction].name), 2);
         resultat = format_J(LISTE_INSTRUCT[index_instruction].opcode, parameters);
         break;
+    case R_reverse:
+        parameters=parse_parameters(string, strlen(LISTE_INSTRUCT[index_instruction].name), 3);
+        resultat = format_R_inversed(LISTE_INSTRUCT[index_instruction].opcode, parameters, LISTE_INSTRUCT[index_instruction].special);
+        break;
+    case R_alternative:
+        parameters=parse_parameters(string, strlen(LISTE_INSTRUCT[index_instruction].name), 2);
+        resultat = format_R_alternative(LISTE_INSTRUCT[index_instruction].opcode, parameters, LISTE_INSTRUCT[index_instruction].special);
+        break;
+    case R_aled:
+        parameters=parse_parameters(string, strlen(LISTE_INSTRUCT[index_instruction].name), 1);
+        resultat = format_R_aled(LISTE_INSTRUCT[index_instruction].opcode, parameters, LISTE_INSTRUCT[index_instruction].special);
+        break;
     case R:
         parameters=parse_parameters(string, strlen(LISTE_INSTRUCT[index_instruction].name), 3);
-        resultat = format_I(LISTE_INSTRUCT[index_instruction].opcode, parameters, LISTE_INSTRUCT[index_instruction].special);
+        resultat = format_R(LISTE_INSTRUCT[index_instruction].opcode, parameters, LISTE_INSTRUCT[index_instruction].special);
         break;
     case I:
         parameters=parse_parameters(string, strlen(LISTE_INSTRUCT[index_instruction].name), 3);
-        resultat = format_R(LISTE_INSTRUCT[index_instruction].opcode, parameters);
+        resultat = format_I(LISTE_INSTRUCT[index_instruction].opcode, parameters);
         break;
+    case I_no_first:
+        parameters=parse_parameters(string, strlen(LISTE_INSTRUCT[index_instruction].name), 2);
+        resultat = format_I_no_first(LISTE_INSTRUCT[index_instruction].opcode, parameters);
+        break;
+
     default:
         printf("IDK this command\n");
         exit(-1);

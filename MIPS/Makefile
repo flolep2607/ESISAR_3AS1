@@ -4,8 +4,10 @@ ARGS ?= data/1.txt -pas
 CC = gcc
 EXEC = emul-mips
 DEBUG = yes
-CFLAGS = -Wall -Wextra -O2 -ansi -pedantic -std=c99  -fsanitize=address,leak,undefined 
-STATICDEFINE = TEST
+CFLAGS = -Wall -Wextra -O2 -ansi -std=c99  -fsanitize=address,leak,undefined 
+#  -pedantic
+STATICDEFINE = 
+# TEST
 lib = m
 
 OBJDIR = obj
@@ -14,8 +16,8 @@ INCDIR = includes
 LIBDIR = lib
 RESULTDIR = out
 DATADIR = data
-# MAIN = main
-MAIN = test
+MAIN = main
+# MAIN = test
 
 D ?= 
 
@@ -57,9 +59,9 @@ filespas: $(EXEC) data/test.txt
 	@mkdir -p $(RESULTDIR)
 	@./$(EXEC) data/test.txt $(RESULTDIR)/bin $(RESULTDIR)/stdout -pas
 
-files: $(EXEC) data/test.txt
+files: $(EXEC)
 	@mkdir -p $(RESULTDIR)
-	@./$(EXEC) data/test.txt $(RESULTDIR)/bin $(RESULTDIR)/stdout
+	@./$(EXEC) tests/arithmetic.s $(RESULTDIR)/bin $(RESULTDIR)/stdout
 
 create:
 	@mkdir -p {$(DATADIR),$(SRCDIR),$(INCDIR),$(LIBDIR),$(LIBDIR),$(RESULTDIR)}

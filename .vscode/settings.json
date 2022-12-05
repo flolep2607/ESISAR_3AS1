@@ -5,7 +5,10 @@
     "variant": "c",
     "functional": "c",
     "graphlib.h": "c",
-    "xutil.h": "c"
+    "xutil.h": "c",
+    "utils.h": "c",
+    "opcodes.h": "c",
+    "default.h": "c"
   },
   "C_Cpp.errorSquiggles": "Disabled",
   "C_Cpp_Runner.cCompilerPath": "gcc",
