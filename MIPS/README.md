@@ -39,10 +39,10 @@ documentation (ie. des annexes) ?
 Tout n'était pas forcément très clair.
 
 * Cochez (en remplaçant `[ ]` par `[x]`) si vous avez :
-  - [ ] Implémenté la traduction pour des instructions de toutes les catégories
+  - [x] Implémenté la traduction pour des instructions de toutes les catégories
       (calcul, comparaisons, sauts, HI/LO, mémoire)
-  - [ ] Implémenté la traduction pour toutes les instructions de l'annexe 2
-  - [ ] Pris en compte les cas particuliers : valeurs négatives, hors limites,
+  - [x] Implémenté la traduction pour toutes les instructions de l'annexe 2
+  - [x] Pris en compte les cas particuliers : valeurs négatives, hors limites,
       noms d'instructions ou opérandes invalides...
 
 
