@@ -11,6 +11,13 @@ uint32_t mask(uint8_t start, uint8_t end)
   }
   return result;
 }
+uint32_t format_strange(uint8_t opcode, uint32_t args[])
+{
+  uint32_t result = 0;
+  result |= (args[0] << 21) & mask(21, 25);
+  result |= opcode & mask(0, 6);
+  return result;
+}
 uint32_t format_R_aled(uint8_t opcode, uint32_t args[], uint32_t special)
 {
   uint32_t result = 0;
@@ -22,7 +29,7 @@ uint32_t format_R_aled(uint8_t opcode, uint32_t args[], uint32_t special)
 uint32_t format_R_alternative(uint8_t opcode, uint32_t args[], uint32_t special)
 {
   uint32_t result = 0;
-  result |= (special << 26) & mask(26, 30);
+  result |= (special << 26) & mask(26, 31);
   result |= (args[0] << 21) & mask(21, 25);
   result |= (args[1] << 16) & mask(16, 20);
   result |= opcode & mask(0, 10);
@@ -35,10 +42,20 @@ uint32_t format_R_inversed(uint8_t opcode, uint32_t args[], uint32_t special)
   args[1] = tmp;
   return format_R(opcode, args, special);
 }
+uint32_t format_R_inv_20(uint8_t opcode, uint32_t args[], uint32_t special)
+{
+  uint32_t result = 0;
+  result |= (special << 26) & mask(26, 31);
+  result |= (args[1] << 16) & mask(16, 20);
+  result |= (args[0] << 11) & mask(11, 15);
+  result |= (args[2] << 6) & mask(6, 10);
+  result |= opcode & mask(0, 5);
+  return result;
+}
 uint32_t format_R(uint8_t opcode, uint32_t args[], uint32_t special)
 {
   uint32_t result = 0;
-  result |= (special << 26) & mask(26, 30);
+  result |= (special << 26) & mask(26, 31);
   result |= (args[1] << 21) & mask(21, 25);
   result |= (args[2] << 16) & mask(16, 20);
   result |= (args[0] << 11) & mask(11, 15);
@@ -52,6 +69,13 @@ uint32_t format_I_no_first(uint8_t opcode, uint32_t args[])
   result |= (args[0] << 16) & mask(16, 20);
   result |= args[1] & mask(0, 15);
   return result;
+}
+uint32_t format_I_oof(uint8_t opcode, uint32_t args[])
+{
+  uint32_t tmp=args[0];
+  args[0]=args[1];
+  args[1]=tmp;
+  return format_I(opcode, args);
 }
 uint32_t format_I(uint8_t opcode, uint32_t args[])
 {
@@ -104,8 +128,12 @@ int find_instruction(char string[])
 
 uint32_t *parse_parameters(char *string, int index, int nb_arg_max)
 {
+  if(nb_arg_max==0){
+    uint32_t *args = calloc(1,sizeof(uint32_t));
+    return args;
+  }
   bool address = false;
-  uint32_t *args = malloc(sizeof(uint32_t) * nb_arg_max);
+  uint32_t *args = calloc(nb_arg_max,sizeof(uint32_t));
   int length;
   int nb_arg = 0;
   while (string[index] != '\0' && nb_arg < nb_arg_max)
@@ -169,6 +197,14 @@ uint32_t translate_line(char string[])
     parameters = parse_parameters(string, strlen(LISTE_INSTRUCT[index_instruction].name), 2);
     resultat = format_J(LISTE_INSTRUCT[index_instruction].opcode, parameters);
     break;
+  case R_strange:
+    parameters = parse_parameters(string, strlen(LISTE_INSTRUCT[index_instruction].name), 1);
+    resultat=format_strange(LISTE_INSTRUCT[index_instruction].opcode, parameters);
+    break;
+  case R_inv_20:
+    parameters = parse_parameters(string, strlen(LISTE_INSTRUCT[index_instruction].name), 3);
+    resultat=format_R_inv_20(LISTE_INSTRUCT[index_instruction].opcode, parameters, LISTE_INSTRUCT[index_instruction].special);
+    break;
   case R_reverse:
     parameters = parse_parameters(string, strlen(LISTE_INSTRUCT[index_instruction].name), 3);
     resultat = format_R_inversed(LISTE_INSTRUCT[index_instruction].opcode, parameters, LISTE_INSTRUCT[index_instruction].special);
@@ -185,6 +221,10 @@ uint32_t translate_line(char string[])
     parameters = parse_parameters(string, strlen(LISTE_INSTRUCT[index_instruction].name), 3);
     resultat = format_R(LISTE_INSTRUCT[index_instruction].opcode, parameters, LISTE_INSTRUCT[index_instruction].special);
     break;
+  case I_oof:
+    parameters = parse_parameters(string, strlen(LISTE_INSTRUCT[index_instruction].name), 3);
+    resultat = format_I_oof(LISTE_INSTRUCT[index_instruction].opcode, parameters);
+    break;
   case I:
     parameters = parse_parameters(string, strlen(LISTE_INSTRUCT[index_instruction].name), 3);
     resultat = format_I(LISTE_INSTRUCT[index_instruction].opcode, parameters);
@@ -200,6 +240,7 @@ uint32_t translate_line(char string[])
     break;
   }
   free(parameters);
+  printf("%s=>%08x\n",string,resultat);
   return resultat;
 }
 // string : (" $4,$3,2",1)=> "3"

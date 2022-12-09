@@ -84,7 +84,7 @@ test-cli: $(EXEC)
 	rm -f $(CLITMP).out1 $(CLITMP).out2
 
 tar: clean
-	@ dir=$$(basename "$$PWD") && cd .. && tar --exclude='*.pdf' --exclude='docs/*' -cvfz $(AUTEURS).tgz  "$$dir"
+	@ dir=$$(basename "$$PWD") && cd .. && tar --exclude='*.pdf' --exclude='docs/*' -cvfz $(AUTEURS).tgz "$$dir"
 	@ echo "==="; echo "Created ../$(AUTEURS).tgz"
 
 doc:

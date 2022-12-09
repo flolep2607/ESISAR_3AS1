@@ -36,11 +36,13 @@ def assert_equal_hex(ref, out):
 
     if len(out) != len(ref):
         pytest.fail("Output should contain {} instructions, but has {}".format(
-            len(ref), len(out)))
+            len(ref), len(out)
+        ))
     for i in range(len(ref)):
         if out[i] != ref[i]:
             pytest.fail("Instruction #{} should be {}, but is {}".format(
-                i+1, ref[i], out[i]))
+                i+1, ref[i], out[i]
+            ))
 
 def assert_equal_regs(ref, out):
     ref = parse_final_state(ref)

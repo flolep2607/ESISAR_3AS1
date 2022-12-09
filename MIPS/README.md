@@ -51,17 +51,34 @@ Tout n'était pas forcément très clair.
 (10/15 lignes devrait suffire à chaque fois)
 
 * Quelle structure en modules planifiez-vous d'utiliser pour l'émulateur ?
+L'émulateur MIPS est divisé en modules tels que:
 
-[COMPLÉTER ICI]
+- Un module de lecture des instructions MIPS qui lit les instructions MIPS depuis une source (par exemple, un fichier ou une mémoire) et les prépare pour l'exécution.
+
+- Un module d'exécution des instructions MIPS qui effectue les opérations définies par les instructions MIPS sur les données stockées dans les registres et la mémoire.
+
+- Un module de gestion des registres qui gère les registres utilisés par le processeur MIPS et stocke les données utilisées par les instructions MIPS.
+
+- Un module de gestion de la mémoire qui gère l'accès à la mémoire utilisée par le processeur MIPS et stocke les données utilisées par les instructions MIPS.
+On prévoit d'utiliser ta mère elle est tellement grosse qu'il faut 5 malloc pour la stocker
 
 * Quelles seront les fonctions principales de chaque module ?
 
-[COMPLÉTER ICI]
+- Le module de lecture des instructions MIPS peut avoir pour fonction principale de lire les instructions MIPS depuis une source (par exemple, un fichier ou une mémoire), de les décoder et de les préparer pour l'exécution.
+
+- Le module d'exécution des instructions MIPS peut avoir pour fonction principale d'exécuter les instructions MIPS en effectuant les opérations définies par ces instructions sur les données stockées dans les registres et la mémoire.
+
+- Le module de gestion des registres peut avoir pour fonction principale de gérer les registres utilisés par le processeur MIPS, en stockant les données utilisées par les instructions MIPS et en gérant l'accès à ces données par les instructions MIPS.
+
+- Le module de gestion de la mémoire peut avoir pour fonction principale de gérer l'accès à la mémoire utilisée par le processeur MIPS, en stockant les données utilisées par les instructions MIPS et en gérant l'accès à ces données par les instructions MIPS.
 
 * Quels avantages voyez vous à cette structure (à comparer à un unique fichier)?
 
-[COMPLÉTER ICI]
-
+Une structure en modules permet de rendre le code plus facile à maintenir et à mettre à jour,
+car les différentes parties du programme sont organisées de manière claire et logique.
+De plus, une structure en modules peut permettre une meilleure réutilisation du code,
+ce qui peut accélérer le développement de l'émulateur.
+Enfin, une structure en modules peut également faciliter la collaboration entre plusieurs développeurs sur un même projet.
 
 ## Rendu 4
 
