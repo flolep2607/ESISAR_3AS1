@@ -6,7 +6,7 @@
 // gp  ->28 => pas touche
 // fp  ->30 => pas touche
 
-//ZERO -> 0 => toujours 0
+// ZERO -> 0 => toujours 0
 
 // t0-9->8-15+24-25=>temporaires
 // s0-7 -> 16-23 => temporaires pour sous routine
@@ -16,35 +16,49 @@
 // HI LO ->32-33 => resultat pour divison mult
 // pc    ->34
 //! total registres 32+3 pas grave si y'en a d'inutiles
-registre* create_registre(){
-    registre* elem = calloc(1,sizeof(registre));
+register_pc *create_register()
+{
+    register_pc *elem = calloc(1, sizeof(register_pc));
     return elem;
 }
-void index2name(short index,char name[3]){
-    if(index<32){
-        sprintf(name,"$%02d",index);
-    }else if(index==32){
-        sprintf(name,"HI");
-    }else{
-        sprintf(name,"LO");
-    }
-}
-void printf_registre(registre* reg){
-    char name[4]={0};
-    for (size_t i = 0; i < 34; i++)
+void printf_registre(register_pc *regist)
+{
+    char name[4] = {0};
+    _registre* reg = regist->registre;
+    for (int i = 0; i < 34; i++)
     {
-        if((*reg)[i]==0){
-            index2name(i,name);
-            printf("%s: %d\n",name,(*reg)[i]);
+        if ((*reg)[i] == 0)
+        {
+            sprintf(name, "$%02d", i);
+            printf("%s: %d\n", name, (*reg)[i]);
         }
     }
+    printf("HI: %d\nLO: %d\n", regist->HI, regist->LO);
 }
-int32_t get_registre(char* mnemo){
-    return 0;
+int32_t get_register(register_pc *regist, uint8_t address)
+{
+    if (address == 0)
+    {
+        return 0;
+    }
+    return regist->registre[address - 1];
 }
-// int main(){
-//     registre* reg=create_registre();
-//     printf_registre(reg);
-//     free(reg);
-//     return 0;
-// }
+void set_pc(register_pc *regist, uint16_t value)
+{
+    regist->registre[34] = value;
+}
+void increase_pc(register_pc *regist, uint16_t value)
+{
+    regist->registre[34] += value;
+}
+int16_t get_pc(register_pc *regist)
+{
+    return regist->pc;
+}
+void set_register(register_pc *regist, uint8_t address,uint32_t value)
+{
+    if (address > 0 && address < 26)
+    {
+        regist->registre[address - 1] = value;
+    }
+}

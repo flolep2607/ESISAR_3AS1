@@ -6,6 +6,7 @@ Florian Leprat
 #include "process.h"
 #include "translate.h"
 #include "utils.h"
+#include "execution.h"
 
 FILE *openfile(char *filename, const char *open_mode) {
   FILE *file;
@@ -63,12 +64,12 @@ int main(int argc, char *argv[]) {
         //TODO put an args that can be set to 0 if OEF
         char* string = get_string_from_file(fichier_entree);
         // printf("aled1:%s\n",string);
-        if(string==NULL || string==0 || &string==0){
+        if(string==NULL || string==0){
           free(string);
           break;
         }
         string=trim(string);
-        if(string==NULL || string==0 || &string==0){
+        if(string==NULL || string==0){
           free(string);
           break;
         }
@@ -78,6 +79,21 @@ int main(int argc, char *argv[]) {
     }
     fclose(fichier_entree);
     fclose(fichier_bin);
+    fichier_bin = openfile(fichier_nom_bin, "r");
+    register_pc *registre=create_register();
+    stop=false;
+    char buf[8];
+    uint32_t *instruction=0;
+    while (!stop) {
+        //TODO put an args that can be set to 0 if OEF
+        fseek(fichier_bin,registre->pc*2, SEEK_SET);
+        memset(buf, 0, 8);
+        fread(buf, 1, 8, fichier_bin);
+        sscanf(buf,"%x",instruction);
+        printf("%x\n", *instruction);
+        execute_instruction(*instruction, registre);
+    }
+    free(registre);
   } else if (fichier_entree != NULL) {
   } else {
     mode_interactif();
