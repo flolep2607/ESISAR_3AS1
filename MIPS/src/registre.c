@@ -23,17 +23,43 @@ register_pc *create_register()
 }
 void printf_registre(register_pc *regist)
 {
-    char name[4] = {0};
+    // char name[4] = {0};
     _registre* reg = regist->registre;
-    for (int i = 0; i < 34; i++)
+    for (int i = 0; i < 31; i++)
     {
-        if ((*reg)[i] == 0)
+        if ((*reg)[i] != 0)
         {
-            sprintf(name, "$%02d", i);
-            printf("%s: %d\n", name, (*reg)[i]);
+            //sprintf(name, "$%02d", i);
+            //printf("%s:%d\n", name+1, (*reg)[i]);
+            printf("$%02d:%d\n", i+1, (*reg)[i]);
         }
     }
-    printf("HI: %d\nLO: %d\n", regist->HI, regist->LO);
+    // if(regist->HI!=0){
+        printf("HI:%d\n", regist->HI);
+    // }
+    // if(regist->LO!=0){
+        printf("LO:%d\n", regist->LO);
+    // }
+}
+void write_registre(register_pc *regist,FILE* file)
+{
+    // char name[4] = {0};
+    _registre* reg = regist->registre;
+    for (int i = 0; i < 31; i++)
+    {
+        if ((*reg)[i] != 0)
+        {
+            //sprintf(name, "$%02d", i);
+            //printf("%s:%d\n", name+1, (*reg)[i]);
+            fprintf(file,"$%02d:%d\n", i+1, (*reg)[i]);
+        }
+    }
+    // if(regist->HI!=0){
+        fprintf(file,"HI:%d\n", regist->HI);
+    // }
+    // if(regist->LO!=0){
+        fprintf(file,"LO:%d\n", regist->LO);
+    // }
 }
 int32_t get_register(register_pc *regist, uint8_t address)
 {
@@ -43,13 +69,13 @@ int32_t get_register(register_pc *regist, uint8_t address)
     }
     return regist->registre[address - 1];
 }
-void set_pc(register_pc *regist, uint16_t value)
+void set_pc(register_pc *regist, uint32_t value)
 {
-    regist->registre[34] = value;
+    regist->pc = value;
 }
-void increase_pc(register_pc *regist, uint16_t value)
+void increase_pc(register_pc *regist, uint32_t value)
 {
-    regist->registre[34] += value;
+    regist->pc += value;
 }
 int16_t get_pc(register_pc *regist)
 {

@@ -1,38 +1,28 @@
 #include "translate.h"
-#include "opcodes.h"
-#include "default.h"
 
-uint32_t mask(uint8_t start, uint8_t end)
-{
-  uint32_t result = 0;
-  for (int i = start; i <= end; i++)
-  {
-    result |= 1u << i;
-  }
-  return result;
-}
+
 uint32_t format_strange(uint8_t opcode, uint32_t args[])
 {
   uint32_t result = 0;
-  result |= (args[0] << 21) & mask(21, 25);
-  result |= opcode & mask(0, 6);
+  result |= set_part(args[0],21, 25);
+  result |= set_part(opcode,0, 6);
   return result;
 }
 uint32_t format_R_aled(uint8_t opcode, uint32_t args[], uint32_t special)
 {
   uint32_t result = 0;
-  result |= (special << 26) & mask(26, 30);
-  result |= (args[0] << 11) & mask(11, 15);
-  result |= opcode & mask(0, 10);
+  result |= set_part(special,26, 30);
+  result |= set_part(args[0],11, 15);
+  result |= set_part(opcode,0, 10);
   return result;
 }
 uint32_t format_R_alternative(uint8_t opcode, uint32_t args[], uint32_t special)
 {
   uint32_t result = 0;
-  result |= (special << 26) & mask(26, 31);
-  result |= (args[0] << 21) & mask(21, 25);
-  result |= (args[1] << 16) & mask(16, 20);
-  result |= opcode & mask(0, 10);
+  result |= set_part(special,26, 31);
+  result |= set_part(args[0],21, 25);
+  result |= set_part(args[1],16, 20);
+  result |= set_part(opcode,0, 10);
   return result;
 }
 uint32_t format_R_inversed(uint8_t opcode, uint32_t args[], uint32_t special)
@@ -45,29 +35,29 @@ uint32_t format_R_inversed(uint8_t opcode, uint32_t args[], uint32_t special)
 uint32_t format_R_inv_20(uint8_t opcode, uint32_t args[], uint32_t special)
 {
   uint32_t result = 0;
-  result |= (special << 26) & mask(26, 31);
-  result |= (args[1] << 16) & mask(16, 20);
-  result |= (args[0] << 11) & mask(11, 15);
-  result |= (args[2] << 6) & mask(6, 10);
-  result |= opcode & mask(0, 5);
+  result |= set_part(special,26, 31);
+  result |= set_part(args[1],16, 20);
+  result |= set_part(args[0],11, 15);
+  result |= set_part(args[2],6, 10);
+  result |= set_part(opcode,0, 5);
   return result;
 }
 uint32_t format_R(uint8_t opcode, uint32_t args[], uint32_t special)
 {
   uint32_t result = 0;
-  result |= (special << 26) & mask(26, 31);
-  result |= (args[1] << 21) & mask(21, 25);
-  result |= (args[2] << 16) & mask(16, 20);
-  result |= (args[0] << 11) & mask(11, 15);
-  result |= opcode & mask(0, 10);
+  result |= set_part(special,26, 31);
+  result |= set_part(args[1],21, 25);
+  result |= set_part(args[2],16, 20);
+  result |= set_part(args[0],11, 15);
+  result |= set_part(opcode,0, 10);
   return result;
 }
 uint32_t format_I_no_first(uint8_t opcode, uint32_t args[])
 {
   uint32_t result = 0;
-  result |= (opcode << 26) & mask(26, 31);
-  result |= (args[0] << 16) & mask(16, 20);
-  result |= args[1] & mask(0, 15);
+  result |= set_part(opcode,26, 31);
+  result |= set_part(args[0],16, 20);
+  result |= set_part(args[1],0, 15);
   return result;
 }
 uint32_t format_I_oof(uint8_t opcode, uint32_t args[])
@@ -80,17 +70,17 @@ uint32_t format_I_oof(uint8_t opcode, uint32_t args[])
 uint32_t format_I(uint8_t opcode, uint32_t args[])
 {
   uint32_t result = 0;
-  result |= (opcode << 26) & mask(26, 31);
-  result |= (args[1] << 21) & mask(21, 25);
-  result |= (args[0] << 16) & mask(16, 20);
-  result |= args[2] & mask(0, 15);
+  result |= set_part(opcode,26, 31);
+  result |= set_part(args[1],21, 25);
+  result |= set_part(args[0],16, 20);
+  result |= set_part(args[2],0, 15);
   return result;
 }
 uint32_t format_J(uint8_t opcode, uint32_t args[])
 {
   uint32_t result = 0;
-  result |= (opcode << 26) & mask(26, 31);
-  result |= args[0] & mask(0, 26);
+  result |= set_part(opcode,26, 31);
+  result |= set_part(args[0],0, 26);
   return result;
 }
 int find_instruction(char string[])

@@ -66,12 +66,14 @@ int main(int argc, char *argv[]) {
         // printf("aled1:%s\n",string);
         if(string==NULL || string==0){
           free(string);
-          break;
+          stop=true;
+          continue;
         }
         string=trim(string);
         if(string==NULL || string==0){
           free(string);
-          break;
+          stop=true;
+          continue;
         }
         resultat=translate_line(string);
         fprintf(fichier_bin,"%08x\n",resultat);
@@ -82,17 +84,33 @@ int main(int argc, char *argv[]) {
     fichier_bin = openfile(fichier_nom_bin, "r");
     register_pc *registre=create_register();
     stop=false;
-    char buf[8];
-    uint32_t *instruction=0;
-    while (!stop) {
+    char buf[9]={0};
+    uint32_t instruction;
+    uint32_t position=get_cursor_position(registre);
+    long maximum=fsize(fichier_bin);
+    while (!stop & (maximum>position)) {
         //TODO put an args that can be set to 0 if OEF
-        fseek(fichier_bin,registre->pc*2, SEEK_SET);
+        printf("PC:%08x\n",registre->pc);
+        int returnCode=fseek(fichier_bin,position, SEEK_SET);
+        //printf("return code:%d %08x %d\n",returnCode,position,maximum>position);
+        if (returnCode != 0) {
+          printf("END of instructions");
+          stop=true;
+          exit(0);
+          continue;
+        }
+        // getchar();
         memset(buf, 0, 8);
         fread(buf, 1, 8, fichier_bin);
-        sscanf(buf,"%x",instruction);
-        printf("%x\n", *instruction);
-        execute_instruction(*instruction, registre);
+        // printf(">>%s<<\n",buf);
+        sscanf(buf,"%x",&instruction);
+        printf(">>%08x<<\n", instruction);
+        execute_instruction(instruction, registre);
+        //printf_registre(registre);
+        registre->pc+=4;
+        position=get_cursor_position(registre);
     }
+    write_registre(registre,fichier_stdout);
     free(registre);
   } else if (fichier_entree != NULL) {
   } else {
