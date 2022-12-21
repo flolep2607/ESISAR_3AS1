@@ -34,12 +34,14 @@ void printf_registre(register_pc *regist)
             printf("$%02d:%d\n", i+1, (*reg)[i]);
         }
     }
+    if(regist->HI!=0 || regist->LO!=0){
     // if(regist->HI!=0){
         printf("HI:%d\n", regist->HI);
     // }
     // if(regist->LO!=0){
         printf("LO:%d\n", regist->LO);
     // }
+    }
 }
 void write_registre(register_pc *regist,FILE* file)
 {
@@ -81,7 +83,7 @@ int16_t get_pc(register_pc *regist)
 {
     return regist->pc;
 }
-void set_register(register_pc *regist, uint8_t address,uint32_t value)
+void set_register(register_pc *regist, uint8_t address,int32_t value)
 {
     if (address > 0 && address < 26)
     {

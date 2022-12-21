@@ -5,3 +5,4 @@ __pycache__
 *.state
 *.bck
 emul-mips
+out/*

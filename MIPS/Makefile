@@ -52,16 +52,17 @@ clean:
 run: $(EXEC)
 	@./$(EXEC) $(ARGS)
 
-pasapas: $(EXEC) data/test.txt
-	@./$(EXEC) data/test.txt -pas
+pasapas: $(EXEC)
+	@./$(EXEC) tests/pow2.s -pas
 
-filespas: $(EXEC) data/test.txt
+filespas: $(EXEC)
 	@mkdir -p $(RESULTDIR)
-	@./$(EXEC) data/test.txt $(RESULTDIR)/bin $(RESULTDIR)/stdout -pas
+	@./$(EXEC) tests/pow2.s $(RESULTDIR)/bin $(RESULTDIR)/stdout -pas
 
 files: $(EXEC)
 	@mkdir -p $(RESULTDIR)
-	@./$(EXEC) tests/arithmetic.s $(RESULTDIR)/bin $(RESULTDIR)/stdout
+	@./$(EXEC) tests/pow2.s $(RESULTDIR)/bin $(RESULTDIR)/stdout
+	# @./$(EXEC) tests/arithmetic.s $(RESULTDIR)/bin $(RESULTDIR)/stdout
 
 create:
 	@mkdir -p {$(DATADIR),$(SRCDIR),$(INCDIR),$(LIBDIR),$(LIBDIR),$(RESULTDIR)}

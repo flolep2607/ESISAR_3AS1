@@ -1,5 +1,5 @@
 #include "utils.h"
-char *get_string_from_file(FILE *fichier) {
+char *get_string_from_file(FILE *fichier,bool* end) {
   char *p = '\0';
   int i = 1;
   int c;
@@ -24,6 +24,7 @@ char *get_string_from_file(FILE *fichier) {
       p[i - 1] = '\0';
     }
   }
+  *end=(c==EOF);
   return p;
 }
 
@@ -88,4 +89,13 @@ long fsize(FILE *file) {
 }
 uint32_t get_cursor_position(register_pc* registre){
   return (registre->pc/4)+registre->pc*2;
+}
+FILE *openfile(char *filename, const char *open_mode) {
+  FILE *file;
+  file = fopen(filename, open_mode);
+  if (file == NULL) {
+    printf("Error opening file:%s\n", filename);
+    exit(1);
+  }
+  return file;
 }

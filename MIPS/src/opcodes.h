@@ -9,7 +9,8 @@ typedef enum {
     I_no_first,
     R_inv_20,
     R_strange,
-    I_oof
+    I_oof,
+    I2
 } instruction_format;
 typedef struct
 {
@@ -26,7 +27,7 @@ static const instruction LISTE_INSTRUCT []={
     {"ADD",R,0b100000,0},
     {"AND",R,0b100100,0},
     {"BEQ",I_oof,0b000100,0},
-    {"BGTZ",I,0b000111,0},
+    {"BGTZ",I2,0b000111,0},
     {"BLEZ",I,0b000110,0},
     {"BNE",I,0b000101,0},
     {"DIV",R_alternative,0b011010,0},

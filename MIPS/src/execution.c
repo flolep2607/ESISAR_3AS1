@@ -5,26 +5,39 @@ void I_type_inst(uint32_t instr, register_pc *registers, bool *executed) {
   if (!(*executed)) {
     uint32_t opcode = get_part(instr, 26, 30);
     uint32_t rs = get_part(instr, 21, 25);
-    uint32_t rt = get_part(instr, 16, 21);
-    int32_t immediate = get_part(instr, 0, 15);
-    /*int32_t SignExtImm;
+    uint32_t rt = get_part(instr, 16, 20);
+    uint32_t immediate = get_part(instr, 0, 15);
+    int32_t SignExtImm;
 
     if (immediate >> 15) {
       SignExtImm = immediate | 0xFFFF0000;
     } else {
       SignExtImm = immediate;
-    }*/
+    }
     switch (opcode) {
+    case 0x00000005:
+      if (get_register(registers, rs) != get_register(registers, rt)) {
+        increase_pc(registers, SignExtImm - 4);
+      }
+      *executed = true;
+      return;
+    case 0x07:
+      // Handle BGTZ instruction
+      if (get_register(registers, rs) > 0) {
+        increase_pc(registers, SignExtImm - 4);
+      }
+      *executed = true;
+      return;
     case 0x08:
       // Handle ADDI instruction
       // Perform the addition and store the result in the rt register
-      set_register(registers, rt, get_register(registers, rs) + immediate);
+      set_register(registers, rt, get_register(registers, rs) + SignExtImm);
       *executed = true;
       break;
     case 0x0C:
       // Handle ANDI instruction
       // Perform the bitwise AND and store the result in the rt register
-      set_register(registers, rt, get_register(registers, rs) & immediate);
+      set_register(registers, rt, get_register(registers, rs) & SignExtImm);
       *executed = true;
       break;
     case 0x09:
@@ -34,18 +47,21 @@ void I_type_inst(uint32_t instr, register_pc *registers, bool *executed) {
       *executed = true;
       break;
     case 0x24:
+    //TODO
       // Handle LBU instruction
       // Load a byte from memory and sign-extend it to a word, then store it in the rt register
       //    registers[rt] = (int32_t)(int8_t)memory[registers[rs] + immediate];
       *executed = true;
       break;
     case 0x25:
+    //TODO
       // Handle LHU instruction
       // Load a half-word from memory and sign-extend it to a word, then store it in the rt register
       //    registers[rt] = (int32_t)(int16_t)memory[registers[rs] + immediate];
       *executed = true;
       break;
     case 0x30:
+    //TODO
       // Handle LL instruction
       // Load a word from memory and store it in the rt register
       //    registers[rt] = memory[registers[rs] + immediate];
@@ -64,12 +80,14 @@ void I_type_inst(uint32_t instr, register_pc *registers, bool *executed) {
       *executed = true;
       break;
     case 0x28:
+    //TODO
       // Handle SB instruction
       // Store the least significant byte of the value in the rt register at the specified address in memory
       //    memory[registers[rs] + immediate] = get_register(registers,rt) & 0xFF;
       *executed = true;
       break;
     case 0x38:
+    //TODO
       // Handle SC instruction
       // Store the value in the rt register at the specified address in memory
       //    memory[registers[rs] + immediate] = get_register(registers,rt);
@@ -78,6 +96,7 @@ void I_type_inst(uint32_t instr, register_pc *registers, bool *executed) {
       *executed = true;
       break;
     case 0x29:
+    //TODO
       // Handle SH instruction
       // Store the least significant half-word of the value in the rt register at the specified address in memory
       //    memory[registers[rs] + immediate] = get_register(registers,rt) & 0xFFFF;
@@ -119,8 +138,8 @@ void R_type_inst(uint32_t instr, register_pc *registers, bool *executed) {
     uint32_t rs = get_part(instr, 21, 26);
     // printf("func:%x\n",funct_field);
     switch (funct_field) {
-      case 0x08:
-      set_pc(registers,get_register(registers, rs)-4);
+    case 0x08:
+      set_pc(registers, get_register(registers, rs) - 4);
       *executed = true;
       break;
     case 0x2A:
@@ -182,8 +201,8 @@ void R_type_inst(uint32_t instr, register_pc *registers, bool *executed) {
       // Handle DIVU instruction
       // Extract the register numbers
       // Divide the values in the rs and rt registers and store the result in the LO and HI registers
-      registers->LO = get_register(registers, rs) / get_register(registers, rt);
-      registers->HI = get_register(registers, rs) % get_register(registers, rt);
+      registers->LO = (uint32_t)get_register(registers, rs) / (uint32_t)get_register(registers, rt);
+      registers->HI = (uint32_t)get_register(registers, rs) % (uint32_t)get_register(registers, rt);
       *executed = true;
       break;
     case 0x18:

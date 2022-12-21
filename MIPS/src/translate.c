@@ -67,6 +67,15 @@ uint32_t format_I_oof(uint8_t opcode, uint32_t args[])
   args[1]=tmp;
   return format_I(opcode, args);
 }
+
+uint32_t format_I2(uint8_t opcode, uint32_t args[])
+{
+  uint32_t result = 0;
+  result |= set_part(opcode,26, 31);
+  result |= set_part(args[0],21, 25);
+  result |= set_part(args[1],0, 15);
+  return result;
+}
 uint32_t format_I(uint8_t opcode, uint32_t args[])
 {
   uint32_t result = 0;
@@ -218,6 +227,10 @@ uint32_t translate_line(char string[])
   case I:
     parameters = parse_parameters(string, strlen(LISTE_INSTRUCT[index_instruction].name), 3);
     resultat = format_I(LISTE_INSTRUCT[index_instruction].opcode, parameters);
+    break;
+  case I2:
+    parameters = parse_parameters(string, strlen(LISTE_INSTRUCT[index_instruction].name), 3);
+    resultat = format_I2(LISTE_INSTRUCT[index_instruction].opcode, parameters);
     break;
   case I_no_first:
     parameters = parse_parameters(string, strlen(LISTE_INSTRUCT[index_instruction].name), 2);

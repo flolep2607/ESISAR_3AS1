@@ -1,8 +1,9 @@
 #include "default.h"
 #include "registre.h"
 
+FILE *openfile(char *filename, const char *open_mode);
 char *get_string_from_input();
-char *get_string_from_file(FILE *fichier);
+char *get_string_from_file(FILE *fichier,bool* end);
 char *ltrim(char *s);
 char *rtrim(char *s);
 char *trim(char *s);
