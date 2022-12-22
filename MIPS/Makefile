@@ -1,6 +1,6 @@
 AUTEURS := Moncorge_Leprat
 # PLUS_FLAGS = -fsanitize=address,leak,undefined -Wall -Wextra -Wshadow -Wdouble-promotion -Wundef -Wconversion
-ARGS ?= data/1.txt -pas
+ARGS ?= -pas
 CC = gcc
 EXEC = emul-mips
 DEBUG = yes

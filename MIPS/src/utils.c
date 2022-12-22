@@ -1,4 +1,5 @@
 #include "utils.h"
+
 char *get_string_from_file(FILE *fichier,bool* end) {
   char *p = '\0';
   int i = 1;
@@ -13,7 +14,7 @@ char *get_string_from_file(FILE *fichier,bool* end) {
       // skip until \n cause useless
       skip = true;
     } else {
-      char *newp = realloc(p, i + sizeof(char));
+      char *newp = realloc(p, (i+1) *sizeof(char));
       //! if error return NULL
       if (newp == NULL) {
         free(p);
@@ -30,7 +31,7 @@ char *get_string_from_file(FILE *fichier,bool* end) {
 
 char *get_string_from_input() {
   printf(">");
-  char *p = '\0';
+  char *p = "";
   int i = 1;
   int c;
   bool stop = false;
@@ -43,7 +44,7 @@ char *get_string_from_input() {
       // skip until \n cause useless
       skip = true;
     } else {
-      char *newp = realloc(p, i + sizeof(char));
+      char *newp = realloc(p, (i+1) * sizeof(char));
       if (newp == NULL) {
         free(p);
         return NULL;
@@ -78,8 +79,8 @@ uint32_t mask(uint8_t start, uint8_t end) {
   }
   return result;
 }
-uint32_t set_part(uint32_t word, uint8_t start, uint8_t end) { return (word << start) & mask(start, end); }
-uint32_t get_part(uint32_t word, uint8_t start, uint8_t end) { return ((word & mask(start, end)) >> start); }
+uint32_t part_set(uint32_t word, uint8_t start, uint8_t end) { return (word << start) & mask(start, end); }
+uint32_t part_get(uint32_t word, uint8_t start, uint8_t end) { return ((word & mask(start, end)) >> start); }
 long fsize(FILE *file) {
   long size = 0;
   if (fseek(file, 0, SEEK_END) == 0) {
@@ -98,4 +99,29 @@ FILE *openfile(char *filename, const char *open_mode) {
     exit(1);
   }
   return file;
+}
+int8_t find_in_list(char string[],const instruction liste[]) {
+  uint8_t index_instruction = 0, i = 0;
+  bool found = false;
+  while (!found && liste[index_instruction].name != NULL) {
+    i = 0;
+    for (; liste[index_instruction].name[i] != 0 && string[i] != 0 && toupper(liste[index_instruction].name[i]) == toupper(string[i]); i++) {
+    }
+    // printf("|%c|%c|\n",string[i],liste[index_instruction].name[i]);
+    if ((string[i] == ' ' ||string[i] == ',' || string[i] == 0) && liste[index_instruction].name[i] == 0) {
+      found = true;
+      /*int j = i;
+      for (; string[j] != 0; j++)
+      {
+          string[j - i] = string[j];
+      }
+      string[j] = 0;*/
+    } else {
+      index_instruction++;
+    }
+  }
+  if (!found) {
+    return -1;
+  }
+  return index_instruction;
 }

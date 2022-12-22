@@ -13,14 +13,15 @@ typedef struct _register_pc
     uint32_t pc;
     int32_t HI;
     int32_t LO;
+    bool error;
     _registre registre;
 } register_pc;
 #endif
-register_pc* create_register();
-void printf_registre(register_pc *);
-void write_registre(register_pc *regist,FILE* file);
-int32_t get_register(register_pc *, uint8_t);
-void set_register(register_pc *, uint8_t ,int32_t);
-void set_pc(register_pc *, uint32_t );
-int16_t get_pc(register_pc *);
-void increase_pc(register_pc *regist, uint32_t value);
+register_pc* register_create();
+void registre_show(register_pc *);
+void registre_write(register_pc *regist,FILE* file);
+int32_t register_get(register_pc *, uint8_t);
+void registre_set(register_pc *, uint8_t ,int32_t);
+void pc_set(register_pc *, uint32_t );
+int16_t pc_get(register_pc *);
+void pc_increase(register_pc *regist, uint32_t value);

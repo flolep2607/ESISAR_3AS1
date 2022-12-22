@@ -16,15 +16,15 @@
 // HI LO ->32-33 => resultat pour divison mult
 // pc    ->34
 //! total registres 32+3 pas grave si y'en a d'inutiles
-register_pc *create_register()
+register_pc *register_create()
 {
     register_pc *elem = calloc(1, sizeof(register_pc));
     return elem;
 }
-void printf_registre(register_pc *regist)
+void registre_show(register_pc *regist)
 {
     // char name[4] = {0};
-    _registre* reg = regist->registre;
+    _registre* reg = &(regist->registre);
     for (int i = 0; i < 31; i++)
     {
         if ((*reg)[i] != 0)
@@ -43,10 +43,10 @@ void printf_registre(register_pc *regist)
     // }
     }
 }
-void write_registre(register_pc *regist,FILE* file)
+void registre_write(register_pc *regist,FILE* file)
 {
     // char name[4] = {0};
-    _registre* reg = regist->registre;
+    _registre* reg = &(regist->registre);
     for (int i = 0; i < 31; i++)
     {
         if ((*reg)[i] != 0)
@@ -63,7 +63,7 @@ void write_registre(register_pc *regist,FILE* file)
         fprintf(file,"LO:%d\n", regist->LO);
     // }
 }
-int32_t get_register(register_pc *regist, uint8_t address)
+int32_t register_get(register_pc *regist, uint8_t address)
 {
     if (address == 0)
     {
@@ -71,19 +71,19 @@ int32_t get_register(register_pc *regist, uint8_t address)
     }
     return regist->registre[address - 1];
 }
-void set_pc(register_pc *regist, uint32_t value)
+void pc_set(register_pc *regist, uint32_t value)
 {
     regist->pc = value;
 }
-void increase_pc(register_pc *regist, uint32_t value)
+void pc_increase(register_pc *regist, uint32_t value)
 {
     regist->pc += value;
 }
-int16_t get_pc(register_pc *regist)
+int16_t pc_get(register_pc *regist)
 {
     return regist->pc;
 }
-void set_register(register_pc *regist, uint8_t address,int32_t value)
+void registre_set(register_pc *regist, uint8_t address,int32_t value)
 {
     if (address > 0 && address < 26)
     {

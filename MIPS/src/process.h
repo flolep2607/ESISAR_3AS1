@@ -1,5 +1,8 @@
 #include "default.h"
+#include "memory.h"
 #include "utils.h"
+#include "execution.h"
+#include "translate.h"
 
 void mode_interactif();
 void mode_fichier(char* fichierin,char* fichierout,bool pasapas);

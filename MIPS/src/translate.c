@@ -1,177 +1,138 @@
 #include "translate.h"
 
-
-uint32_t format_strange(uint8_t opcode, uint32_t args[])
-{
+uint32_t format_strange(uint8_t opcode, uint32_t args[]) {
   uint32_t result = 0;
-  result |= set_part(args[0],21, 25);
-  result |= set_part(opcode,0, 6);
+  result |= part_set(args[0], 21, 25);
+  result |= part_set(opcode, 0, 6);
   return result;
 }
-uint32_t format_R_aled(uint8_t opcode, uint32_t args[], uint32_t special)
-{
+uint32_t format_R_aled(uint8_t opcode, uint32_t args[], uint32_t special) {
   uint32_t result = 0;
-  result |= set_part(special,26, 30);
-  result |= set_part(args[0],11, 15);
-  result |= set_part(opcode,0, 10);
+  result |= part_set(special, 26, 30);
+  result |= part_set(args[0], 11, 15);
+  result |= part_set(opcode, 0, 5);
   return result;
 }
-uint32_t format_R_alternative(uint8_t opcode, uint32_t args[], uint32_t special)
-{
+uint32_t format_no_args(uint8_t opcode) {
   uint32_t result = 0;
-  result |= set_part(special,26, 31);
-  result |= set_part(args[0],21, 25);
-  result |= set_part(args[1],16, 20);
-  result |= set_part(opcode,0, 10);
+  result |= part_set(opcode, 0, 5);
   return result;
 }
-uint32_t format_R_inversed(uint8_t opcode, uint32_t args[], uint32_t special)
-{
+uint32_t format_R_alternative(uint8_t opcode, uint32_t args[], uint32_t special) {
+  uint32_t result = 0;
+  result |= part_set(special, 26, 31);
+  result |= part_set(args[0], 21, 25);
+  result |= part_set(args[1], 16, 20);
+  result |= part_set(opcode, 0, 5);
+  return result;
+}
+uint32_t format_R_inversed(uint8_t opcode, uint32_t args[], uint32_t special) {
   uint32_t tmp = args[0];
   args[0] = args[1];
   args[1] = tmp;
   return format_R(opcode, args, special);
 }
-uint32_t format_R_inv_20(uint8_t opcode, uint32_t args[], uint32_t special)
-{
+uint32_t format_R_inv_20(uint8_t opcode, uint32_t args[], uint32_t special) {
   uint32_t result = 0;
-  result |= set_part(special,26, 31);
-  result |= set_part(args[1],16, 20);
-  result |= set_part(args[0],11, 15);
-  result |= set_part(args[2],6, 10);
-  result |= set_part(opcode,0, 5);
+  result |= part_set(special, 26, 31);
+  result |= part_set(args[1], 16, 20);
+  result |= part_set(args[0], 11, 15);
+  result |= part_set(args[2], 6, 10);
+  result |= part_set(opcode, 0, 5);
   return result;
 }
-uint32_t format_R(uint8_t opcode, uint32_t args[], uint32_t special)
-{
+uint32_t format_R(uint8_t opcode, uint32_t args[], uint32_t special) {
   uint32_t result = 0;
-  result |= set_part(special,26, 31);
-  result |= set_part(args[1],21, 25);
-  result |= set_part(args[2],16, 20);
-  result |= set_part(args[0],11, 15);
-  result |= set_part(opcode,0, 10);
+  result |= part_set(special, 26, 31);
+  result |= part_set(args[1], 21, 25);
+  result |= part_set(args[2], 16, 20);
+  result |= part_set(args[0], 11, 15);
+  result |= part_set(opcode, 0, 5);
   return result;
 }
-uint32_t format_I_no_first(uint8_t opcode, uint32_t args[])
-{
+uint32_t format_I_no_first(uint8_t opcode, uint32_t args[]) {
   uint32_t result = 0;
-  result |= set_part(opcode,26, 31);
-  result |= set_part(args[0],16, 20);
-  result |= set_part(args[1],0, 15);
+  result |= part_set(opcode, 26, 31);
+  result |= part_set(args[0], 16, 20);
+  result |= part_set(args[1], 0, 15);
   return result;
 }
-uint32_t format_I_oof(uint8_t opcode, uint32_t args[])
-{
-  uint32_t tmp=args[0];
-  args[0]=args[1];
-  args[1]=tmp;
+uint32_t format_I_oof(uint8_t opcode, uint32_t args[]) {
+  uint32_t tmp = args[0];
+  args[0] = args[1];
+  args[1] = tmp;
   return format_I(opcode, args);
 }
-
-uint32_t format_I2(uint8_t opcode, uint32_t args[])
-{
+uint32_t format_I3(uint8_t opcode, uint32_t args[]) {
   uint32_t result = 0;
-  result |= set_part(opcode,26, 31);
-  result |= set_part(args[0],21, 25);
-  result |= set_part(args[1],0, 15);
+  result |= part_set(opcode, 26, 31);
+  result |= part_set(args[2], 21, 25);
+  result |= part_set(args[0], 16, 20);
+  result |= part_set(args[1], 0, 15);
   return result;
 }
-uint32_t format_I(uint8_t opcode, uint32_t args[])
-{
+uint32_t format_I2(uint8_t opcode, uint32_t args[]) {
   uint32_t result = 0;
-  result |= set_part(opcode,26, 31);
-  result |= set_part(args[1],21, 25);
-  result |= set_part(args[0],16, 20);
-  result |= set_part(args[2],0, 15);
+  result |= part_set(opcode, 26, 31);
+  result |= part_set(args[0], 21, 25);
+  result |= part_set(args[1], 0, 15);
   return result;
 }
-uint32_t format_J(uint8_t opcode, uint32_t args[])
-{
+uint32_t format_I(uint8_t opcode, uint32_t args[]) {
   uint32_t result = 0;
-  result |= set_part(opcode,26, 31);
-  result |= set_part(args[0],0, 26);
+  result |= part_set(opcode, 26, 31);
+  result |= part_set(args[1], 21, 25);
+  result |= part_set(args[0], 16, 20);
+  result |= part_set(args[2], 0, 15);
   return result;
 }
-int find_instruction(char string[])
-{
-  uint8_t index_instruction = 0, i = 0;
-  bool found = false;
-  while (!found && LISTE_INSTRUCT[index_instruction].name != NULL)
-  {
-    i = 0;
-    for (; LISTE_INSTRUCT[index_instruction].name[i] != 0 && string[i] != 0 && LISTE_INSTRUCT[index_instruction].name[i] == toupper(string[i]); i++)
-    {
-    }
-    if ((string[i] == ' ' || string[i] == 0) && LISTE_INSTRUCT[index_instruction].name[i] == 0)
-    {
-      found = true;
-      /*int j = i;
-      for (; string[j] != 0; j++)
-      {
-          string[j - i] = string[j];
-      }
-      string[j] = 0;*/
-    }
-    else
-    {
-      index_instruction++;
-    }
-  }
-  if (!found)
-  {
-    printf("[ERROR] Instruction not found: %s", string);
-    exit(-1);
-  }
-  return index_instruction;
+uint32_t format_J(uint8_t opcode, uint32_t args[]) {
+  uint32_t result = 0;
+  result |= part_set(opcode, 26, 31);
+  result |= part_set(args[0], 0, 26);
+  return result;
 }
 
-uint32_t *parse_parameters(char *string, int index, int nb_arg_max)
-{
-  if(nb_arg_max==0){
-    uint32_t *args = calloc(1,sizeof(uint32_t));
+uint32_t *parse_parameters(char *string, int index, int nb_arg_max) {
+  if (nb_arg_max == 0) {
+    uint32_t *args = calloc(1, sizeof(uint32_t));
     return args;
   }
   bool address = false;
-  uint32_t *args = calloc(nb_arg_max,sizeof(uint32_t));
+  uint32_t *args = calloc(nb_arg_max, sizeof(uint32_t));
   int length;
   int nb_arg = 0;
-  while (string[index] != '\0' && nb_arg < nb_arg_max)
-  {
-    if (string[index] == ' ')
-    {
+  uint8_t length_string=strlen(string);
+  while (index<length_string && string[index] != '\0' && nb_arg < nb_arg_max) {
+    if (string[index] == ' ') {
       index++;
-    }
-    else if (string[index] == '$')
-    {
+    } else if (string[index] == '$') {
       address = true;
       index++;
-    }
-    else if (string[index] == ',')
-    {
+    } else if (string[index] == ',' || string[index] =='(') {
       index++;
-    }
-    else
-    {
-      if (address)
-      {
+    } else {
+      if (address) {
         sscanf(string + index, "%u%n", &args[nb_arg], &length);
-      }
-      else
-      {
-        sscanf(string + index, "%u%n", &args[nb_arg], &length);
-      }
-      if (length == 0)
-      {
-        if (address)
-        {
-          args[nb_arg] = 0;
+        if (length == 0) {
+          int8_t index_mnemo = find_in_list(string + index, NEMO);
+          if (index_mnemo < 0) {
+            args[nb_arg] = 0;
+          } else {
+            length = strlen(NEMO[index_mnemo].name);
+            args[nb_arg] = NEMO[index_mnemo].opcode;
+          }
         }
-        // TODO
-        //  else {
-        //    char *stringmachin;
-        //    sscanf("%s",string[index], stringmachin);
-        //    args[nb_arg] = label_to_adress(stringmachin);
-        //  }
+      } else {
+        sscanf(string + index, "%u%n", &args[nb_arg], &length);
+        if (length == 0) {
+          // TODO
+          //  else {
+          //    char *stringmachin;
+          //    sscanf("%s",string[index], stringmachin);
+          //    args[nb_arg] = label_to_adress(stringmachin);
+          //  }
+        }
       }
       nb_arg++;
       index += length;
@@ -181,28 +142,30 @@ uint32_t *parse_parameters(char *string, int index, int nb_arg_max)
   return args;
 }
 
-uint32_t translate_line(char string[])
-{
-  uint8_t index_instruction = find_instruction(string);
+uint32_t translate_line(char string[]) {
+  int8_t index_instruction = find_in_list(string, LISTE_INSTRUCT);
+  if (index_instruction < 0) {
+    printf("[ERROR] Instruction not found: %s", string);
+    exit(-1);
+  }
   uint32_t resultat = 0;
   // uint32_t arg1, arg2, arg3;
   //! faut refaire ce truc
-  uint32_t *parameters;
+  uint32_t *parameters = NULL;
   // TODO just 1 R malloc here
   // TODO
-  switch (LISTE_INSTRUCT[index_instruction].format)
-  {
+  switch (LISTE_INSTRUCT[index_instruction].format) {
   case J:
     parameters = parse_parameters(string, strlen(LISTE_INSTRUCT[index_instruction].name), 2);
     resultat = format_J(LISTE_INSTRUCT[index_instruction].opcode, parameters);
     break;
   case R_strange:
     parameters = parse_parameters(string, strlen(LISTE_INSTRUCT[index_instruction].name), 1);
-    resultat=format_strange(LISTE_INSTRUCT[index_instruction].opcode, parameters);
+    resultat = format_strange(LISTE_INSTRUCT[index_instruction].opcode, parameters);
     break;
   case R_inv_20:
     parameters = parse_parameters(string, strlen(LISTE_INSTRUCT[index_instruction].name), 3);
-    resultat=format_R_inv_20(LISTE_INSTRUCT[index_instruction].opcode, parameters, LISTE_INSTRUCT[index_instruction].special);
+    resultat = format_R_inv_20(LISTE_INSTRUCT[index_instruction].opcode, parameters, LISTE_INSTRUCT[index_instruction].special);
     break;
   case R_reverse:
     parameters = parse_parameters(string, strlen(LISTE_INSTRUCT[index_instruction].name), 3);
@@ -232,17 +195,26 @@ uint32_t translate_line(char string[])
     parameters = parse_parameters(string, strlen(LISTE_INSTRUCT[index_instruction].name), 3);
     resultat = format_I2(LISTE_INSTRUCT[index_instruction].opcode, parameters);
     break;
+  case I3:
+    parameters = parse_parameters(string, strlen(LISTE_INSTRUCT[index_instruction].name), 3);
+    resultat = format_I3(LISTE_INSTRUCT[index_instruction].opcode, parameters);
+    break;
   case I_no_first:
     parameters = parse_parameters(string, strlen(LISTE_INSTRUCT[index_instruction].name), 2);
     resultat = format_I_no_first(LISTE_INSTRUCT[index_instruction].opcode, parameters);
     break;
-
+  case no_args:
+    resultat = format_no_args(LISTE_INSTRUCT[index_instruction].opcode);
+    break;
   default:
     printf("IDK this command\n");
     exit(-1);
     break;
   }
-  free(parameters);
+  if (parameters != NULL) {
+    free(parameters);
+  }
+  // show command debug
   printf("%s=>%08x\n",string,resultat);
   return resultat;
 }

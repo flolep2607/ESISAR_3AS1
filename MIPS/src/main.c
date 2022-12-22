@@ -9,7 +9,6 @@ Florian Leprat
 #include "utils.h"
 
 
-#ifndef TEST
 int main(int argc, char *argv[]) {
   // - interactif
   // - fichier(?pas a pas) -> console
@@ -19,6 +18,7 @@ int main(int argc, char *argv[]) {
   char *fichier_nom_bin = "";
   char *fichier_nom_stdout = "";
   for (int i = 1; i < argc; ++i) {
+    // printf("args[%d]=%s\n",i,argv[i]);
     if (strcmp(argv[i], "-pas") == 0) {
       pasapas = true;
     } else if (fichier_nom_entree[0] == 0) {
@@ -32,23 +32,22 @@ int main(int argc, char *argv[]) {
   FILE *fichier_entree = NULL;
   FILE *fichier_bin = NULL;
   FILE *fichier_stdout = NULL;
-  if (fichier_nom_entree != 0) {
-    printf("fichier_nom_entree:%s\n", fichier_nom_entree);
+  if (fichier_nom_entree[0] != 0) {
+    // printf("fichier_nom_entree:|%s|\n", fichier_nom_entree);
     fichier_entree = openfile(fichier_nom_entree, "r");
   }
-  if (fichier_nom_bin != 0) {
-    printf("fichier_nom_bin:%s\n", fichier_nom_bin);
+  if (fichier_nom_bin[0] != 0) {
+    // printf("fichier_nom_bin:%s\n", fichier_nom_bin);
     fichier_bin = openfile(fichier_nom_bin, "w");
   }
-  if (fichier_nom_stdout != 0) {
-    printf("fichier_nom_stdout:%s\n", fichier_nom_stdout);
+  if (fichier_nom_stdout[0] != 0) {
+    // printf("fichier_nom_stdout:%s\n", fichier_nom_stdout);
     fichier_stdout = openfile(fichier_nom_stdout, "w");
   }
-  printf("fichier entrée:%s\n", fichier_nom_entree);
-  printf("fichier bin:%s\n", fichier_nom_bin);
-  printf("fichier stdout:%s\n", fichier_nom_stdout);
-  printf("pas a pas:%d\n", pasapas);
-  uint32_t resultat;
+  // printf("fichier entrée:%s\n", fichier_nom_entree);
+  // printf("fichier bin:%s\n", fichier_nom_bin);
+  // printf("fichier stdout:%s\n", fichier_nom_stdout);
+  // printf("pas a pas:%d\n", pasapas);
   if (fichier_entree != NULL && fichier_bin != NULL) {
     printf("fichier bin out\n");
     exec_file(fichier_bin,fichier_entree,fichier_stdout,fichier_nom_bin,pasapas);
@@ -62,4 +61,3 @@ int main(int argc, char *argv[]) {
   }
   return 0;
 }
-#endif
