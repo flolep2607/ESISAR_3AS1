@@ -57,12 +57,12 @@ pasapas: $(EXEC)
 
 filespas: $(EXEC)
 	@mkdir -p $(RESULTDIR)
-	@./$(EXEC) tests/pow2.s $(RESULTDIR)/bin $(RESULTDIR)/stdout -pas
+	@./$(EXEC) tests/a.s $(RESULTDIR)/bin $(RESULTDIR)/stdout -pas
 
 files: $(EXEC)
 	@mkdir -p $(RESULTDIR)
-	@./$(EXEC) tests/pow2.s $(RESULTDIR)/bin $(RESULTDIR)/stdout
-	# @./$(EXEC) tests/arithmetic.s $(RESULTDIR)/bin $(RESULTDIR)/stdout
+	# @./$(EXEC) tests/pow2.s $(RESULTDIR)/bin $(RESULTDIR)/stdout
+	@./$(EXEC) tests/arithmetic.s $(RESULTDIR)/bin $(RESULTDIR)/stdout
 
 create:
 	@mkdir -p {$(DATADIR),$(SRCDIR),$(INCDIR),$(LIBDIR),$(LIBDIR),$(RESULTDIR)}

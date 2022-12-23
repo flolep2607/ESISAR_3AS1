@@ -14,7 +14,7 @@ typedef struct _memory
 } memory;
 #endif
 uint32_t memory_get(memory* mem,unsigned long int address);
-void memory_insert(memory* mem,unsigned long int address,int32_t data);
+void memory_set(memory* mem,unsigned long int address,int32_t data);
 void memory_delete(memory* mem,unsigned long int address);
 void memory_show(memory* mem);
 void memory_free(memory* mem);

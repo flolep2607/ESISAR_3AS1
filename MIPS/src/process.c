@@ -4,6 +4,7 @@ void mode_interactif() {
   uint32_t instruction;
   register_pc *registre = register_create();
   memory *ram = memory_create();
+  int i = 0;
   while (!stop) {
     char *string = get_string_from_input();
     if (string == NULL || string[0] == 0) {
@@ -15,8 +16,10 @@ void mode_interactif() {
       instruction = translate_line(string);
       printf("read: |%s|=>%08x\n", string, instruction);
       if (instruction) {
+        memory_set(ram, 4 * i, instruction);
         execute_instruction(instruction, registre, ram);
         registre->pc += 4;
+        i++;
       }
     }
     printf("=====\n");
@@ -29,15 +32,15 @@ void mode_interactif() {
   memory_free(ram);
 }
 void exec_file(FILE *fichier_bin, FILE *fichier_entree, FILE *fichier_stdout, char *fichier_nom_bin, bool pasapas) {
+  register_pc *registre = register_create();
+  memory *ram = memory_create();
+  int i_max = 0;
   bool stop = false;
   uint32_t resultat;
+  bool syscall=false;
   while (!stop) {
-    // TODO put an args that can be set to 0 if OEF
     char *string = get_string_from_file(fichier_entree, &stop);
-    // printf("aled1:%s\n",string);
     if (string == NULL || string == 0) {
-      // free(string);
-      // stop=true;
       continue;
     }
     string = trim(string);
@@ -47,47 +50,36 @@ void exec_file(FILE *fichier_bin, FILE *fichier_entree, FILE *fichier_stdout, ch
       continue;
     }
     resultat = translate_line(string);
+    memory_set(ram, 4 * i_max, resultat);
+    if(resultat==translate_line("syscall")){
+      syscall=true;
+    }
     fprintf(fichier_bin, "%08x\n", resultat);
     free(string);
+    i_max++;
+  }
+  if(!syscall){
+    memory_set(ram, 4 * i_max, translate_line("syscall")); // to end the prog a the end without counter
+  }
+  if(pasapas){
+    memory_show(ram);
   }
   fclose(fichier_entree);
-  if (fichier_nom_bin[0] != 0) {
-    fclose(fichier_bin);
-    fichier_bin = openfile(fichier_nom_bin, "r");
-  }
-  register_pc *registre = register_create();
-  memory *ram = memory_create();
-  stop = false;
-  char buf[9] = {0};
   uint32_t instruction;
-  uint32_t position = get_cursor_position(registre);
-  long maximum = fsize(fichier_bin);
-  while (!stop && (maximum > position) && !registre->error) {
-    // printf("PC:%08x\n",registre->pc);
-    int returnCode = fseek(fichier_bin, position, SEEK_SET);
-    // printf("return code:%d %08x %d\n",returnCode,position,maximum>position);
-    if (returnCode != 0) {
-      printf("END of instructions");
-      stop = true;
-      exit(0);
-      continue;
-    }
+  int i = 0;
+  while (!(registre->error)) { 
     if (pasapas) {
+      printf("PC:%08x\n", registre->pc);
       getchar();
     }
-    memset(buf, 0, 8);
-    fread(buf, 1, 8, fichier_bin);
-    // printf(">>%s<<\n",buf);
-    sscanf(buf, "%x", &instruction);
-    // printf(">>%08x<<\n", instruction);
+    instruction = memory_get(ram, registre->pc);
+    execute_instruction(instruction, registre, ram);
     if (pasapas) {
-      printf("PC:0x%08x\n", registre->pc);
-      execute_instruction(instruction, registre, ram);
+      memory_show(ram);
+      registre_show(registre);
     }
-    memory_show(ram);
-    registre_show(registre);
     registre->pc += 4;
-    position = get_cursor_position(registre);
+    i++;
   }
   if (registre->error) {
     printf("There is an error\n");

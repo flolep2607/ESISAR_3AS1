@@ -10,4 +10,5 @@
 #include "utils.h"
 #endif
 
-#define max_memory 0xFFFFFFFF
+// #define max_memory 0xFFFFFFFF
+#define max_memory 0xFF

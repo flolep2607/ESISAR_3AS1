@@ -57,21 +57,16 @@ char *get_string_from_input() {
   return p;
 }
 
-char *ltrim(char *s) {
-  while (isspace(*s))
-    s++;
-  return s;
-}
-
-char *rtrim(char *s) {
+char *trim(char *s) {
+  //left trim
+  while (isspace(*s)){s++;}
+  //right trim
   char *back = s + strlen(s);
-  while (isspace(*--back))
-    ;
+  while (isspace(*(--back)));
   *(back + 1) = '\0';
   return s;
+  // return right_trim(left_trim(s)); 
 }
-
-char *trim(char *s) { return rtrim(ltrim(s)); }
 uint32_t mask(uint8_t start, uint8_t end) {
   uint32_t result = 0;
   for (int i = start; i <= end; i++) {

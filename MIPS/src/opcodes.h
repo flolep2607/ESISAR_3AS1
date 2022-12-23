@@ -52,7 +52,7 @@ static const instruction LISTE_INSTRUCT []={
     {"SLT",R,0b101010,0},
     {"SRL",R_inv_20,0b000010,0},
     {"SUB",R,0b100010,0},
-    {"SW",I,0b101011,0},
+    {"SW",I3,0b101011,0},
     {"SYSCALL",no_args,0b001100,0},//à typer
     {"XOR",R,0b100110,0},
     {NULL}

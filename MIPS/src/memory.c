@@ -31,7 +31,7 @@ int32_t get_element(memory *mem, unsigned long int address) {
  * @param address
  */
 void checks(unsigned long int address) {
-  printf("%ld\n", address);
+  // printf("%ld\n", address);
   if (address > max_memory) {
     //! ERROR c'est en dehors des 4Go
     printf("access memoire >4Go\n");
@@ -43,18 +43,6 @@ void checks(unsigned long int address) {
   }
 }
 
-uint32_t gen_mask(unsigned long int *address, int octets) {
-  // 0000111100000000
-  // (actual_value & (~mask)) | (value & mask)
-  int32_t mask = 0;
-  short decalage = (*address) % sizeof(int32_t); // 1 => 1 en trop
-  unsigned long int start_address = *address - decalage;
-  address = &start_address;
-  for (short i = 0; i <= octets; i++) {
-    mask |= (0xF) << (4 * (i + decalage));
-  }
-  return mask;
-}
 /**
  * @brief
  *
@@ -95,7 +83,7 @@ uint32_t memory_get(memory *mem, unsigned long int address) {
  * @param address
  * @param data
  */
-void memory_insert(memory *mem, unsigned long int address, int32_t data) {
+void memory_set(memory *mem, unsigned long int address, int32_t data) {
   checks(address);
   insert_element(mem, address, data);
 }
@@ -125,7 +113,7 @@ void memory_show(memory *mem) {
   memory *elem = mem;
   while (elem->next != NULL) {
     elem = elem->next;
-    printf("0x%08lX=>0x%08u\n", elem->address, elem->data);
+    printf("add:0x%08lX value:%08x\n", elem->address, elem->data);
   }
 }
 /**

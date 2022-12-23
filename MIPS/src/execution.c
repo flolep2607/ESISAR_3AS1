@@ -67,6 +67,11 @@ void I_type_inst(uint32_t instr, register_pc *registers,memory* ram, bool *execu
       registre_set(registers, rt,memory_get(ram,immediate+(int32_t)register_get(registers, rs)));
       *executed = true;
       break;
+    case 0x2B: // SW
+      //TODO registre_set(registers, rt,);
+      memory_set(ram,immediate+(int32_t)register_get(registers, rs),register_get(registers, rt));
+      *executed = true;
+      break;
     case 0x29:
       // TODO
       //  Handle SH instruction
