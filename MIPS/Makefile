@@ -4,8 +4,8 @@ ARGS ?= -pas
 CC = gcc
 EXEC = emul-mips
 DEBUG = yes
-CFLAGS = -Wall -Wextra -O2 -ansi -std=c99  -fsanitize=address,leak,undefined 
-#  -pedantic
+CFLAGS = -Wall -Wextra -O2 -ansi -std=c99  
+#  -pedantic   -fsanitize=address,leak,undefined
 STATICDEFINE = 
 # TEST
 lib = m
@@ -55,9 +55,13 @@ run: $(EXEC)
 pasapas: $(EXEC)
 	@./$(EXEC) tests/pow2.s -pas
 
+valgrind: $(EXEC)
+	@mkdir -p $(RESULTDIR)
+	valgrind --track-origins=yes --leak-check=full ./$(EXEC) tests/mat.s $(RESULTDIR)/bin $(RESULTDIR)/stdout -pas
+
 filespas: $(EXEC)
 	@mkdir -p $(RESULTDIR)
-	@./$(EXEC) tests/a.s $(RESULTDIR)/bin $(RESULTDIR)/stdout -pas
+	@./$(EXEC) tests/mat.s $(RESULTDIR)/bin $(RESULTDIR)/stdout -pas
 
 files: $(EXEC)
 	@mkdir -p $(RESULTDIR)

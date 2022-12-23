@@ -85,7 +85,7 @@ int16_t pc_get(register_pc *regist)
 }
 void registre_set(register_pc *regist, uint8_t address,int32_t value)
 {
-    if (address > 0 && address < 26)
+    if (address > 0 && address < 32)
     {
         regist->registre[address - 1] = value;
     }

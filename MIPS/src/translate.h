@@ -1,6 +1,8 @@
 #include "default.h"
 #include "opcodes.h"
 #include "default.h"
+#include "labels.h"
+
 #ifndef MNEMO_LISTE
 #define MNEMO_LISTE
 //pour eviter d'avoir un type en plus et utiliser la fonction find in list
@@ -40,10 +42,20 @@ static const instruction NEMO[] ={
   {NULL}
 };
 #endif
-uint32_t format_J(uint8_t opcode, uint32_t args[]);
-uint32_t format_I(uint8_t opcode, uint32_t args[]);
+uint32_t format_strange(uint8_t opcode, uint32_t args[]);
+uint32_t format_R_aled(uint8_t opcode, uint32_t args[], uint32_t special);
+uint32_t format_no_args(uint8_t opcode);
 uint32_t format_R_alternative(uint8_t opcode, uint32_t args[], uint32_t special);
 uint32_t format_R_inversed(uint8_t opcode, uint32_t args[], uint32_t special);
+uint32_t format_R_inv_20(uint8_t opcode, uint32_t args[], uint32_t special);
 uint32_t format_R(uint8_t opcode, uint32_t args[], uint32_t special);
-uint32_t* parse_parameters(char *string, int index,int nb_args_max);
-uint32_t translate_line(char string[]);
+uint32_t format_I_no_first(uint8_t opcode, uint32_t args[]);
+uint32_t format_I_order(uint8_t opcode, uint32_t args[]);
+uint32_t format_I3(uint8_t opcode, uint32_t args[]);
+uint32_t format_I2(uint8_t opcode, uint32_t args[]);
+uint32_t format_I(uint8_t opcode, uint32_t args[]);
+uint32_t format_J(uint8_t opcode, uint32_t args[]);
+
+
+uint32_t* parse_parameters(char *string, int index,int nb_args_max,labels* labels_list);
+uint32_t translate_line(char string[], uint32_t i, labels *labels_list,int* is_instruction);

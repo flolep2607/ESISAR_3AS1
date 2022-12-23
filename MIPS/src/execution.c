@@ -90,8 +90,9 @@ void I_type_inst(uint32_t instr, register_pc *registers,memory* ram, bool *execu
 }
 void J_type_inst(uint32_t instr, register_pc *registers, bool *executed) {
   if (!(*executed)) {
-    uint32_t opcode = part_get(instr, 25, 31);
-    uint32_t address = part_get(instr, 0, 26);
+    uint32_t opcode = part_get(instr, 26, 31);
+    uint32_t address = part_get(instr, 0, 25);
+    printf("opcode:%08x|%08x|%08x\n",opcode,address,pc_get(registers)+4);
     switch (opcode) {
     case 0x2:// J
       pc_set(registers, address - 4);
@@ -223,6 +224,6 @@ void execute_instruction(uint32_t instruction, register_pc *registers,memory* ra
   I_type_inst(instruction, registers,ram, &executed);
   if (!executed) {
     printf("%x command not found\n", instruction);
-    exit(-1);
+    exit(8);
   }
 }

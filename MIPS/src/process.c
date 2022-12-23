@@ -4,16 +4,23 @@ void mode_interactif() {
   uint32_t instruction;
   register_pc *registre = register_create();
   memory *ram = memory_create();
+  labels *labels_list = NULL;
   int i = 0;
   while (!stop) {
+    int is_instruction = true;
     char *string = get_string_from_input();
     if (string == NULL || string[0] == 0) {
       printf("no info\n");
+      continue;
     }
+    string = trim(string);
     if (strcmp(string, "EXIT") == 0) {
       stop = true;
     } else {
-      instruction = translate_line(string);
+      instruction = translate_line(string, i, labels_list, &is_instruction);
+      if (!is_instruction) {
+        continue;
+      }
       printf("read: |%s|=>%08x\n", string, instruction);
       if (instruction) {
         memory_set(ram, 4 * i, instruction);
@@ -30,44 +37,77 @@ void mode_interactif() {
   }
   free(registre);
   memory_free(ram);
+  labels_free(labels_list);
 }
-void exec_file(FILE *fichier_bin, FILE *fichier_entree, FILE *fichier_stdout, char *fichier_nom_bin, bool pasapas) {
+void exec_file(FILE *fichier_bin, FILE *fichier_entree, FILE *fichier_stdout, bool pasapas) {
   register_pc *registre = register_create();
   memory *ram = memory_create();
+  labels *labels_list = NULL;
   int i_max = 0;
   bool stop = false;
+  int is_instruction = true;
   uint32_t resultat;
-  bool syscall=false;
+  labels_findall(fichier_entree, &labels_list);
+  labels_show(labels_list);
+  char *string = NULL;
+  char *string_malloc = NULL;
   while (!stop) {
-    char *string = get_string_from_file(fichier_entree, &stop);
-    if (string == NULL || string == 0) {
-      continue;
+    if (string_malloc != NULL) {
+      free(string_malloc);
+      string_malloc = NULL;
     }
-    string = trim(string);
-    if (string == NULL || string == 0) {
+    if (string != NULL) {
       free(string);
-      stop = true;
+      string = NULL;
+    }
+    is_instruction = true;
+    string_malloc = get_line_from_file(fichier_entree, &stop);
+    if (string_malloc == NULL || string_malloc == 0 || *string_malloc == 0) {
       continue;
     }
-    resultat = translate_line(string);
-    memory_set(ram, 4 * i_max, resultat);
-    if(resultat==translate_line("syscall")){
-      syscall=true;
+    string = trim_alloc(string_malloc);
+    if (string == NULL || string == 0 || *string == 0) {
+      // stop = true;
+      continue;
     }
+    // printf("string|%s|\n", string);
+    resultat = translate_line(string, i_max, labels_list, &is_instruction);
+    if (!is_instruction) {
+      continue;
+    }
+    if (is_instruction == -1) {
+      if (string_malloc != NULL) {
+        free(string_malloc);
+      }
+      if (string != NULL) {
+        free(string);
+      }
+      free(registre);
+      memory_free(ram);
+      labels_free(labels_list);
+      exit(3);
+    }
+    memory_set(ram, 4 * i_max, resultat);
     fprintf(fichier_bin, "%08x\n", resultat);
-    free(string);
     i_max++;
   }
-  if(!syscall){
-    memory_set(ram, 4 * i_max, translate_line("syscall")); // to end the prog a the end without counter
+  if (string_malloc != NULL) {
+    free(string_malloc);
+    string_malloc = NULL;
   }
-  if(pasapas){
+  if (string != NULL) {
+    free(string);
+    string = NULL;
+  }
+  memory_set(ram, 4 * i_max, translate_line("syscall", i_max, labels_list, &is_instruction)); // to end the prog a the end without counter
+
+  if (pasapas) {
     memory_show(ram);
   }
   fclose(fichier_entree);
   uint32_t instruction;
   int i = 0;
-  while (!(registre->error)) { 
+  while (!(registre->error)) {
     if (pasapas) {
       printf("PC:%08x\n", registre->pc);
       getchar();
@@ -92,4 +132,5 @@ void exec_file(FILE *fichier_bin, FILE *fichier_entree, FILE *fichier_stdout, ch
   }
   free(registre);
   memory_free(ram);
+  labels_free(labels_list);
 }

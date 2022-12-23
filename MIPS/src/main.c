@@ -50,12 +50,12 @@ int main(int argc, char *argv[]) {
   // printf("pas a pas:%d\n", pasapas);
   if (fichier_entree != NULL && fichier_bin != NULL) {
     printf("fichier bin out\n");
-    exec_file(fichier_bin,fichier_entree,fichier_stdout,fichier_nom_bin,pasapas);
+    exec_file(fichier_bin,fichier_entree,fichier_stdout,pasapas);
   } else if (fichier_entree != NULL) {
     // pas a pas
     printf("fichier pas a pas\n");
     fichier_bin = tmpfile(); // generate a temp file in wb+ (read and write mode)
-    exec_file(fichier_bin,fichier_entree,fichier_stdout,fichier_nom_bin,pasapas);
+    exec_file(fichier_bin,fichier_entree,fichier_stdout,pasapas);
  } else {
     mode_interactif();
   }

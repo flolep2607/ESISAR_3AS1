@@ -12,7 +12,7 @@ typedef enum {
     I_no_first,
     R_inv_20,
     R_strange,
-    I_oof,
+    I_order,
     I2,
     no_args,
     I3
@@ -32,10 +32,10 @@ static const instruction LISTE_INSTRUCT []={
     {"ADDI",I,0b001000,0},//
     {"ADD",R,0b100000,0},//
     {"AND",R,0b100100,0},//
-    {"BEQ",I_oof,0b000100,0},//
+    {"BEQ",I_order,0b000100,0},//
     {"BGTZ",I2,0b000111,0},//
     {"BLEZ",I,0b000110,0},//
-    {"BNE",I,0b000101,0},//
+    {"BNE",I_order,0b000101,0},//
     {"DIV",R_alternative,0b011010,0},//
     {"J",J,0b000010,0},//
     {"JAL",J,0b000011,0},//

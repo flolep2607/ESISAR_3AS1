@@ -1,9 +1,5 @@
 #include "default.h"
 #include <time.h>
-/**
- * @struct memory
- * @brief 
- */
 #ifndef MEMORY
 #define MEMORY
 typedef struct _memory

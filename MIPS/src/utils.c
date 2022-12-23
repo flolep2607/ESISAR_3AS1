@@ -1,6 +1,6 @@
 #include "utils.h"
 
-char *get_string_from_file(FILE *fichier,bool* end) {
+char *get_line_from_file(FILE *fichier,bool* end) {
   char *p = '\0';
   int i = 1;
   int c;
@@ -56,6 +56,56 @@ char *get_string_from_input() {
   }
   return p;
 }
+
+// char *left_trim(char *s) {
+//   while (isspace(*s)){s++;}
+//   return s;
+// }
+
+// char *right_trim(char *s) {
+//   char *back = s + strlen(s);
+//   while (isspace(*(--back)));
+//   *(back + 1) = '\0';
+//   return s;
+// }
+
+// Return beginning of trimmed string.
+char *ltrim(char * string) {
+  while (isspace((unsigned char) *string)) {
+    string++;
+  }
+  return string;
+}
+
+// Return end of "trimmed" string.
+char *rtrim(char * string) {
+  // find first non-space
+  char *non_space = string;
+  while (isspace((unsigned char) *non_space)) {
+    non_space++;
+  }
+  if (*non_space) {
+    string = non_space + strlen(non_space);
+    while (isspace((unsigned char) string[-1])) {
+      string--;
+    }
+  }
+  return string;
+}
+
+char * trim_alloc(char* string) {
+  if(!string || !*string){return string;}
+  string = ltrim(string);
+  char *end = rtrim(string);
+  size_t length = end - string;
+  char *copy = malloc(length + 1);
+  if (copy) {
+    memcpy(copy, string, length);
+    copy[length] = '\0';
+  }  
+  return copy;
+}
+
 
 char *trim(char *s) {
   //left trim

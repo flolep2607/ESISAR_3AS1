@@ -35,11 +35,11 @@ void checks(unsigned long int address) {
   if (address > max_memory) {
     //! ERROR c'est en dehors des 4Go
     printf("access memoire >4Go\n");
-    exit(-1);
+    exit(5);
   } else if (address % sizeof(int32_t) != 0) {
     //! ERROR c'est pas aligné
     printf("access memoire non aligné\n");
-    exit(-2);
+    exit(4);
   }
 }
 
