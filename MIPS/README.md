@@ -114,7 +114,7 @@ mémoire ? Quels choix avec-vous faits ?
 * Cochez (en remplaçant `[ ]` par `[x]`) si vous avez :**
   - [ ] Implémenté l'émulation de toutes les instructions gérées par le rendu 2.
   - [ ] Implémenté l'émulation de toutes les instructions.
-  - [ ] Tous vos tests qui passent.
+  - [x] Tous vos tests qui passent.
   - [ ] Vérifié que vous tests couvrent toutes les instructions émulées.
   - [ ] Testé les cas particuliers : valeurs négatives, overflows...
   - [ ] Testé les cas d'erreur : division par zéro, sauts invalides...
