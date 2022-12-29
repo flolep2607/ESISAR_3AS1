@@ -86,40 +86,40 @@ Enfin, une structure en modules peut également faciliter la collaboration entre
 modifications ont été nécessaires ? Rétrospectivement, est-ce que cette
 structure était bien prévue ?
 
-[COMPLÉTER ICI]
+Oui, nous avons réussi à obtenir la structure prévue, elle était bien prévue.
 
 * Avez-vous compris le fonctionnement de chaque instruction à partir de la
 documentation fournie ? Si non, quels sont les points obscurs ?
 
-[COMPLÉTER ICI]
+Nous avons compris le fonctionnement de chacune des instructions à partir de la documentation, ou à défaut après de rapides recherches.
 
 * Quels exemples de programmes avez-vous choisi pour tester le calcul ? Les
 comparaisons et sauts ? La mémoire ?
 
-[COMPLÉTER ICI]
+Nous avons testé avec des programmes comprenant des instructions diverses.
 
 * Le sujet spécifie-t-il tous les détails nécessaires pour bien implémenter la
 mémoire ? Quels choix avec-vous faits ?
 
-[COMPLÉTER ICI]
+Puisque nous ne savions pas comment définir la fin d'un programme, nous avons considéré que le programme se finissait par un syscall.
 
 * Reste-t-il des bugs que vous avez découverts et pas corrigés ?
 
-[COMPLÉTER ICI]
+Rien que nous n'ayons vu.
 
 * D'autres remarques sur votre programme ?
 
-[COMPLÉTER ICI]
+Rien à signaler.
 
 * Cochez (en remplaçant `[ ]` par `[x]`) si vous avez :**
-  - [ ] Implémenté l'émulation de toutes les instructions gérées par le rendu 2.
-  - [ ] Implémenté l'émulation de toutes les instructions.
-  - [ ] Tous vos tests qui passent.
-  - [ ] Vérifié que vous tests couvrent toutes les instructions émulées.
-  - [ ] Testé les cas particuliers : valeurs négatives, overflows...
-  - [ ] Testé les cas d'erreur : division par zéro, sauts invalides...
+  - [x] Implémenté l'émulation de toutes les instructions gérées par le rendu 2.
+  - [x] Implémenté l'émulation de toutes les instructions.
+  - [x] Tous vos tests qui passent.
+  - [x] Vérifié que vous tests couvrent toutes les instructions émulées.
+  - [x] Testé les cas particuliers : valeurs négatives, overflows...
+  - [x] Testé les cas d'erreur : division par zéro, sauts invalides...
   - [ ] Un port fonctionnel de DOOM pour votre émulateur.
 
 * Des retours sur le projet en général ?
 
-[COMPLÉTER ICI]
+Les créneaux sur le projet étaient en général assez mal placés, au moins pour notre groupe de TP.
