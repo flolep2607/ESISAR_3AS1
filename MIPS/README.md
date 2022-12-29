@@ -60,7 +60,7 @@ L'émulateur MIPS est divisé en modules tels que:
 - Un module de gestion des registres qui gère les registres utilisés par le processeur MIPS et stocke les données utilisées par les instructions MIPS.
 
 - Un module de gestion de la mémoire qui gère l'accès à la mémoire utilisée par le processeur MIPS et stocke les données utilisées par les instructions MIPS.
-On prévoit d'utiliser ta mère elle est tellement grosse qu'il faut 5 malloc pour la stocker
+
 
 * Quelles seront les fonctions principales de chaque module ?
 
