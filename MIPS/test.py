@@ -95,7 +95,7 @@ class TestMIPS:
 
         # Run the command, ignoring I/Os (wd only use output files)
         subprocess.run([EMUL_MIPS, prog + ".s", prog_hex, prog_state],
-            timeout=10, stderr=subprocess.STDOUT, check=True)
+            timeout=3, stderr=subprocess.STDOUT, check=True)
 
         if kind == "EXPECTED_ASSEMBLY":
             if exp_hex is None:

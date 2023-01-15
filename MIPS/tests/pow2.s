@@ -5,7 +5,7 @@ addi $12, $0, 1
 mult $12, $10
 mflo $12
 addi $11, $11, -1
-bne $0, $11, -12
+bne $0, $11, -4
 NOP
 
 # EXPECTED_ASSEMBLY
@@ -15,7 +15,7 @@ NOP
 # 018A0018
 # 00006012
 # 216BFFFF
-# 140BFFF4
+# 140BFFFC
 # 00000000
 
 # EXPECTED_FINAL_STATE

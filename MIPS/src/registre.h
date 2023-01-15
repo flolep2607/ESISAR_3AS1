@@ -13,6 +13,7 @@ typedef struct _register_pc
     uint32_t pc;
     int32_t HI;
     int32_t LO;
+    bool delayslot;
     bool error;
     _registre registre;
 } register_pc;

@@ -71,10 +71,11 @@ uint32_t format_I3(uint8_t opcode, uint32_t args[]) {
   result |= part_set(args[1], 0, 15);
   return result;
 }
-uint32_t format_I2(uint8_t opcode, uint32_t args[]) {
+uint32_t format_I2(uint8_t opcode,uint32_t special,uint32_t args[]) {
   uint32_t result = 0;
   result |= part_set(opcode, 26, 31);
   result |= part_set(args[0], 21, 25);
+  result |= part_set(special, 16, 20);
   result |= part_set(args[1], 0, 15);
   return result;
 }
@@ -200,8 +201,8 @@ uint32_t translate_line(char string[], uint32_t i, labels *labels_list, int *is_
     resultat = format_I(LISTE_INSTRUCT[index_instruction].opcode, parameters);
     break;
   case I2:
-    parameters = parse_parameters(string, strlen(LISTE_INSTRUCT[index_instruction].name), 3, labels_list);
-    resultat = format_I2(LISTE_INSTRUCT[index_instruction].opcode, parameters);
+    parameters = parse_parameters(string, strlen(LISTE_INSTRUCT[index_instruction].name), 2, labels_list);
+    resultat = format_I2(LISTE_INSTRUCT[index_instruction].opcode,LISTE_INSTRUCT[index_instruction].special, parameters);
     break;
   case I3:
     parameters = parse_parameters(string, strlen(LISTE_INSTRUCT[index_instruction].name), 3, labels_list);

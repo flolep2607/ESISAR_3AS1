@@ -57,7 +57,7 @@ pasapas: $(EXEC)
 
 valgrind: $(EXEC)
 	@mkdir -p $(RESULTDIR)
-	valgrind --track-origins=yes --leak-check=full ./$(EXEC) tests/mat.s $(RESULTDIR)/bin $(RESULTDIR)/stdout -pas
+	valgrind --track-origins=yes --leak-check=full ./$(EXEC) tests/labels.s $(RESULTDIR)/bin $(RESULTDIR)/stdout -pas
 
 filespas: $(EXEC)
 	@mkdir -p $(RESULTDIR)
@@ -66,9 +66,11 @@ filespas: $(EXEC)
 files: $(EXEC)
 	@mkdir -p $(RESULTDIR)
 	# @./$(EXEC) tests/pow2.s $(RESULTDIR)/bin $(RESULTDIR)/stdout
-	@./$(EXEC) tests/arithmetic.s $(RESULTDIR)/bin $(RESULTDIR)/stdout
+	# @./$(EXEC) tests/arithmetic.s $(RESULTDIR)/bin $(RESULTDIR)/stdout
+	# @./$(EXEC) tests/jump_ops.s $(RESULTDIR)/bin $(RESULTDIR)/stdout
+	@./$(EXEC) tests/labels.s $(RESULTDIR)/bin $(RESULTDIR)/stdout
 
-create:
+create: $(EXEC)
 	@mkdir -p {$(DATADIR),$(SRCDIR),$(INCDIR),$(LIBDIR),$(LIBDIR),$(RESULTDIR)}
 
 tests: $(EXEC)
@@ -89,7 +91,7 @@ test-cli: $(EXEC)
 	rm -f $(CLITMP).out1 $(CLITMP).out2
 
 tar: clean
-	@ dir=$$(basename "$$PWD") && cd .. && tar --exclude='*.pdf' --exclude='rendus/*' --exclude='docs/*' -cvfz $(AUTEURS).tgz "$$dir"
+	@ dir=$$(basename "$$PWD") && cd .. && touch $(AUTEURS).tgz && tar --exclude='*.pdf' --exclude='rendus/*' --exclude='docs/*' -czvf $(AUTEURS).tgz "$$dir"
 	@ echo "==="; echo "Created ../$(AUTEURS).tgz"
 
 doc:

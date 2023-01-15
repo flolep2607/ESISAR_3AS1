@@ -34,7 +34,8 @@ static const instruction LISTE_INSTRUCT []={
     {"AND",R,0b100100,0},//
     {"BEQ",I_order,0b000100,0},//
     {"BGTZ",I2,0b000111,0},//
-    {"BLEZ",I,0b000110,0},//
+    {"BLEZ",I2,0b000110,0},//
+    {"BGEZ",I2,0b000001,0b00001},//
     {"BNE",I_order,0b000101,0},//
     {"DIV",R_alternative,0b011010,0},//
     {"J",J,0b000010,0},//

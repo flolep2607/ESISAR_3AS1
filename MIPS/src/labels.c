@@ -88,7 +88,7 @@ void labels_findall(FILE *file, labels **labels_list) {
           exit(7);
         }
         if (labels_get(*labels_list, tmp_label) == NULL) {
-          labels_set(labels_list, tmp_label, lines * 4);
+          labels_set(labels_list, tmp_label, lines);
           // printf("ADD LABEL |%s|%08x|\n",tmp_label,lines * 4);
           continue;
         } else {

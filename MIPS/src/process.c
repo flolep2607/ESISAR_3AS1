@@ -39,6 +39,7 @@ void mode_interactif() {
   memory_free(ram);
   labels_free(labels_list);
 }
+
 void exec_file(FILE *fichier_bin, FILE *fichier_entree, FILE *fichier_stdout, bool pasapas) {
   register_pc *registre = register_create();
   memory *ram = memory_create();
@@ -88,9 +89,11 @@ void exec_file(FILE *fichier_bin, FILE *fichier_entree, FILE *fichier_stdout, bo
       exit(3);
     }
     memory_set(ram, 4 * i_max, resultat);
-    fprintf(fichier_bin, "%08x\n", resultat);
+    fprintf(fichier_bin, "%08X\n", resultat);
     i_max++;
   }
+  fclose(fichier_bin);
+  fclose(fichier_entree);
   if (string_malloc != NULL) {
     free(string_malloc);
     string_malloc = NULL;
@@ -104,19 +107,31 @@ void exec_file(FILE *fichier_bin, FILE *fichier_entree, FILE *fichier_stdout, bo
   if (pasapas) {
     memory_show(ram);
   }
-  fclose(fichier_entree);
   uint32_t instruction;
   int i = 0;
-  while (!(registre->error)) {
+  uint32_t delayslot=0;
+  while (!(registre->error) && i<100) {
     if (pasapas) {
       printf("PC:%08x\n", registre->pc);
       getchar();
     }
+    delayslot=registre->pc+4;
     instruction = memory_get(ram, registre->pc);
+    printf("%02d,%d=>%08X\n",i,registre->pc/4+1,instruction);
     execute_instruction(instruction, registre, ram);
     if (pasapas) {
       memory_show(ram);
       registre_show(registre);
+    }
+    if(registre->delayslot){
+      instruction = memory_get(ram, delayslot);
+      printf("delai sloted|%02d,%d=>%08X\n",i,registre->pc/4+1,instruction);
+      execute_instruction(instruction, registre, ram);
+      if (pasapas) {
+        memory_show(ram);
+        registre_show(registre);
+      }
+      registre->delayslot=false;
     }
     registre->pc += 4;
     i++;

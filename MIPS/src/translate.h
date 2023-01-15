@@ -52,7 +52,7 @@ uint32_t format_R(uint8_t opcode, uint32_t args[], uint32_t special);
 uint32_t format_I_no_first(uint8_t opcode, uint32_t args[]);
 uint32_t format_I_order(uint8_t opcode, uint32_t args[]);
 uint32_t format_I3(uint8_t opcode, uint32_t args[]);
-uint32_t format_I2(uint8_t opcode, uint32_t args[]);
+uint32_t format_I2(uint8_t opcode,uint32_t special, uint32_t args[]);
 uint32_t format_I(uint8_t opcode, uint32_t args[]);
 uint32_t format_J(uint8_t opcode, uint32_t args[]);
 

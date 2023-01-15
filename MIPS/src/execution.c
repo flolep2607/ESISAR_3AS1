@@ -25,25 +25,32 @@ void I_type_inst(uint32_t instr, register_pc *registers,memory* ram, bool *execu
     switch (opcode) {
     case 0x04: // BEQ
       if (register_get(registers, rs) == register_get(registers, rt)) {
-        pc_increase(registers, SignExtImm - 4);
+        pc_increase(registers, SignExtImm*4);
+        registers->delayslot=true;
       }
       *executed = true;
       return;
     case 0x05: // BNE
       if (register_get(registers, rs) != register_get(registers, rt)) {
-        pc_increase(registers, SignExtImm - 4);
+        pc_increase(registers, SignExtImm*4);
+        registers->delayslot=true;
+        //*4 car c'est la taille dans le registre d'une instruction
+        //et que dans les tests c'est indiqué que c'est le nb d'instruction a sauter
+        //alors que dans la doc c'est le decalage de d'octets
       }
       *executed = true;
       return;
     case 0x06: // BLEZ
       if (register_get(registers, rs) <= 0) {
-        pc_increase(registers, SignExtImm - 4);
+        pc_increase(registers, SignExtImm*4);
+        registers->delayslot=true;
       }
       *executed = true;
       return;
     case 0x07: // BGTZ
       if (register_get(registers, rs) > 0) {
-        pc_increase(registers, SignExtImm - 4);
+        pc_increase(registers, SignExtImm*4);
+        registers->delayslot=true;
       }
       *executed = true;
       return;
@@ -92,15 +99,16 @@ void J_type_inst(uint32_t instr, register_pc *registers, bool *executed) {
   if (!(*executed)) {
     uint32_t opcode = part_get(instr, 26, 31);
     uint32_t address = part_get(instr, 0, 25);
-    printf("opcode:%08x|%08x|%08x\n",opcode,address,pc_get(registers)+4);
+    //TODO !!
+    // printf("opcode:%08x|%08x|%08x\n",opcode,address,pc_get(registers)+4);
     switch (opcode) {
     case 0x2:// J
-      pc_set(registers, address - 4);
+      pc_set(registers, address*4 - 4);
       *executed = true;
       break;
     case 0x3:// JAL
-      registre_set(registers, 31, pc_get(registers) + 4);
-      pc_set(registers, address - 4);
+      registre_set(registers, 31, pc_get(registers) + 8);
+      pc_set(registers, address*4-4);
       *executed = true;
       break;
     }
@@ -219,6 +227,7 @@ void R_type_inst(uint32_t instr, register_pc *registers, bool *executed) {
 
 void execute_instruction(uint32_t instruction, register_pc *registers,memory* ram) {
   bool executed = false;
+  // printf("%d\n",instruction);
   J_type_inst(instruction, registers, &executed);
   R_type_inst(instruction, registers, &executed);
   I_type_inst(instruction, registers,ram, &executed);
