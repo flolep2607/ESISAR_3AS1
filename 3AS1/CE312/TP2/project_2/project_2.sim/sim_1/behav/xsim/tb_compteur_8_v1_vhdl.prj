@@ -1,0 +1,8 @@
+# compile vhdl design source files
+vhdl xil_defaultlib  \
+"../../../../project_1.srcs/sources_1/new/compteur.vhd" \
+"../../../../../Desktop/TP1/tb_compteur_8_v1.vhd" \
+"../../../../../Desktop/TP1/tb_compteur_N.vhd" \
+
+# Do not sort compile order
+nosort
