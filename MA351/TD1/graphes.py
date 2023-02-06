@@ -11,7 +11,7 @@ def graphe_oriente(n, k):
   return d
 
 "Generateur de graphe non-oriente"
-def graphe_non_oriente(n, k):
+def graphe_non_oriente(n:int, k:int):
   d = {}
   for i in range(0, n):
     d[i] = list()
@@ -23,6 +23,6 @@ def graphe_non_oriente(n, k):
   return d
 
 "Une fonction longueur sur les arcs"
-def longueur(x, y):
+def longueur(x:int, y:int):
   return x^3 + (x + 2*y -1) ^2
 
