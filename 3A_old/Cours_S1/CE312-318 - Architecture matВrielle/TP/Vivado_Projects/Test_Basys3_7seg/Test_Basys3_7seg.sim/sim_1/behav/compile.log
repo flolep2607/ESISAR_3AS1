@@ -1,0 +1,9 @@
+Determining compilation order of HDL files.
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/remi_cellard/Vivado_Projects/Test_Basys3_7seg/hex2led.vhd" into library xil_defaultlib
+INFO: [VRFC 10-307] analyzing entity hex2led
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/remi_cellard/Vivado_Projects/Test_Basys3_7seg/led_control.vhd" into library xil_defaultlib
+INFO: [VRFC 10-307] analyzing entity led_control
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/remi_cellard/Vivado_Projects/Test_Basys3_7seg/display.vhd" into library xil_defaultlib
+INFO: [VRFC 10-307] analyzing entity display
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/remi_cellard/Vivado_Projects/Test_Basys3_7seg/tb_display.vhd" into library xil_defaultlib
+INFO: [VRFC 10-307] analyzing entity tb_display

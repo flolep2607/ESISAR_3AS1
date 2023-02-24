@@ -1,0 +1,4 @@
+Il faut vérifier toutes les branches de notre programme.
+Pour cela on fait d'abord une erreur volontaire sur la valeur de n (ex:12)
+Ensuite on joue le jeu une fois sans faire d'erreurs.
+Et on le rejoue en faisant au moins une erreur.

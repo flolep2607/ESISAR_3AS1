@@ -1,0 +1,18 @@
+Vivado Simulator 2014.3
+Copyright 1986-1999, 2001-2014 Xilinx, Inc. All Rights Reserved.
+Running: D:/Logiciel/Xilinx/Vivado/2014.3.1/bin/unwrapped/win64.o/xelab.exe -wto 7523f1e05a2840af9c00dc4819cea201 --debug typical --relax -L xil_defaultlib -L secureip --snapshot tb_chronometer_behav xil_defaultlib.tb_chronometer -log elaborate.log 
+Multi-threading is on. Using 2 slave threads.
+Starting static elaboration
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling package std.standard
+Compiling package ieee.std_logic_1164
+Compiling package ieee.numeric_std
+Compiling architecture archcompteur of entity xil_defaultlib.compteur_N [\compteur_N(26,50000000)\]
+Compiling architecture archcompteur of entity xil_defaultlib.compteur_N [\compteur_N(6,60)\]
+Compiling architecture archchronometer of entity xil_defaultlib.chronometer [chronometer_default]
+Compiling architecture tb of entity xil_defaultlib.tb_chronometer
+Waiting for 2 sub-compilation(s) to finish...
+Built simulation snapshot tb_chronometer_behav

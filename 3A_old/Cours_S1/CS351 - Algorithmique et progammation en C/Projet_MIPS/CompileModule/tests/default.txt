@@ -1,0 +1,2 @@
+ADDI D8,D0,1
+NOP

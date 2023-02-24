@@ -1,0 +1,11 @@
+
+  ° Objectives
+      - To be able to build stochastic models with Poisson process, Markov chains and queues
+      - To be able to identify Markovian processes and analyze its main characterizations and performance indexes
+      - To be able to understand Kendall notations, build queues models and analyze the global performances of a network of Markovian queues
+  ° Content
+      1.Poisson Process
+      2.Discrete time Markov chains
+      3.Coninuous time Markov chains
+      4.Queuing theory: elementary queues
+      5.Queuing theory: networks

@@ -1,0 +1,7 @@
+Vous trouverez sous Documents/Sujets de TP les documents servant de support pour les TP de programmation ainsi que les fichiers sources C qui sont fournis, le cas échéant.
+
+Dans Documents/Documenst UNIX : lire les 30 premières pages de CoursUnixGTR pour une rapide intriduction aux commandes de base. Deux séances spécifiques de cours suivront (dont les documents support sont dans les répértoires correspondants - des explications seront fournies en séance).
+
+NB : Dates des évaluations 2021-2022 : A venir.
+
+Pour le dépôt de vos travaux : Cliquer sur Travaux!

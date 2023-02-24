@@ -1,0 +1,71 @@
+
+*** Running vivado
+    with args -log compteur_N.vds -m64 -mode batch -messageDb vivado.pb -source compteur_N.tcl
+
+
+****** Vivado v2014.3.1 (64-bit)
+  **** SW Build 1056140 on Thu Oct 30 17:03:40 MDT 2014
+  **** IP Build 1028902 on Fri Sep 26 17:35:13 MDT 2014
+    ** Copyright 1986-2014 Xilinx, Inc. All Rights Reserved.
+
+source compteur_N.tcl
+# set_param gui.test TreeTableDev
+# debug::add_scope template.lib 1
+# set_msg_config -id {HDL 9-1061} -limit 100000
+# set_msg_config -id {HDL 9-1654} -limit 100000
+# create_project -in_memory -part xc7k70tfbg676-1
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:kc705:part0:0.9 available at D:/Logiciel/Xilinx/Vivado/2014.3.1/data/boards/board_parts/kintex7/kc705/0.9/board_part.xml as part xc7k325tffg900-2 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:kc705:part0:1.0 available at D:/Logiciel/Xilinx/Vivado/2014.3.1/data/boards/board_parts/kintex7/kc705/1.0/board_part.xml as part xc7k325tffg900-2 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:kc705:part0:1.1 available at D:/Logiciel/Xilinx/Vivado/2014.3.1/data/boards/board_parts/kintex7/kc705/1.1/board_part.xml as part xc7k325tffg900-2 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:zc706:part0:0.9 available at D:/Logiciel/Xilinx/Vivado/2014.3.1/data/boards/board_parts/zynq/zc706/0.9/board_part.xml as part xc7z045ffg900-2 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:zc706:part0:1.0 available at D:/Logiciel/Xilinx/Vivado/2014.3.1/data/boards/board_parts/zynq/zc706/1.0/board_part.xml as part xc7z045ffg900-2 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:zc706:part0:1.1 available at D:/Logiciel/Xilinx/Vivado/2014.3.1/data/boards/board_parts/zynq/zc706/1.1/board_part.xml as part xc7z045ffg900-2 specified in board_part file is either invalid or not available
+# set_param project.compositeFile.enableAutoGeneration 0
+# set_param synth.vivado.isSynthRun true
+# set_property webtalk.parent_dir C:/Users/remi_cellard/Vivado_Projects/compteur_n/compteur_n.cache/wt [current_project]
+# set_property parent.project_path C:/Users/remi_cellard/Vivado_Projects/compteur_n/compteur_n.xpr [current_project]
+# set_property default_lib xil_defaultlib [current_project]
+# set_property target_language VHDL [current_project]
+# read_vhdl -library xil_defaultlib C:/Users/remi_cellard/Vivado_Projects/compteur_n/compteur_n.vhd
+# catch { write_hwdef -file compteur_N.hwdef }
+INFO: [Vivado_Tcl 4-279] hardware handoff file cannot be generated as there is no block diagram instance in the design
+# synth_design -top compteur_N -part xc7k70tfbg676-1
+Command: synth_design -top compteur_N -part xc7k70tfbg676-1
+Starting synth_design
+Attempting to get a license for feature 'Synthesis' and/or device 'xc7k70t'
+INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7k70t'
+---------------------------------------------------------------------------------
+Starting Synthesize : Time (s): cpu = 00:00:03 ; elapsed = 00:00:06 . Memory (MB): peak = 229.309 ; gain = 73.336
+---------------------------------------------------------------------------------
+INFO: [Synth 8-638] synthesizing module 'compteur_N' [C:/Users/remi_cellard/Vivado_Projects/compteur_n/compteur_n.vhd:19]
+ERROR: [Synth 8-78] a value must be associated with generic C_NB_BIT_COUNTER [C:/Users/remi_cellard/Vivado_Projects/compteur_n/compteur_n.vhd:7]
+ERROR: [Synth 8-78] a value must be associated with generic C_MODULO [C:/Users/remi_cellard/Vivado_Projects/compteur_n/compteur_n.vhd:8]
+ERROR: [Synth 8-285] failed synthesizing module 'compteur_N' [C:/Users/remi_cellard/Vivado_Projects/compteur_n/compteur_n.vhd:19]
+---------------------------------------------------------------------------------
+Finished Synthesize : Time (s): cpu = 00:00:04 ; elapsed = 00:00:07 . Memory (MB): peak = 263.391 ; gain = 107.418
+---------------------------------------------------------------------------------
+synthesize failed
+    while executing
+"rt::run_synthesis -module $rt::top"
+    invoked from within
+"if {$rt::useElabCache == false} {
+      rt::run_synthesis -module $rt::top
+    }"
+    ("uplevel" body line 36)
+    invoked from within
+"uplevel #0 {
+    set ::env(BUILTIN_SYNTH) true
+    source $::env(HRT_TCL_PATH)/rtSynthPrep.tcl
+    rt::HARTNDb_resetJobStats
+    rt::HARTNDb_startJobS..."
+INFO: [Common 17-83] Releasing license: Synthesis
+3 Infos, 0 Warnings, 0 Critical Warnings and 4 Errors encountered.
+synth_design failed
+ERROR: [Common 17-69] Command failed: Vivado Synthesis failed
+
+    while executing
+"source -notrace {./.Xil/Vivado-12860-Kappa/realtime\compteur_N.tcl}"
+    invoked from within
+"synth_design -top compteur_N -part xc7k70tfbg676-1"
+    (file "compteur_N.tcl" line 19)
+INFO: [Common 17-206] Exiting Vivado at Tue Dec 15 17:37:50 2020...

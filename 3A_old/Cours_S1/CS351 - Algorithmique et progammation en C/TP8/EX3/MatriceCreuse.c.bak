@@ -1,0 +1,108 @@
+#include <stdio.h>
+#include <assert.h>
+#include "MatriceCreuse.h"
+
+void creerMatriceVide(int nb_lignes, int nb_colones, matrice *M){
+	(*M) = (matrice) malloc(sizeof(element));
+	(*M)->index_colone = nb_colones;
+	(*M)->index_ligne = nb_lignes;
+	
+	matrice tmp;
+	matrice preced;
+	/* Creation des indexs colone */
+	preced = (*M);
+	for(int i=0; i<nb_colones; i++){
+		tmp = (matrice) malloc(sizeof(element));
+		tmp->suivant_vertical = tmp;
+		preced->suivant_horizontal = tmp;
+		preced = tmp;
+	} tmp->suivant_horizontal = *M;
+	
+	/* Creation des indexs ligne */
+	preced = (*M);
+	for(int i=0; i<nb_lignes; i++){
+		tmp = (matrice) malloc(sizeof(element));
+		tmp->suivant_horizontal = tmp;
+		preced->suivant_vertical = tmp;
+		preced = tmp;
+	} tmp->suivant_vertical = *M;
+}
+
+
+void insererElement(int x,int colone, int ligne, matrice M){
+	assert(colone < M->index_colone && ligne < M->index_ligne);
+	
+	matrice ptr, ptelem, preced;
+
+	/* On deplace un pointeur jusqu'a la ligne concerne */
+	ptr = M->suivant_vertical;
+	for(int i=0; i<ligne; i++)
+		ptr = ptr->suivant_vertical;
+		
+	/* On cherche l'endroit ou inserer l'eleme*/
+	ptelem = ptr->suivant_horizontal;
+	preced = ptr;
+	while(ptelem != ptr && colone > ptelem->index_colone){
+		preced = ptelem;
+		ptelem = ptelem->suivant_horizontal;
+	}
+	/* Si l'element existe deja */
+	if(ptelem->index_colone == colone && ptelem->index_ligne == ligne){
+		ptelem->valeur = x;
+		
+	/* Sinon on continue */
+	else {
+	/* On cree le nouvel element a inserer */
+		matrice insert = (element* ) malloc(sizeof(element));
+		insert->index_colone = colone;
+		insert->index_ligne = ligne;
+		insert->valeur = x;
+		
+	/* On fait le link horizontal */
+		preced->suivant_horizontal = insert;
+		insert->suivant_horizontal = ptelem;	
+
+	/* On refait la même chose pour le link vertical */
+		ptr = M->suivant_horizontal;
+		for(int i = 0; i<colone; i++)
+			ptr = ptr->suivant_horizontal;
+		ptelem = ptr->suivant_vertical;
+		preced = ptr;
+		while(ptelem != ptr && ligne > ptelem->index_ligne){
+			preced = ptelem;
+			ptelem = ptelem->suivant_vertical;
+		}
+	/* On fait le link vertical */
+		preced->suivant_vertical = insert;
+		insert->suivant_vertical = ptelem;
+	}
+	
+}
+
+
+void afficherMatrice(matrice M){
+	matrice ptr = M;
+	matrice ptelem;
+	for (int i = 0; i< M->index_ligne; i++){
+		ptr=ptr->suivant_vertical;
+		ptelem=ptr->suivant_horizontal;
+		
+		int j = 0;
+		while(ptelem != ptr){
+			if (ptelem->index_colone == j){
+				printf("%2d ",ptelem->valeur);
+				ptelem=ptelem->suivant_horizontal;
+			} else printf("00 ");
+			j++;
+		}
+		
+		while(j++ < M->index_colone)
+			printf("00 ");
+		
+		printf("\n");
+	}
+}
+
+
+
+

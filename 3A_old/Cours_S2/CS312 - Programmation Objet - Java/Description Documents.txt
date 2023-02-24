@@ -1,0 +1,8 @@
+Ci-après quelques informations utiles concernant le déroulement et l'évaluation des TP.
+
+Les sujets de TP sont sur gitlab: lien https://gricad-gitlab.univ-grenoble-alpes.fr/gonnord/cs312-labs . Les TPs sont à réaliser en binôme.
+* TP1  - Prise en main des outils : pas de compte rendu. S'assurer d'avoir fini avant la séance suivante.
+* TP2 : à venir
+
+ 
+L'évaluation des TP porte sur la qualité et la présentation du code et sur la complétude des réponses. Les éléments évalués seront précisés dans les énoncés.

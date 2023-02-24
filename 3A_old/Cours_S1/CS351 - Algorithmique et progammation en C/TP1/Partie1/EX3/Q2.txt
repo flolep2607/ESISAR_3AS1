@@ -1,0 +1,1 @@
+Si la valeur entrée est négative, la somme retournée est zéro.

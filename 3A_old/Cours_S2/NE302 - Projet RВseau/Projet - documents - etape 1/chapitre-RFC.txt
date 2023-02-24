@@ -1,0 +1,16 @@
+
+pour la RFC7230: 
+        - 1. 
+        - 2 (sauf 2.3 et 2.4) 
+        - 3. 
+        - 5. 
+        - 6. 
+        - 9. 
+
+pour rfc7231
+        - 4 (surtout 4.3.1, 4.3.2, 4.3.3) 
+        - 5 (surtout 5.3) 
+        - 6 (surtout 6.1, 6.3, 6.5, 6.6) 
+	- 9 
+
+Bien sûr il faut de toute façon tout lire. 

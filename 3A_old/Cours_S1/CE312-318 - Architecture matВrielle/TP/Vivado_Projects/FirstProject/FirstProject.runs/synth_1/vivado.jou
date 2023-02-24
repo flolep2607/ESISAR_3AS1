@@ -1,0 +1,10 @@
+#-----------------------------------------------------------
+# Vivado v2014.3.1 (64-bit)
+# SW Build 1056140 on Thu Oct 30 17:03:40 MDT 2014
+# IP Build 1028902 on Fri Sep 26 17:35:13 MDT 2014
+# Start of session at: Tue Nov 03 14:21:57 2020
+# Process ID: 12236
+# Log file: C:/Users/remi_cellard/Vivado_Projects/FirstProject/FirstProject.runs/synth_1/and_gate_registered.vds
+# Journal file: C:/Users/remi_cellard/Vivado_Projects/FirstProject/FirstProject.runs/synth_1\vivado.jou
+#-----------------------------------------------------------
+source and_gate_registered.tcl

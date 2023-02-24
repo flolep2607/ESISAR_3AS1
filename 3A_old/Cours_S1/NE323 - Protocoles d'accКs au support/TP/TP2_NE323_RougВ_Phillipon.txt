@@ -1,0 +1,136 @@
+   Compte Rendu Rougé Phillipon
+
+Q1) Pour configurer minicom, on le lance avec l'option -s, puis on va dans "Serial port Setup".
+	On configure "Serial Device" en: /dev/ttyS0
+	et "Bps/Par/Bits" à: 9600 8N1
+
+Q2) Pour configure le mot de passe privileged EXEC:
+	-On entre en mode de config global
+	-puis on utilise la commande: enable password "password"
+ref: Cisco Manual p149
+
+Q3) Pour créer des utilisateurs :
+	-On entre en mode de config global
+	-puis on utilise la commande: username "user" [privilege "level"] [password "mot de passe"]
+Ensuite pour être capable de se connecter il faut executer les commandes suivantes:
+	-line console 0
+	-login local
+ref: Cisco Manual p154
+
+Q4) Pour configurer les droits au différentes commandes:
+	-On entre en mode de config global
+	-privilege "mode" level "niveau" "commande"
+ref: Cisco Manual p154
+Exemple: pour que oper1 puisse utiliser "show" mais pas "show interface" on fait
+	privilege exec level 6 show interface
+	privilege exec level 0 show
+On met "sh int" au niveau 6 (soit le niveau au dessus de 5, celui de oper1)
+Mais on laisse "show" au niveau 0 pour que tout le monde y ai accès
+
+Q5) FastEthernet0/1:
+	address: 9c4e.206a.9f81
+paquets	in:30	out:586
+input queue: 0/70/0/0	output queue: 0/40
+
+    FastEthernet0/8:
+	address: 9c4e.206a.9f88
+paquets	in:875	out:77
+input queue: 0/70/0/0	output queue: 0/40
+
+(ref> input queue: size/max/drops/flush - output queue: size/max)
+
+Q6)
+
+MTU:
+Reliability:
+txload/rxload:
+Runt/Giant:
+
+Data for: 	f0/1 	f0/8
+MTU:		1500	1500
+Reliability:	255/255	255/255
+txload:		1/255	1/255
+rxload:		1/255	1/255
+Runts:		0	0
+Giants:		0	0
+
+Q7) Pour configurer ces options il faut executer les commandes:
+	conf term => int f0/x
+Maintenant on peut utiliser les commandes speed,duplex,mdix
+
+Q8) Dans "int f0/1":
+	le 0 définie quelque chose
+	le 1 définie le numéro de port
+
+Q9) On utilise wireshark pour analyser le traffic sur eth0 pour analyser le traffic généré par la commande ping.
+On trouve donc que l'addresse mac de 192.168.130.254 est e4:9e:12:8b:6f:9d
+Avec la commande "show mac address-table", on retrouve bien cette adresse mac associé au port Fa0/8.
+
+Q10) Pour filtrer les addresses MAC:
+	-On entre en mode de config global
+	-mac address-table static "adresse mac" vlan "vlan-id" drop
+ref: Cisco Manual p141
+Exemple: pour bloquer le traffic vers et arrivant de 192.168.130.254 on utilise
+la commande "mac address-table static e49e.128b.6f9d vlan 1 drop"
+En résultat, on ne peut plus ping 192.168.130.254 car le traffic est bloqué par le switch.
+On ne peut pas non plus ping google.com car la machine que nous avons bloqué est celle qui nous fournissait un accès à internet.
+
+Q11) Pour configurer le Storm Control:
+	-On entre en mode de config global
+	-On spécifie l'interface qu'on veut protéger
+	-on utilise la commande storm-control avec les options néssecaires
+	-il faudra ensuite configurer les mesures à prendres en cas de tempêtes de broadcast avec la commande "storm-control action"
+	On aura ainsi le choix entre shutdown (désactiver l'interface concernée) ou trap, bloquer et envoyer un message d'alerte SNMP
+ref: Cisco Manual p435
+Exemple: pour configurer une limite de 20 paquets par seconde on ferait
+storm-control broadcast pps 20
+storm-control action shutdown
+
+Q12) Le taux de paquets perdu varie en fonction du temps passé à envoyer des paquets. Néanmoins, après avoir envoyé une vingtaine de paquets, la communication est bloqué et plus aucune réponse n'est reçue.
+
+Q13) Pour recopier un port sur un autre:
+	-On entre en mode de config global
+	-On spécifie l'interface source avec 
+monitor session "session_number" source interface "interface-id"
+	-Puis on spécifie l'interface destination
+monitor session "session_number" destination interface "interface-id"
+ref: Cisco Manual p482
+
+En utilisant tcpdump sur eth0 et eth1 on vérifie que le traffic est le même sur les deux interfaces.
+
+Q14) Pour configurer un serveur ntp:
+	-On entre en mode de config global
+	-ntp server "serveur"
+ref: Cisco Manual p122
+
+Q15) Le service permettant d'associer l'heure aux logs est "timestamps"
+	-service timestamps log datetime
+ref: Cisco Manual p507
+
+Q16) Pour activer le logging il suffit de passer le niveau de logging à 7
+	-logging console 7
+Pour le désactiver on peut descendre le niveau de logging à moins que 7 ou alors on désactive tout simplement avec l'opérateur "no".
+ref: Cisco Manual p508
+
+Q17) Pour stocker les informations de debugging on utilise généralement un serveur syslog.
+	-logging trap 7
+Pour configurer le serveur syslog voir Cisco Manual p512
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+
+
+
+

@@ -1,0 +1,5 @@
+Determining compilation order of HDL files.
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/remi_cellard/Vivado_Projects/FirstProject/and_gate_registered.vhd" into library xil_defaultlib
+INFO: [VRFC 10-307] analyzing entity and_gate_registered
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/remi_cellard/Vivado_Projects/FirstProject/and_gate_registered_tb.vhd" into library xil_defaultlib
+INFO: [VRFC 10-307] analyzing entity and_gate_registered_tb

@@ -1,0 +1,5 @@
+Running: xsim.dir/tb_chronometer_behav/xsimk.exe -simmode gui -wdb tb_chronometer_behav.wdb -simrunnum 0 -socket 33405
+Design successfully loaded
+Design Loading CPU Usage: 1046 ms
+Simulation completed
+Simulation CPU Usage: 1077 ms

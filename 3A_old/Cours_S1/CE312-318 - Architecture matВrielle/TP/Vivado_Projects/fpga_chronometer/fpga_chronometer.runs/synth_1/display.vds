@@ -1,0 +1,383 @@
+#-----------------------------------------------------------
+# Vivado v2014.3.1 (64-bit)
+# SW Build 1056140 on Thu Oct 30 17:03:40 MDT 2014
+# IP Build 1028902 on Fri Sep 26 17:35:13 MDT 2014
+# Start of session at: Tue Dec 15 18:10:50 2020
+# Process ID: 14060
+# Log file: C:/Users/remi_cellard/Vivado_Projects/fpga_chronometer/fpga_chronometer.runs/synth_1/display.vds
+# Journal file: C:/Users/remi_cellard/Vivado_Projects/fpga_chronometer/fpga_chronometer.runs/synth_1\vivado.jou
+#-----------------------------------------------------------
+source display.tcl
+# set_param gui.test TreeTableDev
+# debug::add_scope template.lib 1
+# set_msg_config -id {HDL 9-1061} -limit 100000
+# set_msg_config -id {HDL 9-1654} -limit 100000
+# create_project -in_memory -part xc7a35tcpg236-1
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:kc705:part0:0.9 available at D:/Logiciel/Xilinx/Vivado/2014.3.1/data/boards/board_parts/kintex7/kc705/0.9/board_part.xml as part xc7k325tffg900-2 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:kc705:part0:1.0 available at D:/Logiciel/Xilinx/Vivado/2014.3.1/data/boards/board_parts/kintex7/kc705/1.0/board_part.xml as part xc7k325tffg900-2 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:kc705:part0:1.1 available at D:/Logiciel/Xilinx/Vivado/2014.3.1/data/boards/board_parts/kintex7/kc705/1.1/board_part.xml as part xc7k325tffg900-2 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:zc706:part0:0.9 available at D:/Logiciel/Xilinx/Vivado/2014.3.1/data/boards/board_parts/zynq/zc706/0.9/board_part.xml as part xc7z045ffg900-2 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:zc706:part0:1.0 available at D:/Logiciel/Xilinx/Vivado/2014.3.1/data/boards/board_parts/zynq/zc706/1.0/board_part.xml as part xc7z045ffg900-2 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:zc706:part0:1.1 available at D:/Logiciel/Xilinx/Vivado/2014.3.1/data/boards/board_parts/zynq/zc706/1.1/board_part.xml as part xc7z045ffg900-2 specified in board_part file is either invalid or not available
+# set_param project.compositeFile.enableAutoGeneration 0
+# set_param synth.vivado.isSynthRun true
+# set_property webtalk.parent_dir C:/Users/remi_cellard/Vivado_Projects/fpga_chronometer/fpga_chronometer.cache/wt [current_project]
+# set_property parent.project_path C:/Users/remi_cellard/Vivado_Projects/fpga_chronometer/fpga_chronometer.xpr [current_project]
+# set_property default_lib xil_defaultlib [current_project]
+# set_property target_language VHDL [current_project]
+# read_vhdl -library xil_defaultlib {
+#   C:/Users/remi_cellard/Vivado_Projects/fpga_chronometer/compteur_n.vhd
+#   C:/Users/remi_cellard/Vivado_Projects/fpga_chronometer/hex2led.vhd
+#   C:/Users/remi_cellard/Vivado_Projects/fpga_chronometer/led_control.vhd
+#   C:/Users/remi_cellard/Vivado_Projects/fpga_chronometer/chronometer.vhd
+#   C:/Users/remi_cellard/Vivado_Projects/fpga_chronometer/display.vhd
+# }
+# read_xdc C:/Users/remi_cellard/Vivado_Projects/fpga_chronometer/Basys3_Master.xdc
+# set_property used_in_implementation false [get_files C:/Users/remi_cellard/Vivado_Projects/fpga_chronometer/Basys3_Master.xdc]
+# catch { write_hwdef -file display.hwdef }
+INFO: [Vivado_Tcl 4-279] hardware handoff file cannot be generated as there is no block diagram instance in the design
+# synth_design -top display -part xc7a35tcpg236-1
+Command: synth_design -top display -part xc7a35tcpg236-1
+Starting synth_design
+Attempting to get a license for feature 'Synthesis' and/or device 'xc7a35t'
+INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7a35t'
+---------------------------------------------------------------------------------
+Starting RTL Elaboration : Time (s): cpu = 00:00:04 ; elapsed = 00:00:07 . Memory (MB): peak = 229.945 ; gain = 73.383
+---------------------------------------------------------------------------------
+WARNING: [Synth 8-1565] actual for formal port enable is neither a static name nor a globally static expression [C:/Users/remi_cellard/Vivado_Projects/fpga_chronometer/chronometer.vhd:35]
+INFO: [Synth 8-638] synthesizing module 'display' [C:/Users/remi_cellard/Vivado_Projects/fpga_chronometer/display.vhd:33]
+INFO: [Synth 8-3491] module 'chronometer' declared at 'C:/Users/remi_cellard/Vivado_Projects/fpga_chronometer/chronometer.vhd:5' bound to instance 'chronometer_component' of component 'chronometer' [C:/Users/remi_cellard/Vivado_Projects/fpga_chronometer/display.vhd:69]
+INFO: [Synth 8-638] synthesizing module 'chronometer' [C:/Users/remi_cellard/Vivado_Projects/fpga_chronometer/chronometer.vhd:15]
+	Parameter C_NB_BIT_COUNTER bound to: 26 - type: integer 
+	Parameter C_MODULO bound to: 50000000 - type: integer 
+INFO: [Synth 8-3491] module 'compteur_N' declared at 'C:/Users/remi_cellard/Vivado_Projects/fpga_chronometer/compteur_n.vhd:5' bound to instance 'compteur_clock' of component 'compteur_N' [C:/Users/remi_cellard/Vivado_Projects/fpga_chronometer/chronometer.vhd:33]
+INFO: [Synth 8-638] synthesizing module 'compteur_N__parameterized0' [C:/Users/remi_cellard/Vivado_Projects/fpga_chronometer/compteur_n.vhd:19]
+	Parameter C_NB_BIT_COUNTER bound to: 26 - type: integer 
+	Parameter C_MODULO bound to: 50000000 - type: integer 
+INFO: [Synth 8-256] done synthesizing module 'compteur_N__parameterized0' (1#1) [C:/Users/remi_cellard/Vivado_Projects/fpga_chronometer/compteur_n.vhd:19]
+	Parameter C_NB_BIT_COUNTER bound to: 8 - type: integer 
+	Parameter C_MODULO bound to: 60 - type: integer 
+INFO: [Synth 8-3491] module 'compteur_N' declared at 'C:/Users/remi_cellard/Vivado_Projects/fpga_chronometer/compteur_n.vhd:5' bound to instance 'compteur_secondes' of component 'compteur_N' [C:/Users/remi_cellard/Vivado_Projects/fpga_chronometer/chronometer.vhd:34]
+INFO: [Synth 8-638] synthesizing module 'compteur_N__parameterized2' [C:/Users/remi_cellard/Vivado_Projects/fpga_chronometer/compteur_n.vhd:19]
+	Parameter C_NB_BIT_COUNTER bound to: 8 - type: integer 
+	Parameter C_MODULO bound to: 60 - type: integer 
+INFO: [Synth 8-256] done synthesizing module 'compteur_N__parameterized2' (1#1) [C:/Users/remi_cellard/Vivado_Projects/fpga_chronometer/compteur_n.vhd:19]
+	Parameter C_NB_BIT_COUNTER bound to: 8 - type: integer 
+	Parameter C_MODULO bound to: 60 - type: integer 
+INFO: [Synth 8-3491] module 'compteur_N' declared at 'C:/Users/remi_cellard/Vivado_Projects/fpga_chronometer/compteur_n.vhd:5' bound to instance 'compteur_minutes' of component 'compteur_N' [C:/Users/remi_cellard/Vivado_Projects/fpga_chronometer/chronometer.vhd:35]
+INFO: [Synth 8-256] done synthesizing module 'chronometer' (2#1) [C:/Users/remi_cellard/Vivado_Projects/fpga_chronometer/chronometer.vhd:15]
+INFO: [Synth 8-3491] module 'hex2led' declared at 'C:/Users/remi_cellard/Vivado_Projects/fpga_chronometer/hex2led.vhd:23' bound to instance 'HEX2LED_1' of component 'hex2led' [C:/Users/remi_cellard/Vivado_Projects/fpga_chronometer/display.vhd:75]
+INFO: [Synth 8-638] synthesizing module 'hex2led' [C:/Users/remi_cellard/Vivado_Projects/fpga_chronometer/hex2led.vhd:28]
+INFO: [Synth 8-256] done synthesizing module 'hex2led' (3#1) [C:/Users/remi_cellard/Vivado_Projects/fpga_chronometer/hex2led.vhd:28]
+INFO: [Synth 8-3491] module 'hex2led' declared at 'C:/Users/remi_cellard/Vivado_Projects/fpga_chronometer/hex2led.vhd:23' bound to instance 'HEX2LED_2' of component 'hex2led' [C:/Users/remi_cellard/Vivado_Projects/fpga_chronometer/display.vhd:79]
+INFO: [Synth 8-3491] module 'hex2led' declared at 'C:/Users/remi_cellard/Vivado_Projects/fpga_chronometer/hex2led.vhd:23' bound to instance 'HEX2LED_3' of component 'hex2led' [C:/Users/remi_cellard/Vivado_Projects/fpga_chronometer/display.vhd:83]
+INFO: [Synth 8-3491] module 'hex2led' declared at 'C:/Users/remi_cellard/Vivado_Projects/fpga_chronometer/hex2led.vhd:23' bound to instance 'HEX2LED_4' of component 'hex2led' [C:/Users/remi_cellard/Vivado_Projects/fpga_chronometer/display.vhd:87]
+INFO: [Synth 8-3491] module 'led_control' declared at 'C:/Users/remi_cellard/Vivado_Projects/fpga_chronometer/led_control.vhd:24' bound to instance 'LEDCONTROL_1' of component 'led_control' [C:/Users/remi_cellard/Vivado_Projects/fpga_chronometer/display.vhd:91]
+INFO: [Synth 8-638] synthesizing module 'led_control' [C:/Users/remi_cellard/Vivado_Projects/fpga_chronometer/led_control.vhd:35]
+INFO: [Synth 8-256] done synthesizing module 'led_control' (4#1) [C:/Users/remi_cellard/Vivado_Projects/fpga_chronometer/led_control.vhd:35]
+INFO: [Synth 8-256] done synthesizing module 'display' (5#1) [C:/Users/remi_cellard/Vivado_Projects/fpga_chronometer/display.vhd:33]
+---------------------------------------------------------------------------------
+Finished RTL Elaboration : Time (s): cpu = 00:00:05 ; elapsed = 00:00:09 . Memory (MB): peak = 263.008 ; gain = 106.445
+---------------------------------------------------------------------------------
+
+Report Check Netlist: 
++------+------------------+-------+---------+-------+------------------+
+|      |Item              |Errors |Warnings |Status |Description       |
++------+------------------+-------+---------+-------+------------------+
+|1     |multi_driven_nets |      0|        0|Passed |Multi driven nets |
++------+------------------+-------+---------+-------+------------------+
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:05 ; elapsed = 00:00:09 . Memory (MB): peak = 263.008 ; gain = 106.445
+---------------------------------------------------------------------------------
+Loading clock regions from D:/Logiciel/Xilinx/Vivado/2014.3.1/data\parts/xilinx/artix7/artix7/xc7a35t/ClockRegion.xml
+Loading clock buffers from D:/Logiciel/Xilinx/Vivado/2014.3.1/data\parts/xilinx/artix7/artix7/xc7a35t/ClockBuffers.xml
+Loading clock placement rules from D:/Logiciel/Xilinx/Vivado/2014.3.1/data/parts/xilinx/artix7/ClockPlacerRules.xml
+Loading package pin functions from D:/Logiciel/Xilinx/Vivado/2014.3.1/data\parts/xilinx/artix7/PinFunctions.xml...
+Loading package from D:/Logiciel/Xilinx/Vivado/2014.3.1/data\parts/xilinx/artix7/artix7/xc7a35t/cpg236/Package.xml
+Loading io standards from D:/Logiciel/Xilinx/Vivado/2014.3.1/data\./parts/xilinx/artix7/IOStandards.xml
+Loading device configuration modes from D:/Logiciel/Xilinx/Vivado/2014.3.1/data\parts/xilinx/artix7/ConfigModes.xml
+INFO: [Project 1-570] Preparing netlist for logic optimization
+
+Processing XDC Constraints
+Initializing timing engine
+Parsing XDC File [C:/Users/remi_cellard/Vivado_Projects/fpga_chronometer/Basys3_Master.xdc]
+Finished Parsing XDC File [C:/Users/remi_cellard/Vivado_Projects/fpga_chronometer/Basys3_Master.xdc]
+Completed Processing XDC Constraints
+
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.062 . Memory (MB): peak = 566.559 ; gain = 0.000
+---------------------------------------------------------------------------------
+Finished Constraint Validation : Time (s): cpu = 00:00:12 ; elapsed = 00:00:20 . Memory (MB): peak = 566.559 ; gain = 409.996
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Loading Part and Timing Information
+---------------------------------------------------------------------------------
+Loading part: xc7a35tcpg236-1
+---------------------------------------------------------------------------------
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:12 ; elapsed = 00:00:20 . Memory (MB): peak = 566.559 ; gain = 409.996
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying 'set_property' XDC Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:12 ; elapsed = 00:00:21 . Memory (MB): peak = 566.559 ; gain = 409.996
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:12 ; elapsed = 00:00:21 . Memory (MB): peak = 566.559 ; gain = 409.996
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start RTL Component Statistics 
+---------------------------------------------------------------------------------
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input     26 Bit       Adders := 1     
+	   2 Input      8 Bit       Adders := 2     
++---Registers : 
+	               26 Bit    Registers := 1     
+	                8 Bit    Registers := 2     
+	                1 Bit    Registers := 3     
++---Muxes : 
+	   2 Input     26 Bit        Muxes := 1     
+	   2 Input      8 Bit        Muxes := 2     
+	  16 Input      7 Bit        Muxes := 4     
+	   4 Input      7 Bit        Muxes := 1     
+	   4 Input      4 Bit        Muxes := 1     
+	   2 Input      1 Bit        Muxes := 6     
+---------------------------------------------------------------------------------
+Finished RTL Component Statistics 
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start RTL Hierarchical Component Statistics 
+---------------------------------------------------------------------------------
+Hierarchical RTL Component report 
+Module display 
+Detailed RTL Component Info : 
+Module compteur_N__parameterized0 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input     26 Bit       Adders := 1     
++---Registers : 
+	               26 Bit    Registers := 1     
+	                1 Bit    Registers := 1     
++---Muxes : 
+	   2 Input     26 Bit        Muxes := 1     
+	   2 Input      1 Bit        Muxes := 2     
+Module compteur_N__parameterized2 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input      8 Bit       Adders := 1     
++---Registers : 
+	                8 Bit    Registers := 1     
+	                1 Bit    Registers := 1     
++---Muxes : 
+	   2 Input      8 Bit        Muxes := 1     
+	   2 Input      1 Bit        Muxes := 2     
+Module chronometer 
+Detailed RTL Component Info : 
+Module hex2led 
+Detailed RTL Component Info : 
++---Muxes : 
+	  16 Input      7 Bit        Muxes := 1     
+Module led_control 
+Detailed RTL Component Info : 
++---Muxes : 
+	   4 Input      7 Bit        Muxes := 1     
+	   4 Input      4 Bit        Muxes := 1     
+---------------------------------------------------------------------------------
+Finished RTL Hierarchical Component Statistics
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Part Resource Summary
+---------------------------------------------------------------------------------
+Part Resources:
+DSPs: 120 (col length:60)
+BRAMs: 150 (col length: RAMB18 60 RAMB36 30)
+---------------------------------------------------------------------------------
+Finished Part Resource Summary
+---------------------------------------------------------------------------------
+Start Parallel Synthesis Optimization  : Time (s): cpu = 00:00:12 ; elapsed = 00:00:21 . Memory (MB): peak = 566.559 ; gain = 409.996
+---------------------------------------------------------------------------------
+Start Cross Boundary Optimization
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Cross Boundary Optimization : Time (s): cpu = 00:00:12 ; elapsed = 00:00:22 . Memory (MB): peak = 566.559 ; gain = 409.996
+---------------------------------------------------------------------------------
+Finished Parallel Reinference  : Time (s): cpu = 00:00:12 ; elapsed = 00:00:22 . Memory (MB): peak = 566.559 ; gain = 409.996
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start RAM, DSP and Shift Register Reporting
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RAM, DSP and Shift Register Reporting
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Area Optimization
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Area Optimization : Time (s): cpu = 00:00:15 ; elapsed = 00:00:25 . Memory (MB): peak = 566.559 ; gain = 409.996
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Area Optimization : Time (s): cpu = 00:00:15 ; elapsed = 00:00:25 . Memory (MB): peak = 566.559 ; gain = 409.996
+---------------------------------------------------------------------------------
+Finished Parallel Area Optimization  : Time (s): cpu = 00:00:15 ; elapsed = 00:00:25 . Memory (MB): peak = 566.559 ; gain = 409.996
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+Finished Parallel Synthesis Optimization  : Time (s): cpu = 00:00:15 ; elapsed = 00:00:25 . Memory (MB): peak = 566.559 ; gain = 409.996
+---------------------------------------------------------------------------------
+Start Timing Optimization
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying XDC Timing Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:26 ; elapsed = 00:00:37 . Memory (MB): peak = 566.559 ; gain = 409.996
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Timing Optimization : Time (s): cpu = 00:00:26 ; elapsed = 00:00:37 . Memory (MB): peak = 566.559 ; gain = 409.996
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start Technology Mapping
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Technology Mapping : Time (s): cpu = 00:00:27 ; elapsed = 00:00:38 . Memory (MB): peak = 566.559 ; gain = 409.996
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished IO Insertion : Time (s): cpu = 00:00:27 ; elapsed = 00:00:39 . Memory (MB): peak = 566.559 ; gain = 409.996
+---------------------------------------------------------------------------------
+
+Report Check Netlist: 
++------+------------------+-------+---------+-------+------------------+
+|      |Item              |Errors |Warnings |Status |Description       |
++------+------------------+-------+---------+-------+------------------+
+|1     |multi_driven_nets |      0|        0|Passed |Multi driven nets |
++------+------------------+-------+---------+-------+------------------+
+---------------------------------------------------------------------------------
+Start Renaming Generated Instances
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:27 ; elapsed = 00:00:39 . Memory (MB): peak = 566.559 ; gain = 409.996
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start Rebuilding User Hierarchy
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:27 ; elapsed = 00:00:39 . Memory (MB): peak = 566.559 ; gain = 409.996
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start RAM, DSP and Shift Register Reporting
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RAM, DSP and Shift Register Reporting
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Writing Synthesis Report
+---------------------------------------------------------------------------------
+
+Report BlackBoxes: 
++-+--------------+----------+
+| |BlackBox name |Instances |
++-+--------------+----------+
++-+--------------+----------+
+
+Report Cell Usage: 
++------+-------+------+
+|      |Cell   |Count |
++------+-------+------+
+|1     |BUFG   |     1|
+|2     |CARRY4 |    11|
+|3     |LUT1   |    44|
+|4     |LUT2   |    19|
+|5     |LUT3   |     5|
+|6     |LUT4   |    14|
+|7     |LUT5   |    25|
+|8     |LUT6   |    84|
+|9     |FDRE   |    60|
+|10    |IBUF   |     3|
+|11    |OBUF   |    12|
++------+-------+------+
+
+Report Instance Areas: 
++------+------------------------+-----------------------------+------+
+|      |Instance                |Module                       |Cells |
++------+------------------------+-----------------------------+------+
+|1     |top                     |                             |   278|
+|2     |  LEDCONTROL_1          |led_control                  |    44|
+|3     |  chronometer_component |chronometer                  |   218|
+|4     |    compteur_clock      |compteur_N__parameterized0   |    92|
+|5     |    compteur_minutes    |compteur_N__parameterized2   |    63|
+|6     |    compteur_secondes   |compteur_N__parameterized2_0 |    63|
++------+------------------------+-----------------------------+------+
+---------------------------------------------------------------------------------
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:27 ; elapsed = 00:00:39 . Memory (MB): peak = 566.559 ; gain = 409.996
+---------------------------------------------------------------------------------
+Synthesis finished with 0 errors, 0 critical warnings and 0 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:29 . Memory (MB): peak = 566.559 ; gain = 86.141
+Synthesis Optimization Complete : Time (s): cpu = 00:00:27 ; elapsed = 00:00:39 . Memory (MB): peak = 566.559 ; gain = 409.996
+INFO: [Project 1-571] Translating synthesized netlist
+INFO: [Netlist 29-17] Analyzing 14 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-570] Preparing netlist for logic optimization
+INFO: [Opt 31-140] Inserted 0 IBUFs to IO ports without IO buffers.
+INFO: [Opt 31-141] Inserted 0 OBUFs to IO ports without IO buffers.
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+INFO: [Common 17-83] Releasing license: Synthesis
+33 Infos, 1 Warnings, 0 Critical Warnings and 0 Errors encountered.
+synth_design completed successfully
+synth_design: Time (s): cpu = 00:00:27 ; elapsed = 00:00:39 . Memory (MB): peak = 566.559 ; gain = 389.793
+# write_checkpoint display.dcp
+# catch { report_utilization -file display_utilization_synth.rpt -pb display_utilization_synth.pb }
+report_utilization: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.091 . Memory (MB): peak = 566.559 ; gain = 0.000
+INFO: [Common 17-206] Exiting Vivado at Tue Dec 15 18:11:31 2020...

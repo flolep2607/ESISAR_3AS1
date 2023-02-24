@@ -1,0 +1,16 @@
+Vivado Simulator 2014.3
+Copyright 1986-1999, 2001-2014 Xilinx, Inc. All Rights Reserved.
+Running: D:/Logiciel/Xilinx/Vivado/2014.3.1/bin/unwrapped/win64.o/xelab.exe -wto a44c805b7ab141ad8c51e80fe0b2220a --debug typical --relax -L xil_defaultlib -L secureip --snapshot and_gate_registered_tb_behav xil_defaultlib.and_gate_registered_tb -log elaborate.log 
+Multi-threading is on. Using 2 slave threads.
+Starting static elaboration
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling package std.standard
+Compiling package ieee.std_logic_1164
+Compiling package ieee.numeric_std
+Compiling architecture rtl of entity xil_defaultlib.and_gate_registered [and_gate_registered_default]
+Compiling architecture behavorial of entity xil_defaultlib.and_gate_registered_tb
+Waiting for 2 sub-compilation(s) to finish...
+Built simulation snapshot and_gate_registered_tb_behav

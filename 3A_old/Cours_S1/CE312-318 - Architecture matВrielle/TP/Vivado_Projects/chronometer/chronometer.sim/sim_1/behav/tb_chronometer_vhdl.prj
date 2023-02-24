@@ -1,0 +1,4 @@
+# compile vhdl design source files
+vhdl xil_defaultlib  "../../../compteur_n.vhd"
+vhdl xil_defaultlib  "../../../chronometer.vhd"
+vhdl xil_defaultlib  "../../../tb_chronometer.vhd"

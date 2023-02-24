@@ -1,0 +1,1 @@
+L'intervenant de TP m'a dit que les fonctions ne devait rien renvoyer ni modifier les opérandes, uniquement afficher le résultat.

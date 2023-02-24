@@ -1,0 +1,10 @@
+#-----------------------------------------------------------
+# Webtalk v2014.3.1 (64-bit)
+# SW Build 1056140 on Thu Oct 30 17:03:40 MDT 2014
+# IP Build 1028902 on Fri Sep 26 17:35:13 MDT 2014
+# Start of session at: Tue Nov 03 14:32:58 2020
+# Process ID: 3200
+# Log file: C:/Users/remi_cellard/Vivado_Projects/FirstProject/FirstProject.sim/sim_1/behav/webtalk.log
+# Journal file: C:/Users/remi_cellard/Vivado_Projects/FirstProject/FirstProject.sim/sim_1/behav\webtalk.jou
+#-----------------------------------------------------------
+source C:/Users/remi_cellard/Vivado_Projects/FirstProject/FirstProject.sim/sim_1/behav/xsim.dir/and_gate_registered_tb_behav/webtalk/xsim_webtalk.tcl -notrace

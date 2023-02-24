@@ -1,0 +1,18 @@
+Vivado Simulator 2014.3
+Copyright 1986-1999, 2001-2014 Xilinx, Inc. All Rights Reserved.
+Running: D:/Logiciel/Xilinx/Vivado/2014.3.1/bin/unwrapped/win64.o/xelab.exe -wto c853c73fedfe4489bd36258fe5266250 --debug typical --relax -L xil_defaultlib -L secureip --snapshot tb_display_behav xil_defaultlib.tb_display -log elaborate.log 
+Multi-threading is on. Using 2 slave threads.
+Starting static elaboration
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling package std.standard
+Compiling package ieee.std_logic_1164
+Compiling package ieee.numeric_std
+Compiling architecture hex2led_arch of entity xil_defaultlib.hex2led [hex2led_default]
+Compiling architecture led_control_arch of entity xil_defaultlib.led_control [led_control_default]
+Compiling architecture display_arch of entity xil_defaultlib.display [display_default]
+Compiling architecture tb of entity xil_defaultlib.tb_display
+Waiting for 2 sub-compilation(s) to finish...
+Built simulation snapshot tb_display_behav

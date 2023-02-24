@@ -1,0 +1,55 @@
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+use IEEE.NUMERIC_STD.ALL;
+
+entity count_up_down is
+    Port (  clk, clear, set, count_up, count_down : in std_logic;
+            C : out std_logic_vector(3 downto 0)  );
+end count_up_down;
+
+architecture rtl of count_up_down is
+signal C_temp : std_logic_vector(3 downto 0);
+begin
+
+process(clk)
+begin
+if clk'event and clk='1' then
+    if clear = '1' and set = '0' and count_up = '0' and count_down = '0' then
+        C_temp <= "0000";
+    elsif clear = '0' and set = '1' and count_up = '0' and count_down = '0' then
+        C_temp <= "1111";
+    elsif clear = '0' and set = '0' and count_up = '1' and count_down = '0' then
+        C_temp <= std_logic_vector(unsigned(C_temp) + 1);
+    elsif clear = '0' and set = '0' and count_up = '0' and count_down = '1' then
+        C_temp <= std_logic_vector(unsigned(C_temp) - 1);
+    end if;
+end if;
+end process;    
+
+C <= C_temp;
+
+end rtl;
+
+
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+use IEEE.NUMERIC_STD.ALL;
+
+entity tb_count_up_down is
+end tb_count_up_down;
+
+architecture Behavioral of tb_count_up_down is
+signal clk, clear, set, count_up, count_down : std_logic := '0';
+signal C : std_logic_vector(3 downto 0);
+
+begin
+clk <= not clk after 5 ns;
+clear <= '1', '0' after 10 ns, '1' after 70 ns;
+count_up <= '0', '1' after 10 ns, '0' after 40 ns;
+set <= '0', '1' after 40 ns, '0' after 50 ns;
+count_down  <= '0', '1' after 50 ns;
+
+i1 : entity work.count_up_down(rtl)
+port map(clk, clear, set, count_up, count_down,C);
+
+end Behavioral;

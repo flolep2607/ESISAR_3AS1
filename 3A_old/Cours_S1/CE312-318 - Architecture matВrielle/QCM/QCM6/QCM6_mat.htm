@@ -1,0 +1,3955 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]> <html lang="fr" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>    <html lang="fr" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>    <html lang="fr" class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class=" js flexbox flexboxlegacy canvas canvastext webgl no-touch geolocation postmessage no-websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients no-cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers applicationcache svg inlinesvg smil svgclippaths" style="" lang="fr"><!--<![endif]--><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="UTF-8">
+<link href="https://chamilo.org/chamilo-lms/" rel="help">
+<link href="https://chamilo.org/the-association/" rel="author">
+<link href="https://chamilo.org/the-association/" rel="copyright">
+<!-- Force latest IE rendering engine or ChromeFrame if installed -->
+<!--[if IE]>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<![endif]-->
+
+<link rel="shortcut icon" href="https://chamilo.grenoble-inp.fr/web/css/themes/chamilo_inp/images/favicon.ico" type="image/x-icon">
+<link rel="apple-touch-icon" href="https://chamilo.grenoble-inp.fr/apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="generator" content="Chamilo 1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Grenoble INP - Chamilo - CE312- CE318 - Architecture matérielle - Exercices</title>
+
+<link href="QCM6_mat_fichiers/daterangepicker-bs3.css" rel="stylesheet" media="screen" type="text/css">
+<link href="QCM6_mat_fichiers/font-awesome.css" rel="stylesheet" media="screen" type="text/css">
+<link href="QCM6_mat_fichiers/theme.css" rel="stylesheet" media="screen" type="text/css">
+<link href="QCM6_mat_fichiers/jquery-ui.css" rel="stylesheet" media="screen" type="text/css">
+<link href="QCM6_mat_fichiers/mediaelementplayer.css" rel="stylesheet" media="screen" type="text/css">
+<link href="QCM6_mat_fichiers/jquery-ui-timepicker-addon.css" rel="stylesheet" media="screen" type="text/css">
+<link href="QCM6_mat_fichiers/bootstrap.css" rel="stylesheet" media="screen" type="text/css">
+<link href="QCM6_mat_fichiers/jquery.css" rel="stylesheet" media="screen" type="text/css">
+<link href="QCM6_mat_fichiers/bootstrap-select.css" rel="stylesheet" media="screen" type="text/css">
+<link href="QCM6_mat_fichiers/chosen.css" rel="stylesheet" media="screen" type="text/css">
+<link href="QCM6_mat_fichiers/style.css" rel="stylesheet" media="screen" type="text/css">
+<link href="QCM6_mat_fichiers/chat.css" rel="stylesheet" media="screen" type="text/css">
+
+<script type="text/javascript" async="" defer="defer" src="QCM6_mat_fichiers/piwik.js"></script><script type="text/javascript" src="QCM6_mat_fichiers/modernizr.js"></script>
+<script type="text/javascript" src="QCM6_mat_fichiers/jquery.js"></script>
+<script type="text/javascript" src="QCM6_mat_fichiers/bootstrap.js"></script>
+<script type="text/javascript" src="QCM6_mat_fichiers/jquery-ui.js"></script>
+<script type="text/javascript" src="QCM6_mat_fichiers/moment-with-locales.js"></script>
+<script type="text/javascript" src="QCM6_mat_fichiers/daterangepicker.js"></script>
+<script type="text/javascript" src="QCM6_mat_fichiers/jquery_004.js"></script>
+<script type="text/javascript" src="QCM6_mat_fichiers/mediaelement-and-player.js"></script>
+<script type="text/javascript" src="QCM6_mat_fichiers/jquery-ui-timepicker-addon.js"></script>
+<script type="text/javascript" src="QCM6_mat_fichiers/imageMapResizer.js"></script>
+<script type="text/javascript" src="QCM6_mat_fichiers/jquery_002.js"></script>
+<script type="text/javascript" src="QCM6_mat_fichiers/readmore.js"></script>
+<script type="text/javascript" src="QCM6_mat_fichiers/ckeditor.js"></script><style>.cke{visibility:hidden;}</style>
+<script type="text/javascript" src="QCM6_mat_fichiers/MathJax.js"></script>
+<script type="text/javascript" src="QCM6_mat_fichiers/jquery-ui-timepicker-fr.js"></script>
+<script type="text/javascript" src="QCM6_mat_fichiers/datepicker-fr.js"></script>
+<script type="text/javascript" src="QCM6_mat_fichiers/chosen.js"></script>
+<script type="text/javascript" src="QCM6_mat_fichiers/bootstrap-select.js"></script>
+<script type="text/javascript" src="QCM6_mat_fichiers/defaults-fr_FR.js"></script>
+<script type="text/javascript" src="QCM6_mat_fichiers/chat.js"></script>
+<script type="text/javascript" src="QCM6_mat_fichiers/fontresize.js"></script>
+<script type="text/javascript" src="QCM6_mat_fichiers/jquery_003.js"></script>
+
+<script src="QCM6_mat_fichiers/hotspot.js"></script>
+<link rel="stylesheet" href="QCM6_mat_fichiers/hotspot.css">
+
+<script>
+
+/* Global chat variables */
+var ajax_url = 'https://chamilo.grenoble-inp.fr/main/inc/ajax/chat.ajax.php';
+var online_button = '<img src="https://chamilo.grenoble-inp.fr/main/img/statusonline.png" alt="statusonline.png" title="statusonline.png"  />';
+var offline_button = '<img src="https://chamilo.grenoble-inp.fr/main/img/statusoffline.png" alt="statusoffline.png" title="statusoffline.png"  />';
+var connect_lang = 'Messagerie (connecté)';
+var disconnect_lang = 'Messagerie (déconnecté)';
+</script>
+
+<script>
+    // External plugins not part of the default Ckeditor package.
+    var plugins = [
+        'asciimath',
+        'asciisvg',
+        'audio',
+        'ckeditor_wiris',
+        'dialogui',
+        'glossary',
+        'leaflet',
+        'mapping',
+        'maximize',
+        'mathjax',
+        'oembed',
+        'toolbar',
+        'toolbarswitch',
+        'video',
+        'wikilink',
+        'wordcount',
+        'youtube',
+        'flash'
+    ];
+
+    plugins.forEach(function(plugin) {
+        CKEDITOR.plugins.addExternal(plugin, 'https://chamilo.grenoble-inp.fr/main/inc/lib/javascript/ckeditor/plugins/' + plugin + '/');
+    });
+
+    /**
+     * Function use to load templates in a div
+     **/
+    var showTemplates = function (ckeditorName) {
+        var editorName = 'content';
+        if (ckeditorName && ckeditorName.length > 0) {
+            editorName = ckeditorName;
+        }
+        CKEDITOR.editorConfig(CKEDITOR.config);
+        CKEDITOR.loadTemplates(CKEDITOR.config.templates_files, function (a) {
+            var templatesConfig = CKEDITOR.getTemplates("default");
+            var $templatesUL = $("<ul>");
+            if (templatesConfig) {
+                $.each(templatesConfig.templates, function () {
+                    var template = this;
+                    var $templateLi = $("<li>");
+                    var templateHTML = "<img src=\"" + templatesConfig.imagesPath + template.image + "\" ><div>";
+                    templateHTML += "<b>" + template.title + "</b>";
+
+                    if (template.description) {
+                        templateHTML += "<div class=description>" + template.description + "</div>";
+                    }
+                    templateHTML += "</div>";
+
+                    $("<a>", {
+                        href: "#",
+                        html: templateHTML,
+                        click: function (e) {
+                            e.preventDefault();
+                            if (CKEDITOR.instances[editorName]) {
+                                CKEDITOR.instances[editorName].setData(template.html, function () {
+                                    this.checkDirty();
+                                });
+                            }
+                        }
+                    }).appendTo($templateLi);
+                    $templatesUL.append($templateLi);
+                });
+            }
+            $templatesUL.appendTo("#frmModel");
+        });
+    };
+
+
+function doneResizing() {
+    var widhtWindow = $(window).width();
+    if ((widhtWindow>=1024) && (widhtWindow>=768)) {
+        $("#profileCollapse").addClass("in");
+        $("#courseCollapse").addClass("in");
+        $("#skillsCollapse").addClass("in");
+        $("#sn-sidebar-collapse").addClass("in");
+        $("#user_image_block").removeClass("text-muted");
+    } else {
+        $("#profileCollapse").removeClass("in");
+        $("#courseCollapse").removeClass("in");
+        $("#skillsCollapse").removeClass("in");
+        $("#sn-avatar-one").removeClass("in");
+        $("#user_image_block").addClass("text-muted");
+    }
+};
+
+$(document).ready(function() {
+    $("#open-view-list").click(function(){
+        $("#student-list-work").fadeIn(300);
+    });
+    $("#closed-view-list").click(function(){
+        $("#student-list-work").fadeOut(300);
+    });
+    check_brand();
+    var id;
+    $(window).resize(function() {
+        clearTimeout(id);
+        id = setTimeout(doneResizing, 200);
+    });
+
+    // Removes the yellow input in Chrome
+    if (navigator.userAgent.toLowerCase().indexOf("chrome") >= 0) {
+        $(window).load(function(){
+            $('input:-webkit-autofill').each(function(){
+                var text = $(this).val();
+                var name = $(this).attr('name');
+                $(this).after(this.outerHTML).remove();
+                $('input[name=' + name + ']').val(text);
+            });
+        });
+    }
+
+    $(".accordion_jquery").accordion({
+        autoHeight: false,
+        active: false, // all items closed by default
+        collapsible: true,
+        header: ".accordion-heading"
+    });
+
+    // Global popup
+    $('body').on('click', 'a.ajax', function(e) {
+        e.preventDefault();
+
+        var contentUrl = this.href,
+                loadModalContent = $.get(contentUrl),
+                self = $(this);
+
+        $.when(loadModalContent).done(function(modalContent) {
+            var modalDialog = $('#global-modal').find('.modal-dialog'),
+                    modalSize = self.data('size') || get_url_params(contentUrl, 'modal_size'),
+                    modalWidth = self.data('width') || get_url_params(contentUrl, 'width'),
+                    modalTitle = self.data('title') || ' ';
+
+            modalDialog.removeClass('modal-lg modal-sm').css('width', '');
+
+            if (modalSize) {
+                switch (modalSize) {
+                    case 'lg':
+                        modalDialog.addClass('modal-lg');
+                        break;
+                    case 'sm':
+                        modalDialog.addClass('modal-sm');
+                        break;
+                }
+            } else if (modalWidth) {
+                modalDialog.css('width', modalWidth + 'px');
+            }
+
+            $('#global-modal').find('.modal-title').text(modalTitle);
+            $('#global-modal').find('.modal-body').html(modalContent);
+            $('#global-modal').modal('show');
+        });
+    });
+
+    $('a.expand-image').on('click', function(e) {
+        e.preventDefault();
+        var title = $(this).attr('title');
+        var image = new Image();
+        image.onload = function() {
+            if (title) {
+                $('#expand-image-modal').find('.modal-title').text(title);
+            } else {
+                $('#expand-image-modal').find('.modal-title').html('&nbsp;');
+            }
+
+            $('#expand-image-modal').find('.modal-body').html(image);
+            $('#expand-image-modal').modal({
+                show: true
+            });
+        };
+        image.src = this.href;
+    });
+
+    // Global confirmation
+    $('.popup-confirmation').on('click', function() {
+        showConfirmationPopup(this);
+        return false;
+    });
+
+    // old jquery.menu.js
+    $('#navigation a').stop().animate({
+        'marginLeft':'50px'
+    },1000);
+
+    $('#navigation div').hover(
+        function () {
+            $('a',$(this)).stop().animate({
+                'marginLeft':'1px'
+            },200);
+        },
+        function () {
+            $('a',$(this)).stop().animate({
+                'marginLeft':'50px'
+            },200);
+        }
+    );
+
+    /* Make responsive image maps */
+    $('map').imageMapResize();
+
+    jQuery.fn.filterByText = function(textbox) {
+        return this.each(function() {
+            var select = this;
+            var options = [];
+            $(select).find('option').each(function() {
+                options.push({value: $(this).val(), text: $(this).text()});
+            });
+            $(select).data('options', options);
+
+            $(textbox).bind('change keyup', function() {
+                var options = $(select).empty().data('options');
+                var search = $.trim($(this).val());
+                var regex = new RegExp(search,"gi");
+
+                $.each(options, function(i) {
+                    var option = options[i];
+                    if(option.text.match(regex) !== null) {
+                        $(select).append(
+                                $('<option>').text(option.text).val(option.value)
+                        );
+                    }
+                });
+            });
+        });
+    };
+    $(".black-shadow").mouseenter(function() {
+        $(this).addClass('hovered-course');
+    }).mouseleave(function() {
+         $(this).removeClass('hovered-course');
+    });
+});
+
+$(window).resize(function() {
+    check_brand();
+});
+
+$(document).scroll(function() {
+    var valor = $('body').outerHeight() - 700;
+    if ($(this).scrollTop() > 100) {
+        $('.bottom_actions').addClass('bottom_actions_fixed');
+    } else {
+        $('.bottom_actions').removeClass('bottom_actions_fixed');
+    }
+
+    if ($(this).scrollTop() > valor) {
+        $('.bottom_actions').removeClass('bottom_actions_fixed');
+    } else {
+        $('.bottom_actions').addClass('bottom_actions_fixed');
+    }
+
+    //Exercise warning fixed at the top
+    var fixed =  $("#exercise_clock_warning");
+    if (fixed.length) {
+        if (!fixed.attr('data-top')) {
+            // If already fixed, then do nothing
+            if (fixed.hasClass('subnav-fixed')) return;
+            // Remember top position
+            var offset = fixed.offset();
+            fixed.attr('data-top', offset.top);
+            fixed.css('width', '100%');
+        }
+
+        if (fixed.attr('data-top') - fixed.outerHeight() <= $(this).scrollTop()) {
+            fixed.addClass('navbar-fixed-top');
+            fixed.css('width', '100%');
+        } else {
+            fixed.removeClass('navbar-fixed-top');
+            fixed.css('width', '100%');
+        }
+    }
+
+    // Admin -> Settings toolbar.
+    if ($('body').width() > 959) {
+        if ($('.new_actions').length) {
+            if (!$('.new_actions').attr('data-top')) {
+                // If already fixed, then do nothing
+                if ($('.new_actions').hasClass('new_actions-fixed')) return;
+                // Remember top position
+                var offset = $('.new_actions').offset();
+
+                var more_top = 0;
+                if ($('.subnav').hasClass('new_actions-fixed')) {
+                    more_top = 50;
+                }
+                $('.new_actions').attr('data-top', offset.top + more_top);
+            }
+            // Check if the height is enough before fixing the icons menu (or otherwise removing it)
+            // Added a 30px offset otherwise sometimes the menu plays ping-pong when scrolling to
+            // the bottom of the page on short pages.
+            if ($('.new_actions').attr('data-top') - $('.new_actions').outerHeight() <= $(this).scrollTop() + 30) {
+                $('.new_actions').addClass('new_actions-fixed');
+            } else {
+                $('.new_actions').removeClass('new_actions-fixed');
+            }
+        }
+    }
+});
+
+function get_url_params(q, attribute) {
+    var vars;
+    var hash;
+    if (q != undefined) {
+        q = q.split('&');
+        for(var i = 0; i < q.length; i++){
+            hash = q[i].split('=');
+            if (hash[0] == attribute) {
+                return hash[1];
+            }
+        }
+    }
+}
+
+function check_brand() {
+    if ($('.subnav').length) {
+        if ($(window).width() >= 969) {
+            $('.subnav .brand').hide();
+        } else {
+            $('.subnav .brand').show();
+        }
+    }
+}
+
+function showConfirmationPopup(obj, urlParam) {
+    if (urlParam) {
+        url = urlParam
+    } else {
+        url = obj.href;
+    }
+
+    var dialog  = $("#dialog");
+    if ($("#dialog").length == 0) {
+        dialog  = $('<div id="dialog" style="display:none">Veuillez confirmer votre choix </div>').appendTo('body');
+    }
+
+    var width_value = 350;
+    var height_value = 150;
+    var resizable_value = true;
+
+    var new_param = get_url_params(url, 'width');
+    if (new_param) {
+        width_value = new_param;
+    }
+
+    var new_param = get_url_params(url, 'height')
+    if (new_param) {
+        height_value = new_param;
+    }
+
+    var new_param = get_url_params(url, 'resizable');
+    if (new_param) {
+        resizable_value = new_param;
+    }
+
+    // Show dialog
+    dialog.dialog({
+        modal       : true,
+        width       : width_value,
+        height      : height_value,
+        resizable   : resizable_value,
+        buttons: [
+            {
+                text: 'Oui',
+                click: function() {
+                    window.location = url;
+                },
+                icons:{
+                    primary:'ui-icon-locked'
+                }
+            },
+            {
+                text: 'Non',
+                click: function() { $(this).dialog("close"); },
+                icons:{
+                    primary:'ui-icon-locked'
+                }
+            }
+        ]
+    });
+    // prevent the browser to follow the link
+    return false;
+}
+
+function setCheckbox(value, table_id) {
+    checkboxes = $("#"+table_id+" input:checkbox");
+    $.each(checkboxes, function(index, checkbox) {
+        checkbox.checked = value;
+        if (value) {
+            $(checkbox).parentsUntil("tr").parent().addClass("row_selected");
+        } else {
+            $(checkbox).parentsUntil("tr").parent().removeClass("row_selected");
+        }
+    });
+    return false;
+}
+
+function action_click(element, table_id) {
+    d = $("#"+table_id);
+    if (!confirm('Veuillez confirmer votre choix')) {
+        return false;
+    } else {
+        var action =$(element).attr("data-action");
+        $('#'+table_id+' input[name="action"] ').attr("value", action);
+        d.submit();
+        return false;
+    }
+}
+
+/**
+ * Generic function to replace the deprecated jQuery toggle function
+ * @param inId          : id of block to hide / unhide
+ * @param inIdTxt       : id of the button
+ * @param inTxtHide     : text one of the button
+ * @param inTxtUnhide   : text two of the button
+ * @todo : allow to detect if text is from a button or from a <a>
+ */
+function hideUnhide(inId, inIdTxt, inTxtHide, inTxtUnhide)
+{
+    if ($('#'+inId).css("display") == "none") {
+        $('#'+inId).show(400);
+        $('#'+inIdTxt).attr("value", inTxtUnhide);
+    } else {
+        $('#'+inId).hide(400);
+        $('#'+inIdTxt).attr("value", inTxtHide);
+    }
+}
+
+function expandColumnToogle(buttonSelector, col1Info, col2Info)
+{
+    $(buttonSelector).on('click', function (e) {
+        e.preventDefault();
+
+        col1Info = $.extend({
+            selector: '',
+            width: 4
+        }, col1Info);
+        col2Info = $.extend({
+            selector: '',
+            width: 8
+        }, col2Info);
+
+        if (!col1Info.selector || !col2Info.selector) {
+            return;
+        }
+
+        var col1 = $(col1Info.selector),
+            col2 = $(col2Info.selector);
+
+        $('#expand').toggleClass('hide');
+        $('#contract').toggleClass('hide');
+
+        if (col2.is('.col-md-' + col2Info.width)) {
+            col2.removeClass('col-md-' + col2Info.width).addClass('col-md-12');
+            col1.removeClass('col-md-' + col1Info.width).addClass('hide');
+
+            return;
+        }
+
+        col2.removeClass('col-md-12').addClass('col-md-' + col2Info.width);
+        col1.removeClass('hide').addClass('col-md-' + col1Info.width);
+    });
+}
+</script>
+
+<link href="QCM6_mat_fichiers/base.css" rel="stylesheet" media="screen" type="text/css">
+<link href="QCM6_mat_fichiers/editor.css" rel="stylesheet" media="screen" type="text/css">
+<link href="QCM6_mat_fichiers/default.css" rel="stylesheet" media="screen" type="text/css">
+
+
+
+
+<!-- Matomo -->
+<script type="text/javascript">
+  var _paq = _paq || [];
+  /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+  _paq.push(['trackPageView']);
+  _paq.push(['enableLinkTracking']);
+  (function() {
+    var u="//piwik.grenet.fr/";
+    _paq.push(['setTrackerUrl', u+'piwik.php']);
+    _paq.push(['setSiteId', '4']);
+    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+    g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
+})();
+</script>
+<!-- End Matomo Code -->
+
+<style type="text/css">.MathJax_Hover_Frame {border-radius: .25em; -webkit-border-radius: .25em; -moz-border-radius: .25em; -khtml-border-radius: .25em; box-shadow: 0px 0px 15px #83A; -webkit-box-shadow: 0px 0px 15px #83A; -moz-box-shadow: 0px 0px 15px #83A; -khtml-box-shadow: 0px 0px 15px #83A; border: 1px solid #A6D ! important; display: inline-block; position: absolute}
+.MathJax_Hover_Arrow {position: absolute; width: 15px; height: 11px; cursor: pointer}
+</style><style type="text/css">#MathJax_About {position: fixed; left: 50%; width: auto; text-align: center; border: 3px outset; padding: 1em 2em; background-color: #DDDDDD; color: black; cursor: default; font-family: message-box; font-size: 120%; font-style: normal; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; z-index: 201; border-radius: 15px; -webkit-border-radius: 15px; -moz-border-radius: 15px; -khtml-border-radius: 15px; box-shadow: 0px 10px 20px #808080; -webkit-box-shadow: 0px 10px 20px #808080; -moz-box-shadow: 0px 10px 20px #808080; -khtml-box-shadow: 0px 10px 20px #808080; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+.MathJax_Menu {position: absolute; background-color: white; color: black; width: auto; padding: 2px; border: 1px solid #CCCCCC; margin: 0; cursor: default; font: menu; text-align: left; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; z-index: 201; box-shadow: 0px 10px 20px #808080; -webkit-box-shadow: 0px 10px 20px #808080; -moz-box-shadow: 0px 10px 20px #808080; -khtml-box-shadow: 0px 10px 20px #808080; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+.MathJax_MenuItem {padding: 2px 2em; background: transparent}
+.MathJax_MenuArrow {position: absolute; right: .5em; color: #666666}
+.MathJax_MenuActive .MathJax_MenuArrow {color: white}
+.MathJax_MenuArrow.RTL {left: .5em; right: auto}
+.MathJax_MenuCheck {position: absolute; left: .7em}
+.MathJax_MenuCheck.RTL {right: .7em; left: auto}
+.MathJax_MenuRadioCheck {position: absolute; left: 1em}
+.MathJax_MenuRadioCheck.RTL {right: 1em; left: auto}
+.MathJax_MenuLabel {padding: 2px 2em 4px 1.33em; font-style: italic}
+.MathJax_MenuRule {border-top: 1px solid #CCCCCC; margin: 4px 1px 0px}
+.MathJax_MenuDisabled {color: GrayText}
+.MathJax_MenuActive {background-color: Highlight; color: HighlightText}
+.MathJax_Menu_Close {position: absolute; width: 31px; height: 31px; top: -15px; left: -15px}
+</style><style type="text/css">.MathJax_Preview .MJXc-math {color: inherit!important}
+</style><style type="text/css">#MathJax_Zoom {position: absolute; background-color: #F0F0F0; overflow: auto; display: block; z-index: 301; padding: .5em; border: 1px solid black; margin: 0; font-weight: normal; font-style: normal; text-align: left; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; box-shadow: 5px 5px 15px #AAAAAA; -webkit-box-shadow: 5px 5px 15px #AAAAAA; -moz-box-shadow: 5px 5px 15px #AAAAAA; -khtml-box-shadow: 5px 5px 15px #AAAAAA; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+#MathJax_ZoomOverlay {position: absolute; left: 0; top: 0; z-index: 300; display: inline-block; width: 100%; height: 100%; border: 0; padding: 0; margin: 0; background-color: white; opacity: 0; filter: alpha(opacity=0)}
+#MathJax_ZoomFrame {position: relative; display: inline-block; height: 0; width: 0}
+#MathJax_ZoomEventTrap {position: absolute; left: 0; top: 0; z-index: 302; display: inline-block; border: 0; padding: 0; margin: 0; background-color: white; opacity: 0; filter: alpha(opacity=0)}
+</style><style type="text/css">.MathJax_Preview {color: #888}
+#MathJax_Message {position: fixed; left: 1px; bottom: 2px; background-color: #E6E6E6; border: 1px solid #959595; margin: 0px; padding: 2px 8px; z-index: 102; color: black; font-size: 80%; width: auto; white-space: nowrap}
+#MathJax_MSIE_Frame {position: absolute; top: 0; left: 0; width: 0px; z-index: 101; border: 0px; margin: 0px; padding: 0px}
+.MathJax_Error {color: #CC0000; font-style: italic}
+</style><style type="text/css">.MJXc-script {font-size: .8em}
+.MJXc-right {-webkit-transform-origin: right; -moz-transform-origin: right; -ms-transform-origin: right; -o-transform-origin: right; transform-origin: right}
+.MJXc-bold {font-weight: bold}
+.MJXc-italic {font-style: italic}
+.MJXc-scr {font-family: MathJax_Script,'Times New Roman',Times,STIXGeneral,serif}
+.MJXc-frak {font-family: MathJax_Fraktur,'Times New Roman',Times,STIXGeneral,serif}
+.MJXc-sf {font-family: MathJax_SansSerif,'Times New Roman',Times,STIXGeneral,serif}
+.MJXc-cal {font-family: MathJax_Caligraphic,'Times New Roman',Times,STIXGeneral,serif}
+.MJXc-mono {font-family: MathJax_Typewriter,'Times New Roman',Times,STIXGeneral,serif}
+.MJXc-largeop {font-size: 150%}
+.MJXc-largeop.MJXc-int {vertical-align: -.2em}
+.MJXc-math {display: inline-block; line-height: 1.2; text-indent: 0; font-family: 'Times New Roman',Times,STIXGeneral,serif; white-space: nowrap; border-collapse: collapse}
+.MJXc-display {display: block; text-align: center; margin: 1em 0}
+.MJXc-math span {display: inline-block}
+.MJXc-box {display: block!important; text-align: center}
+.MJXc-box:after {content: " "}
+.MJXc-rule {display: block!important; margin-top: .1em}
+.MJXc-char {display: block!important}
+.MJXc-mo {margin: 0 .15em}
+.MJXc-mfrac {margin: 0 .125em; vertical-align: .25em}
+.MJXc-denom {display: inline-table!important; width: 100%}
+.MJXc-denom > * {display: table-row!important}
+.MJXc-surd {vertical-align: top}
+.MJXc-surd > * {display: block!important}
+.MJXc-script-box > *  {display: table!important; height: 50%}
+.MJXc-script-box > * > * {display: table-cell!important; vertical-align: top}
+.MJXc-script-box > *:last-child > * {vertical-align: bottom}
+.MJXc-script-box > * > * > * {display: block!important}
+.MJXc-mphantom {visibility: hidden}
+.MJXc-munderover {display: inline-table!important}
+.MJXc-over {display: inline-block!important; text-align: center}
+.MJXc-over > * {display: block!important}
+.MJXc-munderover > * {display: table-row!important}
+.MJXc-mtable {vertical-align: .25em; margin: 0 .125em}
+.MJXc-mtable > * {display: inline-table!important; vertical-align: middle}
+.MJXc-mtr {display: table-row!important}
+.MJXc-mtd {display: table-cell!important; text-align: center; padding: .5em 0 0 .5em}
+.MJXc-mtr > .MJXc-mtd:first-child {padding-left: 0}
+.MJXc-mtr:first-child > .MJXc-mtd {padding-top: 0}
+.MJXc-mlabeledtr {display: table-row!important}
+.MJXc-mlabeledtr > .MJXc-mtd:first-child {padding-left: 0}
+.MJXc-mlabeledtr:first-child > .MJXc-mtd {padding-top: 0}
+.MJXc-merror {background-color: #FFFF88; color: #CC0000; border: 1px solid #CC0000; padding: 1px 3px; font-style: normal; font-size: 90%}
+.MJXc-scale0 {-webkit-transform: scaleX(.0); -moz-transform: scaleX(.0); -ms-transform: scaleX(.0); -o-transform: scaleX(.0); transform: scaleX(.0)}
+.MJXc-scale1 {-webkit-transform: scaleX(.1); -moz-transform: scaleX(.1); -ms-transform: scaleX(.1); -o-transform: scaleX(.1); transform: scaleX(.1)}
+.MJXc-scale2 {-webkit-transform: scaleX(.2); -moz-transform: scaleX(.2); -ms-transform: scaleX(.2); -o-transform: scaleX(.2); transform: scaleX(.2)}
+.MJXc-scale3 {-webkit-transform: scaleX(.3); -moz-transform: scaleX(.3); -ms-transform: scaleX(.3); -o-transform: scaleX(.3); transform: scaleX(.3)}
+.MJXc-scale4 {-webkit-transform: scaleX(.4); -moz-transform: scaleX(.4); -ms-transform: scaleX(.4); -o-transform: scaleX(.4); transform: scaleX(.4)}
+.MJXc-scale5 {-webkit-transform: scaleX(.5); -moz-transform: scaleX(.5); -ms-transform: scaleX(.5); -o-transform: scaleX(.5); transform: scaleX(.5)}
+.MJXc-scale6 {-webkit-transform: scaleX(.6); -moz-transform: scaleX(.6); -ms-transform: scaleX(.6); -o-transform: scaleX(.6); transform: scaleX(.6)}
+.MJXc-scale7 {-webkit-transform: scaleX(.7); -moz-transform: scaleX(.7); -ms-transform: scaleX(.7); -o-transform: scaleX(.7); transform: scaleX(.7)}
+.MJXc-scale8 {-webkit-transform: scaleX(.8); -moz-transform: scaleX(.8); -ms-transform: scaleX(.8); -o-transform: scaleX(.8); transform: scaleX(.8)}
+.MJXc-scale9 {-webkit-transform: scaleX(.9); -moz-transform: scaleX(.9); -ms-transform: scaleX(.9); -o-transform: scaleX(.9); transform: scaleX(.9)}
+.MathJax_CHTML .noError {vertical-align: ; font-size: 90%; text-align: left; color: black; padding: 1px 3px; border: 1px solid}
+</style></head>
+<body dir="ltr" class="section-mycourses " data-new-gr-c-s-loaded="true"><div id="MathJax_Message" style="display: none;"></div>
+<noscript>Votre navigateur n'autorise pas le JavaScript. Chamilo dépend hautement du JavaScript pour vous fournir une interface plus dynamique. Il est probable que la plupart des fonctionnalités soient accessibles, mais vous pourriez passer à côté des dernières améliorations en termes d'usabilité. Nous vous suggérons de modifier la configuration de votre navigateur (généralement dans le menu Édition -> Préférences) et de rafraîchir cette page.</noscript>
+<div class="wrap">
+    <div id="navigation" class="notification-panel">
+    
+    
+</div>
+    <!-- Topbar -->
+<div class="extra-header"></div>
+<header id="header-section">
+<section>
+    <div class="container">
+	<div class="row">
+	    <div class="col-md-3">
+	    	<div class="logo">
+                <a href="https://chamilo.grenoble-inp.fr/index.php"><img title="Chamilo" class="img-responsive" id="header-logo" src="QCM6_mat_fichiers/header-logo.png" alt="Grenoble INP"></a>
+            </div>
+	    </div>
+            <div class="col-md-9">
+                <div class="col-sm-4">
+                                    </div>
+                <div class="col-sm-4">
+                                    </div>
+                <div class="col-sm-4">
+                                        <div class="section-notifications">
+                        <ul id="notifications" class="nav nav-pills pull-right">
+                            <li><a href="https://chamilo.grenoble-inp.fr/whoisonline.php" target="_self" title="Utilisateurs en ligne"><img src="QCM6_mat_fichiers/user.png" alt="Utilisateurs en ligne" title="Utilisateurs en ligne"> 91</a></li><li><a href="https://chamilo.grenoble-inp.fr/whoisonline.php?cidReq=3AMCE312" target="_self"><img src="QCM6_mat_fichiers/course.png" alt="Utilisateurs en ligne Dans ce cours" title="Utilisateurs en ligne Dans ce cours"> 1 </a></li>
+                        </ul>
+                    </div>
+                    <div class="resize_font"><div class="btn-group"><a title="Diminuer la taille des caractères" href="#" class="decrease_font btn btn-default"><em class="fa fa-font"></em></a><a title="Réinitialiser la taille des caractères" href="#" class="reset_font btn btn-default"><em class="fa fa-font"></em></a><a title="Augmenter la taille des caractères" href="#" class="increase_font btn btn-default"><em class="fa fa-font"></em></a></div></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+    <nav id="menubar" class="navbar navbar-default">
+    <div class="container">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#menuone" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        </div>
+        <div class="collapse navbar-collapse" id="menuone">
+            <ul class="nav navbar-nav">
+                                    <li class=""><a href="https://chamilo.grenoble-inp.fr/index.php" target="">Page d'accueil</a></li>
+                                    <li class="active"><a href="https://chamilo.grenoble-inp.fr/user_portal.php" target="">Mes cours</a></li>
+                                    <li class=""><a href="https://chamilo.grenoble-inp.fr/main/calendar/agenda_js.php?type=personal" target="">Agenda perso</a></li>
+                                    <li class=""><a href="https://chamilo.grenoble-inp.fr/main/auth/my_progress.php" target="">Ma progression</a></li>
+                                    <li class=""><a href="https://chamilo.grenoble-inp.fr/main/social/home.php" target="">Réseau social</a></li>
+                            </ul>
+                      <ul class="nav navbar-nav navbar-right">
+                              <li><a href="https://chamilo.grenoble-inp.fr/main/messages/inbox.php"> <span class="badge badge-warning">15</span></a></li>
+                                              <li class="dropdown avatar-user">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                        <img class="img-circle" src="QCM6_mat_fichiers/small_23019_6075a6809bb2d_76927939ad6134c1b5b0fa472803ca4b.png" alt="Ranc Mathis">  <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li class="user-header">
+                            <div class="text-center">
+                            <img class="img-circle" src="QCM6_mat_fichiers/medium_23019_6075a6809bb2d_76927939ad6134c1b5b0fa472803ca4b.png" alt="Ranc Mathis">
+                            <p class="name"><a href="https://chamilo.grenoble-inp.fr/main/social/home.php">Ranc Mathis</a></p>
+                            <p><i class="fa fa-envelope-o" aria-hidden="true"></i> Mathis.Ranc@grenoble-inp.org</p>
+                            </div>
+                        </li>
+                        <li role="separator" class="divider"></li>
+                        <li class="user-body">
+                            <a title="Boîte de réception" href="https://chamilo.grenoble-inp.fr/main/messages/inbox.php">
+                                <em class="fa fa-envelope" aria-hidden="true"></em> Boîte de réception
+                            </a>
+                                                        <a title="Mes certificats" href="https://chamilo.grenoble-inp.fr/main/gradebook/my_certificates.php">
+                                <em class="fa fa-graduation-cap" aria-hidden="true"></em> Mes certificats
+                            </a>
+                            
+                            <a id="logout_button" title="Quitter" href="https://chamilo.grenoble-inp.fr/index.php?logout=logout&amp;logoutcas=logoutcas&amp;uid=23019">
+                                <em class="fa fa-sign-out"></em> Quitter
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                           </ul>
+                    </div>
+    </div>
+</nav>
+</header>
+            <div class="nav-tools">
+            <div id="toolnav"><div id="toolnavboxHideUnhide" onclick="hideToolNavBox()">&lt;&lt;</div><ul id="toolnavbox" style="width:10px; "><li><a class="btn btn-default text-left icons" href="https://chamilo.grenoble-inp.fr/courses/3AMCE312/index.php?cidReq=3AMCE312&amp;gidReq=0&amp;id_session=0" target="_top" title="Page d'accueil du cours" style="margin-left: -25px;"><img class="tool-img" src="QCM6_mat_fichiers/home.png" alt="Page d'accueil du cours" title="Page d'accueil du cours"></a></li><li><a class="btn btn-default text-left icons" href="https://chamilo.grenoble-inp.fr/main/document/document.php?cidReq=3AMCE312&amp;gidReq=0&amp;id_session=0" target="_top" title="Documents" style="margin-left: -25px;"><img class="tool-img" src="QCM6_mat_fichiers/folder_document.png" alt="Documents" title="Documents"></a></li><li><a class="btn btn-default text-left icons" href="https://chamilo.grenoble-inp.fr/main/link/link.php?cidReq=3AMCE312&amp;gidReq=0&amp;id_session=0" target="_top" title="Liens" style="margin-left: -25px;"><img class="tool-img" src="QCM6_mat_fichiers/links.png" alt="Liens" title="Liens"></a></li><li><a class="btn btn-default text-left icons" href="https://chamilo.grenoble-inp.fr/main/exercise/exercise.php?cidReq=3AMCE312&amp;gidReq=0&amp;id_session=0" target="_top" title="Exercices" style="margin-left: -25px;"><img class="tool-img" src="QCM6_mat_fichiers/quiz.png" alt="Exercices" title="Exercices"></a></li><li><a class="btn btn-default text-left icons" href="https://chamilo.grenoble-inp.fr/main/work/work.php?cidReq=3AMCE312&amp;gidReq=0&amp;id_session=0" target="_top" title="Travaux" style="margin-left: -25px;"><img class="tool-img" src="QCM6_mat_fichiers/works.png" alt="Travaux" title="Travaux"></a></li></ul><script>$(function() {
+                $("#toolnavbox a").stop().animate({"margin-left":"-25px"},1000);
+                $("#toolnavbox > li").hover(
+                    function () {
+                        $("a",$(this)).stop().animate({"margin-left":"-2px"},200);
+                        $("span",$(this)).css("display","block");
+                    },
+                    function () {
+                        $("a",$(this)).stop().animate({"margin-left":"-25px"},200);
+                        $("span",$(this)).css("display","initial");
+                    }
+                );
+                        
+                        
+                        
+                    });
+                    
+                    function hideToolNavBox()
+                    {
+                        
+                        if ($("#toolnavbox").is(":visible")) {
+                            $("#toolnavbox").hide(100);
+                            $("#toolnavboxHideUnhide").html("&gt;&gt;");
+                            display = 0;
+                        } else {
+                            $("#toolnavbox").show(100);
+                            $("#toolnavboxHideUnhide").html("&lt;&lt;");
+                            display = 1;
+                        }
+                        
+                        // set toolbar hidden in session
+                        $.ajax({
+                            url:"https://chamilo.grenoble-inp.fr/main/inc/ajax/course.ajax.php?a=display_toolnavbox&display="+display,
+                            type: "get"
+                        });
+                    }
+            </script></div>
+        </div>
+    <section id="content-section">
+    <div class="container">
+                    <ul class="breadcrumb"><li class="active"><a href="https://chamilo.grenoble-inp.fr/courses/3AMCE312/index.php" target="_self"><img src="QCM6_mat_fichiers/home1.png" alt="CE312- CE318 - Architecture matérielle id=5167" title="CE312- CE318 - Architecture matérielle id=5167"> CE312- CE318 - Architecture matérielle</a></li><li class="active"><a href="https://chamilo.grenoble-inp.fr/main/exercise/exercise.php?cidReq=3AMCE312&amp;id_session=0&amp;gidReq=0&amp;gradebook=0&amp;origin=&amp;" target="_self">Exercices</a></li><li class="active">Exercices</li></ul>
+                
+<div class="alert alert-info"><p>1 tentatives restantes</p> <a class="btn btn-info" title="Nouvelle tentative" href="https://chamilo.grenoble-inp.fr/main/exercise/overview.php?cidReq=3AMCE312&amp;id_session=0&amp;gidReq=0&amp;gradebook=0&amp;origin=&amp;exerciseId=8265&amp;learnpath_id=0&amp;learnpath_item_id=0"><i class="fa fa-pencil-square-o fa-fw" aria-hidden="true"></i> Nouvelle tentative</a></div><div class="alert alert-info">Sauvegardé.<br></div><div class="question-result"><div class="page-header"><h2><img src="QCM6_mat_fichiers/test-quiz.png" alt="Résultat" title="Résultat"> QCM6 CE312 Examen : Résultat</h2></div><dl class="dl-horizontal"><dt>Nom</dt><dd>Ranc Mathis</dd><dt>Nom d'utilisateur</dt><dd>rancma</dd><dt>Code Officiel</dt><dd>apo-ESISAR</dd><dt>Date de début</dt><dd>Samedi 16 Octobre 2021 à 13:47</dd><dt>Durée</dt><dd>00 : 30 : 59</dd></dl></div><div class="question_row_score"><div class="title-score"><div class="total "><h3>Votre résultat:&nbsp;<span class="score_exercise">39 / 41</span></h3></div></div></div><div class="question_row_answer"><div class="page-header"><h4>1. Une boucle FOR est initialisée comme indiqué ci-dessous, au total combien d'itérations seront réalisées? - Copie</h4></div><div class="ribbon"><div class="rib rib-success"><h3>Exact</h3></div> <h4>Score : <span class="score_exercise">1 / 1</span></h4></div><div id="question_description"><p align="justify"><font face="Courier New, serif"><font size="2"><font color="#000080"><font face="Consolas, serif"><b>FOR</b></font></font><font color="#333333"><font face="Consolas, serif"> i </font></font><font color="#000080"><font face="Consolas, serif"><b>IN</b></font></font><font color="#333333"><font face="Consolas, serif"> </font></font><font color="#ff0000"><font face="Consolas, serif">0</font></font><font color="#333333"><font face="Consolas, serif"> </font></font><font color="#000080"><font face="Consolas, serif"><b>TO</b></font></font><font color="#333333"><font face="Consolas, serif"> </font></font><font color="#ff0000"><font face="Consolas, serif">5</font></font><font color="#333333"><font face="Consolas, serif"> </font></font><font color="#000080"><font face="Consolas, serif"><b>LOOP</b></font></font></font></font></p></div><table class="table table-striped">
+			<tbody><tr>
+				<th>Choix</th>
+				<th>Choix attendu</th>
+				<th>Réponse</th><th>Commentaire</th></tr>		<tr>
+		<td width="5%">
+			<img src="QCM6_mat_fichiers/radio_off.gif" alt="radio_off.gif" title="radio_off.gif">		</td>
+		<td width="5%">
+            -		</td>
+		<td width="40%">
+			
+
+	<title></title>
+
+
+<p>3</p>
+
+		</td>
+
+					<td>&nbsp;</td>
+				</tr>
+				<tr>
+		<td width="5%">
+			<img src="QCM6_mat_fichiers/radio_off.gif" alt="radio_off.gif" title="radio_off.gif">		</td>
+		<td width="5%">
+            -		</td>
+		<td width="40%">
+			
+
+	<title></title>
+
+
+<p>4</p>
+
+		</td>
+
+					<td>&nbsp;</td>
+				</tr>
+				<tr>
+		<td width="5%">
+			<img src="QCM6_mat_fichiers/radio_off.gif" alt="radio_off.gif" title="radio_off.gif">		</td>
+		<td width="5%">
+            -		</td>
+		<td width="40%">
+			
+
+	<title></title>
+
+
+<p>5</p>
+
+		</td>
+
+					<td>&nbsp;</td>
+				</tr>
+				<tr>
+		<td width="5%">
+			<img src="QCM6_mat_fichiers/radio_on.gif" alt="radio_on.gif" title="radio_on.gif">		</td>
+		<td width="5%">
+            -		</td>
+		<td width="40%">
+			
+
+	<title></title>
+
+
+<p>6</p>
+
+		</td>
+
+					<td>&nbsp;</td>
+				</tr>
+		</tbody></table></div><div class="question_row_answer"><div class="page-header"><h4>2. Plus d'un paramètre générique peut être défini dans une seule entité. - Copie</h4></div><div class="ribbon"><div class="rib rib-success"><h3>Exact</h3></div> <h4>Score : <span class="score_exercise">1 / 1</span></h4></div><div id="question_description"></div><table class="table table-striped">
+			<tbody><tr>
+				<th>Choix</th>
+				<th>Choix attendu</th>
+				<th>Réponse</th><th>Commentaire</th></tr>		<tr>
+		<td width="5%">
+			<img src="QCM6_mat_fichiers/radio_on.gif" alt="radio_on.gif" title="radio_on.gif">		</td>
+		<td width="5%">
+            -		</td>
+		<td width="40%">
+			
+
+	<title></title>
+
+
+<p><font color="#555555"><font face="Arial, serif"><font size="2">True</font></font></font></p>
+
+		</td>
+
+					<td>&nbsp;</td>
+				</tr>
+				<tr>
+		<td width="5%">
+			<img src="QCM6_mat_fichiers/radio_off.gif" alt="radio_off.gif" title="radio_off.gif">		</td>
+		<td width="5%">
+            -		</td>
+		<td width="40%">
+			
+
+	<title></title>
+
+
+<p><font color="#555555"><font face="Arial, serif"><font size="2">False</font></font></font></p>
+
+		</td>
+
+					<td>&nbsp;</td>
+				</tr>
+		</tbody></table></div><div class="question_row_answer"><div class="page-header"><h4>3. Le circuit suivant - Copie</h4></div><div class="ribbon"><div class="rib rib-success"><h3>Exact</h3></div> <h4>Score : <span class="score_exercise">2 / 2</span></h4></div><div id="question_description"><p><font color="#000000"><font face="Times New Roman, serif"><font size="3">Library IEEE;</font></font></font></p>
+
+<p><font color="#000000"><font face="Times New Roman, serif"><font size="3">USE IEEE.STD_LOGIC_1164.ALL;<br>
+<br>
+ENTITY TOTO IS<br>
+PORT ( A,B : IN STD_LOGIC;<br>
+Q : OUT STD_LOGIC);<br>
+END TOTO;<br>
+<br>
+ARCHITECTURE TITI OF TOTO IS<br>
+BEGIN<br>
+PROCESS (A,B)<br>
+BEGIN<br>
+IF A='1' THEN<br>
+&nbsp; &nbsp; &nbsp; Q &lt;= B;<br>
+END IF;<br>
+END PROCESS;<br>
+END; </font></font></font></p></div><table class="table table-striped">
+			<tbody><tr>
+				<th>Choix</th>
+				<th>Choix attendu</th>
+				<th>Réponse</th><th>Commentaire</th></tr>		<tr>
+		<td width="5%">
+			<img src="QCM6_mat_fichiers/checkbox_on.gif" alt="checkbox_on.gif" title="checkbox_on.gif">		</td>
+		<td width="5%">
+            -		</td>
+		<td width="40%">
+			
+
+	<title></title>
+
+
+<font color="#000000"><font face="Times New Roman, serif"><font size="3">Est synthétisable</font></font></font>
+
+		</td>
+
+					<td>&nbsp;</td>
+				</tr>
+				<tr>
+		<td width="5%">
+			<img src="QCM6_mat_fichiers/checkbox_off.gif" alt="checkbox_off.gif" title="checkbox_off.gif">		</td>
+		<td width="5%">
+            -		</td>
+		<td width="40%">
+			
+
+	<title></title>
+
+
+<font color="#000000"><font face="Times New Roman, serif"><font size="3">Est combinatoire</font></font></font>
+
+		</td>
+
+					<td>&nbsp;</td>
+				</tr>
+				<tr>
+		<td width="5%">
+			<img src="QCM6_mat_fichiers/checkbox_off.gif" alt="checkbox_off.gif" title="checkbox_off.gif">		</td>
+		<td width="5%">
+            -		</td>
+		<td width="40%">
+			
+
+	<title></title>
+
+
+<font color="#000000"><font face="Times New Roman, serif"><font size="3">Est séquentiel synchrone </font></font></font>
+
+		</td>
+
+					<td>&nbsp;</td>
+				</tr>
+				<tr>
+		<td width="5%">
+			<img src="QCM6_mat_fichiers/checkbox_on.gif" alt="checkbox_on.gif" title="checkbox_on.gif">		</td>
+		<td width="5%">
+            -		</td>
+		<td width="40%">
+			
+
+	<title></title>
+
+
+<font color="#000000"><font face="Times New Roman, serif"><font size="3">Est séquentiel asynchrone</font></font></font>
+
+		</td>
+
+					<td>&nbsp;</td>
+				</tr>
+				<tr>
+		<td width="5%">
+			<img src="QCM6_mat_fichiers/checkbox_off.gif" alt="checkbox_off.gif" title="checkbox_off.gif">		</td>
+		<td width="5%">
+            -		</td>
+		<td width="40%">
+			
+
+	<title></title>
+
+
+<font color="#000000"><font face="Times New Roman, serif"><font size="3">Est analogique</font></font></font>
+
+		</td>
+
+					<td>&nbsp;</td>
+				</tr>
+		</tbody></table></div><div class="question_row_answer"><div class="page-header"><h4>4.
+ Laquelle des réponses ci-dessous est la bonne syntaxe pour convertir 
+l'entier p en un nombre signé de ‘b’ bits (avec le paquetage 
+numeric_std)? - Copie</h4></div><div class="ribbon"><div class="rib rib-success"><h3>Exact</h3></div> <h4>Score : <span class="score_exercise">1 / 1</span></h4></div><div id="question_description"></div><table class="table table-striped">
+			<tbody><tr>
+				<th>Choix</th>
+				<th>Choix attendu</th>
+				<th>Réponse</th><th>Commentaire</th></tr>		<tr>
+		<td width="5%">
+			<img src="QCM6_mat_fichiers/radio_off.gif" alt="radio_off.gif" title="radio_off.gif">		</td>
+		<td width="5%">
+            -		</td>
+		<td width="40%">
+			
+
+	<title></title>
+
+
+<p><font color="#555555"><font face="Arial, serif"><font size="2">to_integer_signed(p,b);</font></font></font></p>
+
+		</td>
+
+					<td>&nbsp;</td>
+				</tr>
+				<tr>
+		<td width="5%">
+			<img src="QCM6_mat_fichiers/radio_off.gif" alt="radio_off.gif" title="radio_off.gif">		</td>
+		<td width="5%">
+            -		</td>
+		<td width="40%">
+			
+
+	<title></title>
+
+
+<p><font color="#555555"><font face="Arial, serif"><font size="2">to_signed_integer(p,b);</font></font></font></p>
+
+		</td>
+
+					<td>&nbsp;</td>
+				</tr>
+				<tr>
+		<td width="5%">
+			<img src="QCM6_mat_fichiers/radio_on.gif" alt="radio_on.gif" title="radio_on.gif">		</td>
+		<td width="5%">
+            -		</td>
+		<td width="40%">
+			
+
+	<title></title>
+
+
+<p><font color="#555555"><font face="Arial, serif"><font size="2">to_signed(p,b);</font></font></font></p>
+
+		</td>
+
+					<td>&nbsp;</td>
+				</tr>
+				<tr>
+		<td width="5%">
+			<img src="QCM6_mat_fichiers/radio_off.gif" alt="radio_off.gif" title="radio_off.gif">		</td>
+		<td width="5%">
+            -		</td>
+		<td width="40%">
+			
+
+	<title></title>
+
+
+<p><font color="#555555"><font face="Arial, serif"><font size="2">to_signed_p(b);</font></font></font></p>
+
+		</td>
+
+					<td>&nbsp;</td>
+				</tr>
+		</tbody></table></div><div class="question_row_answer"><div class="page-header"><h4>5. L'instanciation __________ est moins sujette à erreur. - Copie</h4></div><div class="ribbon"><div class="rib rib-success"><h3>Exact</h3></div> <h4>Score : <span class="score_exercise">1 / 1</span></h4></div><div id="question_description"></div><table class="table table-striped">
+			<tbody><tr>
+				<th>Choix</th>
+				<th>Choix attendu</th>
+				<th>Réponse</th><th>Commentaire</th></tr>		<tr>
+		<td width="5%">
+			<img src="QCM6_mat_fichiers/radio_off.gif" alt="radio_off.gif" title="radio_off.gif">		</td>
+		<td width="5%">
+            -		</td>
+		<td width="40%">
+			
+
+	<title></title>
+
+
+<p><font color="#555555"><font face="Arial, serif"><font size="2">par port</font></font></font></p>
+
+		</td>
+
+					<td>&nbsp;</td>
+				</tr>
+				<tr>
+		<td width="5%">
+			<img src="QCM6_mat_fichiers/radio_off.gif" alt="radio_off.gif" title="radio_off.gif">		</td>
+		<td width="5%">
+            -		</td>
+		<td width="40%">
+			
+
+	<title></title>
+
+
+<p>par position</p>
+
+		</td>
+
+					<td>&nbsp;</td>
+				</tr>
+				<tr>
+		<td width="5%">
+			<img src="QCM6_mat_fichiers/radio_on.gif" alt="radio_on.gif" title="radio_on.gif">		</td>
+		<td width="5%">
+            -		</td>
+		<td width="40%">
+			
+
+	<title></title>
+
+
+<p><font color="#555555"><font face="Arial, serif"><font size="2">par dénomination</font></font></font></p>
+
+		</td>
+
+					<td>&nbsp;</td>
+				</tr>
+				<tr>
+		<td width="5%">
+			<img src="QCM6_mat_fichiers/radio_off.gif" alt="radio_off.gif" title="radio_off.gif">		</td>
+		<td width="5%">
+            -		</td>
+		<td width="40%">
+			
+
+	<title></title>
+
+
+<p><font color="#555555"><font face="Arial, serif"><font size="2">générique</font></font></font></p>
+
+		</td>
+
+					<td>&nbsp;</td>
+				</tr>
+		</tbody></table></div><div class="question_row_answer"><div class="page-header"><h4>6. Pour les instructions concurrentes, quelle réponse ci-dessous est vraie? - Copie</h4></div><div class="ribbon"><div class="rib rib-success"><h3>Exact</h3></div> <h4>Score : <span class="score_exercise">1 / 1</span></h4></div><div id="question_description"></div><table class="table table-striped">
+			<tbody><tr>
+				<th>Choix</th>
+				<th>Choix attendu</th>
+				<th>Réponse</th><th>Commentaire</th></tr>		<tr>
+		<td width="5%">
+			<img src="QCM6_mat_fichiers/radio_off.gif" alt="radio_off.gif" title="radio_off.gif">		</td>
+		<td width="5%">
+            -		</td>
+		<td width="40%">
+			
+
+	<title></title>
+
+
+<p><font color="#555555"><font face="Arial, serif"><font size="2">The statement is executed once</font></font></font></p>
+
+		</td>
+
+					<td>&nbsp;</td>
+				</tr>
+				<tr>
+		<td width="5%">
+			<img src="QCM6_mat_fichiers/radio_off.gif" alt="radio_off.gif" title="radio_off.gif">		</td>
+		<td width="5%">
+            -		</td>
+		<td width="40%">
+			
+
+	<title></title>
+
+
+<p><font color="#555555"><font face="Arial, serif"><font size="2">The statement is executed twice</font></font></font></p>
+
+		</td>
+
+					<td>&nbsp;</td>
+				</tr>
+				<tr>
+		<td width="5%">
+			<img src="QCM6_mat_fichiers/radio_off.gif" alt="radio_off.gif" title="radio_off.gif">		</td>
+		<td width="5%">
+            -		</td>
+		<td width="40%">
+			
+
+	<title></title>
+
+
+<p><font color="#555555"><font face="Arial, serif"><font size="2">The value of left operand is assigned to right operand</font></font></font></p>
+
+		</td>
+
+					<td>&nbsp;</td>
+				</tr>
+				<tr>
+		<td width="5%">
+			<img src="QCM6_mat_fichiers/radio_on.gif" alt="radio_on.gif" title="radio_on.gif">		</td>
+		<td width="5%">
+            -		</td>
+		<td width="40%">
+			
+
+	<title></title>
+
+
+<p><font color="#555555"><font face="Arial, serif"><font size="2">The statement is executed as many times as the value changes</font></font></font></p>
+
+		</td>
+
+					<td>&nbsp;</td>
+				</tr>
+		</tbody></table></div><div class="question_row_answer"><div class="page-header"><h4>7. Que signifie RTL? - Copie</h4></div><div class="ribbon"><div class="rib rib-success"><h3>Exact</h3></div> <h4>Score : <span class="score_exercise">1 / 1</span></h4></div><div id="question_description"></div><table class="table table-striped">
+			<tbody><tr>
+				<th>Choix</th>
+				<th>Choix attendu</th>
+				<th>Réponse</th><th>Commentaire</th></tr>		<tr>
+		<td width="5%">
+			<img src="QCM6_mat_fichiers/radio_off.gif" alt="radio_off.gif" title="radio_off.gif">		</td>
+		<td width="5%">
+            -		</td>
+		<td width="40%">
+			
+
+	<title></title>
+
+
+<p><font color="#555555"><font face="Arial, serif"><font size="2">Register transfer language</font></font></font></p>
+
+		</td>
+
+					<td>&nbsp;</td>
+				</tr>
+				<tr>
+		<td width="5%">
+			<img src="QCM6_mat_fichiers/radio_off.gif" alt="radio_off.gif" title="radio_off.gif">		</td>
+		<td width="5%">
+            -		</td>
+		<td width="40%">
+			
+
+	<title></title>
+
+
+<p><font color="#555555"><font face="Arial, serif"><font size="2">Register transfer logic</font></font></font></p>
+
+		</td>
+
+					<td>&nbsp;</td>
+				</tr>
+				<tr>
+		<td width="5%">
+			<img src="QCM6_mat_fichiers/radio_on.gif" alt="radio_on.gif" title="radio_on.gif">		</td>
+		<td width="5%">
+            -		</td>
+		<td width="40%">
+			
+
+	<title></title>
+
+
+<p><font color="#555555"><font face="Arial, serif"><font size="2">Register transfer level</font></font></font></p>
+
+		</td>
+
+					<td>&nbsp;</td>
+				</tr>
+				<tr>
+		<td width="5%">
+			<img src="QCM6_mat_fichiers/radio_off.gif" alt="radio_off.gif" title="radio_off.gif">		</td>
+		<td width="5%">
+            -		</td>
+		<td width="40%">
+			
+
+	<title></title>
+
+
+<p><font color="#555555"><font face="Arial, serif"><font size="2">Resistor-transistor logic</font></font></font></p>
+
+		</td>
+
+					<td>&nbsp;</td>
+				</tr>
+		</tbody></table></div><div class="question_row_answer"><div class="page-header"><h4>8. En VHDL, les noms des entités ‘xyz’ et ‘XYZ’ sont traitées de la même manière. - Copie</h4></div><div class="ribbon"><div class="rib rib-success"><h3>Exact</h3></div> <h4>Score : <span class="score_exercise">1 / 1</span></h4></div><div id="question_description"></div><table class="table table-striped">
+			<tbody><tr>
+				<th>Choix</th>
+				<th>Choix attendu</th>
+				<th>Réponse</th><th>Commentaire</th></tr>		<tr>
+		<td width="5%">
+			<img src="QCM6_mat_fichiers/radio_on.gif" alt="radio_on.gif" title="radio_on.gif">		</td>
+		<td width="5%">
+            -		</td>
+		<td width="40%">
+			
+
+	<title></title>
+
+
+<p><font color="#555555"><font face="Arial, serif"><font size="2">True</font></font></font></p>
+
+		</td>
+
+					<td>&nbsp;</td>
+				</tr>
+				<tr>
+		<td width="5%">
+			<img src="QCM6_mat_fichiers/radio_off.gif" alt="radio_off.gif" title="radio_off.gif">		</td>
+		<td width="5%">
+            -		</td>
+		<td width="40%">
+			
+
+	<title></title>
+
+
+<p><font color="#555555"><font face="Arial, serif"><font size="2">False</font></font></font></p>
+
+		</td>
+
+					<td>&nbsp;</td>
+				</tr>
+		</tbody></table></div><div class="question_row_answer"><div class="page-header"><h4>9. L'instruction concurrente SELECT est équivalente à l'instruction séquentielle ________ . - Copie</h4></div><div class="ribbon"><div class="rib rib-success"><h3>Exact</h3></div> <h4>Score : <span class="score_exercise">1 / 1</span></h4></div><div id="question_description"></div><table class="table table-striped">
+			<tbody><tr>
+				<th>Choix</th>
+				<th>Choix attendu</th>
+				<th>Réponse</th><th>Commentaire</th></tr>		<tr>
+		<td width="5%">
+			<img src="QCM6_mat_fichiers/radio_off.gif" alt="radio_off.gif" title="radio_off.gif">		</td>
+		<td width="5%">
+            -		</td>
+		<td width="40%">
+			
+
+	<title></title>
+
+
+<p><font color="#555555"><font face="Arial, serif"><font size="2">If else</font></font></font></p>
+
+		</td>
+
+					<td>&nbsp;</td>
+				</tr>
+				<tr>
+		<td width="5%">
+			<img src="QCM6_mat_fichiers/radio_off.gif" alt="radio_off.gif" title="radio_off.gif">		</td>
+		<td width="5%">
+            -		</td>
+		<td width="40%">
+			
+
+	<title></title>
+
+
+<p><font color="#555555"><font face="Arial, serif"><font size="2">Loop</font></font></font></p>
+
+		</td>
+
+					<td>&nbsp;</td>
+				</tr>
+				<tr>
+		<td width="5%">
+			<img src="QCM6_mat_fichiers/radio_off.gif" alt="radio_off.gif" title="radio_off.gif">		</td>
+		<td width="5%">
+            -		</td>
+		<td width="40%">
+			
+
+	<title></title>
+
+
+<p><font color="#555555"><font face="Arial, serif"><font size="2">Wait</font></font></font></p>
+
+		</td>
+
+					<td>&nbsp;</td>
+				</tr>
+				<tr>
+		<td width="5%">
+			<img src="QCM6_mat_fichiers/radio_on.gif" alt="radio_on.gif" title="radio_on.gif">		</td>
+		<td width="5%">
+            -		</td>
+		<td width="40%">
+			
+
+	<title></title>
+
+
+<p><font color="#555555"><font face="Arial, serif"><font size="2">Case</font></font></font></p>
+
+		</td>
+
+					<td>&nbsp;</td>
+				</tr>
+		</tbody></table></div><div class="question_row_answer"><div class="page-header"><h4>10. Quel est intérêt des Generics en VHDL? - Copie</h4></div><div class="ribbon"><div class="rib rib-success"><h3>Exact</h3></div> <h4>Score : <span class="score_exercise">1 / 1</span></h4></div><div id="question_description"></div><table class="table table-striped">
+			<tbody><tr>
+				<th>Choix</th>
+				<th>Choix attendu</th>
+				<th>Réponse</th><th>Commentaire</th></tr>		<tr>
+		<td width="5%">
+			<img src="QCM6_mat_fichiers/radio_off.gif" alt="radio_off.gif" title="radio_off.gif">		</td>
+		<td width="5%">
+            -		</td>
+		<td width="40%">
+			
+
+	<title></title>
+
+
+<p><font color="#555555"><font face="Arial, serif"><font size="2">To turn on and off the drivers</font></font></font></p>
+
+		</td>
+
+					<td>&nbsp;</td>
+				</tr>
+				<tr>
+		<td width="5%">
+			<img src="QCM6_mat_fichiers/radio_on.gif" alt="radio_on.gif" title="radio_on.gif">		</td>
+		<td width="5%">
+            -		</td>
+		<td width="40%">
+			
+
+	<title></title>
+
+
+<p><font color="#555555"><font face="Arial, serif"><font size="2">To pass information to the entity</font></font></font></p>
+
+		</td>
+
+					<td>&nbsp;</td>
+				</tr>
+				<tr>
+		<td width="5%">
+			<img src="QCM6_mat_fichiers/radio_off.gif" alt="radio_off.gif" title="radio_off.gif">		</td>
+		<td width="5%">
+            -		</td>
+		<td width="40%">
+			
+
+	<title></title>
+
+
+<p><font color="#555555"><font face="Arial, serif"><font size="2">To describe architecture</font></font></font></p>
+
+		</td>
+
+					<td>&nbsp;</td>
+				</tr>
+				<tr>
+		<td width="5%">
+			<img src="QCM6_mat_fichiers/radio_off.gif" alt="radio_off.gif" title="radio_off.gif">		</td>
+		<td width="5%">
+            -		</td>
+		<td width="40%">
+			
+
+	<title></title>
+
+
+<p><font color="#555555"><font face="Arial, serif"><font size="2">To divide code into small processes</font></font></font></p>
+
+		</td>
+
+					<td>&nbsp;</td>
+				</tr>
+		</tbody></table></div><div class="question_row_answer"><div class="page-header"><h4>11. Un processus a une partie déclaration. - Copie</h4></div><div class="ribbon"><div class="rib rib-success"><h3>Exact</h3></div> <h4>Score : <span class="score_exercise">1 / 1</span></h4></div><div id="question_description"></div><table class="table table-striped">
+			<tbody><tr>
+				<th>Choix</th>
+				<th>Choix attendu</th>
+				<th>Réponse</th><th>Commentaire</th></tr>		<tr>
+		<td width="5%">
+			<img src="QCM6_mat_fichiers/radio_on.gif" alt="radio_on.gif" title="radio_on.gif">		</td>
+		<td width="5%">
+            -		</td>
+		<td width="40%">
+			
+
+	<title></title>
+
+
+<p><font color="#555555"><font face="Arial, serif"><font size="2">True</font></font></font></p>
+
+		</td>
+
+					<td>&nbsp;</td>
+				</tr>
+				<tr>
+		<td width="5%">
+			<img src="QCM6_mat_fichiers/radio_off.gif" alt="radio_off.gif" title="radio_off.gif">		</td>
+		<td width="5%">
+            -		</td>
+		<td width="40%">
+			
+
+	<title></title>
+
+
+<p><font color="#555555"><font face="Arial, serif"><font size="2">False</font></font></font></p>
+
+		</td>
+
+					<td>&nbsp;</td>
+				</tr>
+		</tbody></table></div><div class="question_row_answer"><div class="page-header"><h4>12. Quelle est l'architecture d'une simple porte NAND? - Copie</h4></div><div class="ribbon"><div class="rib rib-success"><h3>Exact</h3></div> <h4>Score : <span class="score_exercise">1 / 1</span></h4></div><div id="question_description"></div><table class="table table-striped">
+			<tbody><tr>
+				<th>Choix</th>
+				<th>Choix attendu</th>
+				<th>Réponse</th><th>Commentaire</th></tr>		<tr>
+		<td width="5%">
+			<img src="QCM6_mat_fichiers/radio_on.gif" alt="radio_on.gif" title="radio_on.gif">		</td>
+		<td width="5%">
+            -		</td>
+		<td width="40%">
+			
+
+	<title></title>
+
+
+<p align="justify"><font size="2"><font color="#000080"><font face="Consolas, serif"><b><font face="Courier New, serif">ARCHITECTURE</font></b></font></font></font><font face="Courier New, serif"><font size="2"><font color="#333333"><font face="Consolas, serif"> my_arch </font></font><font color="#000080"><font face="Consolas, serif"><b>OF</b></font></font><font color="#333333"><font face="Consolas, serif"> nand_gate </font></font><font color="#000080"><font face="Consolas, serif"><b>IS</b></font></font></font></font></p>
+
+<p align="justify"><font size="2"><font color="#000080"><font face="Consolas, serif"><b><font face="Courier New, serif">BEGIN</font></b></font></font></font></p>
+
+<p align="justify"><font color="#333333"><font face="Courier New, serif"><font size="2"><font face="Consolas, serif">x </font></font><font color="#000066"><font face="Consolas, serif">&lt;=</font></font><font color="#333333"><font face="Consolas, serif"> a NAND b</font></font><font color="#000066"><font face="Consolas, serif">;</font></font></font></font></p>
+
+<p align="justify"><font size="2"><font color="#000080"><font face="Consolas, serif"><b><font face="Courier New, serif">END</font></b></font></font></font><font face="Courier New, serif"><font size="2"><font color="#333333"><font face="Consolas, serif"> my_arch</font></font><font color="#000066"><font face="Consolas, serif">;</font></font></font></font></p>
+
+		</td>
+
+					<td>&nbsp;</td>
+				</tr>
+				<tr>
+		<td width="5%">
+			<img src="QCM6_mat_fichiers/radio_off.gif" alt="radio_off.gif" title="radio_off.gif">		</td>
+		<td width="5%">
+            -		</td>
+		<td width="40%">
+			
+
+	<title></title>
+
+
+<p align="justify"><font size="2"><font color="#000080"><font face="Consolas, serif"><b><font face="Courier New, serif">BEGIN</font></b></font></font></font></p>
+
+<p align="justify"><font size="2"><font color="#000080"><font face="Consolas, serif"><b><font face="Courier New, serif">ARCHITECTURE</font></b></font></font></font><font face="Courier New, serif"><font size="2"><font color="#333333"><font face="Consolas, serif"> my_arch </font></font><font color="#000080"><font face="Consolas, serif"><b>OF</b></font></font><font color="#333333"><font face="Consolas, serif"> nand_gate </font></font><font color="#000080"><font face="Consolas, serif"><b>IS</b></font></font></font></font></p>
+
+<p align="justify"><font color="#333333"><font face="Courier New, serif"><font size="2"><font face="Consolas, serif">x </font></font><font color="#000066"><font face="Consolas, serif">&lt;=</font></font><font color="#333333"><font face="Consolas, serif"> a NAND b</font></font><font color="#000066"><font face="Consolas, serif">;</font></font></font></font></p>
+
+<p align="justify"><font size="2"><font color="#000080"><font face="Consolas, serif"><b><font face="Courier New, serif">END</font></b></font></font></font><font face="Courier New, serif"><font size="2"><font color="#333333"><font face="Consolas, serif"> behavioral</font></font><font color="#000066"><font face="Consolas, serif">;</font></font></font></font></p>
+
+		</td>
+
+					<td>&nbsp;</td>
+				</tr>
+				<tr>
+		<td width="5%">
+			<img src="QCM6_mat_fichiers/radio_off.gif" alt="radio_off.gif" title="radio_off.gif">		</td>
+		<td width="5%">
+            -		</td>
+		<td width="40%">
+			
+
+	<title></title>
+
+
+<p align="justify"><font size="2"><font color="#000080"><font face="Consolas, serif"><b><font face="Courier New, serif">BEGIN</font></b></font></font></font></p>
+
+<p align="justify"><font size="2"><font color="#000080"><font face="Consolas, serif"><b><font face="Courier New, serif">ARCHITECTURE</font></b></font></font></font><font face="Courier New, serif"><font size="2"><font color="#333333"><font face="Consolas, serif"> behavioral </font></font><font color="#000080"><font face="Consolas, serif"><b>OF</b></font></font><font color="#333333"><font face="Consolas, serif"> nand_gate </font></font><font color="#000080"><font face="Consolas, serif"><b>IS</b></font></font></font></font></p>
+
+<p align="justify"><font color="#333333"><font face="Courier New, serif"><font size="2"><font face="Consolas, serif">x </font></font><font color="#000066"><font face="Consolas, serif">&lt;=</font></font><font color="#333333"><font face="Consolas, serif"> a NAND b</font></font><font color="#000066"><font face="Consolas, serif">;</font></font></font></font></p>
+
+<p align="justify"><font size="2"><font color="#000080"><font face="Consolas, serif"><b><font face="Courier New, serif">END</font></b></font></font></font><font face="Courier New, serif"><font size="2"><font color="#333333"><font face="Consolas, serif"> my_arch</font></font><font color="#000066"><font face="Consolas, serif">;</font></font></font></font></p>
+
+		</td>
+
+					<td>&nbsp;</td>
+				</tr>
+				<tr>
+		<td width="5%">
+			<img src="QCM6_mat_fichiers/radio_off.gif" alt="radio_off.gif" title="radio_off.gif">		</td>
+		<td width="5%">
+            -		</td>
+		<td width="40%">
+			
+
+	<title></title>
+
+
+<p align="justify"><font size="2"><font color="#000080"><font face="Consolas, serif"><b><font face="Courier New, serif">ARCHITECTURE</font></b></font></font></font><font face="Courier New, serif"><font size="2"><font color="#333333"><font face="Consolas, serif"> nand </font></font><font color="#000080"><font face="Consolas, serif"><b>OF</b></font></font><font color="#333333"><font face="Consolas, serif"> nand_gate </font></font><font color="#000080"><font face="Consolas, serif"><b>IS</b></font></font></font></font></p>
+
+<p align="justify"><font size="2"><font color="#000080"><font face="Consolas, serif"><b><font face="Courier New, serif">BEGIN</font></b></font></font></font></p>
+
+<p align="justify"><font color="#333333"><font face="Courier New, serif"><font size="2"><font face="Consolas, serif">x </font></font><font color="#000066"><font face="Consolas, serif">&lt;=</font></font><font color="#333333"><font face="Consolas, serif"> a NAND b</font></font><font color="#000066"><font face="Consolas, serif">;</font></font></font></font></p>
+
+<p align="justify"><font size="2"><font color="#000080"><font face="Consolas, serif"><b><font face="Courier New, serif">END</font></b></font></font></font><font face="Courier New, serif"><font size="2"><font color="#333333"><font face="Consolas, serif"> nand</font></font><font color="#000066"><font face="Consolas, serif">;</font></font></font></font></p>
+
+		</td>
+
+					<td>&nbsp;</td>
+				</tr>
+		</tbody></table></div><div class="question_row_answer"><div class="page-header"><h4>13. Quelle est la bonne déclaration de la bibliothèque et et du paquetage? - Copie</h4></div><div class="ribbon"><div class="rib rib-success"><h3>Exact</h3></div> <h4>Score : <span class="score_exercise">1 / 1</span></h4></div><div id="question_description"></div><table class="table table-striped">
+			<tbody><tr>
+				<th>Choix</th>
+				<th>Choix attendu</th>
+				<th>Réponse</th><th>Commentaire</th></tr>		<tr>
+		<td width="5%">
+			<img src="QCM6_mat_fichiers/radio_off.gif" alt="radio_off.gif" title="radio_off.gif">		</td>
+		<td width="5%">
+            -		</td>
+		<td width="40%">
+			
+
+	<title></title>
+
+
+<p align="justify"><font face="Consolas, serif"><font size="2"><b><font color="#000080">LIBRARY</font></b></font></font><font color="#333333"><font face="Consolas, serif"><font size="2"> library_name</font></font></font><font face="Consolas, serif"><font size="2"><font color="#000066">;</font></font></font></p>
+
+<p align="justify"><font face="Consolas, serif"><font size="2"><b><font color="#000080">USE</font></b></font></font><font color="#333333"><font face="Consolas, serif"><font size="2"> package_name.parts</font></font></font><font face="Consolas, serif"><font size="2"><font color="#000066">;</font></font></font></p>
+
+		</td>
+
+					<td>&nbsp;</td>
+				</tr>
+				<tr>
+		<td width="5%">
+			<img src="QCM6_mat_fichiers/radio_off.gif" alt="radio_off.gif" title="radio_off.gif">		</td>
+		<td width="5%">
+            -		</td>
+		<td width="40%">
+			
+
+	<title></title>
+
+
+<p align="justify"><font face="Consolas, serif"><font size="2"><b><font color="#000080">LIBRARY</font></b></font></font><font color="#333333"><font face="Consolas, serif"><font size="2"> package_name.parts</font></font></font><font face="Consolas, serif"><font size="2"><font color="#000066">;</font></font></font></p>
+
+<p align="justify"><font face="Consolas, serif"><font size="2"><b><font color="#000080">LIBRARY</font></b></font></font><font color="#333333"><font face="Consolas, serif"><font size="2"> library_name</font></font></font><font face="Consolas, serif"><font size="2"><font color="#000066">;</font></font></font></p>
+
+		</td>
+
+					<td>&nbsp;</td>
+				</tr>
+				<tr>
+		<td width="5%">
+			<img src="QCM6_mat_fichiers/radio_off.gif" alt="radio_off.gif" title="radio_off.gif">		</td>
+		<td width="5%">
+            -		</td>
+		<td width="40%">
+			
+
+	<title></title>
+
+
+<p align="justify"><font face="Consolas, serif"><font size="2"><b><font color="#000080">USE</font></b></font></font><font color="#333333"><font face="Consolas, serif"><font size="2"> library_name</font></font></font><font face="Consolas, serif"><font size="2"><font color="#000066">;</font></font></font></p>
+
+<p align="justify"><font face="Consolas, serif"><font size="2"><b><font color="#000080">LIBRARY</font></b></font></font><font color="#333333"><font face="Consolas, serif"><font size="2"> library_name.package_name.parts</font></font></font></p>
+
+		</td>
+
+					<td>&nbsp;</td>
+				</tr>
+				<tr>
+		<td width="5%">
+			<img src="QCM6_mat_fichiers/radio_on.gif" alt="radio_on.gif" title="radio_on.gif">		</td>
+		<td width="5%">
+            -		</td>
+		<td width="40%">
+			
+
+	<title></title>
+
+
+<p align="justify"><font face="Consolas, serif"><font size="2"><b><font color="#000080">LIBRARY</font></b></font></font><font color="#333333"><font face="Consolas, serif"><font size="2"> library_name</font></font></font><font face="Consolas, serif"><font size="2"><font color="#000066">;</font></font></font></p>
+
+<p align="justify"><font face="Consolas, serif"><font size="2"><b><font color="#000080">USE</font></b></font></font><font color="#333333"><font face="Consolas, serif"><font size="2"> library_name.package_name.parts;</font></font></font></p>
+
+		</td>
+
+					<td>&nbsp;</td>
+				</tr>
+		</tbody></table></div><div class="question_row_answer"><div class="page-header"><h4>14. Dans un registre SISO, la donnée de  ______ est observée par le circuit. - Copie</h4></div><div class="ribbon"><div class="rib rib-error"><h3>Faux</h3></div> <h4>Score : <span class="score_exercise">0 / 1</span></h4></div><div id="question_description"></div><table class="table table-striped">
+			<tbody><tr>
+				<th>Choix</th>
+				<th>Choix attendu</th>
+				<th>Réponse</th><th>Commentaire</th></tr>		<tr>
+		<td width="5%">
+			<img src="QCM6_mat_fichiers/radio_on.gif" alt="radio_on.gif" title="radio_on.gif">		</td>
+		<td width="5%">
+            -		</td>
+		<td width="40%">
+			
+
+	<title></title>
+
+
+<p><font color="#555555"><font face="Arial, serif"><font size="2">Last flip-flop</font></font></font></p>
+
+		</td>
+
+					<td>&nbsp;</td>
+				</tr>
+				<tr>
+		<td width="5%">
+			<img src="QCM6_mat_fichiers/radio_off.gif" alt="radio_off.gif" title="radio_off.gif">		</td>
+		<td width="5%">
+            -		</td>
+		<td width="40%">
+			
+
+	<title></title>
+
+
+<p><font color="#555555"><font face="Arial, serif"><font size="2">First flip-flop</font></font></font></p>
+
+		</td>
+
+					<td>&nbsp;</td>
+				</tr>
+				<tr>
+		<td width="5%">
+			<img src="QCM6_mat_fichiers/radio_off.gif" alt="radio_off.gif" title="radio_off.gif">		</td>
+		<td width="5%">
+            -		</td>
+		<td width="40%">
+			
+
+	<title></title>
+
+
+<p><font color="#555555"><font face="Arial, serif"><font size="2">All flip-flops</font></font></font></p>
+
+		</td>
+
+					<td>&nbsp;</td>
+				</tr>
+				<tr>
+		<td width="5%">
+			<img src="QCM6_mat_fichiers/radio_off.gif" alt="radio_off.gif" title="radio_off.gif">		</td>
+		<td width="5%">
+            -		</td>
+		<td width="40%">
+			
+
+	<title></title>
+
+
+<p><font color="#555555"><font face="Arial, serif"><font size="2">No flip-flop</font></font></font></p>
+
+		</td>
+
+					<td>&nbsp;</td>
+				</tr>
+		</tbody></table></div><div class="question_row_answer"><div class="page-header"><h4>15. Quelle instruction est utilisée quand il n'y a pas de liste de sensibilité? - Copie</h4></div><div class="ribbon"><div class="rib rib-success"><h3>Exact</h3></div> <h4>Score : <span class="score_exercise">1 / 1</span></h4></div><div id="question_description"></div><table class="table table-striped">
+			<tbody><tr>
+				<th>Choix</th>
+				<th>Choix attendu</th>
+				<th>Réponse</th><th>Commentaire</th></tr>		<tr>
+		<td width="5%">
+			<img src="QCM6_mat_fichiers/radio_off.gif" alt="radio_off.gif" title="radio_off.gif">		</td>
+		<td width="5%">
+            -		</td>
+		<td width="40%">
+			
+
+	<title></title>
+
+
+<p><font color="#555555"><font face="Arial, serif"><font size="2">WHEN</font></font></font></p>
+
+		</td>
+
+					<td>&nbsp;</td>
+				</tr>
+				<tr>
+		<td width="5%">
+			<img src="QCM6_mat_fichiers/radio_off.gif" alt="radio_off.gif" title="radio_off.gif">		</td>
+		<td width="5%">
+            -		</td>
+		<td width="40%">
+			
+
+	<title></title>
+
+
+<p><font color="#555555"><font face="Arial, serif"><font size="2">IF ELSE</font></font></font></p>
+
+		</td>
+
+					<td>&nbsp;</td>
+				</tr>
+				<tr>
+		<td width="5%">
+			<img src="QCM6_mat_fichiers/radio_on.gif" alt="radio_on.gif" title="radio_on.gif">		</td>
+		<td width="5%">
+            -		</td>
+		<td width="40%">
+			
+
+	<title></title>
+
+
+<p><font color="#555555"><font face="Arial, serif"><font size="2">WAIT</font></font></font></p>
+
+		</td>
+
+					<td>&nbsp;</td>
+				</tr>
+				<tr>
+		<td width="5%">
+			<img src="QCM6_mat_fichiers/radio_off.gif" alt="radio_off.gif" title="radio_off.gif">		</td>
+		<td width="5%">
+            -		</td>
+		<td width="40%">
+			
+
+	<title></title>
+
+
+<p><font color="#555555"><font face="Arial, serif"><font size="2">CASE</font></font></font></p>
+
+		</td>
+
+					<td>&nbsp;</td>
+				</tr>
+		</tbody></table></div><div class="question_row_answer"><div class="page-header"><h4>16. En VHDL, dans un processus, on peut trouver - Copie</h4></div><div class="ribbon"><div class="rib rib-success"><h3>Exact</h3></div> <h4>Score : <span class="score_exercise">1 / 1</span></h4></div><div id="question_description"></div><table class="table table-striped">
+			<tbody><tr>
+				<th>Choix</th>
+				<th>Choix attendu</th>
+				<th>Réponse</th><th>Commentaire</th></tr>		<tr>
+		<td width="5%">
+			<img src="QCM6_mat_fichiers/radio_on.gif" alt="radio_on.gif" title="radio_on.gif">		</td>
+		<td width="5%">
+            -		</td>
+		<td width="40%">
+			
+
+	<title></title>
+
+
+<p>Des instructions séquentielles</p>
+
+		</td>
+
+					<td>&nbsp;</td>
+				</tr>
+				<tr>
+		<td width="5%">
+			<img src="QCM6_mat_fichiers/radio_off.gif" alt="radio_off.gif" title="radio_off.gif">		</td>
+		<td width="5%">
+            -		</td>
+		<td width="40%">
+			
+
+	<title></title>
+
+
+<p>Des instances de composant</p>
+
+		</td>
+
+					<td>&nbsp;</td>
+				</tr>
+				<tr>
+		<td width="5%">
+			<img src="QCM6_mat_fichiers/radio_off.gif" alt="radio_off.gif" title="radio_off.gif">		</td>
+		<td width="5%">
+            -		</td>
+		<td width="40%">
+			
+
+	<title></title>
+
+
+<p>Des instructions concurrentes</p>
+
+		</td>
+
+					<td>&nbsp;</td>
+				</tr>
+				<tr>
+		<td width="5%">
+			<img src="QCM6_mat_fichiers/radio_off.gif" alt="radio_off.gif" title="radio_off.gif">		</td>
+		<td width="5%">
+            -		</td>
+		<td width="40%">
+			
+
+	<title></title>
+
+
+<p>Une architecture</p>
+
+		</td>
+
+					<td>&nbsp;</td>
+				</tr>
+				<tr>
+		<td width="5%">
+			<img src="QCM6_mat_fichiers/radio_off.gif" alt="radio_off.gif" title="radio_off.gif">		</td>
+		<td width="5%">
+            -		</td>
+		<td width="40%">
+			
+
+	<title></title>
+
+
+<p>Un autre processus</p>
+
+		</td>
+
+					<td>&nbsp;</td>
+				</tr>
+		</tbody></table></div><div class="question_row_answer"><div class="page-header"><h4>17. Quelle est la bonne syntaxe de l'instruction CASE? - Copie</h4></div><div class="ribbon"><div class="rib rib-success"><h3>Exact</h3></div> <h4>Score : <span class="score_exercise">1 / 1</span></h4></div><div id="question_description"></div><table class="table table-striped">
+			<tbody><tr>
+				<th>Choix</th>
+				<th>Choix attendu</th>
+				<th>Réponse</th><th>Commentaire</th></tr>		<tr>
+		<td width="5%">
+			<img src="QCM6_mat_fichiers/radio_off.gif" alt="radio_off.gif" title="radio_off.gif">		</td>
+		<td width="5%">
+            -		</td>
+		<td width="40%">
+			
+
+	<title></title>
+
+
+<p align="justify"><font color="#000080"><font face="Consolas, serif"><b>CASE</b></font></font><font color="#333333"><font face="Consolas, serif"> expression </font></font><font color="#000080"><font face="Consolas, serif"><b>IS</b></font></font></p>
+
+<p align="justify"><font face="Courier New, serif"><font size="2"><font color="#000080"><font face="Consolas, serif"><b>WHEN</b></font></font><font color="#333333"><font face="Consolas, serif"> choice_1 </font></font><font color="#000066"><font face="Consolas, serif">&amp;</font></font><font color="#333333"><font face="Consolas, serif">lt</font></font><font color="#000066"><font face="Consolas, serif">;=</font></font></font></font></p>
+
+<p align="justify"><font color="#333333"><font face="Courier New, serif"><font size="2"><font face="Consolas, serif">Sequential_statements</font></font><font color="#000066"><font face="Consolas, serif">;</font></font></font></font></p>
+
+<p align="justify"><font face="Courier New, serif"><font size="2"><font color="#000080"><font face="Consolas, serif"><b>WHEN</b></font></font><font color="#333333"><font face="Consolas, serif"> choice_2 </font></font><font color="#000066"><font face="Consolas, serif">&amp;</font></font><font color="#333333"><font face="Consolas, serif">lt</font></font><font color="#000066"><font face="Consolas, serif">;=</font></font></font></font></p>
+
+<p align="justify"><font color="#333333"><font face="Courier New, serif"><font size="2"><font face="Consolas, serif">Sequential_statements</font></font><font color="#000066"><font face="Consolas, serif">;</font></font></font></font></p>
+
+<p align="justify"><font color="#333333">…<font face="Courier New, serif"><font size="2"><font face="Consolas, serif">.</font></font></font></font></p>
+
+<p align="justify"><font face="Courier New, serif"><font size="2"><font color="#000080"><font face="Consolas, serif"><b>WHEN</b></font></font><font color="#333333"><font face="Consolas, serif"> </font></font><font color="#000080"><font face="Consolas, serif"><b>OTHERS</b></font></font><font color="#333333"><font face="Consolas, serif"> </font></font><font color="#000066"><font face="Consolas, serif">&amp;</font></font><font color="#333333"><font face="Consolas, serif">lt</font></font><font color="#000066"><font face="Consolas, serif">;=</font></font></font></font></p>
+
+<p align="justify"><font color="#333333"><font face="Courier New, serif"><font size="2"><font face="Consolas, serif">Sequential_statements</font></font><font color="#000066"><font face="Consolas, serif">;</font></font></font></font></p>
+
+<p align="justify"><font face="Courier New, serif"><font size="2"><font color="#000080"><font face="Consolas, serif"><b>END</b></font></font><font color="#333333"><font face="Consolas, serif"> </font></font><font color="#000080"><font face="Consolas, serif"><b>CASE</b></font></font><font color="#000066"><font face="Consolas, serif">;</font></font></font></font></p>
+
+		</td>
+
+					<td>&nbsp;</td>
+				</tr>
+				<tr>
+		<td width="5%">
+			<img src="QCM6_mat_fichiers/radio_on.gif" alt="radio_on.gif" title="radio_on.gif">		</td>
+		<td width="5%">
+            -		</td>
+		<td width="40%">
+			
+
+	<title></title>
+
+
+<p align="justify"><font color="#000080"><font face="Consolas, serif"><b>CASE</b></font></font><font color="#333333"><font face="Consolas, serif"> expression </font></font><font color="#000080"><font face="Consolas, serif"><b>IS</b></font></font></p>
+
+<p align="justify"><font face="Courier New, serif"><font size="2"><font color="#000080"><font face="Consolas, serif"><b>WHEN</b></font></font><font color="#333333"><font face="Consolas, serif"> choice_1 </font></font><font color="#000066"><font face="Consolas, serif">=&amp;</font></font><font color="#333333"><font face="Consolas, serif">gt</font></font><font color="#000066"><font face="Consolas, serif">;</font></font></font></font></p>
+
+<p align="justify"><font color="#333333"><font face="Courier New, serif"><font size="2"><font face="Consolas, serif">Sequential_statements</font></font><font color="#000066"><font face="Consolas, serif">;</font></font></font></font></p>
+
+<p align="justify"><font face="Courier New, serif"><font size="2"><font color="#000080"><font face="Consolas, serif"><b>WHEN</b></font></font><font color="#333333"><font face="Consolas, serif"> choice_2 </font></font><font color="#000066"><font face="Consolas, serif">=&amp;</font></font><font color="#333333"><font face="Consolas, serif">gt</font></font><font color="#000066"><font face="Consolas, serif">;</font></font></font></font></p>
+
+<p align="justify"><font color="#333333"><font face="Courier New, serif"><font size="2"><font face="Consolas, serif">Sequential_statements</font></font><font color="#000066"><font face="Consolas, serif">;</font></font></font></font></p>
+
+<p align="justify"><font color="#333333">…<font face="Courier New, serif"><font size="2"><font face="Consolas, serif">.</font></font></font></font></p>
+
+<p align="justify"><font face="Courier New, serif"><font size="2"><font color="#000080"><font face="Consolas, serif"><b>WHEN</b></font></font><font color="#333333"><font face="Consolas, serif"> </font></font><font color="#000080"><font face="Consolas, serif"><b>OTHERS</b></font></font><font color="#333333"><font face="Consolas, serif"> </font></font><font color="#000066"><font face="Consolas, serif">=&amp;</font></font><font color="#333333"><font face="Consolas, serif">gt</font></font><font color="#000066"><font face="Consolas, serif">;</font></font></font></font></p>
+
+<p align="justify"><font color="#333333"><font face="Courier New, serif"><font size="2"><font face="Consolas, serif">Sequential_statements</font></font><font color="#000066"><font face="Consolas, serif">;</font></font></font></font></p>
+
+<p align="justify"><font face="Courier New, serif"><font size="2"><font color="#000080"><font face="Consolas, serif"><b>END</b></font></font><font color="#333333"><font face="Consolas, serif"> </font></font><font color="#000080"><font face="Consolas, serif"><b>CASE</b></font></font><font color="#000066"><font face="Consolas, serif">;</font></font></font></font></p>
+
+		</td>
+
+					<td>&nbsp;</td>
+				</tr>
+				<tr>
+		<td width="5%">
+			<img src="QCM6_mat_fichiers/radio_off.gif" alt="radio_off.gif" title="radio_off.gif">		</td>
+		<td width="5%">
+            -		</td>
+		<td width="40%">
+			
+
+	<title></title>
+
+
+<p align="justify"><font color="#000080"><font face="Consolas, serif"><b>CASE</b></font></font><font color="#333333"><font face="Consolas, serif"> expression </font></font><font color="#000080"><font face="Consolas, serif"><b>IS</b></font></font></p>
+
+<p align="justify"><font face="Courier New, serif"><font size="2"><font color="#000080"><font face="Consolas, serif"><b>IF</b></font></font><font color="#333333"><font face="Consolas, serif"> choice_1 </font></font><font color="#000066"><font face="Consolas, serif">&amp;</font></font><font color="#333333"><font face="Consolas, serif">lt</font></font><font color="#000066"><font face="Consolas, serif">;=</font></font></font></font></p>
+
+<p align="justify"><font color="#333333"><font face="Courier New, serif"><font size="2"><font face="Consolas, serif">Sequential_statements</font></font><font color="#000066"><font face="Consolas, serif">;</font></font></font></font></p>
+
+<p align="justify"><font face="Courier New, serif"><font size="2"><font color="#000080"><font face="Consolas, serif"><b>ELSIF</b></font></font><font color="#333333"><font face="Consolas, serif"> choice_2 </font></font><font color="#000066"><font face="Consolas, serif">&amp;</font></font><font color="#333333"><font face="Consolas, serif">lt</font></font><font color="#000066"><font face="Consolas, serif">;=</font></font></font></font></p>
+
+<p align="justify"><font color="#333333"><font face="Courier New, serif"><font size="2"><font face="Consolas, serif">Sequential_statements</font></font><font color="#000066"><font face="Consolas, serif">;</font></font></font></font></p>
+
+<p align="justify"><font color="#333333">…<font face="Courier New, serif"><font size="2"><font face="Consolas, serif">.</font></font></font></font></p>
+
+<p align="justify"><font face="Courier New, serif"><font size="2"><font color="#000080"><font face="Consolas, serif"><b>ELSIF</b></font></font><font color="#333333"><font face="Consolas, serif"> </font></font><font color="#000080"><font face="Consolas, serif"><b>OTHERS</b></font></font><font color="#333333"><font face="Consolas, serif"> </font></font><font color="#000066"><font face="Consolas, serif">&amp;</font></font><font color="#333333"><font face="Consolas, serif">lt</font></font><font color="#000066"><font face="Consolas, serif">;=</font></font></font></font></p>
+
+<p align="justify"><font color="#333333"><font face="Courier New, serif"><font size="2"><font face="Consolas, serif">Sequential_statements</font></font><font color="#000066"><font face="Consolas, serif">;</font></font></font></font></p>
+
+<p align="justify"><font face="Courier New, serif"><font size="2"><font color="#000080"><font face="Consolas, serif"><b>END</b></font></font><font color="#333333"><font face="Consolas, serif"> </font></font><font color="#000080"><font face="Consolas, serif"><b>CASE</b></font></font><font color="#000066"><font face="Consolas, serif">;</font></font></font></font></p>
+
+		</td>
+
+					<td>&nbsp;</td>
+				</tr>
+				<tr>
+		<td width="5%">
+			<img src="QCM6_mat_fichiers/radio_off.gif" alt="radio_off.gif" title="radio_off.gif">		</td>
+		<td width="5%">
+            -		</td>
+		<td width="40%">
+			
+
+	<title></title>
+
+
+<p align="justify"><font color="#000080"><font face="Consolas, serif"><b>CASE</b></font></font><font color="#333333"><font face="Consolas, serif"> expression </font></font><font color="#000080"><font face="Consolas, serif"><b>IS</b></font></font></p>
+
+<p align="justify"><font face="Courier New, serif"><font size="2"><font color="#000080"><font face="Consolas, serif"><b>IF</b></font></font><font color="#333333"><font face="Consolas, serif"> choice_1 </font></font><font color="#000066"><font face="Consolas, serif">=&amp;</font></font><font color="#333333"><font face="Consolas, serif">gt</font></font><font color="#000066"><font face="Consolas, serif">;</font></font></font></font></p>
+
+<p align="justify"><font color="#333333"><font face="Courier New, serif"><font size="2"><font face="Consolas, serif">Sequential_statements</font></font><font color="#000066"><font face="Consolas, serif">;</font></font></font></font></p>
+
+<p align="justify"><font face="Courier New, serif"><font size="2"><font color="#000080"><font face="Consolas, serif"><b>ELSIF</b></font></font><font color="#333333"><font face="Consolas, serif"> choice_2 </font></font><font color="#000066"><font face="Consolas, serif">=&amp;</font></font><font color="#333333"><font face="Consolas, serif">gt</font></font><font color="#000066"><font face="Consolas, serif">;</font></font></font></font></p>
+
+<p align="justify"><font color="#333333"><font face="Courier New, serif"><font size="2"><font face="Consolas, serif">Sequential_statements</font></font><font color="#000066"><font face="Consolas, serif">;</font></font></font></font></p>
+
+<p align="justify"><font color="#333333">…<font face="Courier New, serif"><font size="2"><font face="Consolas, serif">.</font></font></font></font></p>
+
+<p align="justify"><font face="Courier New, serif"><font size="2"><font color="#000080"><font face="Consolas, serif"><b>ELSIF</b></font></font><font color="#333333"><font face="Consolas, serif"> </font></font><font color="#000080"><font face="Consolas, serif"><b>OTHERS</b></font></font><font color="#333333"><font face="Consolas, serif"> </font></font><font color="#000066"><font face="Consolas, serif">=&amp;</font></font><font color="#333333"><font face="Consolas, serif">gt</font></font><font color="#000066"><font face="Consolas, serif">;</font></font></font></font></p>
+
+<p align="justify"><font color="#333333"><font face="Courier New, serif"><font size="2"><font face="Consolas, serif">Sequential_statements</font></font><font color="#000066"><font face="Consolas, serif">;</font></font></font></font></p>
+
+<p align="justify"><font face="Courier New, serif"><font size="2"><font color="#000080"><font face="Consolas, serif"><b>END</b></font></font><font color="#333333"><font face="Consolas, serif"> </font></font><font color="#000080"><font face="Consolas, serif"><b>CASE</b></font></font><font color="#000066"><font face="Consolas, serif">;</font></font></font></font></p>
+
+		</td>
+
+					<td>&nbsp;</td>
+				</tr>
+		</tbody></table></div><div class="question_row_answer"><div class="page-header"><h4>18. Le code ci-dessous est une implémentation de  _________ - Copie</h4></div><div class="ribbon"><div class="rib rib-success"><h3>Exact</h3></div> <h4>Score : <span class="score_exercise">1 / 1</span></h4></div><div id="question_description"><p align="justify"><font face="Courier New, serif"><font size="2"><font color="#000080"><font face="Consolas, serif"><b>ARCHITECTURE</b></font></font><font color="#333333"><font face="Consolas, serif"> my_circuit </font></font><font color="#000080"><font face="Consolas, serif"><b>OF</b></font></font><font color="#333333"><font face="Consolas, serif"> my_logic </font></font><font color="#000080"><font face="Consolas, serif"><b>IS</b></font></font></font></font></p>
+
+<p align="justify"><font face="Courier New, serif"><font size="2"><font color="#000080"><font face="Consolas, serif"><b>BEGIN</b></font></font></font></font></p>
+
+<p align="justify"><font face="Courier New, serif"><font size="2"><font color="#000080"><font face="Consolas, serif"><b>WITH</b></font></font><font color="#333333"><font face="Consolas, serif"> ab </font></font><font color="#000080"><font face="Consolas, serif"><b>SELECT</b></font></font></font></font></p>
+
+<p align="justify"><font face="Courier New, serif"><font size="2"><font color="#333333"><font face="Consolas, serif">y </font></font><font color="#000066"><font face="Consolas, serif">&lt;=</font></font><font color="#333333"><font face="Consolas, serif"> x0 </font></font><font color="#000080"><font face="Consolas, serif"><b>WHEN</b></font></font><font color="#333333"><font face="Consolas, serif"> “00”</font></font><font color="#000066"><font face="Consolas, serif">;</font></font></font></font></p>
+
+<p align="justify"><font color="#333333"><font face="Courier New, serif"><font size="2"><font face="Consolas, serif">x1 </font></font><font color="#000080"><font face="Consolas, serif"><b>WHEN</b></font></font><font color="#333333"><font face="Consolas, serif"> “01”</font></font><font color="#000066"><font face="Consolas, serif">;</font></font></font></font></p>
+
+<p align="justify"><font color="#333333"><font face="Courier New, serif"><font size="2"><font face="Consolas, serif">x2 </font></font><font color="#000080"><font face="Consolas, serif"><b>WHEN</b></font></font><font color="#333333"><font face="Consolas, serif"> “</font></font><font color="#ff0000"><font face="Consolas, serif">10</font></font><font color="#333333"><font face="Consolas, serif">”</font></font><font color="#000066"><font face="Consolas, serif">;</font></font></font></font></p>
+
+<p align="justify"><font color="#333333"><font face="Courier New, serif"><font size="2"><font face="Consolas, serif">x3 </font></font><font color="#000080"><font face="Consolas, serif"><b>WHEN</b></font></font><font color="#333333"><font face="Consolas, serif"> “</font></font><font color="#ff0000"><font face="Consolas, serif">11</font></font><font color="#333333"><font face="Consolas, serif">”</font></font><font color="#000066"><font face="Consolas, serif">;</font></font></font></font></p>
+
+<p align="justify"><font face="Courier New, serif"><font size="2"><font color="#000080"><font face="Consolas, serif"><b>END</b></font></font><font color="#333333"><font face="Consolas, serif"> my_circuit</font></font><font color="#000066"><font face="Consolas, serif">;</font></font></font></font></p></div><table class="table table-striped">
+			<tbody><tr>
+				<th>Choix</th>
+				<th>Choix attendu</th>
+				<th>Réponse</th><th>Commentaire</th></tr>		<tr>
+		<td width="5%">
+			<img src="QCM6_mat_fichiers/radio_on.gif" alt="radio_on.gif" title="radio_on.gif">		</td>
+		<td width="5%">
+            -		</td>
+		<td width="40%">
+			
+
+	<title></title>
+
+
+<p align="justify"><font face="Times New Roman, serif"><font size="3"><font color="#555555"><font face="Arial, serif"><font size="2">4 to 1 MUX</font></font></font></font></font></p>
+
+		</td>
+
+					<td>&nbsp;</td>
+				</tr>
+				<tr>
+		<td width="5%">
+			<img src="QCM6_mat_fichiers/radio_off.gif" alt="radio_off.gif" title="radio_off.gif">		</td>
+		<td width="5%">
+            -		</td>
+		<td width="40%">
+			
+
+	<title></title>
+
+
+<p align="justify"><font face="Times New Roman, serif"><font size="3"><font color="#555555"><font face="Arial, serif"><font size="2">1 to 4 DEMUX</font></font></font></font></font></p>
+
+		</td>
+
+					<td>&nbsp;</td>
+				</tr>
+				<tr>
+		<td width="5%">
+			<img src="QCM6_mat_fichiers/radio_off.gif" alt="radio_off.gif" title="radio_off.gif">		</td>
+		<td width="5%">
+            -		</td>
+		<td width="40%">
+			
+
+	<title></title>
+
+
+<p align="justify"><font face="Times New Roman, serif"><font size="3"><font color="#555555"><font face="Arial, serif"><font size="2">8 to 1 MUX</font></font></font></font></font></p>
+
+		</td>
+
+					<td>&nbsp;</td>
+				</tr>
+				<tr>
+		<td width="5%">
+			<img src="QCM6_mat_fichiers/radio_off.gif" alt="radio_off.gif" title="radio_off.gif">		</td>
+		<td width="5%">
+            -		</td>
+		<td width="40%">
+			
+
+	<title></title>
+
+
+<p align="justify"><font face="Times New Roman, serif"><font size="3"><font color="#555555"><font face="Arial, serif"><font size="2">1 to 8 DEMUX</font></font></font></font></font></p>
+
+		</td>
+
+					<td>&nbsp;</td>
+				</tr>
+		</tbody></table></div><div class="question_row_answer"><div class="page-header"><h4>19. Un pilote peut être considéré comme  _______ du signal. - Copie</h4></div><div class="ribbon"><div class="rib rib-error"><h3>Faux</h3></div> <h4>Score : <span class="score_exercise">0 / 1</span></h4></div><div id="question_description"></div><table class="table table-striped">
+			<tbody><tr>
+				<th>Choix</th>
+				<th>Choix attendu</th>
+				<th>Réponse</th><th>Commentaire</th></tr>		<tr>
+		<td width="5%">
+			<img src="QCM6_mat_fichiers/radio_on.gif" alt="radio_on.gif" title="radio_on.gif">		</td>
+		<td width="5%">
+            -		</td>
+		<td width="40%">
+			
+
+	<title></title>
+
+
+<p><font color="#555555"><font face="Arial, serif"><font size="2">Part</font></font></font></p>
+
+		</td>
+
+					<td>&nbsp;</td>
+				</tr>
+				<tr>
+		<td width="5%">
+			<img src="QCM6_mat_fichiers/radio_off.gif" alt="radio_off.gif" title="radio_off.gif">		</td>
+		<td width="5%">
+            -		</td>
+		<td width="40%">
+			
+
+	<title></title>
+
+
+<p><font color="#555555"><font face="Arial, serif"><font size="2">Type</font></font></font></p>
+
+		</td>
+
+					<td>&nbsp;</td>
+				</tr>
+				<tr>
+		<td width="5%">
+			<img src="QCM6_mat_fichiers/radio_off.gif" alt="radio_off.gif" title="radio_off.gif">		</td>
+		<td width="5%">
+            -		</td>
+		<td width="40%">
+			
+
+	<title></title>
+
+
+<p><font color="#555555"><font face="Arial, serif"><font size="2">Final value</font></font></font></p>
+
+		</td>
+
+					<td>&nbsp;</td>
+				</tr>
+				<tr>
+		<td width="5%">
+			<img src="QCM6_mat_fichiers/radio_off.gif" alt="radio_off.gif" title="radio_off.gif">		</td>
+		<td width="5%">
+            -		</td>
+		<td width="40%">
+			
+
+	<title></title>
+
+
+<p><font color="#555555"><font face="Arial, serif"><font size="2">Source</font></font></font></p>
+
+		</td>
+
+					<td>&nbsp;</td>
+				</tr>
+		</tbody></table></div><div class="question_row_answer"><div class="page-header"><h4>20. Le circuit suivant - Copie</h4></div><div class="ribbon"><div class="rib rib-success"><h3>Exact</h3></div> <h4>Score : <span class="score_exercise">1 / 1</span></h4></div><div id="question_description"><p><font color="#000000"><font face="Times New Roman, serif"><font size="3">Library IEEE;</font></font></font></p>
+
+<p><font color="#000000"><font face="Times New Roman, serif"><font size="3">USE IEEE.STD_LOGIC_1164.ALL;<br>
+<br>
+ENTITY TOTO IS<br>
+PORT ( A,B : IN STD_LOGIC;<br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Q : OUT STD_LOGIC);<br>
+END TOTO;<br>
+<br>
+ARCHITECTURE TITI OF TOTO IS<br>
+BEGIN<br>
+Q &lt;= A WHEN B='1' ELSE NOT A;<br>
+END; </font></font></font></p></div><table class="table table-striped">
+			<tbody><tr>
+				<th>Choix</th>
+				<th>Choix attendu</th>
+				<th>Réponse</th><th>Commentaire</th></tr>		<tr>
+		<td width="5%">
+			<img src="QCM6_mat_fichiers/checkbox_on.gif" alt="checkbox_on.gif" title="checkbox_on.gif">		</td>
+		<td width="5%">
+            -		</td>
+		<td width="40%">
+			
+
+	<title></title>
+
+
+<font color="#000000"><font face="Times New Roman, serif"><font size="3">Est synthétisable</font></font></font>
+
+		</td>
+
+					<td>&nbsp;</td>
+				</tr>
+				<tr>
+		<td width="5%">
+			<img src="QCM6_mat_fichiers/checkbox_on.gif" alt="checkbox_on.gif" title="checkbox_on.gif">		</td>
+		<td width="5%">
+            -		</td>
+		<td width="40%">
+			
+
+	<title></title>
+
+
+<font color="#000000"><font face="Times New Roman, serif"><font size="3">Est combinatoire</font></font></font>
+
+		</td>
+
+					<td>&nbsp;</td>
+				</tr>
+				<tr>
+		<td width="5%">
+			<img src="QCM6_mat_fichiers/checkbox_off.gif" alt="checkbox_off.gif" title="checkbox_off.gif">		</td>
+		<td width="5%">
+            -		</td>
+		<td width="40%">
+			
+
+	<title></title>
+
+
+<font color="#000000"><font face="Times New Roman, serif"><font size="3">Est séquentiel synchrone</font></font></font>
+
+		</td>
+
+					<td>&nbsp;</td>
+				</tr>
+				<tr>
+		<td width="5%">
+			<img src="QCM6_mat_fichiers/checkbox_off.gif" alt="checkbox_off.gif" title="checkbox_off.gif">		</td>
+		<td width="5%">
+            -		</td>
+		<td width="40%">
+			
+
+	<title></title>
+
+
+<font color="#000000"><font face="Times New Roman, serif"><font size="3">Est séquentiel asynchrone</font></font></font>
+
+		</td>
+
+					<td>&nbsp;</td>
+				</tr>
+				<tr>
+		<td width="5%">
+			<img src="QCM6_mat_fichiers/checkbox_off.gif" alt="checkbox_off.gif" title="checkbox_off.gif">		</td>
+		<td width="5%">
+            -		</td>
+		<td width="40%">
+			
+
+	<title></title>
+
+
+<font color="#000000"><font face="Times New Roman, serif"><font size="3">Est analogique</font></font></font>
+
+		</td>
+
+					<td>&nbsp;</td>
+				</tr>
+		</tbody></table></div><div class="question_row_answer"><div class="page-header"><h4>21. Un processus contient  - Copie</h4></div><div class="ribbon"><div class="rib rib-success"><h3>Exact</h3></div> <h4>Score : <span class="score_exercise">1 / 1</span></h4></div><div id="question_description"></div><table class="table table-striped">
+			<tbody><tr>
+				<th>Choix</th>
+				<th>Choix attendu</th>
+				<th>Réponse</th><th>Commentaire</th></tr>		<tr>
+		<td width="5%">
+			<img src="QCM6_mat_fichiers/radio_off.gif" alt="radio_off.gif" title="radio_off.gif">		</td>
+		<td width="5%">
+            -		</td>
+		<td width="40%">
+			
+
+	<title></title>
+
+
+<p><font color="#000000"><font face="Times New Roman, serif"><font size="3">toujours une instruction WAIT.</font></font></font></p>
+
+		</td>
+
+					<td>&nbsp;</td>
+				</tr>
+				<tr>
+		<td width="5%">
+			<img src="QCM6_mat_fichiers/radio_off.gif" alt="radio_off.gif" title="radio_off.gif">		</td>
+		<td width="5%">
+            -		</td>
+		<td width="40%">
+			
+
+	<title></title>
+
+
+<p><font color="#000000"><font face="Times New Roman, serif"><font size="3">toujours une liste de sensibilité.</font></font></font></p>
+
+		</td>
+
+					<td>&nbsp;</td>
+				</tr>
+				<tr>
+		<td width="5%">
+			<img src="QCM6_mat_fichiers/radio_off.gif" alt="radio_off.gif" title="radio_off.gif">		</td>
+		<td width="5%">
+            -		</td>
+		<td width="40%">
+			
+
+	<title></title>
+
+
+<p><font color="#000000"><font face="Times New Roman, serif"><font size="3">obligatoirement soit une ou plusieurs instructions WAIT, soit une liste de sensibilité, soit les deux.</font></font></font></p>
+
+		</td>
+
+					<td>&nbsp;</td>
+				</tr>
+				<tr>
+		<td width="5%">
+			<img src="QCM6_mat_fichiers/radio_off.gif" alt="radio_off.gif" title="radio_off.gif">		</td>
+		<td width="5%">
+            -		</td>
+		<td width="40%">
+			
+
+	<title></title>
+
+
+<p><font color="#000000"><font face="Times New Roman, serif"><font size="3">toujours une liste de sensibilité et éventuellement une ou plusieurs instructions WAIT.</font></font></font></p>
+
+		</td>
+
+					<td>&nbsp;</td>
+				</tr>
+				<tr>
+		<td width="5%">
+			<img src="QCM6_mat_fichiers/radio_on.gif" alt="radio_on.gif" title="radio_on.gif">		</td>
+		<td width="5%">
+            -		</td>
+		<td width="40%">
+			
+
+	<title></title>
+
+
+<p><font color="#000000"><font face="Times New Roman, serif"><font size="3">obligatoirement soit une instruction WAIT, soit une liste de sensibilité, mais jamais les deux.</font></font></font></p>
+
+		</td>
+
+					<td>&nbsp;</td>
+				</tr>
+		</tbody></table></div><div class="question_row_answer"><div class="page-header"><h4>22. Quelle est la signification de VHDL? - Copie</h4></div><div class="ribbon"><div class="rib rib-success"><h3>Exact</h3></div> <h4>Score : <span class="score_exercise">1 / 1</span></h4></div><div id="question_description"></div><table class="table table-striped">
+			<tbody><tr>
+				<th>Choix</th>
+				<th>Choix attendu</th>
+				<th>Réponse</th><th>Commentaire</th></tr>		<tr>
+		<td width="5%">
+			<img src="QCM6_mat_fichiers/radio_off.gif" alt="radio_off.gif" title="radio_off.gif">		</td>
+		<td width="5%">
+            -		</td>
+		<td width="40%">
+			
+
+	<title></title>
+
+
+<p><font color="#555555"><font face="Arial, serif"><font size="2">Verilog Hardware Description Language</font></font></font></p>
+
+		</td>
+
+					<td>&nbsp;</td>
+				</tr>
+				<tr>
+		<td width="5%">
+			<img src="QCM6_mat_fichiers/radio_off.gif" alt="radio_off.gif" title="radio_off.gif">		</td>
+		<td width="5%">
+            -		</td>
+		<td width="40%">
+			
+
+	<title></title>
+
+
+<p><font color="#555555"><font face="Arial, serif"><font size="2">Very High speed Description Language</font></font></font></p>
+
+		</td>
+
+					<td>&nbsp;</td>
+				</tr>
+				<tr>
+		<td width="5%">
+			<img src="QCM6_mat_fichiers/radio_off.gif" alt="radio_off.gif" title="radio_off.gif">		</td>
+		<td width="5%">
+            -		</td>
+		<td width="40%">
+			
+
+	<title></title>
+
+
+<p><font color="#555555"><font face="Arial, serif"><font size="2">Variable Hardware Description Language</font></font></font></p>
+
+		</td>
+
+					<td>&nbsp;</td>
+				</tr>
+				<tr>
+		<td width="5%">
+			<img src="QCM6_mat_fichiers/radio_on.gif" alt="radio_on.gif" title="radio_on.gif">		</td>
+		<td width="5%">
+            -		</td>
+		<td width="40%">
+			
+
+	<title></title>
+
+
+<p><font color="#555555"><font face="Arial, serif"><font size="2">Very high speed Hardware Description Language</font></font></font></p>
+
+		</td>
+
+					<td>&nbsp;</td>
+				</tr>
+		</tbody></table></div><div class="question_row_answer"><div class="page-header"><h4>23. Quel est intérêt des Generics en VHDL? - Copie</h4></div><div class="ribbon"><div class="rib rib-success"><h3>Exact</h3></div> <h4>Score : <span class="score_exercise">1 / 1</span></h4></div><div id="question_description"></div><table class="table table-striped">
+			<tbody><tr>
+				<th>Choix</th>
+				<th>Choix attendu</th>
+				<th>Réponse</th><th>Commentaire</th></tr>		<tr>
+		<td width="5%">
+			<img src="QCM6_mat_fichiers/radio_off.gif" alt="radio_off.gif" title="radio_off.gif">		</td>
+		<td width="5%">
+            -		</td>
+		<td width="40%">
+			
+
+	<title></title>
+
+
+<p><font color="#555555"><font face="Arial, serif"><font size="2">To turn on and off the drivers</font></font></font></p>
+
+		</td>
+
+					<td>&nbsp;</td>
+				</tr>
+				<tr>
+		<td width="5%">
+			<img src="QCM6_mat_fichiers/radio_on.gif" alt="radio_on.gif" title="radio_on.gif">		</td>
+		<td width="5%">
+            -		</td>
+		<td width="40%">
+			
+
+	<title></title>
+
+
+<p><font color="#555555"><font face="Arial, serif"><font size="2">To pass information to the entity</font></font></font></p>
+
+		</td>
+
+					<td>&nbsp;</td>
+				</tr>
+				<tr>
+		<td width="5%">
+			<img src="QCM6_mat_fichiers/radio_off.gif" alt="radio_off.gif" title="radio_off.gif">		</td>
+		<td width="5%">
+            -		</td>
+		<td width="40%">
+			
+
+	<title></title>
+
+
+<p><font color="#555555"><font face="Arial, serif"><font size="2">To describe architecture</font></font></font></p>
+
+		</td>
+
+					<td>&nbsp;</td>
+				</tr>
+				<tr>
+		<td width="5%">
+			<img src="QCM6_mat_fichiers/radio_off.gif" alt="radio_off.gif" title="radio_off.gif">		</td>
+		<td width="5%">
+            -		</td>
+		<td width="40%">
+			
+
+	<title></title>
+
+
+<p><font color="#555555"><font face="Arial, serif"><font size="2">To divide code into small processes</font></font></font></p>
+
+		</td>
+
+					<td>&nbsp;</td>
+				</tr>
+		</tbody></table></div><div class="question_row_answer"><div class="page-header"><h4>24. Dans un registre SISO, la donnée de  ______ est observée par le circuit. </h4></div><div class="ribbon"><div class="rib rib-success"><h3>Exact</h3></div> <h4>Score : <span class="score_exercise">1 / 1</span></h4></div><div id="question_description"></div><table class="table table-striped">
+			<tbody><tr>
+				<th>Choix</th>
+				<th>Choix attendu</th>
+				<th>Réponse</th><th>Commentaire</th></tr>		<tr>
+		<td width="5%">
+			<img src="QCM6_mat_fichiers/radio_on.gif" alt="radio_on.gif" title="radio_on.gif">		</td>
+		<td width="5%">
+            -		</td>
+		<td width="40%">
+			
+
+	<title></title>
+
+
+<p><font color="#555555"><font face="Arial, serif"><font size="2">Last flip-flop</font></font></font></p>
+
+		</td>
+
+					<td>&nbsp;</td>
+				</tr>
+				<tr>
+		<td width="5%">
+			<img src="QCM6_mat_fichiers/radio_off.gif" alt="radio_off.gif" title="radio_off.gif">		</td>
+		<td width="5%">
+            -		</td>
+		<td width="40%">
+			
+
+	<title></title>
+
+
+<p><font color="#555555"><font face="Arial, serif"><font size="2">First flip-flop</font></font></font></p>
+
+		</td>
+
+					<td>&nbsp;</td>
+				</tr>
+				<tr>
+		<td width="5%">
+			<img src="QCM6_mat_fichiers/radio_off.gif" alt="radio_off.gif" title="radio_off.gif">		</td>
+		<td width="5%">
+            -		</td>
+		<td width="40%">
+			
+
+	<title></title>
+
+
+<p><font color="#555555"><font face="Arial, serif"><font size="2">All flip-flops</font></font></font></p>
+
+		</td>
+
+					<td>&nbsp;</td>
+				</tr>
+				<tr>
+		<td width="5%">
+			<img src="QCM6_mat_fichiers/radio_off.gif" alt="radio_off.gif" title="radio_off.gif">		</td>
+		<td width="5%">
+            -		</td>
+		<td width="40%">
+			
+
+	<title></title>
+
+
+<p><font color="#555555"><font face="Arial, serif"><font size="2">No flip-flop</font></font></font></p>
+
+		</td>
+
+					<td>&nbsp;</td>
+				</tr>
+		</tbody></table></div><div class="question_row_answer"><div class="page-header"><h4>25. Un code&nbsp;RTL est la combinaison de circuits combinatoires et séquentiels.  - Copie</h4></div><div class="ribbon"><div class="rib rib-success"><h3>Exact</h3></div> <h4>Score : <span class="score_exercise">1 / 1</span></h4></div><div id="question_description"></div><table class="table table-striped">
+			<tbody><tr>
+				<th>Choix</th>
+				<th>Choix attendu</th>
+				<th>Réponse</th><th>Commentaire</th></tr>		<tr>
+		<td width="5%">
+			<img src="QCM6_mat_fichiers/radio_on.gif" alt="radio_on.gif" title="radio_on.gif">		</td>
+		<td width="5%">
+            -		</td>
+		<td width="40%">
+			
+
+	<title></title>
+
+
+<p><font color="#555555"><font face="Arial, serif"><font size="2">True</font></font></font></p>
+
+		</td>
+
+					<td>&nbsp;</td>
+				</tr>
+				<tr>
+		<td width="5%">
+			<img src="QCM6_mat_fichiers/radio_off.gif" alt="radio_off.gif" title="radio_off.gif">		</td>
+		<td width="5%">
+            -		</td>
+		<td width="40%">
+			
+
+	<title></title>
+
+
+<p><font color="#555555"><font face="Arial, serif"><font size="2">False</font></font></font></p>
+
+		</td>
+
+					<td>&nbsp;</td>
+				</tr>
+		</tbody></table></div><div class="question_row_answer"><div class="page-header"><h4>26. Quel est l'effet de la liste de sensibilité sur un processus? - Copie</h4></div><div class="ribbon"><div class="rib rib-success"><h3>Exact</h3></div> <h4>Score : <span class="score_exercise">1 / 1</span></h4></div><div id="question_description"></div><table class="table table-striped">
+			<tbody><tr>
+				<th>Choix</th>
+				<th>Choix attendu</th>
+				<th>Réponse</th><th>Commentaire</th></tr>		<tr>
+		<td width="5%">
+			<img src="QCM6_mat_fichiers/radio_on.gif" alt="radio_on.gif" title="radio_on.gif">		</td>
+		<td width="5%">
+            -		</td>
+		<td width="40%">
+			
+
+	<title></title>
+
+
+<p><font color="#555555"><font face="Arial, serif"><font size="2">Process executes when any of the signal in sensitivity list changes</font></font></font></p>
+
+		</td>
+
+					<td>&nbsp;</td>
+				</tr>
+				<tr>
+		<td width="5%">
+			<img src="QCM6_mat_fichiers/radio_off.gif" alt="radio_off.gif" title="radio_off.gif">		</td>
+		<td width="5%">
+            -		</td>
+		<td width="40%">
+			
+
+	<title></title>
+
+
+<p><font color="#555555"><font face="Arial, serif"><font size="2">Process executes sequentially when sensitivity list is specified</font></font></font></p>
+
+		</td>
+
+					<td>&nbsp;</td>
+				</tr>
+				<tr>
+		<td width="5%">
+			<img src="QCM6_mat_fichiers/radio_off.gif" alt="radio_off.gif" title="radio_off.gif">		</td>
+		<td width="5%">
+            -		</td>
+		<td width="40%">
+			
+
+	<title></title>
+
+
+<p><font color="#555555"><font face="Arial, serif"><font size="2">If there is no sensitivity list, then the process will not execute</font></font></font></p>
+
+		</td>
+
+					<td>&nbsp;</td>
+				</tr>
+				<tr>
+		<td width="5%">
+			<img src="QCM6_mat_fichiers/radio_off.gif" alt="radio_off.gif" title="radio_off.gif">		</td>
+		<td width="5%">
+            -		</td>
+		<td width="40%">
+			
+
+	<title></title>
+
+
+<p><font color="#555555"><font face="Arial, serif"><font size="2">Helps in simulation</font></font></font></p>
+
+		</td>
+
+					<td>&nbsp;</td>
+				</tr>
+		</tbody></table></div><div class="question_row_answer"><div class="page-header"><h4>27. Quelle réponse suivante donne la bonne syntaxe d'une déclaration d'architecture et de sa définition? - Copie</h4></div><div class="ribbon"><div class="rib rib-success"><h3>Exact</h3></div> <h4>Score : <span class="score_exercise">1 / 1</span></h4></div><div id="question_description"></div><table class="table table-striped">
+			<tbody><tr>
+				<th>Choix</th>
+				<th>Choix attendu</th>
+				<th>Réponse</th><th>Commentaire</th></tr>		<tr>
+		<td width="5%">
+			<img src="QCM6_mat_fichiers/radio_off.gif" alt="radio_off.gif" title="radio_off.gif">		</td>
+		<td width="5%">
+            -		</td>
+		<td width="40%">
+			
+
+	<title></title>
+
+
+<p align="justify"><font size="2"><font color="#000080"><font face="Consolas, serif"><b><font face="Courier New, serif">ARCHITECTURE</font></b></font></font></font><font face="Courier New, serif"><font size="2"><font color="#333333"><font face="Consolas, serif"> architecture_type </font></font><font color="#000080"><font face="Consolas, serif"><b>OF</b></font></font><font color="#333333"><font face="Consolas, serif"> entity_name </font></font><font color="#000080"><font face="Consolas, serif"><b>IS</b></font></font></font></font></p>
+
+<p align="justify"><font color="#333333"><font face="Courier New, serif"><font size="2"><font face="Consolas, serif">Declarations_for_architecture</font></font><font color="#000066"><font face="Consolas, serif">;</font></font></font></font></p>
+
+<p align="justify"><font size="2"><font color="#000080"><font face="Consolas, serif"><b><font face="Courier New, serif">BEGIN</font></b></font></font></font></p>
+
+<p align="justify"><font color="#333333"><font face="Courier New, serif"><font size="2"><font face="Consolas, serif">Code</font></font><font color="#000066"><font face="Consolas, serif">;</font></font></font></font></p>
+
+<p align="justify"><font color="#333333">…<font face="Courier New, serif"><font size="2"><font face="Consolas, serif">.</font></font></font></font></p>
+
+<p align="justify"><font size="2"><font color="#000080"><font face="Consolas, serif"><b><font face="Courier New, serif">END</font></b></font></font></font><font face="Courier New, serif"><font size="2"><font color="#333333"><font face="Consolas, serif"> architecture_name</font></font><font color="#000066"><font face="Consolas, serif">;</font></font></font></font></p>
+
+		</td>
+
+					<td>&nbsp;</td>
+				</tr>
+				<tr>
+		<td width="5%">
+			<img src="QCM6_mat_fichiers/radio_off.gif" alt="radio_off.gif" title="radio_off.gif">		</td>
+		<td width="5%">
+            -		</td>
+		<td width="40%">
+			
+
+	<title></title>
+
+
+<p align="justify"><font size="2"><font color="#000080"><font face="Consolas, serif"><b><font face="Courier New, serif">ARCHITECTURE</font></b></font></font></font><font face="Courier New, serif"><font size="2"><font color="#333333"><font face="Consolas, serif"> architecture_name </font></font><font color="#000080"><font face="Consolas, serif"><b>OF</b></font></font><font color="#333333"><font face="Consolas, serif"> entity_name </font></font><font color="#000080"><font face="Consolas, serif"><b>IS</b></font></font></font></font></p>
+
+<p align="justify"><font size="2"><font color="#000080"><font face="Consolas, serif"><b><font face="Courier New, serif">BEGIN</font></b></font></font></font></p>
+
+<p align="justify"><font color="#333333"><font face="Courier New, serif"><font size="2"><font face="Consolas, serif">Declarations_for_architecture</font></font><font color="#000066"><font face="Consolas, serif">;</font></font></font></font></p>
+
+<p align="justify"><font color="#333333"><font face="Courier New, serif"><font size="2"><font face="Consolas, serif">Code</font></font><font color="#000066"><font face="Consolas, serif">;</font></font></font></font></p>
+
+<p align="justify"><font color="#333333">…<font face="Courier New, serif"><font size="2"><font face="Consolas, serif">.</font></font></font></font></p>
+
+<p align="justify"><font size="2"><font color="#000080"><font face="Consolas, serif"><b><font face="Courier New, serif">END</font></b></font></font></font><font face="Courier New, serif"><font size="2"><font color="#333333"><font face="Consolas, serif"> architecture_name</font></font><font color="#000066"><font face="Consolas, serif">;</font></font></font></font></p>
+
+		</td>
+
+					<td>&nbsp;</td>
+				</tr>
+				<tr>
+		<td width="5%">
+			<img src="QCM6_mat_fichiers/radio_off.gif" alt="radio_off.gif" title="radio_off.gif">		</td>
+		<td width="5%">
+            -		</td>
+		<td width="40%">
+			
+
+	<title></title>
+
+
+<p align="justify"><font size="2"><font color="#000080"><font face="Consolas, serif"><b><font face="Courier New, serif">ARCHITECTURE</font></b></font></font></font><font face="Courier New, serif"><font size="2"><font color="#333333"><font face="Consolas, serif"> architecture_type </font></font><font color="#000080"><font face="Consolas, serif"><b>OF</b></font></font><font color="#333333"><font face="Consolas, serif"> entity_name </font></font><font color="#000080"><font face="Consolas, serif"><b>IS</b></font></font></font></font></p>
+
+<p align="justify"><font size="2"><font color="#000080"><font face="Consolas, serif"><b><font face="Courier New, serif">BEGIN</font></b></font></font></font></p>
+
+<p align="justify"><font color="#333333"><font face="Courier New, serif"><font size="2"><font face="Consolas, serif">Declarations_for_architecture</font></font><font color="#000066"><font face="Consolas, serif">;</font></font></font></font></p>
+
+<p align="justify"><font color="#333333"><font face="Courier New, serif"><font size="2"><font face="Consolas, serif">Code</font></font><font color="#000066"><font face="Consolas, serif">;</font></font></font></font></p>
+
+<p align="justify"><font color="#333333">…<font face="Courier New, serif"><font size="2"><font face="Consolas, serif">.</font></font></font></font></p>
+
+<p align="justify"><font size="2"><font color="#000080"><font face="Consolas, serif"><b><font face="Courier New, serif">END</font></b></font></font></font><font face="Courier New, serif"><font size="2"><font color="#333333"><font face="Consolas, serif"> architecture_type</font></font><font color="#000066"><font face="Consolas, serif">;</font></font></font></font></p>
+
+		</td>
+
+					<td>&nbsp;</td>
+				</tr>
+				<tr>
+		<td width="5%">
+			<img src="QCM6_mat_fichiers/radio_on.gif" alt="radio_on.gif" title="radio_on.gif">		</td>
+		<td width="5%">
+            -		</td>
+		<td width="40%">
+			
+
+	<title></title>
+
+
+<p align="justify"><font size="2"><font color="#000080"><font face="Consolas, serif"><b><font face="Courier New, serif">ARCHITECTURE</font></b></font></font></font><font face="Courier New, serif"><font size="2"><font color="#333333"><font face="Consolas, serif"> architecture_name </font></font><font color="#000080"><font face="Consolas, serif"><b>OF</b></font></font><font color="#333333"><font face="Consolas, serif"> entity_name </font></font><font color="#000080"><font face="Consolas, serif"><b>IS</b></font></font></font></font></p>
+
+<p align="justify"><font color="#333333"><font face="Courier New, serif"><font size="2"><font face="Consolas, serif">Declarations_for_architecture</font></font></font></font></p>
+
+<p align="justify"><font size="2"><font color="#000080"><font face="Consolas, serif"><b><font face="Courier New, serif">BEGIN</font></b></font></font></font></p>
+
+<p align="justify"><font color="#333333"><font face="Courier New, serif"><font size="2"><font face="Consolas, serif">Code</font></font><font color="#000066"><font face="Consolas, serif">;</font></font></font></font></p>
+
+<p align="justify"><font color="#333333">…<font face="Courier New, serif"><font size="2"><font face="Consolas, serif">.</font></font></font></font></p>
+
+<p align="justify"><font size="2"><font color="#000080"><font face="Consolas, serif"><b><font face="Courier New, serif">END</font></b></font></font></font><font face="Courier New, serif"><font size="2"><font color="#333333"><font face="Consolas, serif"> architecture_name</font></font><font color="#000066"><font face="Consolas, serif">;</font></font></font></font></p>
+
+		</td>
+
+					<td>&nbsp;</td>
+				</tr>
+		</tbody></table></div><div class="question_row_answer"><div class="page-header"><h4>28. Laquelle des réponses suivantes ne peut pas être implémentée avec des instructions concurrentes seulement? - Copie</h4></div><div class="ribbon"><div class="rib rib-success"><h3>Exact</h3></div> <h4>Score : <span class="score_exercise">1 / 1</span></h4></div><div id="question_description"></div><table class="table table-striped">
+			<tbody><tr>
+				<th>Choix</th>
+				<th>Choix attendu</th>
+				<th>Réponse</th><th>Commentaire</th></tr>		<tr>
+		<td width="5%">
+			<img src="QCM6_mat_fichiers/radio_off.gif" alt="radio_off.gif" title="radio_off.gif">		</td>
+		<td width="5%">
+            -		</td>
+		<td width="40%">
+			
+
+	<title></title>
+
+
+<p><font face="Arial, serif"><font size="2">Multiplexer</font></font></p>
+
+		</td>
+
+					<td>&nbsp;</td>
+				</tr>
+				<tr>
+		<td width="5%">
+			<img src="QCM6_mat_fichiers/radio_off.gif" alt="radio_off.gif" title="radio_off.gif">		</td>
+		<td width="5%">
+            -		</td>
+		<td width="40%">
+			
+
+	<title></title>
+
+
+<p><font face="Arial, serif"><font size="2">Decoder</font></font></p>
+
+		</td>
+
+					<td>&nbsp;</td>
+				</tr>
+				<tr>
+		<td width="5%">
+			<img src="QCM6_mat_fichiers/radio_off.gif" alt="radio_off.gif" title="radio_off.gif">		</td>
+		<td width="5%">
+            -		</td>
+		<td width="40%">
+			
+
+	<title></title>
+
+
+<p><font face="Arial, serif"><font size="2">Adder</font></font></p>
+
+		</td>
+
+					<td>&nbsp;</td>
+				</tr>
+				<tr>
+		<td width="5%">
+			<img src="QCM6_mat_fichiers/radio_on.gif" alt="radio_on.gif" title="radio_on.gif">		</td>
+		<td width="5%">
+            -		</td>
+		<td width="40%">
+			
+
+	<title></title>
+
+
+<p><font face="Arial, serif"><font size="2">Counter</font></font></p>
+
+		</td>
+
+					<td>&nbsp;</td>
+				</tr>
+		</tbody></table></div><div class="question_row_answer"><div class="page-header"><h4>29. La description d'une entité contient toujours - Copie</h4></div><div class="ribbon"><div class="rib rib-success"><h3>Exact</h3></div> <h4>Score : <span class="score_exercise">1 / 1</span></h4></div><div id="question_description"></div><table class="table table-striped">
+			<tbody><tr>
+				<th>Choix</th>
+				<th>Choix attendu</th>
+				<th>Réponse</th><th>Commentaire</th></tr>		<tr>
+		<td width="5%">
+			<img src="QCM6_mat_fichiers/radio_on.gif" alt="radio_on.gif" title="radio_on.gif">		</td>
+		<td width="5%">
+            -		</td>
+		<td width="40%">
+			
+
+	<title></title>
+
+
+<p>La déclaration des ports contenant la liste des signaux en entrée et en sortie</p>
+
+		</td>
+
+					<td>&nbsp;</td>
+				</tr>
+				<tr>
+		<td width="5%">
+			<img src="QCM6_mat_fichiers/radio_off.gif" alt="radio_off.gif" title="radio_off.gif">		</td>
+		<td width="5%">
+            -		</td>
+		<td width="40%">
+			
+
+	<title></title>
+
+
+<p>La déclaration des signaux internes et des signaux en entrée&nbsp;et en sortie</p>
+
+		</td>
+
+					<td>&nbsp;</td>
+				</tr>
+				<tr>
+		<td width="5%">
+			<img src="QCM6_mat_fichiers/radio_off.gif" alt="radio_off.gif" title="radio_off.gif">		</td>
+		<td width="5%">
+            -		</td>
+		<td width="40%">
+			
+
+	<title></title>
+
+
+<p>La déclaration des composants utilisés</p>
+
+		</td>
+
+					<td>&nbsp;</td>
+				</tr>
+				<tr>
+		<td width="5%">
+			<img src="QCM6_mat_fichiers/radio_off.gif" alt="radio_off.gif" title="radio_off.gif">		</td>
+		<td width="5%">
+            -		</td>
+		<td width="40%">
+			
+
+	<title></title>
+
+
+<p>Les descriptions de processus, d' instances de composants et d'instructions concurrentes</p>
+
+		</td>
+
+					<td>&nbsp;</td>
+				</tr>
+		</tbody></table></div><div class="question_row_answer"><div class="page-header"><h4>30. &nbsp;Quel registre est utilisé dans le code suivant? - Copie</h4></div><div class="ribbon"><div class="rib rib-success"><h3>Exact</h3></div> <h4>Score : <span class="score_exercise">1 / 1</span></h4></div><div id="question_description"><p align="justify"><font face="Courier New, serif"><font size="2"><font color="#000080"><font face="Consolas, serif"><b>library</b></font></font><font color="#333333"><font face="Consolas, serif"> </font></font><font color="#0000ff"><font face="Consolas, serif">ieee</font></font><font color="#000066"><font face="Consolas, serif">;</font></font></font></font></p>
+
+<p align="justify"><font face="Courier New, serif"><font size="2"><font color="#000080"><font face="Consolas, serif"><b>use</b></font></font><font color="#333333"><font face="Consolas, serif"> </font></font><font color="#0000ff"><font face="Consolas, serif">ieee</font></font><font color="#333333"><font face="Consolas, serif">.</font></font><font color="#0000ff"><font face="Consolas, serif">std_logic_1164</font></font><font color="#333333"><font face="Consolas, serif">.</font></font><font color="#000080"><font face="Consolas, serif"><b>all</b></font></font><font color="#000066"><font face="Consolas, serif">;</font></font></font></font></p>
+
+<p align="justify"><font face="Courier New, serif"><font size="2"><font color="#000080"><font face="Consolas, serif"><b>entity</b></font></font><font color="#333333"><font face="Consolas, serif"> shift_siso </font></font><font color="#000080"><font face="Consolas, serif"><b>is</b></font></font></font></font></p>
+
+<p align="justify"><font face="Courier New, serif"><font size="2"><font color="#000080"><font face="Consolas, serif"><b>port</b></font></font><font color="#333333"><font face="Consolas, serif"> </font></font><font color="#000066"><font face="Consolas, serif">(</font></font><font color="#000080"><font face="Consolas, serif"><b>Clock</b></font></font><font color="#333333"><font face="Consolas, serif">, Sin </font></font><font color="#000066"><font face="Consolas, serif">:</font></font><font color="#333333"><font face="Consolas, serif"> </font></font><font color="#000080"><font face="Consolas, serif"><b>in</b></font></font><font color="#333333"><font face="Consolas, serif"> </font></font><font color="#0000ff"><font face="Consolas, serif">std_logic</font></font><font color="#000066"><font face="Consolas, serif">;</font></font></font></font></p>
+
+<p align="justify"><font face="Courier New, serif"><font size="2"><font color="#333333"><font face="Consolas, serif">Sout </font></font><font color="#000066"><font face="Consolas, serif">:</font></font><font color="#333333"><font face="Consolas, serif"> </font></font><font color="#000080"><font face="Consolas, serif"><b>out</b></font></font><font color="#333333"><font face="Consolas, serif"> </font></font><font color="#0000ff"><font face="Consolas, serif">std_logic</font></font><font color="#000066"><font face="Consolas, serif">)</font></font><font color="#000066"><font face="Consolas, serif">;</font></font></font></font></p>
+
+<p align="justify"><font face="Courier New, serif"><font size="2"><font color="#000080"><font face="Consolas, serif"><b>end</b></font></font><font color="#333333"><font face="Consolas, serif"> shift_siso</font></font><font color="#000066"><font face="Consolas, serif">;</font></font></font></font></p>
+
+<p align="justify"><font face="Courier New, serif"><font size="2"><font color="#000080"><font face="Consolas, serif"><b>architecture</b></font></font><font color="#333333"><font face="Consolas, serif"> behav </font></font><font color="#000080"><font face="Consolas, serif"><b>of</b></font></font><font color="#333333"><font face="Consolas, serif"> shift_siso </font></font><font color="#000080"><font face="Consolas, serif"><b>is</b></font></font></font></font></p>
+
+<p align="justify"><font face="Courier New, serif"><font size="2"><font color="#000080"><font face="Consolas, serif"><b>signal</b></font></font><font color="#333333"><font face="Consolas, serif"> temp</font></font><font color="#000066"><font face="Consolas, serif">:</font></font><font color="#333333"><font face="Consolas, serif"> </font></font><font color="#0000ff"><font face="Consolas, serif">std_logic_vector</font></font><font color="#000066"><font face="Consolas, serif">(</font></font><font color="#ff0000"><font face="Consolas, serif">7</font></font><font color="#333333"><font face="Consolas, serif"> </font></font><font color="#000080"><font face="Consolas, serif"><b>downto</b></font></font><font color="#333333"><font face="Consolas, serif"> </font></font><font color="#ff0000"><font face="Consolas, serif">0</font></font><font color="#000066"><font face="Consolas, serif">)</font></font><font color="#000066"><font face="Consolas, serif">;</font></font></font></font></p>
+
+<p align="justify"><font face="Courier New, serif"><font size="2"><font color="#000080"><font face="Consolas, serif"><b>begin</b></font></font></font></font></p>
+
+<p align="justify"><font face="Courier New, serif"><font size="2"><font color="#000080"><font face="Consolas, serif"><b>process</b></font></font><font color="#333333"><font face="Consolas, serif"> </font></font><font color="#000066"><font face="Consolas, serif">(</font></font><font color="#000080"><font face="Consolas, serif"><b>Clock</b></font></font><font color="#000066"><font face="Consolas, serif">)</font></font></font></font></p>
+
+<p align="justify"><font face="Courier New, serif"><font size="2"><font color="#000080"><font face="Consolas, serif"><b>begin</b></font></font></font></font></p>
+
+<p align="justify"><font face="Courier New, serif"><font size="2"><font color="#000080"><font face="Consolas, serif"><b>if</b></font></font><font color="#333333"><font face="Consolas, serif"> </font></font><font color="#000066"><font face="Consolas, serif">(</font></font><font color="#000080"><font face="Consolas, serif"><b>Clock</b></font></font><font color="#ee82ee"><font face="Consolas, serif">'event</font></font><font color="#333333"><font face="Consolas, serif"> </font></font><font color="#000066"><font face="Consolas, serif">and</font></font><font color="#333333"><font face="Consolas, serif"> </font></font><font color="#000080"><font face="Consolas, serif"><b>Clock</b></font></font><font color="#000066"><font face="Consolas, serif">=</font></font><font color="#333333"><font face="Consolas, serif">'</font></font><font color="#ff0000"><font face="Consolas, serif">1</font></font><font color="#333333"><font face="Consolas, serif">'</font></font><font color="#000066"><font face="Consolas, serif">)</font></font><font color="#333333"><font face="Consolas, serif"> </font></font><font color="#000080"><font face="Consolas, serif"><b>then</b></font></font></font></font></p>
+
+<p align="justify"><font face="Courier New, serif"><font size="2"><font color="#000080"><font face="Consolas, serif"><b>for</b></font></font><font color="#333333"><font face="Consolas, serif"> i </font></font><font color="#000080"><font face="Consolas, serif"><b>in</b></font></font><font color="#333333"><font face="Consolas, serif"> </font></font><font color="#ff0000"><font face="Consolas, serif">0</font></font><font color="#333333"><font face="Consolas, serif"> </font></font><font color="#000080"><font face="Consolas, serif"><b>to</b></font></font><font color="#333333"><font face="Consolas, serif"> </font></font><font color="#ff0000"><font face="Consolas, serif">6</font></font><font color="#333333"><font face="Consolas, serif"> </font></font><font color="#000080"><font face="Consolas, serif"><b>loop</b></font></font></font></font></p>
+
+<p align="justify"><font face="Courier New, serif"><font size="2"><font color="#333333"><font face="Consolas, serif">temp</font></font><font color="#000066"><font face="Consolas, serif">(</font></font><font color="#333333"><font face="Consolas, serif">i</font></font><font color="#000066"><font face="Consolas, serif">+</font></font><font color="#ff0000"><font face="Consolas, serif">1</font></font><font color="#000066"><font face="Consolas, serif">)</font></font><font color="#333333"><font face="Consolas, serif"> </font></font><font color="#000066"><font face="Consolas, serif">&lt;=</font></font><font color="#333333"><font face="Consolas, serif"> temp</font></font><font color="#000066"><font face="Consolas, serif">(</font></font><font color="#333333"><font face="Consolas, serif">i</font></font><font color="#000066"><font face="Consolas, serif">)</font></font><font color="#000066"><font face="Consolas, serif">;</font></font></font></font></p>
+
+<p align="justify"><font face="Courier New, serif"><font size="2"><font color="#000080"><font face="Consolas, serif"><b>end</b></font></font><font color="#333333"><font face="Consolas, serif"> </font></font><font color="#000080"><font face="Consolas, serif"><b>loop</b></font></font><font color="#000066"><font face="Consolas, serif">;</font></font></font></font></p>
+
+<p align="justify"><font face="Courier New, serif"><font size="2"><font color="#333333"><font face="Consolas, serif">temp</font></font><font color="#000066"><font face="Consolas, serif">(</font></font><font color="#ff0000"><font face="Consolas, serif">0</font></font><font color="#000066"><font face="Consolas, serif">)</font></font><font color="#333333"><font face="Consolas, serif"> </font></font><font color="#000066"><font face="Consolas, serif">&lt;=</font></font><font color="#333333"><font face="Consolas, serif"> Sin</font></font><font color="#000066"><font face="Consolas, serif">;</font></font></font></font></p>
+
+<p align="justify"><font face="Courier New, serif"><font size="2"><font color="#000080"><font face="Consolas, serif"><b>end</b></font></font><font color="#333333"><font face="Consolas, serif"> </font></font><font color="#000080"><font face="Consolas, serif"><b>if</b></font></font><font color="#333333"><font face="Consolas, serif"> </font></font><font color="#000066"><font face="Consolas, serif">;</font></font></font></font></p>
+
+<p align="justify"><font face="Courier New, serif"><font size="2"><font color="#000080"><font face="Consolas, serif"><b>end</b></font></font><font color="#333333"><font face="Consolas, serif"> </font></font><font color="#000080"><font face="Consolas, serif"><b>process</b></font></font><font color="#000066"><font face="Consolas, serif">;</font></font></font></font></p>
+
+<p align="justify"><font face="Courier New, serif"><font size="2"><font color="#333333"><font face="Consolas, serif">Sout </font></font><font color="#000066"><font face="Consolas, serif">&lt;=</font></font><font color="#333333"><font face="Consolas, serif"> temp</font></font><font color="#000066"><font face="Consolas, serif">(</font></font><font color="#ff0000"><font face="Consolas, serif">7</font></font><font color="#000066"><font face="Consolas, serif">)</font></font><font color="#000066"><font face="Consolas, serif">;</font></font></font></font></p>
+
+<p align="justify"><font face="Courier New, serif"><font size="2"><font color="#000080"><font face="Consolas, serif"><b>end</b></font></font><font color="#333333"><font face="Consolas, serif"> behav</font></font><font color="#000066"><font face="Consolas, serif">;</font></font></font></font></p></div><table class="table table-striped">
+			<tbody><tr>
+				<th>Choix</th>
+				<th>Choix attendu</th>
+				<th>Réponse</th><th>Commentaire</th></tr>		<tr>
+		<td width="5%">
+			<img src="QCM6_mat_fichiers/radio_on.gif" alt="radio_on.gif" title="radio_on.gif">		</td>
+		<td width="5%">
+            -		</td>
+		<td width="40%">
+			
+
+	<title></title>
+
+
+<p align="justify"><font face="Times New Roman, serif"><font size="3"><font color="#555555"><font face="Arial, serif"><font size="2">Serial in serial out</font></font></font></font></font></p>
+
+		</td>
+
+					<td>&nbsp;</td>
+				</tr>
+				<tr>
+		<td width="5%">
+			<img src="QCM6_mat_fichiers/radio_off.gif" alt="radio_off.gif" title="radio_off.gif">		</td>
+		<td width="5%">
+            -		</td>
+		<td width="40%">
+			
+
+	<title></title>
+
+
+<p align="justify"><font face="Times New Roman, serif"><font size="3"><font color="#555555"><font face="Arial, serif"><font size="2">Serial in parallel out</font></font></font></font></font></p>
+
+		</td>
+
+					<td>&nbsp;</td>
+				</tr>
+				<tr>
+		<td width="5%">
+			<img src="QCM6_mat_fichiers/radio_off.gif" alt="radio_off.gif" title="radio_off.gif">		</td>
+		<td width="5%">
+            -		</td>
+		<td width="40%">
+			
+
+	<title></title>
+
+
+<p align="justify"><font face="Times New Roman, serif"><font size="3"><font color="#555555"><font face="Arial, serif"><font size="2">Parallel in parallel out</font></font></font></font></font></p>
+
+		</td>
+
+					<td>&nbsp;</td>
+				</tr>
+				<tr>
+		<td width="5%">
+			<img src="QCM6_mat_fichiers/radio_off.gif" alt="radio_off.gif" title="radio_off.gif">		</td>
+		<td width="5%">
+            -		</td>
+		<td width="40%">
+			
+
+	<title></title>
+
+
+<p align="justify"><font face="Times New Roman, serif"><font size="3"><font color="#555555"><font face="Arial, serif"><font size="2">Parallel in serial out</font></font></font></font></font></p>
+
+		</td>
+
+					<td>&nbsp;</td>
+				</tr>
+		</tbody></table></div><div class="question_row_answer"><div class="page-header"><h4>31. En VHDL, dans une architecture  avant le mot-clé BEGIN, on peut trouver   - Copie</h4></div><div class="ribbon"><div class="rib rib-success"><h3>Exact</h3></div> <h4>Score : <span class="score_exercise">2 / 2</span></h4></div><div id="question_description"><p>&nbsp;ARCHITECTURE TOTO OF TITI IS</p>
+
+<p>- - &lt;===ICI ===</p>
+
+<p>BEGIN</p>
+
+<p>&nbsp;</p>
+
+<p>END&nbsp;</p></div><table class="table table-striped">
+			<tbody><tr>
+				<th>Choix</th>
+				<th>Choix attendu</th>
+				<th>Réponse</th><th>Commentaire</th></tr>		<tr>
+		<td width="5%">
+			<img src="QCM6_mat_fichiers/checkbox_on.gif" alt="checkbox_on.gif" title="checkbox_on.gif">		</td>
+		<td width="5%">
+            -		</td>
+		<td width="40%">
+			
+
+	<title></title>
+
+
+Des déclarations de composants
+
+		</td>
+
+					<td>&nbsp;</td>
+				</tr>
+				<tr>
+		<td width="5%">
+			<img src="QCM6_mat_fichiers/checkbox_off.gif" alt="checkbox_off.gif" title="checkbox_off.gif">		</td>
+		<td width="5%">
+            -		</td>
+		<td width="40%">
+			
+
+	<title></title>
+
+
+Des instances de composant
+
+		</td>
+
+					<td>&nbsp;</td>
+				</tr>
+				<tr>
+		<td width="5%">
+			<img src="QCM6_mat_fichiers/checkbox_on.gif" alt="checkbox_on.gif" title="checkbox_on.gif">		</td>
+		<td width="5%">
+            -		</td>
+		<td width="40%">
+			
+
+	<title></title>
+
+
+Des déclarations de signaux internes
+
+		</td>
+
+					<td>&nbsp;</td>
+				</tr>
+				<tr>
+		<td width="5%">
+			<img src="QCM6_mat_fichiers/checkbox_off.gif" alt="checkbox_off.gif" title="checkbox_off.gif">		</td>
+		<td width="5%">
+            -		</td>
+		<td width="40%">
+			
+
+	<title></title>
+
+
+Des instructions séquentielles et/ou&nbsp;concurrentes
+
+		</td>
+
+					<td>&nbsp;</td>
+				</tr>
+		</tbody></table></div><div class="question_row_answer"><div class="page-header"><h4>32. Dans les quel ordre faut-il mettre les mots clés suivants? - Copie</h4></div><div class="ribbon"><div class="rib rib-success"><h3>Exact</h3></div> <h4>Score : <span class="score_exercise">1 / 1</span></h4></div><div id="question_description"></div><table class="table table-striped">
+			<tbody><tr>
+				<th>Choix</th>
+				<th>Choix attendu</th>
+				<th>Réponse</th><th>Commentaire</th></tr>		<tr>
+		<td width="5%">
+			<img src="QCM6_mat_fichiers/radio_on.gif" alt="radio_on.gif" title="radio_on.gif">		</td>
+		<td width="5%">
+            -		</td>
+		<td width="40%">
+			
+
+	<title></title>
+
+
+<p><font color="#555555"><font face="Arial, serif"><font size="2">IF, THEN, ELSIF, THEN, ELSE</font></font></font></p>
+
+		</td>
+
+					<td>&nbsp;</td>
+				</tr>
+				<tr>
+		<td width="5%">
+			<img src="QCM6_mat_fichiers/radio_off.gif" alt="radio_off.gif" title="radio_off.gif">		</td>
+		<td width="5%">
+            -		</td>
+		<td width="40%">
+			
+
+	<title></title>
+
+
+<p><font color="#555555"><font face="Arial, serif"><font size="2">IF, ELSE, THEN, ELSIF, THEN</font></font></font></p>
+
+		</td>
+
+					<td>&nbsp;</td>
+				</tr>
+				<tr>
+		<td width="5%">
+			<img src="QCM6_mat_fichiers/radio_off.gif" alt="radio_off.gif" title="radio_off.gif">		</td>
+		<td width="5%">
+            -		</td>
+		<td width="40%">
+			
+
+	<title></title>
+
+
+<p><font color="#555555"><font face="Arial, serif"><font size="2">IF, ELSIF, THEN, ELSE, THEN</font></font></font></p>
+
+		</td>
+
+					<td>&nbsp;</td>
+				</tr>
+				<tr>
+		<td width="5%">
+			<img src="QCM6_mat_fichiers/radio_off.gif" alt="radio_off.gif" title="radio_off.gif">		</td>
+		<td width="5%">
+            -		</td>
+		<td width="40%">
+			
+
+	<title></title>
+
+
+<p><font color="#555555"><font face="Arial, serif"><font size="2">IF, THEN, ELSE, THEN, ELSIF</font></font></font></p>
+
+		</td>
+
+					<td>&nbsp;</td>
+				</tr>
+		</tbody></table></div><div class="question_row_answer"><div class="page-header"><h4>33. Quelle sorte d'instruction est le IF? - Copie</h4></div><div class="ribbon"><div class="rib rib-success"><h3>Exact</h3></div> <h4>Score : <span class="score_exercise">1 / 1</span></h4></div><div id="question_description"></div><table class="table table-striped">
+			<tbody><tr>
+				<th>Choix</th>
+				<th>Choix attendu</th>
+				<th>Réponse</th><th>Commentaire</th></tr>		<tr>
+		<td width="5%">
+			<img src="QCM6_mat_fichiers/radio_off.gif" alt="radio_off.gif" title="radio_off.gif">		</td>
+		<td width="5%">
+            -		</td>
+		<td width="40%">
+			
+
+	<title></title>
+
+
+<p><font color="#555555"><font face="Arial, serif"><font size="2">Concurrent</font></font></font></p>
+
+		</td>
+
+					<td>&nbsp;</td>
+				</tr>
+				<tr>
+		<td width="5%">
+			<img src="QCM6_mat_fichiers/radio_on.gif" alt="radio_on.gif" title="radio_on.gif">		</td>
+		<td width="5%">
+            -		</td>
+		<td width="40%">
+			
+
+	<title></title>
+
+
+<p><font color="#555555"><font face="Arial, serif"><font size="2">Sequential</font></font></font></p>
+
+		</td>
+
+					<td>&nbsp;</td>
+				</tr>
+				<tr>
+		<td width="5%">
+			<img src="QCM6_mat_fichiers/radio_off.gif" alt="radio_off.gif" title="radio_off.gif">		</td>
+		<td width="5%">
+            -		</td>
+		<td width="40%">
+			
+
+	<title></title>
+
+
+<p><font color="#555555"><font face="Arial, serif"><font size="2">Assignment</font></font></font></p>
+
+		</td>
+
+					<td>&nbsp;</td>
+				</tr>
+				<tr>
+		<td width="5%">
+			<img src="QCM6_mat_fichiers/radio_off.gif" alt="radio_off.gif" title="radio_off.gif">		</td>
+		<td width="5%">
+            -		</td>
+		<td width="40%">
+			
+
+	<title></title>
+
+
+<p><font color="#555555"><font face="Arial, serif"><font size="2">Selected assignment</font></font></font></p>
+
+		</td>
+
+					<td>&nbsp;</td>
+				</tr>
+		</tbody></table></div><div class="question_row_answer"><div class="page-header"><h4>34. La description d'un composant en VHDL est toujours composée - Copie</h4></div><div class="ribbon"><div class="rib rib-success"><h3>Exact</h3></div> <h4>Score : <span class="score_exercise">1 / 1</span></h4></div><div id="question_description"></div><table class="table table-striped">
+			<tbody><tr>
+				<th>Choix</th>
+				<th>Choix attendu</th>
+				<th>Réponse</th><th>Commentaire</th></tr>		<tr>
+		<td width="5%">
+			<img src="QCM6_mat_fichiers/checkbox_on.gif" alt="checkbox_on.gif" title="checkbox_on.gif">		</td>
+		<td width="5%">
+            -		</td>
+		<td width="40%">
+			
+
+	<title></title>
+
+
+D'une entité et d'une architecture
+
+		</td>
+
+					<td>&nbsp;</td>
+				</tr>
+				<tr>
+		<td width="5%">
+			<img src="QCM6_mat_fichiers/checkbox_off.gif" alt="checkbox_off.gif" title="checkbox_off.gif">		</td>
+		<td width="5%">
+            -		</td>
+		<td width="40%">
+			
+
+	<title></title>
+
+
+D'une entité
+
+		</td>
+
+					<td>&nbsp;</td>
+				</tr>
+				<tr>
+		<td width="5%">
+			<img src="QCM6_mat_fichiers/checkbox_off.gif" alt="checkbox_off.gif" title="checkbox_off.gif">		</td>
+		<td width="5%">
+            -		</td>
+		<td width="40%">
+			
+
+	<title></title>
+
+
+D'une architecture
+
+		</td>
+
+					<td>&nbsp;</td>
+				</tr>
+				<tr>
+		<td width="5%">
+			<img src="QCM6_mat_fichiers/checkbox_off.gif" alt="checkbox_off.gif" title="checkbox_off.gif">		</td>
+		<td width="5%">
+            -		</td>
+		<td width="40%">
+			
+
+	<title></title>
+
+
+D'une entité, d'une architecture et d'une instance
+
+		</td>
+
+					<td>&nbsp;</td>
+				</tr>
+		</tbody></table></div><div class="question_row_answer"><div class="page-header"><h4>35. Un processus contient  - Copie</h4></div><div class="ribbon"><div class="rib rib-success"><h3>Exact</h3></div> <h4>Score : <span class="score_exercise">1 / 1</span></h4></div><div id="question_description"></div><table class="table table-striped">
+			<tbody><tr>
+				<th>Choix</th>
+				<th>Choix attendu</th>
+				<th>Réponse</th><th>Commentaire</th></tr>		<tr>
+		<td width="5%">
+			<img src="QCM6_mat_fichiers/radio_off.gif" alt="radio_off.gif" title="radio_off.gif">		</td>
+		<td width="5%">
+            -		</td>
+		<td width="40%">
+			
+
+	<title></title>
+
+
+<p><font color="#000000"><font face="Times New Roman, serif"><font size="3">toujours une instruction WAIT.</font></font></font></p>
+
+		</td>
+
+					<td>&nbsp;</td>
+				</tr>
+				<tr>
+		<td width="5%">
+			<img src="QCM6_mat_fichiers/radio_off.gif" alt="radio_off.gif" title="radio_off.gif">		</td>
+		<td width="5%">
+            -		</td>
+		<td width="40%">
+			
+
+	<title></title>
+
+
+<p><font color="#000000"><font face="Times New Roman, serif"><font size="3">toujours une liste de sensibilité.</font></font></font></p>
+
+		</td>
+
+					<td>&nbsp;</td>
+				</tr>
+				<tr>
+		<td width="5%">
+			<img src="QCM6_mat_fichiers/radio_off.gif" alt="radio_off.gif" title="radio_off.gif">		</td>
+		<td width="5%">
+            -		</td>
+		<td width="40%">
+			
+
+	<title></title>
+
+
+<p><font color="#000000"><font face="Times New Roman, serif"><font size="3">obligatoirement soit une ou plusieurs instructions WAIT, soit une liste de sensibilité, soit les deux.</font></font></font></p>
+
+		</td>
+
+					<td>&nbsp;</td>
+				</tr>
+				<tr>
+		<td width="5%">
+			<img src="QCM6_mat_fichiers/radio_off.gif" alt="radio_off.gif" title="radio_off.gif">		</td>
+		<td width="5%">
+            -		</td>
+		<td width="40%">
+			
+
+	<title></title>
+
+
+<p><font color="#000000"><font face="Times New Roman, serif"><font size="3">toujours une liste de sensibilité et éventuellement une ou plusieurs instructions WAIT.</font></font></font></p>
+
+		</td>
+
+					<td>&nbsp;</td>
+				</tr>
+				<tr>
+		<td width="5%">
+			<img src="QCM6_mat_fichiers/radio_on.gif" alt="radio_on.gif" title="radio_on.gif">		</td>
+		<td width="5%">
+            -		</td>
+		<td width="40%">
+			
+
+	<title></title>
+
+
+<p><font color="#000000"><font face="Times New Roman, serif"><font size="3">obligatoirement soit une instruction WAIT, soit une liste de sensibilité, mais jamais les deux.</font></font></font></p>
+
+		</td>
+
+					<td>&nbsp;</td>
+				</tr>
+		</tbody></table></div><div class="question_row_answer"><div class="page-header"><h4>36. Le code ci-dessous est une implémentation de  _________ - Copie</h4></div><div class="ribbon"><div class="rib rib-success"><h3>Exact</h3></div> <h4>Score : <span class="score_exercise">1 / 1</span></h4></div><div id="question_description"><p align="justify"><font face="Courier New, serif"><font size="2"><font color="#000080"><font face="Consolas, serif"><b>ARCHITECTURE</b></font></font><font color="#333333"><font face="Consolas, serif"> my_circuit </font></font><font color="#000080"><font face="Consolas, serif"><b>OF</b></font></font><font color="#333333"><font face="Consolas, serif"> my_logic </font></font><font color="#000080"><font face="Consolas, serif"><b>IS</b></font></font></font></font></p>
+
+<p align="justify"><font face="Courier New, serif"><font size="2"><font color="#000080"><font face="Consolas, serif"><b>BEGIN</b></font></font></font></font></p>
+
+<p align="justify"><font face="Courier New, serif"><font size="2"><font color="#000080"><font face="Consolas, serif"><b>WITH</b></font></font><font color="#333333"><font face="Consolas, serif"> ab </font></font><font color="#000080"><font face="Consolas, serif"><b>SELECT</b></font></font></font></font></p>
+
+<p align="justify"><font face="Courier New, serif"><font size="2"><font color="#333333"><font face="Consolas, serif">y </font></font><font color="#000066"><font face="Consolas, serif">&lt;=</font></font><font color="#333333"><font face="Consolas, serif"> x0 </font></font><font color="#000080"><font face="Consolas, serif"><b>WHEN</b></font></font><font color="#333333"><font face="Consolas, serif"> “00”</font></font><font color="#000066"><font face="Consolas, serif">;</font></font></font></font></p>
+
+<p align="justify"><font color="#333333"><font face="Courier New, serif"><font size="2"><font face="Consolas, serif">x1 </font></font><font color="#000080"><font face="Consolas, serif"><b>WHEN</b></font></font><font color="#333333"><font face="Consolas, serif"> “01”</font></font><font color="#000066"><font face="Consolas, serif">;</font></font></font></font></p>
+
+<p align="justify"><font color="#333333"><font face="Courier New, serif"><font size="2"><font face="Consolas, serif">x2 </font></font><font color="#000080"><font face="Consolas, serif"><b>WHEN</b></font></font><font color="#333333"><font face="Consolas, serif"> “</font></font><font color="#ff0000"><font face="Consolas, serif">10</font></font><font color="#333333"><font face="Consolas, serif">”</font></font><font color="#000066"><font face="Consolas, serif">;</font></font></font></font></p>
+
+<p align="justify"><font color="#333333"><font face="Courier New, serif"><font size="2"><font face="Consolas, serif">x3 </font></font><font color="#000080"><font face="Consolas, serif"><b>WHEN</b></font></font><font color="#333333"><font face="Consolas, serif"> “</font></font><font color="#ff0000"><font face="Consolas, serif">11</font></font><font color="#333333"><font face="Consolas, serif">”</font></font><font color="#000066"><font face="Consolas, serif">;</font></font></font></font></p>
+
+<p align="justify"><font face="Courier New, serif"><font size="2"><font color="#000080"><font face="Consolas, serif"><b>END</b></font></font><font color="#333333"><font face="Consolas, serif"> my_circuit</font></font><font color="#000066"><font face="Consolas, serif">;</font></font></font></font></p></div><table class="table table-striped">
+			<tbody><tr>
+				<th>Choix</th>
+				<th>Choix attendu</th>
+				<th>Réponse</th><th>Commentaire</th></tr>		<tr>
+		<td width="5%">
+			<img src="QCM6_mat_fichiers/radio_on.gif" alt="radio_on.gif" title="radio_on.gif">		</td>
+		<td width="5%">
+            -		</td>
+		<td width="40%">
+			
+
+	<title></title>
+
+
+<p align="justify"><font face="Times New Roman, serif"><font size="3"><font color="#555555"><font face="Arial, serif"><font size="2">4 to 1 MUX</font></font></font></font></font></p>
+
+		</td>
+
+					<td>&nbsp;</td>
+				</tr>
+				<tr>
+		<td width="5%">
+			<img src="QCM6_mat_fichiers/radio_off.gif" alt="radio_off.gif" title="radio_off.gif">		</td>
+		<td width="5%">
+            -		</td>
+		<td width="40%">
+			
+
+	<title></title>
+
+
+<p align="justify"><font face="Times New Roman, serif"><font size="3"><font color="#555555"><font face="Arial, serif"><font size="2">1 to 4 DEMUX</font></font></font></font></font></p>
+
+		</td>
+
+					<td>&nbsp;</td>
+				</tr>
+				<tr>
+		<td width="5%">
+			<img src="QCM6_mat_fichiers/radio_off.gif" alt="radio_off.gif" title="radio_off.gif">		</td>
+		<td width="5%">
+            -		</td>
+		<td width="40%">
+			
+
+	<title></title>
+
+
+<p align="justify"><font face="Times New Roman, serif"><font size="3"><font color="#555555"><font face="Arial, serif"><font size="2">8 to 1 MUX</font></font></font></font></font></p>
+
+		</td>
+
+					<td>&nbsp;</td>
+				</tr>
+				<tr>
+		<td width="5%">
+			<img src="QCM6_mat_fichiers/radio_off.gif" alt="radio_off.gif" title="radio_off.gif">		</td>
+		<td width="5%">
+            -		</td>
+		<td width="40%">
+			
+
+	<title></title>
+
+
+<p align="justify"><font face="Times New Roman, serif"><font size="3"><font color="#555555"><font face="Arial, serif"><font size="2">1 to 8 DEMUX</font></font></font></font></font></p>
+
+		</td>
+
+					<td>&nbsp;</td>
+				</tr>
+		</tbody></table></div><div class="question_row_answer"><div class="page-header"><h4>37. La différence entre les simulateurs et les outils de synthèses est  _________ - Copie</h4></div><div class="ribbon"><div class="rib rib-success"><h3>Exact</h3></div> <h4>Score : <span class="score_exercise">1 / 1</span></h4></div><div id="question_description"></div><table class="table table-striped">
+			<tbody><tr>
+				<th>Choix</th>
+				<th>Choix attendu</th>
+				<th>Réponse</th><th>Commentaire</th></tr>		<tr>
+		<td width="5%">
+			<img src="QCM6_mat_fichiers/radio_on.gif" alt="radio_on.gif" title="radio_on.gif">		</td>
+		<td width="5%">
+            -		</td>
+		<td width="40%">
+			
+
+	<title></title>
+
+
+<p><font color="#555555"><font face="Arial, serif"><font size="2">Simulators are used to check the performance of circuit and Synthesis tools are for the fabrication of circuits</font></font></font></p>
+
+		</td>
+
+					<td>&nbsp;</td>
+				</tr>
+				<tr>
+		<td width="5%">
+			<img src="QCM6_mat_fichiers/radio_off.gif" alt="radio_off.gif" title="radio_off.gif">		</td>
+		<td width="5%">
+            -		</td>
+		<td width="40%">
+			
+
+	<title></title>
+
+
+<p><font color="#555555"><font face="Arial, serif"><font size="2">Simulators and Synthesis tools works exactly same</font></font></font></p>
+
+		</td>
+
+					<td>&nbsp;</td>
+				</tr>
+				<tr>
+		<td width="5%">
+			<img src="QCM6_mat_fichiers/radio_off.gif" alt="radio_off.gif" title="radio_off.gif">		</td>
+		<td width="5%">
+            -		</td>
+		<td width="40%">
+			
+
+	<title></title>
+
+
+<p><font color="#555555"><font face="Arial, serif"><font size="2">Simulators
+ are used just to check basic functionality of the circuit and Synthesis
+ tools includes timing constraints and other factors along with 
+simulation</font></font></font></p>
+
+		</td>
+
+					<td>&nbsp;</td>
+				</tr>
+				<tr>
+		<td width="5%">
+			<img src="QCM6_mat_fichiers/radio_off.gif" alt="radio_off.gif" title="radio_off.gif">		</td>
+		<td width="5%">
+            -		</td>
+		<td width="40%">
+			
+
+	<title></title>
+
+
+<p><font color="#555555"><font face="Arial, serif"><font size="2">Simulation finds the error in the code and Synthesis tool corrects the code</font></font></font></p>
+
+		</td>
+
+					<td>&nbsp;</td>
+				</tr>
+		</tbody></table></div><div class="question_row_answer"><div class="page-header"><h4>38. Quelle réponse suivante n'est pas syntaxiquement correcte pour une instruction WAIT? - Copie</h4></div><div class="ribbon"><div class="rib rib-success"><h3>Exact</h3></div> <h4>Score : <span class="score_exercise">1 / 1</span></h4></div><div id="question_description"></div><table class="table table-striped">
+			<tbody><tr>
+				<th>Choix</th>
+				<th>Choix attendu</th>
+				<th>Réponse</th><th>Commentaire</th></tr>		<tr>
+		<td width="5%">
+			<img src="QCM6_mat_fichiers/radio_off.gif" alt="radio_off.gif" title="radio_off.gif">		</td>
+		<td width="5%">
+            -		</td>
+		<td width="40%">
+			
+
+	<title></title>
+
+
+<p><font color="#555555"><font face="Arial, serif"><font size="2">WAIT ON</font></font></font></p>
+
+		</td>
+
+					<td>&nbsp;</td>
+				</tr>
+				<tr>
+		<td width="5%">
+			<img src="QCM6_mat_fichiers/radio_on.gif" alt="radio_on.gif" title="radio_on.gif">		</td>
+		<td width="5%">
+            -		</td>
+		<td width="40%">
+			
+
+	<title></title>
+
+
+<p><font color="#555555"><font face="Arial, serif"><font size="2">WAIT WHILE</font></font></font></p>
+
+		</td>
+
+					<td>&nbsp;</td>
+				</tr>
+				<tr>
+		<td width="5%">
+			<img src="QCM6_mat_fichiers/radio_off.gif" alt="radio_off.gif" title="radio_off.gif">		</td>
+		<td width="5%">
+            -		</td>
+		<td width="40%">
+			
+
+	<title></title>
+
+
+<p><font color="#555555"><font face="Arial, serif"><font size="2">WAIT FOR</font></font></font></p>
+
+		</td>
+
+					<td>&nbsp;</td>
+				</tr>
+				<tr>
+		<td width="5%">
+			<img src="QCM6_mat_fichiers/radio_off.gif" alt="radio_off.gif" title="radio_off.gif">		</td>
+		<td width="5%">
+            -		</td>
+		<td width="40%">
+			
+
+	<title></title>
+
+
+<p><font color="#555555"><font face="Arial, serif"><font size="2">WAIT UNTIL</font></font></font></p>
+
+		</td>
+
+					<td>&nbsp;</td>
+				</tr>
+		</tbody></table></div><div class="question_row_answer"><div class="page-header"><h4>39.
+ Laquelle des réponses ci-dessous est la bonne syntaxe pour convertir 
+l'entier p en un nombre signé de ‘b’ bits (avec le paquetage 
+numeric_std)? - Copie</h4></div><div class="ribbon"><div class="rib rib-success"><h3>Exact</h3></div> <h4>Score : <span class="score_exercise">1 / 1</span></h4></div><div id="question_description"></div><table class="table table-striped">
+			<tbody><tr>
+				<th>Choix</th>
+				<th>Choix attendu</th>
+				<th>Réponse</th><th>Commentaire</th></tr>		<tr>
+		<td width="5%">
+			<img src="QCM6_mat_fichiers/radio_off.gif" alt="radio_off.gif" title="radio_off.gif">		</td>
+		<td width="5%">
+            -		</td>
+		<td width="40%">
+			
+
+	<title></title>
+
+
+<p><font color="#555555"><font face="Arial, serif"><font size="2">to_integer_signed(p,b);</font></font></font></p>
+
+		</td>
+
+					<td>&nbsp;</td>
+				</tr>
+				<tr>
+		<td width="5%">
+			<img src="QCM6_mat_fichiers/radio_off.gif" alt="radio_off.gif" title="radio_off.gif">		</td>
+		<td width="5%">
+            -		</td>
+		<td width="40%">
+			
+
+	<title></title>
+
+
+<p><font color="#555555"><font face="Arial, serif"><font size="2">to_signed_integer(p,b);</font></font></font></p>
+
+		</td>
+
+					<td>&nbsp;</td>
+				</tr>
+				<tr>
+		<td width="5%">
+			<img src="QCM6_mat_fichiers/radio_on.gif" alt="radio_on.gif" title="radio_on.gif">		</td>
+		<td width="5%">
+            -		</td>
+		<td width="40%">
+			
+
+	<title></title>
+
+
+<p><font color="#555555"><font face="Arial, serif"><font size="2">to_signed(p,b);</font></font></font></p>
+
+		</td>
+
+					<td>&nbsp;</td>
+				</tr>
+				<tr>
+		<td width="5%">
+			<img src="QCM6_mat_fichiers/radio_off.gif" alt="radio_off.gif" title="radio_off.gif">		</td>
+		<td width="5%">
+            -		</td>
+		<td width="40%">
+			
+
+	<title></title>
+
+
+<p><font color="#555555"><font face="Arial, serif"><font size="2">to_signed_p(b);</font></font></font></p>
+
+		</td>
+
+					<td>&nbsp;</td>
+				</tr>
+		</tbody></table></div><div class="normal-message">Note : cet exercice est configuré pour ne pas montrer les bonnes réponses.</div><div class="question_row_score"><div class="title-score"><div class="total "><h3>Votre résultat:&nbsp;<span class="score_exercise">39 / 41</span></h3></div></div></div>
+            <script>
+                $(document).ready(
+                    function()
+                    {
+                        $('.ribbon').removeClass('visiblehidden');
+                    }
+                );
+            </script><div class="question-return"><a class="btn btn-primary" href="https://chamilo.grenoble-inp.fr/courses/3AMCE312/index.php?id_session=0">Retour à la page d'accueil</a></div>    </div>
+    </section>
+    <footer>
+    <div class="container">
+        <div class="pre-footer">
+                    </div>
+        <div class="sub-footer">
+            <div class="row">
+                <div class="col-md-4">
+                                        <div class="session-teachers">
+                        
+                    </div>
+                                                            <div class="teachers">
+                        Enseignants : <a href="mailto:Vincent.Beroulle@grenoble-inp.fr" class="clickable_email_link">Beroulle Vincent</a> | <a href="mailto:Francois.Achard@grenoble-inp.fr" class="clickable_email_link">Achard Francois</a> | <a href="mailto:Nikolaos-Foivos.Polychronou@grenoble-inp.org" class="clickable_email_link">Polychronou Nikolaos Foivos</a> | <a href="mailto:Afef.Kchaou@grenoble-inp.fr" class="clickable_email_link">Kchaou Afef</a>
+                    </div>
+                                                        </div>
+                <div class="col-md-4">
+                                    </div>
+                <div class="col-md-4 text-right">
+                                        <div class="software-name">
+	                <a href="https://chamilo.grenoble-inp.fr/" target="_blank">
+                            Créé avec Chamilo
+                        </a>© 2021
+                    </div>
+                                    </div>
+            </div>
+        </div>
+        <div class="extra-footer">
+            
+        </div>
+    </div>
+</footer>
+
+<div class="modal fade" id="expand-image-modal" tabindex="-1" role="dialog" aria-labelledby="expand-image-modal-title" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Fermer"><span aria-hidden="true">×</span></button>
+                <h4 class="modal-title" id="expand-image-modal-title">&nbsp;</h4>
+            </div>
+            <div class="modal-body">
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="global-modal" tabindex="-1" role="dialog" aria-labelledby="global-modal-title" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Fermer">
+                    <span aria-hidden="true">×</span>
+                </button>
+                <h4 class="modal-title" id="global-modal-title">&nbsp;</h4>
+            </div>
+            <div class="modal-body">
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    /* Makes row highlighting possible */
+    $(document).ready( function() {
+        // Date time settings.
+        moment.locale('fr');
+        $.datepicker.setDefaults($.datepicker.regional["fr"]);
+        $.datepicker.regional["local"] = $.datepicker.regional["fr"];
+
+        // Chosen select
+        $(".chzn-select").chosen({
+            disable_search_threshold: 10,
+            no_results_text: 'Aucun\x20r\u00E9sultat\x20trouv\u00E9',
+            placeholder_text_multiple: 'S\u00E9lectionnez\x20une\x20option',
+            placeholder_text_single: 'S\u00E9lectionner\x20une\x20option',
+            width: "100%"
+        });
+
+        // Bootstrap tabs.
+        $('.tab-wrapper a').click(function (e) {
+            e.preventDefault();
+            $(this).tab('show');
+
+            //$('#tabs a:first').tab('show') // Select first tab
+        });
+
+        // Fixes bug when loading links inside a tab.
+        $('.tab-wrapper .tab-pane a').unbind();
+
+        /**
+         * Advanced options
+         * Usage
+         * <a id="link" href="url">Advanced</a>
+         * <div id="link_options">
+         *     hidden content :)
+         * </div>
+         * */
+        $(".advanced_options").on("click", function (event) {
+            event.preventDefault();
+            var id = $(this).attr('id') + '_options';
+            var button = $(this);
+            button.toggleClass('active');
+            $("#" + id).toggle();
+        });
+
+        /**
+         * <a class="advanced_options_open" href="http://" rel="div_id">Open</a>
+         * <a class="advanced_options_close" href="http://" rel="div_id">Close</a>
+         * <div id="div_id">Div content</div>
+         * */
+        $(".advanced_options_open").on("click", function (event) {
+            event.preventDefault();
+            var id = $(this).attr('rel');
+            $("#" + id).show();
+        });
+
+        $(".advanced_options_close").on("click", function (event) {
+            event.preventDefault();
+            var id = $(this).attr('rel');
+            $("#" + id).hide();
+        });
+
+        // Adv multi-select search input.
+        $('.select_class_filter').each( function () {
+            var inputId = $(this).attr('id');
+            inputId = inputId.replace('-filter', '');
+            $("#" + inputId).filterByText($("#" + inputId + "-filter"));
+        });
+
+        $(".jp-jplayer audio").addClass('skip');
+
+        // Mediaelement
+        if ( 1 == 1) {
+            jQuery('video:not(.skip), audio:not(.skip)').mediaelementplayer(/* Options */);
+        }
+
+        // Table highlight.
+        $("form .data_table input:checkbox").click(function () {
+            if ($(this).is(":checked")) {
+                $(this).parentsUntil("tr").parent().addClass("row_selected");
+            } else {
+                $(this).parentsUntil("tr").parent().removeClass("row_selected");
+            }
+        });
+
+        /* For non HTML5 browsers */
+        if ($("#formLogin".length > 1)) {
+            $("input[name=login]").focus();
+        }
+
+        // Tool tip (in exercises)
+        var tip_options = {
+            placement: 'right'
+        };
+        $('.boot-tooltip').tooltip(tip_options);
+        var more = 'En\x20savoir\x20plus';
+        var close = 'Fermer';
+        $('.list-teachers').readmore({
+            speed: 75,
+            moreLink: '<a href="#">' + more + '</a>',
+            lessLink: '<a href="#">' + close + '</a>',
+            collapsedHeight: 35,
+            blockCSS: 'display: block; width: 100%;'
+        });
+    });
+</script>
+
+
+    </div>
+
+<div id="chatmain" class="chatboxmain"><div class="chatboxheadmain"><div class="user_status_main"><img src="QCM6_mat_fichiers/statusoffline.png" alt="statusoffline.png" title="statusoffline.png"></div><div id="chatboxtitlemain">Messagerie (déconnecté)</div><div class="chatboxoptions"></div></div></div></body></html>

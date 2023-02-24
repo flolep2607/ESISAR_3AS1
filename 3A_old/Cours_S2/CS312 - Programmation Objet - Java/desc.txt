@@ -1,0 +1,11 @@
+Progression du cours : CS312 : Programmation Objet - Java ( 50% )
+
+ 
+
+La description du contenu du cours est sur refEns
+
+* Enseignant de CM et responsable : JL Koning
+
+* Chargées de TD : Laure Gonnord (1 groupe) et Nadine Marcos (2 groupes)
+
+* TP : L. Gonnord, N. Marcos et ?

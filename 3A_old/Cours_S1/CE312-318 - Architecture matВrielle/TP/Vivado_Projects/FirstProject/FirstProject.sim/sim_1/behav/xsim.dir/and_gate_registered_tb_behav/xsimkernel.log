@@ -1,0 +1,5 @@
+Running: xsim.dir/and_gate_registered_tb_behav/xsimk.exe -simmode gui -wdb and_gate_registered_tb_behav.wdb -simrunnum 0 -socket 2608
+Design successfully loaded
+Design Loading CPU Usage: 967 ms
+Simulation completed
+Simulation CPU Usage: 967 ms
