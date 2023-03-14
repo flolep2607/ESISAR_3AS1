@@ -7,3 +7,6 @@ nprocess:
 sync:
 	gcc sync.c -o sync.o
 	./sync.o
+users:
+	gcc users.c -o users.o
+	./users.o
