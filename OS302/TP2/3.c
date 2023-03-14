@@ -30,7 +30,7 @@ void ecrire_valeur(const char *path, int valeur)
   }
 }
 
-int tmp = 1;
+int tmp = 777888;
 
 void lesig(int signum){}
 
@@ -63,7 +63,6 @@ int main()
                                 else
                                 {
                                     kill(fils3, SIGUSR1);
-                                    printf("I'm alive bitch\n");
                                 }
                 }
                         }
@@ -78,7 +77,6 @@ int main()
                                 else
                                 {
                                     kill(fils6, SIGUSR1);
-                                    printf("I'm alive bitch\n");
                                 }
                 
                             }
@@ -95,7 +93,6 @@ int main()
                             else
                             {
                                 kill(fils5, SIGUSR1);
-                                printf("I'm alive bitch\n");
                             }
                         }
                     }
@@ -111,7 +108,6 @@ int main()
                         else
                         {
                             kill(fils4, SIGUSR1);
-                            printf("I'm alive bitch\n");
                         }
                     }
                 }
@@ -127,7 +123,6 @@ int main()
                     else
                     {
                         kill(fils3, SIGUSR1);
-                        printf("I'm alive bitch\n");
                     }
                 
                 }
@@ -143,8 +138,8 @@ int main()
                 }
                 else
                 {
+                    kill(getppid(), SIGUSR1);
                     kill(fils2, SIGUSR1);
-                    printf("I'm alive bitch\n");
                 }
                 
             }
@@ -153,6 +148,5 @@ int main()
     else 
     {
         kill(fils1, SIGUSR1);
-        printf("Wanna play a game?\n");
     }
 }
