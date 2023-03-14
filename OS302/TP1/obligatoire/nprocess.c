@@ -8,7 +8,7 @@
 #include <sys/wait.h>
 void fils(int i){
 	printf("Je suis le fils %d et mon pere est %d\n",getpid(),getppid());
-	sleep(2);
+	sleep(2*i);
 	exit(i);
 }
 void pere(){
