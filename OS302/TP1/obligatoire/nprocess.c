@@ -16,7 +16,7 @@ void pere(){
 	pid_t ret_fils;
 	while ((ret_fils=wait(&etat))!=-1)
 	{
-		printf("Le fils %d est mort avec l'etat %d\n",ret_fils,etat);
+		printf("Le fils %d est mort avec l'etat %d\n",ret_fils,WEXITSTATUS(etat));
 	}
 }
 /*
