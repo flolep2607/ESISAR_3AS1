@@ -3,6 +3,8 @@
 #include <sys/types.h>
 #include <sys/wait.h>
 #include <stdlib.h>
+#include <signal.h>
+
 void action(int signum) {}
 
 int main()
