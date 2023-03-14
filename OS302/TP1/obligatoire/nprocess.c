@@ -13,10 +13,10 @@ void fils(int i){
 }
 void pere(){
 	int etat;
-	pid_t fils_id;
-	while ((fils_id=wait(&etat))!=-1)
+	pid_t ret_fils;
+	while ((ret_fils=wait(&etat))!=-1)
 	{
-		printf("Le fils %d est mort avec l'etat %d\n",fils_id,etat);
+		printf("Le fils %d est mort avec l'etat %d\n",ret_fils,etat);
 	}
 }
 /*
