@@ -1,8 +1,24 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <unistd.h>
-
-
+#include <grp.h>
+#include <pwd.h>
+#include <stdio.h>
+#include <sys/types.h>
+#include <sys/wait.h>
+void fils(int i){
+	printf("Je suis le fils %d et mon pere est %d\n",getpid(),getppid());
+	sleep(2);
+	exit(i);
+}
+void pere(){
+	int etat;
+	pid_t fils_id;
+	while ((fils_id=wait(&etat))!=-1)
+	{
+		printf("Le fils %d est mort avec l'etat %d\n",fils_id,etat);
+	}
+}
 /*
  * Dans main, on indique comment  utiliser les parametres passes sur la
  * ligne de commande
