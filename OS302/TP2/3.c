@@ -4,11 +4,155 @@
 #include <sys/wait.h>
 #include <stdlib.h>
 #include <signal.h>
+#define TAILLE_MAX 20
 
-void lesig(int signum) {}
+int lire_valeur(const char *path)
+{
+  FILE *fichier;
+  char chaine[TAILLE_MAX];
+  int valeur;
+  fichier = fopen(path, "r");
+  if (fichier != NULL) {
+    /* On lit au maximum TAILLE_MAX caractères du fichier, ce qui est lu est stocké dans `chaine` */
+    fgets(chaine, TAILLE_MAX, fichier);
+    fclose(fichier);
+    valeur = atoi(chaine);
+  }
+  return valeur;
+}
+
+void ecrire_valeur(const char *path, int valeur)
+{
+  FILE *fichier = fopen(path, "w");
+  if (fichier != NULL) {
+    fprintf(fichier, "%d", valeur);
+    fclose(fichier);
+  }
+}
+
+int tmp = 1;
+
+void lesig(int signum){}
 
 int main()
 {
     pid_t fils1 = fork();
-    
+    if (fils1 == 0)
+    {
+        pid_t fils2 = fork();
+        if (fils2 == 0)
+        {   
+            pid_t fils3 = fork();
+            if (fils3 == 0)
+            {
+                pid_t fils4 = fork();
+                if (fils4 == 0)
+                {
+                    pid_t fils5 = fork();
+                    if (fils5 == 0)
+                    {
+                        pid_t fils6 = fork();
+                        if (fils6 == 0)
+                        {
+                            if(signal(SIGUSR1, lesig))
+                                {
+                                if(getpid() == tmp)
+                                {
+                                    kill(fils2, SIGKILL);
+                                }
+                                else
+                                {
+                                    kill(fils3, SIGUSR1);
+                                    printf("I'm alive bitch\n");
+                                }
+                }
+                        }
+                        else 
+                        {
+                            if(signal(SIGUSR1, lesig))
+                            {
+                                if(getpid() == tmp)
+                                {   
+                                    kill(fils5, SIGKILL);
+                                }
+                                else
+                                {
+                                    kill(fils6, SIGUSR1);
+                                    printf("I'm alive bitch\n");
+                                }
+                
+                            }
+                        }
+                    }
+                    else 
+                    {
+                        if(signal(SIGUSR1, lesig))
+                        {
+                            if(getpid() == tmp)
+                            {
+                                kill(fils4, SIGKILL);
+                            }
+                            else
+                            {
+                                kill(fils5, SIGUSR1);
+                                printf("I'm alive bitch\n");
+                            }
+                        }
+                    }
+                }
+                else 
+                {
+                    if(signal(SIGUSR1, lesig))
+                    {
+                        if(getpid() == tmp)
+                        {
+                            kill(fils3, SIGKILL);
+                        }
+                        else
+                        {
+                            kill(fils4, SIGUSR1);
+                            printf("I'm alive bitch\n");
+                        }
+                    }
+                }
+            }
+            else 
+            {
+                if(signal(SIGUSR1, lesig))
+                {
+                    if(getpid() == tmp)
+                    {
+                        kill(fils2, SIGKILL);
+                    }
+                    else
+                    {
+                        kill(fils3, SIGUSR1);
+                        printf("I'm alive bitch\n");
+                    }
+                
+                }
+            }
+        }
+        else 
+        {
+            if(signal(SIGUSR1, lesig))
+            {
+                if(getpid() == tmp)
+                {
+                    kill(fils1, SIGKILL);
+                }
+                else
+                {
+                    kill(fils2, SIGUSR1);
+                    printf("I'm alive bitch\n");
+                }
+                
+            }
+        }
+    }
+    else 
+    {
+        kill(fils1, SIGUSR1);
+        printf("Wanna play a game?\n");
+    }
 }
