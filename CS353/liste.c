@@ -2,9 +2,9 @@
 #include <stdlib.h>
 
 typedef struct Client {
-    int numero;
-    int prixAppel;
-    int nbAppel;
+    unsigned numero;
+    unsigned prixAppel;
+    unsigned nbAppel;
     struct Client *suivant;
 } client;
 
@@ -18,7 +18,7 @@ typedef struct Client {
 #define NBCLIENT 20000
 #endif
 
-struct Client *createClient(int numero, int nbAppel, int prixAppel) {
+struct Client *createClient(unsigned numero, unsigned nbAppel, unsigned prixAppel) {
      struct Client *client = malloc(sizeof(struct Client));
      client->numero = numero;
      client->nbAppel = nbAppel;
@@ -27,7 +27,7 @@ struct Client *createClient(int numero, int nbAppel, int prixAppel) {
      return client;
 }
 
-struct Client* addLogLine(struct Client **liste, int numero, int prixAppel) {
+struct Client* addLogLine(struct Client **liste, unsigned numero, unsigned prixAppel) {
      struct Client *client = *liste;
      struct Client *precedent = NULL;
      while (client != NULL && numero > client->numero) {
@@ -40,6 +40,7 @@ struct Client* addLogLine(struct Client **liste, int numero, int prixAppel) {
      }else{
           struct Client *newClient = createClient(numero, 1, prixAppel);
           if (precedent == NULL) {
+               newClient->suivant = *liste;
                *liste = newClient;
           } else {
                precedent->suivant = newClient;
@@ -63,8 +64,8 @@ int main() {
     client *liste = NULL;
 
     int i;
-    int numeroTel;
-    int prixAppel;
+    unsigned numeroTel;
+    unsigned prixAppel;
 
     // Aide au calcul du pourcentage d'avancement
     int pas = NBLOGLINE / 100;
@@ -73,7 +74,7 @@ int main() {
 
     for (i = 0; i < NBLOGLINE; i++) {
         // Génération d'un numéro de telephone portable
-        numeroTel = 600000000 + (rand() % NBCLIENT);
+        numeroTel = 600000000 + (-i);//(rand() % NBCLIENT);
 
         // Donne un prix d'appel compris entre 0.01 et 4 euros
         prixAppel = (rand() % 400) + 1;
