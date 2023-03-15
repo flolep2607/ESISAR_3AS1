@@ -50,7 +50,7 @@ struct Client* addLogLine(struct Client *liste, int numero, int prixAppel) {
 
 void dumpListe(struct Client *liste) {
      struct Client *client = liste;
-     while (client->suivant != NULL)
+     while (client != NULL)
      {
           printf("Numéro : %d, Prix de l'Appel : %d, Nombre d'appels : %d\n", client->numero, client->prixAppel, client->nbAppel);
           struct Client * tmp = client;
