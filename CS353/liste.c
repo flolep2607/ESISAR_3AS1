@@ -39,12 +39,9 @@ struct Client* addLogLine(struct Client **liste, int numero, int prixAppel) {
           client->prixAppel += prixAppel;
      }else{
           struct Client *newClient = createClient(numero, 1, prixAppel);
-          // printf("newClient->numero = %d\n",newClient->numero);
           if (precedent == NULL) {
-               // printf("change liste\n");
                *liste = newClient;
           } else {
-               // printf("change precedent->suivant\n");
                precedent->suivant = newClient;
           }
      }
