@@ -27,10 +27,10 @@ struct Client *createClient(int numero, int nbAppel, int prixAppel) {
      return client;
 }
 
-struct Client* addLogLine(struct Client *liste, int numero, int prixAppel) {
-     struct Client *client = liste;
+struct Client* addLogLine(struct Client **liste, int numero, int prixAppel) {
+     struct Client *client = *liste;
      struct Client *precedent = NULL;
-     while (client != NULL && client->numero <= numero) {
+     while (client != NULL && numero > client->numero) {
           precedent = client;
           client = client->suivant;
      }
@@ -39,13 +39,16 @@ struct Client* addLogLine(struct Client *liste, int numero, int prixAppel) {
           client->prixAppel += prixAppel;
      }else{
           struct Client *newClient = createClient(numero, 1, prixAppel);
+          // printf("newClient->numero = %d\n",newClient->numero);
           if (precedent == NULL) {
-               liste = newClient;
+               // printf("change liste\n");
+               *liste = newClient;
           } else {
+               // printf("change precedent->suivant\n");
                precedent->suivant = newClient;
           }
      }
-     return liste;
+     return *liste;
 }
 
 void dumpListe(struct Client *liste) {
@@ -55,7 +58,7 @@ void dumpListe(struct Client *liste) {
           printf("Numéro : %d, Prix de l'Appel : %d, Nombre d'appels : %d\n", client->numero, client->prixAppel, client->nbAppel);
           struct Client * tmp = client;
           client = tmp->suivant;
-          free(tmp);
+          // free(tmp);
      }
 }
 
@@ -79,7 +82,7 @@ int main() {
         prixAppel = (rand() % 400) + 1;
 
         // Ajout de cette ligne de log dans la liste des clients
-        if (!addLogLine(liste, numeroTel, prixAppel)) break;
+        if (!addLogLine(&liste, numeroTel, prixAppel)) break;
         //
         // printf("numero=%d prix = %d\n",numeroTel,prixAppel);
 
