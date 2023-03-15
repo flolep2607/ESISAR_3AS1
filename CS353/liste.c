@@ -43,6 +43,9 @@ struct Client* addLogLine(struct Client **liste, unsigned numero, unsigned prixA
                newClient->suivant = *liste;
                *liste = newClient;
           } else {
+               if(client != NULL){
+                    newClient->suivant = client;
+               }
                precedent->suivant = newClient;
           }
      }
