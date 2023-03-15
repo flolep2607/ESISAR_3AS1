@@ -74,7 +74,7 @@ int main() {
 
     for (i = 0; i < NBLOGLINE; i++) {
         // Génération d'un numéro de telephone portable
-        numeroTel = 600000000 + (-i);//(rand() % NBCLIENT);
+        numeroTel = 600000000 + (rand() % NBCLIENT);
 
         // Donne un prix d'appel compris entre 0.01 et 4 euros
         prixAppel = (rand() % 400) + 1;
