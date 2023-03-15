@@ -27,8 +27,8 @@ struct Client *createClient(int numero, int nbAppel, int prixAppel) {
      return client;
 }
 
-struct Client* addLogLine(struct Client **liste, int numero, int prixAppel) {
-     struct Client *client = *liste;
+struct Client* addLogLine(struct Client *liste, int numero, int prixAppel) {
+     struct Client *client = liste;
      struct Client *precedent = NULL;
      struct Client *newClient = NULL;
      while (client != NULL && client->numero <= numero) {
@@ -42,7 +42,7 @@ struct Client* addLogLine(struct Client **liste, int numero, int prixAppel) {
      }else{
           newClient = createClient(numero, 1, prixAppel);
           if (precedent == NULL) {
-               *liste = newClient;
+               liste = newClient;
           } else {
                precedent->suivant = newClient;
           }
