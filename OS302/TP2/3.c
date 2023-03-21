@@ -4,6 +4,7 @@
 #include <sys/wait.h>
 #include <stdlib.h>
 #include <signal.h>
+#include <stdbool.h>
 #define TAILLE_MAX 20
 
 int lire_valeur(const char *path)
@@ -36,6 +37,46 @@ void lesig(int signum){}
 
 int main()
 {
+    pid_t fils[6];
+    bool father=true;
+    for (size_t i = 0; i < 6; i++)
+    {
+        if (fils[i]=fork())
+        {
+            fils[i] = fork();
+        }
+        else
+        {
+            break;
+        }
+    }
+    if(signal(SIGUSR1, lesig))
+        {
+            if(getpid() == tmp)
+            {
+                kill(fils[4], SIGKILL);
+            }
+            else
+            {
+                kill(fils[5], SIGUSR1);
+            }
+        }
+    }
+    else
+    {
+        if(signal(SIGUSR1, lesig))
+        {
+            if(getpid() == tmp)
+            {
+                kill(fils[3], SIGKILL);
+            }
+            else
+            {
+                kill(fils[4], SIGUSR1);
+            }
+        }
+    }
+    
     pid_t fils1 = fork();
     if (fils1 == 0)
     {
