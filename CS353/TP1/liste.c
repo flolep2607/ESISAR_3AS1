@@ -15,7 +15,7 @@ typedef struct Client {
 
 // Nombre de clients
 #ifndef NBCLIENT
-#define NBCLIENT 20000
+#define NBCLIENT 2000
 #endif
 
 struct Client *createClient(unsigned numero, unsigned nbAppel, unsigned prixAppel) {
@@ -54,12 +54,13 @@ struct Client* addLogLine(struct Client **liste, unsigned numero, unsigned prixA
 
 void dumpListe(struct Client *liste) {
      struct Client *client = liste;
+     struct Client * tmp=NULL;
      while (client != NULL)
      {
           printf("Numéro : %d, Prix de l'Appel : %d, Nombre d'appels : %d\n", client->numero, client->prixAppel, client->nbAppel);
-          struct Client * tmp = client;
+          tmp = client;
           client = tmp->suivant;
-          // free(tmp);
+          free(tmp);
      }
 }
 

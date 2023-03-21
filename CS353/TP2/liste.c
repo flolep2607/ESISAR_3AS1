@@ -1,3 +1,6 @@
+#include <stdio.h>
+#include <stdlib.h>
+
 #include <stdlib.h> 
 #include <stdio.h> 
 
@@ -8,7 +11,8 @@ typedef struct Client {
 	struct Client * gauche;
 	struct Client * droite;
  
-} client; 
+} client;
+
 
 // Nombre total de lignes dans le fichier
 #ifndef NBLOGLINE
@@ -22,23 +26,82 @@ typedef struct Client {
 
 struct Client * creerClient(int numeroTel, int nbAppel,int cout)
 {
+    client* nouveau = (client*) malloc(sizeof(client));
+    nouveau->numero = numeroTel;
+    nouveau->nbAppel = nbAppel;
+    nouveau->prixAppel = cout;
+    nouveau->gauche = NULL;
+    nouveau->droite = NULL;
+    return nouveau;
 }
 
+struct Client * createSampleTree(){
+    client *abr = creerClient(10,1,10);
+    inserer(&abr,5,5);
+    inserer(&abr,15,15);
+    inserer(&abr,3,3);
+    inserer(&abr,7,7);
+    inserer(&abr,12,12);
+    inserer(&abr,17,17);
+    inserer(&abr,1,1);
+    inserer(&abr,4,4);
+    inserer(&abr,6,6);
+    inserer(&abr,8,8);
+    inserer(&abr,11,11);
+    inserer(&abr,13,13);
+    inserer(&abr,16,16);
+    inserer(&abr,18,18);
+    inserer(&abr,2,2);
+    inserer(&abr,9,9);
+    inserer(&abr,14,14);
+    inserer(&abr,19,19);
+    return abr;
+}
 struct Client * chercher(struct Client * abr,int numeroTel)
 {
+    if (abr == NULL) return NULL;
+    if (abr->numero == numeroTel) return abr;
+    if (abr->numero > numeroTel) return chercher(abr->gauche,numeroTel);
+    return chercher(abr->droite,numeroTel);
 }
 
 struct Client *inserer(struct Client ** abr, int numeroTel, int prixAppel)
 {
+    if (*abr == NULL) {
+        *abr = creerClient(numeroTel,1,prixAppel);
+        return *abr;
+    }
+    if ((*abr)->numero == numeroTel) {
+        (*abr)->nbAppel++;
+        (*abr)->prixAppel += prixAppel;
+        return *abr;
+    }
+    if ((*abr)->numero > numeroTel) return inserer(&((*abr)->gauche),numeroTel,prixAppel);
+    return inserer(&((*abr)->droite),numeroTel,prixAppel);
 }
 
 struct Client *supprimerClient(struct Client ** abr, int numeroTel)
 {
+    if (*abr == NULL) return NULL;
+    if ((*abr)->numero == numeroTel) {
+        client *tmp = *abr;
+        if ((*abr)->gauche == NULL) {
+            *abr = (*abr)->droite;
+        } else {
+            client *tmp2 = *abr;
+            *abr = (*abr)->gauche;
+            inserer(abr,tmp2->droite->numero,tmp2->droite->prixAppel);
+        }
+        return tmp;
+    }
+    if ((*abr)->numero > numeroTel) return supprimerClient(&((*abr)->gauche),numeroTel);
+    return supprimerClient(&((*abr)->droite),numeroTel);
 }
 
 
 void parcourirInfixe(struct Client * abr)
 {
+
 }	
 
 int main() 
@@ -82,5 +145,3 @@ int main()
     }
     printf("****** Fin Facturation appels telephoniques ******\n");    
 }
- 
-
