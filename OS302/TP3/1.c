@@ -12,5 +12,18 @@ int main(int argc, char *argv[])
 		printf("Utilisation : %s executable !\n", argv[0]);
 		return EXIT_FAILURE;
 	}
-    int pipe(int pipefd[2]);
+    int pipefd[2];
+    pipe(pipefd);
+    pid_t ret = fork();
+    if (ret == 0)
+    {
+        system(argv[2]);
+    }
+    else
+    {
+        dup2(pipefd[0], STDIN_FILENO);
+        system(argv[1]);
+    }
+    /*char buffer[500];
+    read(fd[0], buffer, 500);*/
 }
