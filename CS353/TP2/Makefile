@@ -1,5 +1,3 @@
-time: liste.o
-	time ./liste.o
-
-liste.o:
+time:
 	@gcc liste.c -o liste.o -Wall -Werror -g
+	time ./liste.o

@@ -19,7 +19,9 @@ typedef struct Client {
 #define NBCLIENT 20000
 #endif
 
-struct Client *creerClient(int numeroTel, int nbAppel, int cout) {
+
+
+client *creerClient(int numeroTel, int nbAppel, int cout) {
     client *nouveau = (client *)malloc(sizeof(client));
     nouveau->numero = numeroTel;
     nouveau->nbAppel = nbAppel;
@@ -29,19 +31,7 @@ struct Client *creerClient(int numeroTel, int nbAppel, int cout) {
     return nouveau;
 }
 
-struct Client *createSampleTree() {
-    client *abr = creerClient(10, 1, 10);
-    inserer(&abr, 5, 5);
-    return abr;
-}
-struct Client *chercher(struct Client *abr, int numeroTel) {
-    if (abr == NULL) return NULL;
-    if (abr->numero == numeroTel) return abr;
-    if (abr->numero > numeroTel) return chercher(abr->gauche, numeroTel);
-    return chercher(abr->droite, numeroTel);
-}
-
-struct Client *inserer(struct Client **abr, int numeroTel, int prixAppel) {
+client *inserer(client **abr, int numeroTel, int prixAppel) {
     if (*abr == NULL) {
         *abr = creerClient(numeroTel, 1, prixAppel);
         return *abr;
@@ -54,8 +44,28 @@ struct Client *inserer(struct Client **abr, int numeroTel, int prixAppel) {
     if ((*abr)->numero > numeroTel) return inserer(&((*abr)->gauche), numeroTel, prixAppel);
     return inserer(&((*abr)->droite), numeroTel, prixAppel);
 }
+client *createSampleTree() {
+    client *abr = creerClient(15, 1, 1);
+    inserer(&abr, 12, 1);
+    inserer(&abr, 8, 1);
+    inserer(&abr, 10, 1);
+    inserer(&abr, 14, 1);
+    inserer(&abr, 13, 1);
+    inserer(&abr, 20, 1);
+    inserer(&abr, 16, 1);
+    inserer(&abr, 17, 1);
+    inserer(&abr, 21, 1);
+    return abr;
+}
+client *chercher(client *abr, int numeroTel) {
+    if (abr == NULL) return NULL;
+    if (abr->numero == numeroTel) return abr;
+    if (abr->numero > numeroTel) return chercher(abr->gauche, numeroTel);
+    return chercher(abr->droite, numeroTel);
+}
 
-struct Client *supprimerClient(struct Client **abr, int numeroTel) {
+
+client *supprimerClient(client **abr, int numeroTel) {
     if (*abr == NULL) return NULL;
     if ((*abr)->numero == numeroTel) {
         client *tmp = *abr;
@@ -72,15 +82,18 @@ struct Client *supprimerClient(struct Client **abr, int numeroTel) {
     return supprimerClient(&((*abr)->droite), numeroTel);
 }
 
-void parcourirInfixe(struct Client *abr) {
+void parcourirInfixe(client *abr) {
     if (abr == NULL) return;
     parcourirInfixe(abr->gauche);
+    printf("Numero : %d, nbAppel : %d, prixAppel : %d\n", abr->numero, abr->nbAppel, abr->prixAppel);
     parcourirInfixe(abr->droite);
 }
 
 int main() {
     client *liste = NULL;
-
+    liste=createSampleTree();
+    parcourirInfixe(liste);
+    return 0;
     int i;
     int numeroTel;
     int prixAppel;
