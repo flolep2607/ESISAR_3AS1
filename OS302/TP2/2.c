@@ -9,7 +9,7 @@ void second(int signum) {
     
 }
 
-int main()
+int main() // On a 3 fils, un pour les heures, un pour les minutes et un pour les secondes
 {
     pid_t H = fork();
     if(H == 0)
@@ -20,7 +20,7 @@ int main()
             pid_t S = fork();
             int compteur = 0;
             if(S == 0)
-            {
+            { // On est dans le fils des secondes, on va donc incrémenter le compteur toutes les secondes et envoyer un signal au fils des minutes lorsque le compteur atteint 60
                 while (1)
                 {
                     alarm(1);
@@ -38,7 +38,7 @@ int main()
                 }
             }
             else
-            {   
+            {   // Ici on est dans le fils des minutes, on fait de même que dans le fils des secondes mais on envoie un signal au fils des heures cette fois-ci
                 while (1)
                 {
                     if (signal(SIGALRM, second))
@@ -59,7 +59,7 @@ int main()
         {
             int compteur2 = 0;
             while (1)
-                {
+                { // Ici on est dans le fils des heures, on fait de même que dans les deux autres fils mais on envoie un signal au père lorsque le compteur atteint 24
                     if (signal(SIGALRM, second))
                     {
                         printf("%d heures\n", compteur2);
