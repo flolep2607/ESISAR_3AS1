@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdbool.h>
 
 typedef struct Client {
     int numero;
@@ -32,20 +33,35 @@ client *creerClient(int numeroTel, int nbAppel, int cout) {
 }
 
 client *inserer(client **abr, int numeroTel, int prixAppel) {
-    if (*abr == NULL) {
-        *abr = creerClient(numeroTel, 1, prixAppel);
-        return *abr;
+    client *start=*abr;
+    bool end=false;
+    while (start!=NULL && !end)
+    {
+        if (start->numero == numeroTel) {
+            start->nbAppel++;
+            start->prixAppel += prixAppel;
+            return *abr;
+        }
+        if (start->numero > numeroTel){
+            if(start->gauche==NULL){
+                start->gauche=creerClient(numeroTel, 1, prixAppel);
+                return *abr;
+            }
+            start=start->gauche;
+        }else{
+            if(start->droite==NULL){
+                start->droite=creerClient(numeroTel, 1, prixAppel);
+                return *abr;
+            }
+            start=start->droite;
+        }
     }
-    if ((*abr)->numero == numeroTel) {
-        (*abr)->nbAppel++;
-        (*abr)->prixAppel += prixAppel;
-        return *abr;
-    }
-    if ((*abr)->numero > numeroTel) return inserer(&((*abr)->gauche), numeroTel, prixAppel);
-    return inserer(&((*abr)->droite), numeroTel, prixAppel);
+    *abr=creerClient(numeroTel, 1, prixAppel);
+    return *abr;
 }
 client *createSampleTree() {
-    client *abr = creerClient(15, 1, 1);
+    client *abr=NULL;
+    inserer(&abr, 15, 1);
     inserer(&abr, 12, 1);
     inserer(&abr, 8, 1);
     inserer(&abr, 10, 1);
