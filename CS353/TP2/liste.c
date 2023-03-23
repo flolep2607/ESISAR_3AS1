@@ -91,9 +91,9 @@ void parcourirInfixe(client *abr) {
 
 int main() {
     client *liste = NULL;
-    liste=createSampleTree();
-    parcourirInfixe(liste);
-    return 0;
+    // liste=createSampleTree();
+    // parcourirInfixe(liste);
+    // return 0;
     int i;
     int numeroTel;
     int prixAppel;
