@@ -12,11 +12,11 @@ typedef struct Client {
 
 // Nombre total de lignes dans le fichier
 #ifndef NBLOGLINE
-#define NBLOGLINE 1000000
+#define NBLOGLINE 2000000
 #endif
 // Nombre de clients
 #ifndef NBCLIENT
-#define NBCLIENT 20000
+#define NBCLIENT 2000000
 #endif
 
 
@@ -85,7 +85,7 @@ client *supprimerClient(client **abr, int numeroTel) {
 void parcourirInfixe(client *abr) {
     if (abr == NULL) return;
     parcourirInfixe(abr->gauche);
-    printf("Numero : %d, nbAppel : %d, prixAppel : %d\n", abr->numero, abr->nbAppel, abr->prixAppel);
+    // printf("Numero : %d, nbAppel : %d, prixAppel : %d\n", abr->numero, abr->nbAppel, abr->prixAppel);
     parcourirInfixe(abr->droite);
 }
 
