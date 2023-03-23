@@ -1,32 +1,26 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include <stdlib.h> 
-#include <stdio.h> 
+typedef struct Client {
+    int numero;
+    int prixAppel;
+    int nbAppel;
+    struct Client *gauche;
+    struct Client *droite;
 
-typedef struct Client { 
-	int numero; 
-	int prixAppel; 
-	int nbAppel; 
-	struct Client * gauche;
-	struct Client * droite;
- 
 } client;
-
 
 // Nombre total de lignes dans le fichier
 #ifndef NBLOGLINE
-#define NBLOGLINE    1000000
+#define NBLOGLINE 1000000
 #endif
 // Nombre de clients
 #ifndef NBCLIENT
-#define NBCLIENT    20000
+#define NBCLIENT 20000
 #endif
 
-
-struct Client * creerClient(int numeroTel, int nbAppel,int cout)
-{
-    client* nouveau = (client*) malloc(sizeof(client));
+struct Client *creerClient(int numeroTel, int nbAppel, int cout) {
+    client *nouveau = (client *)malloc(sizeof(client));
     nouveau->numero = numeroTel;
     nouveau->nbAppel = nbAppel;
     nouveau->prixAppel = cout;
@@ -35,40 +29,21 @@ struct Client * creerClient(int numeroTel, int nbAppel,int cout)
     return nouveau;
 }
 
-struct Client * createSampleTree(){
-    client *abr = creerClient(10,1,10);
-    inserer(&abr,5,5);
-    inserer(&abr,15,15);
-    inserer(&abr,3,3);
-    inserer(&abr,7,7);
-    inserer(&abr,12,12);
-    inserer(&abr,17,17);
-    inserer(&abr,1,1);
-    inserer(&abr,4,4);
-    inserer(&abr,6,6);
-    inserer(&abr,8,8);
-    inserer(&abr,11,11);
-    inserer(&abr,13,13);
-    inserer(&abr,16,16);
-    inserer(&abr,18,18);
-    inserer(&abr,2,2);
-    inserer(&abr,9,9);
-    inserer(&abr,14,14);
-    inserer(&abr,19,19);
+struct Client *createSampleTree() {
+    client *abr = creerClient(10, 1, 10);
+    inserer(&abr, 5, 5);
     return abr;
 }
-struct Client * chercher(struct Client * abr,int numeroTel)
-{
+struct Client *chercher(struct Client *abr, int numeroTel) {
     if (abr == NULL) return NULL;
     if (abr->numero == numeroTel) return abr;
-    if (abr->numero > numeroTel) return chercher(abr->gauche,numeroTel);
-    return chercher(abr->droite,numeroTel);
+    if (abr->numero > numeroTel) return chercher(abr->gauche, numeroTel);
+    return chercher(abr->droite, numeroTel);
 }
 
-struct Client *inserer(struct Client ** abr, int numeroTel, int prixAppel)
-{
+struct Client *inserer(struct Client **abr, int numeroTel, int prixAppel) {
     if (*abr == NULL) {
-        *abr = creerClient(numeroTel,1,prixAppel);
+        *abr = creerClient(numeroTel, 1, prixAppel);
         return *abr;
     }
     if ((*abr)->numero == numeroTel) {
@@ -76,12 +51,11 @@ struct Client *inserer(struct Client ** abr, int numeroTel, int prixAppel)
         (*abr)->prixAppel += prixAppel;
         return *abr;
     }
-    if ((*abr)->numero > numeroTel) return inserer(&((*abr)->gauche),numeroTel,prixAppel);
-    return inserer(&((*abr)->droite),numeroTel,prixAppel);
+    if ((*abr)->numero > numeroTel) return inserer(&((*abr)->gauche), numeroTel, prixAppel);
+    return inserer(&((*abr)->droite), numeroTel, prixAppel);
 }
 
-struct Client *supprimerClient(struct Client ** abr, int numeroTel)
-{
+struct Client *supprimerClient(struct Client **abr, int numeroTel) {
     if (*abr == NULL) return NULL;
     if ((*abr)->numero == numeroTel) {
         client *tmp = *abr;
@@ -90,46 +64,42 @@ struct Client *supprimerClient(struct Client ** abr, int numeroTel)
         } else {
             client *tmp2 = *abr;
             *abr = (*abr)->gauche;
-            inserer(abr,tmp2->droite->numero,tmp2->droite->prixAppel);
+            inserer(abr, tmp2->droite->numero, tmp2->droite->prixAppel);
         }
         return tmp;
     }
-    if ((*abr)->numero > numeroTel) return supprimerClient(&((*abr)->gauche),numeroTel);
-    return supprimerClient(&((*abr)->droite),numeroTel);
+    if ((*abr)->numero > numeroTel) return supprimerClient(&((*abr)->gauche), numeroTel);
+    return supprimerClient(&((*abr)->droite), numeroTel);
 }
 
+void parcourirInfixe(struct Client *abr) {
+    if (abr == NULL) return;
+    parcourirInfixe(abr->gauche);
+    parcourirInfixe(abr->droite);
+}
 
-void parcourirInfixe(struct Client * abr)
-{
-
-}	
-
-int main() 
-{
-    client *liste=NULL; 
+int main() {
+    client *liste = NULL;
 
     int i;
     int numeroTel;
     int prixAppel;
 
     // Aide au calcul du pourcentage d'avancement
-    int pas = NBLOGLINE/100;
-    for(i=0;i<NBLOGLINE;i++)
-    {
-
+    int pas = NBLOGLINE / 100;
+    for (i = 0; i < NBLOGLINE; i++) {
         // Génération d'un numéro de telephone portable
-        numeroTel = 600000000+(rand() % NBCLIENT);
+        numeroTel = 600000000 + (rand() % NBCLIENT);
 
         // Donne un prix d'appel compris entre 0.01 et 4 euros
-        prixAppel = (rand() % 400)+1;
+        prixAppel = (rand() % 400) + 1;
 
         // Ajout de cette ligne de log dans la liste des clients
-   	if (inserer(&liste ,numeroTel,prixAppel)==NULL) break; 
+        if (inserer(&liste, numeroTel, prixAppel) == NULL) break;
 
         // Affichage du pourcentage d'avancement
-        if ((i % pas)==0)
-        {
-             printf("Done  = %d %%...\n",i/pas);
+        if ((i % pas) == 0) {
+            printf("Done  = %d %%...\n", i / pas);
         }
     }
 
@@ -139,9 +109,11 @@ int main()
 
     printf("****** Suppression de la facturation appels telephoniques ******\n");
 
-    for (i=0;i<NBCLIENT;i++) {
-	 client *tmp=NULL; 
-	if ((tmp=supprimerClient(&liste,600000000+i)) != NULL) { free(tmp); }
+    for (i = 0; i < NBCLIENT; i++) {
+        client *tmp = NULL;
+        if ((tmp = supprimerClient(&liste, 600000000 + i)) != NULL) {
+            free(tmp);
+        }
     }
-    printf("****** Fin Facturation appels telephoniques ******\n");    
+    printf("****** Fin Facturation appels telephoniques ******\n");
 }

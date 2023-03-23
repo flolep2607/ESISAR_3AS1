@@ -8,6 +8,9 @@
 #include <sys/types.h>
 #include <sys/wait.h>
 #include <unistd.h>
+#include <stdio.h>
+#include <signal.h>
+#include <unistd.h>
 #define TAILLE_MAX 20
 
 int lire_valeur(const char *path) {
@@ -31,21 +34,25 @@ void ecrire_valeur(const char *path, int valeur) {
         fclose(fichier);
     }
 }
-void ignore_signal(int signum) {}
 
+void o(){}
 void f_fils(int valeur) {
     bool dead = false;
-    signal(SIGUSR1, ignore_signal);
-    sigset_t set;
-    sigemptyset(&set);
-
     while (!dead) {
-        sigsuspend(&set);
-        lire_valeur("/tmp/barillet");
+        if(signal(SIGUSR1, o)){
+            if(lire_valeur("/tmp/barillet") == valeur) {
+                printf("Le fils %d est mort\n", valeur);
+                dead = true;
+            }
+            kill(getppid(), SIGUSR1);
+        }else if(signal(SIGUSR2, o)){
+            printf("liberez tous mes bannis\n");
+            dead=true;
+        }
     }
     exit(0);
 }
-int tmp = 777888;
+
 int main() {
     pid_t fils[6];
     for (size_t i = 0; i < 6; i++) {
@@ -54,6 +61,12 @@ int main() {
             f_fils(i + 1);
         }
     }
-    signal(SIGUSR1, ignore_signal);
-    ecrire_valeur("/tmp/barillet", );
+    signal(SIGUSR1, o);
+    bool one_dead=false;
+    while(!one_dead){
+        for(int i=0;i<6;i++){
+            ecrire_valeur("/tmp/barillet", (rand()%6)+1);
+            kill(fils[i],SIGUSR1);
+        }
+    }
 }
