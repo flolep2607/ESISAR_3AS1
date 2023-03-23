@@ -12,4 +12,4 @@
 	./2.o
 1:
 	gcc 1.c -o 1.o
-	./1.o
+	./1.o 'ls -l' 'grep rwx'
