@@ -12,7 +12,7 @@ typedef struct Client {
 
 // Nombre total de lignes dans le fichier
 #ifndef NBLOGLINE
-#define NBLOGLINE 1_000_000
+#define NBLOGLINE 1000000
 #endif
 // Nombre de clients
 #ifndef NBCLIENT
