@@ -1,6 +1,6 @@
+#include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <stdbool.h>
 
 typedef struct Client {
     int numero;
@@ -20,8 +20,6 @@ typedef struct Client {
 #define NBCLIENT 2000000
 #endif
 
-
-
 client *creerClient(int numeroTel, int nbAppel, int cout) {
     client *nouveau = (client *)malloc(sizeof(client));
     nouveau->numero = numeroTel;
@@ -33,34 +31,33 @@ client *creerClient(int numeroTel, int nbAppel, int cout) {
 }
 
 client *inserer(client **abr, int numeroTel, int prixAppel) {
-    client *start=*abr;
-    bool end=false;
-    while (start!=NULL && !end)
-    {
+    client *start = *abr;
+    bool end = false;
+    while (start != NULL && !end) {
         if (start->numero == numeroTel) {
             start->nbAppel++;
             start->prixAppel += prixAppel;
             return *abr;
         }
-        if (start->numero > numeroTel){
-            if(start->gauche==NULL){
-                start->gauche=creerClient(numeroTel, 1, prixAppel);
+        if (start->numero > numeroTel) {
+            if (start->gauche == NULL) {
+                start->gauche = creerClient(numeroTel, 1, prixAppel);
                 return *abr;
             }
-            start=start->gauche;
-        }else{
-            if(start->droite==NULL){
-                start->droite=creerClient(numeroTel, 1, prixAppel);
+            start = start->gauche;
+        } else {
+            if (start->droite == NULL) {
+                start->droite = creerClient(numeroTel, 1, prixAppel);
                 return *abr;
             }
-            start=start->droite;
+            start = start->droite;
         }
     }
-    *abr=creerClient(numeroTel, 1, prixAppel);
+    *abr = creerClient(numeroTel, 1, prixAppel);
     return *abr;
 }
 client *createSampleTree() {
-    client *abr=NULL;
+    client *abr = NULL;
     inserer(&abr, 15, 1);
     inserer(&abr, 12, 1);
     inserer(&abr, 8, 1);
@@ -80,22 +77,30 @@ client *chercher(client *abr, int numeroTel) {
     return chercher(abr->droite, numeroTel);
 }
 
-
 client *supprimerClient(client **abr, int numeroTel) {
-    if (*abr == NULL) return NULL;
-    if ((*abr)->numero == numeroTel) {
-        client *tmp = *abr;
-        if ((*abr)->gauche == NULL) {
-            *abr = (*abr)->droite;
+    client *start = *abr;
+    bool end = false;
+    while (start != NULL && !end) {
+        if (start->numero == numeroTel) {
+            if (start->gauche == NULL) start = start->droite;
+            else if (start->droite == NULL) start = start->gauche;
+            else {
+                client *tmp = start;
+                start = start->droite;
+                while (start->gauche != NULL) {
+                    start = start->gauche;
+                }
+                tmp=start;
+                start=start->droite;
+            }
+            return *abr;
+        } else if (start->numero > numeroTel) {
+            start = start->gauche;
         } else {
-            client *tmp2 = *abr;
-            *abr = (*abr)->gauche;
-            inserer(abr, tmp2->droite->numero, tmp2->droite->prixAppel);
+            start = start->droite;
         }
-        return tmp;
     }
-    if ((*abr)->numero > numeroTel) return supprimerClient(&((*abr)->gauche), numeroTel);
-    return supprimerClient(&((*abr)->droite), numeroTel);
+    return *abr;
 }
 
 void parcourirInfixe(client *abr) {
