@@ -1,5 +1,9 @@
 1:
 	@echo "o"
+	gcc client.c -g -o client.o
+	gcc serveur.c -g -o serveur.o
+	./serveur.o
+	./client.o 2 + 2
 
 2:
 	rm /tmp/cle1; touch /tmp/cle1

@@ -1,6 +1,6 @@
 #include "calcul.h"
 
-#include <stdlib.h>
+// #include <stdlib.h>
 #include <stdio.h>
 #include <unistd.h>
 #include <sys/ipc.h>
@@ -22,7 +22,7 @@ int main(int argc, char const *argv[])
 	/* ATTENTION : la file de messages doit avoir ete creee par le serveur. Il
 	 * faudrait tester la valeur de retour (msg_id) pour verifier que cette
 	 * creation a bien eu lieu. */
-	key_t ma_cle = ftok(argv[1], 0);
+	key_t ma_cle = ftok("/media/lysio4/0FEA11880FEA1188/Cours \3A/TPs/OS302/TP4/calcul.h", 0);
 	msg_id = msgget(ma_cle, IPC_CREAT | 0x660);
 	printf("CLIENT %d: preparation du message contenant l'operation suivante:\
 		   	%d %c %d\n",
@@ -32,14 +32,19 @@ int main(int argc, char const *argv[])
 	 * informations necessaires */
 	/* A COMPLETER */
 	/* envoi du message */
-
-	msgsnd(/* A COMPLETER */);
+	msg.type = 1;
+	msg.operande1 = atoi(argv[1]);
+	msg.operande2 = atoi(argv[3]);
+	msg.operateur = argv[2][0];
+	msg.pid = getpid();
+	printf("YOLO %d\n", msg.pid);
+	msgsnd(msg_id, &msg, sizeof(struct msg_struct) - sizeof(long), 0);
 
 	/* reception de la reponse */
 
-	msgrcv(/* A COMPLETER */);
+	msgrcv(msg_id, &msg, sizeof(struct msg_struct) - sizeof(long), getpid(), 0);
 	printf("CLIENT: resultat recu depuis le serveur %d : %d\n",
 
-		   /* A COMPLETER */);
+		   msg.pid, msg.resultat);
 	return EXIT_SUCCESS;
 }
