@@ -9,7 +9,7 @@
 int main(int argc, char const *argv[])
 {
 	int msg_id;
-	struct msg_struct msg;
+	struct msg_struct *msg = malloc(sizeof(struct msg_struct));
 
 	if (argc != 4)
 	{
@@ -22,8 +22,14 @@ int main(int argc, char const *argv[])
 	/* ATTENTION : la file de messages doit avoir ete creee par le serveur. Il
 	 * faudrait tester la valeur de retour (msg_id) pour verifier que cette
 	 * creation a bien eu lieu. */
-	key_t ma_cle = ftok("/media/lysio4/0FEA11880FEA1188/Cours \3A/TPs/OS302/TP4/calcul.h", 0);
-	msg_id = msgget(ma_cle, IPC_CREAT | 0x660);
+	key_t ma_cle = ftok("key", 0);
+	msg_id = msgget(ma_cle, 0);
+	if (msg_id == -1)
+	{
+		perror("msg_id error");
+		exit(1);
+	}
+
 	printf("CLIENT %d: preparation du message contenant l'operation suivante:\
 		   	%d %c %d\n",
 		   getpid(), atoi(argv[1]), argv[2][0], atoi(argv[3]));
@@ -32,19 +38,24 @@ int main(int argc, char const *argv[])
 	 * informations necessaires */
 	/* A COMPLETER */
 	/* envoi du message */
-	msg.type = 1;
-	msg.operande1 = atoi(argv[1]);
-	msg.operande2 = atoi(argv[3]);
-	msg.operateur = argv[2][0];
-	msg.pid = getpid();
-	printf("YOLO %d\n", msg.pid);
-	msgsnd(msg_id, &msg, sizeof(struct msg_struct) - sizeof(long), 0);
+	msg->type = 1;
+	msg->operande1 = atoi(argv[1]);
+	msg->operande2 = atoi(argv[3]);
+	msg->operateur = argv[2][0];
+	msg->pid = getpid();
+	printf("YOLO %d\n", msg->pid);
+	int snd = msgsnd(msg_id, &msg, sizeof(struct msg_struct) - sizeof(long), 0);
+	if (snd == -1)
+	{
+		printf("Erreur d'envoi\n");
+		return EXIT_FAILURE;
+	}
 
 	/* reception de la reponse */
 
-	msgrcv(msg_id, &msg, sizeof(struct msg_struct) - sizeof(long), getpid(), 0);
+	msgrcv(msg_id, msg, sizeof(struct msg_struct) - sizeof(long), getpid(), 0);
 	printf("CLIENT: resultat recu depuis le serveur %d : %d\n",
 
-		   msg.pid, msg.resultat);
+		   msg->pid, msg->resultat);
 	return EXIT_SUCCESS;
 }
