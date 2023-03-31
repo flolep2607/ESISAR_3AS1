@@ -70,15 +70,40 @@ int testInsertButActuallyGood()
 {
     insertItem(1000, "Sucre", 20.50);
     insertItem(60, "Sel", 695.23);
-    insertItem(995, "Poudre bleue", 999.99);
-    //dumpItems();
-    suppressItem(995);
+    insertItem(16, "Poudre bleue", 999.99);
+    // dumpItems();
+    suppressItem(1000);
     insertItem(666, "Fromage", 59.23);
-    //dumpItems();
+    // dumpItems();
     updateItem(60, "Sel de Guérin", 69.52);
+    // dumpItems();
+    insertItem(1234, "Apple", 1.99);
+    insertItem(5678, "Banana", 0.99);
+    insertItem(32, "Orange", 2.49);
+    // dumpItems();
+    suppressItem(5678);
+    suppressItem(16);
+    insertItem(2468, "Grapes", 3.99);
+    // dumpItems();
+    updateItem(1234, "Red Apple", 2.49);
     dumpItems();
     return 0;
 }
+
+// int testInsertButAnotherOne()
+// {
+//     insertItem(1234, "Apple", 1.99);
+//     insertItem(5678, "Banana", 0.99);
+//     insertItem(32, "Orange", 2.49);
+//     //dumpItems();
+//     suppressItem(5678);
+//     suppressItem(32);
+//     insertItem(2468, "Grapes", 3.99);
+//     //dumpItems();
+//     updateItem(1234, "Red Apple", 2.49);
+//     dumpItems();
+//     return 0;
+// }
 
 int main()
 {
@@ -89,7 +114,9 @@ int main()
     init();
     //
     testInsertButActuallyGood();
+    // testInsertButAnotherOne();
     printf("=======Gestionnaire de magasin ======\n");
-
+    rebuildTable();
+    dumpItems();
     return 0;
 }

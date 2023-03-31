@@ -162,24 +162,26 @@ Item *getItem(unsigned int itemCode)
  * Si le produit n'existe pas, alors la fonction retourne UPDATE_NO_ROW (-5)
  *----------------------------------------------------------------------------*/
 int updateItem(unsigned int itemCode, char *itemName, float itemPrice)
-{//TODO: updateItem (modifier de façon à ce que ça marche)
-    Item itemToUpdate = *getItem(itemCode);
-    // int indexToUpdate = itemToUpdate.index;
-    printf("itemToUpdate.code = %d\n", itemToUpdate.code);
-    strcpy(itemToUpdate.name, itemName);
-    printf("itemToUpdate.name = %s\n", itemToUpdate.name);
-    printf("itemToUpdate.price = %f\n", itemToUpdate.price);
-    itemToUpdate.price = itemPrice;
-    printf("itemToUpdate.price = %f\n", itemToUpdate.price);
-    return SUCCESS;
-    //return UPDATE_NO_ROW;
+{
+    int index;
+    for (int i = 0; i < TABLE_SIZE; i++)
+    {
+        index = hashkey(itemCode, i);
+        if (hash_table[index].status == USED_ITEM && hash_table[index].code == itemCode)
+        {
+            strcpy(hash_table[index].name, itemName);
+            hash_table[index].price = itemPrice;
+            return SUCCESS;
+        }
+    }
+    return UPDATE_NO_ROW;
 }
 
 /*----------------------------------------------------------------------------
  * la fonction de réorganisation in situ:
  *----------------------------------------------------------------------------*/
 void rebuildTable()
-{
+{//TODO: faire fonctionner ça tout court lol
     for (int i = 0; i < TABLE_SIZE; i++)
     {
         hash_table[i].dirty = 1;
@@ -192,8 +194,13 @@ void rebuildTable()
         }
         else if (hash_table[i].status == USED_ITEM)
         {
-            insertItem(hash_table[i].code, hash_table[i].name, hash_table[i].price);
+            uint32_t codeTMP = hash_table[i].code;
+            char nameTMP[ITEM_NAME_SIZE];
+            strcpy(nameTMP, hash_table[i].name);
+            float priceTMP = hash_table[i].price;
+            suppressItem(hash_table[i].code);
+            insertItem(codeTMP, nameTMP, priceTMP);
         }
-        hash_table->dirty = 1;
+        hash_table->dirty = 0;
     }
 }
