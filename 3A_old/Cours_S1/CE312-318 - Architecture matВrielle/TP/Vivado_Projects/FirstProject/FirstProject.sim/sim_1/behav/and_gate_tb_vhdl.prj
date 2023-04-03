@@ -1,3 +1,0 @@
-# compile vhdl design source files
-vhdl xil_defaultlib  "../../../and_gate.vhd"
-vhdl xil_defaultlib  "../../../and_gate_tb.vhd"
