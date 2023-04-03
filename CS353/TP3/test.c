@@ -5,110 +5,43 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "store.h"
+#include <stdlib.h>
 
 /*----------------------------------------------------------------------------
  * Cette fonction Compte le nombre d'essai avant d'arriver sur l'item.
  *----------------------------------------------------------------------------*/
 
-// Liste chaînée faite pour le type Result (il s'agit d'une liste chaînée d'Items)
-
-typedef struct structResult
-{
-    Item *item;
-    struct structResult *next;
-} Result;
-
-// int testInsert()
-// {
-//     int r, ind = 0;
-//     int tab[TABLE_SIZE];
-//     Result *res;
-
-//     r = 0;
-//     ind = 0;
-//     // if ( insertItem(300,"ToFind",r*1.0) == SUCCESS ) { tab[r]=ind; r++; }
-//     // if ( insertItem(400,"ToFind",r*1.0) == SUCCESS ) { tab[r]=ind; r++; }
-
-//     while (r < TABLE_SIZE)
-//     {
-//         ind = rand() % 50000;
-//         if (insertItem(ind, "NONAME", r * 1.0) == SUCCESS)
-//         {
-//             tab[r] = ind;
-//             r++;
-//         }
-//     }
-
-//     printf("Insert OK\n");
-//     // dumpItems();
-//     for (r = 0; r < TABLE_SIZE / 100; r++)
-//     {
-//         if (updateItem(tab[r], "ToFind", r * 1.0) != SUCCESS)
-//             return 0;
-//     }
-
-//     printf("Update OK\n");
-//     dumpItems();
-//     // res = *getItem("ToFind");
-//     // while (res)
-//     // {
-//     //     printf("res=%d prix %.2f\n", res->item->code, res->item->price);
-//     //     res = res->next;
-//     // }
-//     // res = NULL;
-
-//     // res = *getItemWithIndex("ToFind");
-//     // while (res)
-//     // {
-//     //     printf("Index res=%d prix %.2f\n", res->item->code, res->item->price);
-//     //     res = res->next;
-//     // }
-//     return 1;
-// }
-
-int testInsertButActuallyGood()
-{
-    insertItem(1000, "Sucre", 20.50);
-    insertItem(60, "Sel", 695.23);
-    insertItem(16, "Poudre bleue", 999.99);
-    // dumpItems();
-    suppressItem(1000);
-    insertItem(666, "Fromage", 59.23);
-    // dumpItems();
-    updateItem(60, "Sel de Guérin", 69.52);
-    // dumpItems();
-    insertItem(1234, "Apple", 1.99);
-    insertItem(5678, "Banana", 0.99);
-    insertItem(32, "Orange", 2.49);
-    // dumpItems();
-    suppressItem(5678);
-    suppressItem(16);
-    insertItem(2468, "Grapes", 3.99);
-    // dumpItems();
-    updateItem(1234, "Red Apple", 2.49);
+void testInsert() {
+    insertItem(1, "item1", 1.0f);
+    insertItem(6, "item6", 6.0f);
+    insertItem(2, "item2", 2.0f);
+    insertItem(11, "item11", 11.0f);
+    insertItem(3, "item3", 3.0f);
+    insertItem(60007, "item60007", 11.0f);
+    insertItem(4, "item4", 4.0f);
+    insertItem(5, "item5", 5.0f);
+    insertItem(6, "item6", 6.0f);
+    insertItem(7, "item7", 7.0f);
+    insertItem(8, "item8", 8.0f);
+    insertItem(9, "item9", 9.0f);
+    insertItem(10, "item10", 10.0f);
+    insertItem(11, "item11", 11.0f);
+    insertItem(11, "item11", 11.0f);
+    insertItem(11, "item11", 11.0f);
+    for(int i=10;i>0;i--){
+        int r=rand();
+        insertItem(r, "item", (float)(r%10));
+    }
     dumpItems();
-    return 0;
+    for(int i=0;i<5;i--){
+        suppressItem(i);
+    }
+    dumpItems();
+    rebuildTable();
+    dumpItems();
 }
 
-// int testInsertButAnotherOne()
-// {
-//     insertItem(1234, "Apple", 1.99);
-//     insertItem(5678, "Banana", 0.99);
-//     insertItem(32, "Orange", 2.49);
-//     //dumpItems();
-//     suppressItem(5678);
-//     suppressItem(32);
-//     insertItem(2468, "Grapes", 3.99);
-//     //dumpItems();
-//     updateItem(1234, "Red Apple", 2.49);
-//     dumpItems();
-//     return 0;
-// }
-
-int main()
-{
-    // int nb = 0, r;
-    //
+int main() {
     printf("****** Gestionnaire de magasin ******\n");
     //
     init();
