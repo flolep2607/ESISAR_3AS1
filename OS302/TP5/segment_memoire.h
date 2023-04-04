@@ -31,3 +31,4 @@ int afficher_info_segment(int shmid);
  * shmid : l'identificateur du segment
  * retourn -1 en cas d'erreur */
 int detruire_segment(int shmid);
+#endif
