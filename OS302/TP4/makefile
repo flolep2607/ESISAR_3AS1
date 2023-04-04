@@ -3,7 +3,7 @@
 	gcc client.c -g -o client.o
 	gcc serveur.c -g -o serveur.o
 	./serveur.o &
-	./client.o 2 '+' 2
+	./client.o 2 '*' 69
 
 2:
 	rm /tmp/key1; touch /tmp/key1; chmod 777 /tmp/key1

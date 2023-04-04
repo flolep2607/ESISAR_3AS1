@@ -1,6 +1,6 @@
 #include "calcul.h"
 
-// #include <stdlib.h>
+#include <stdlib.h>
 #include <stdio.h>
 #include <signal.h>
 #include <unistd.h>
@@ -26,9 +26,9 @@ int main(int argc, char const *argv[])
 
 	for (i_sig = 0; i_sig < NSIG; i_sig++)
 	{
-		signal(i_sig,raz_msg); 
+		signal(i_sig, raz_msg);
 	}
-	
+
 	key_t ma_cle = ftok("key", 0);
 	msg_id = msgget(ma_cle, IPC_CREAT | 0660);
 	if (msg_id == -1)
@@ -36,10 +36,11 @@ int main(int argc, char const *argv[])
 		perror("msg_id error");
 		exit(1);
 	}
-	else {
+	else
+	{
 		printf("SERVEUR: pret!\n");
 	}
-	
+
 	while (1 == 1)
 	{
 		/* reception */
@@ -72,13 +73,13 @@ int main(int argc, char const *argv[])
 			break;
 		}
 		msg->resultat = result;
-		printf("%d\n", msg->resultat);
-		printf("%d\n", msg->operande1);
-		printf("%d\n", msg->operande2);
-		printf("%d\n", msg->operateur);
-		printf("SERVEUR: envoie de la réponse: %d\n", msg->resultat);
+		// printf("%d\n", msg->resultat);
+		// printf("%d\n", msg->operande1);
+		// printf("%d\n", msg->operande2);
+		// printf("%d\n", msg->operateur);
+		printf("SERVEUR: envoi de la réponse: %d\n", msg->resultat);
 		msgsnd(msg_id, msg, sizeof(struct msg_struct) - sizeof(long), 0);
 	}
-	unlink("key");
+	free(msg);
 	return EXIT_SUCCESS;
 }
