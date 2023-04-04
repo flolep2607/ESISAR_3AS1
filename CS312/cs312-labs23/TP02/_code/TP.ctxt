@@ -1,0 +1,7 @@
+#BlueJ class context
+comment0.target=TP
+comment1.params=nom
+comment1.target=TP(java.lang.String)
+comment2.params=s
+comment2.target=void\ addSalle(SalleTP)
+numComments=3

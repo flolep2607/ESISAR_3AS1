@@ -1,0 +1,11 @@
+#BlueJ class context
+comment0.target=Salle
+comment1.params=c\ n
+comment1.target=Salle(int,\ java.lang.String)
+comment2.params=
+comment2.target=java.lang.String\ toString()
+comment3.params=
+comment3.target=int\ getCapacite()
+comment4.params=
+comment4.target=java.lang.String\ getNom()
+numComments=5

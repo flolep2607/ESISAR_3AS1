@@ -1,0 +1,7 @@
+#BlueJ class context
+comment0.target=SalleCTD
+comment1.params=capacite\ nom
+comment1.target=SalleCTD(int,\ java.lang.String)
+comment2.params=
+comment2.target=java.lang.String\ toString()
+numComments=3

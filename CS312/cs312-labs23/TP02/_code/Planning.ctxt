@@ -1,0 +1,17 @@
+#BlueJ class context
+comment0.target=Planning
+comment1.params=
+comment1.target=Planning()
+comment2.params=
+comment2.target=java.lang.String\ toString()
+comment3.params=c
+comment3.target=boolean\ verifCreneau(Creneau)
+comment4.params=c
+comment4.target=void\ addCreneau(Creneau)
+comment5.params=groupe
+comment5.target=java.util.List\ planningGroupe(Groupe)
+comment6.params=groupe
+comment6.target=float\ totalHeuresGroupe(Groupe)
+comment7.params=args
+comment7.target=void\ main(java.lang.String[])
+numComments=8

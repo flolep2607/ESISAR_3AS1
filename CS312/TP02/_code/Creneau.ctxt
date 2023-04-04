@@ -1,0 +1,21 @@
+#BlueJ class context
+comment0.target=Creneau
+comment1.params=a\ m\ j\ h\ min\ d\ s\ ac
+comment1.target=Creneau(int,\ int,\ int,\ int,\ int,\ int,\ Salle,\ Activite)
+comment2.params=
+comment2.target=boolean\ verifSalle()
+comment3.params=
+comment3.target=boolean\ verifCapacite()
+comment4.params=
+comment4.target=boolean\ verifDuree()
+comment5.params=
+comment5.target=Salle\ getSalle()
+comment6.params=
+comment6.target=Activite\ getActivite()
+comment7.params=
+comment7.target=int\ getDuree()
+comment8.params=
+comment8.target=java.lang.String\ toString()
+comment9.params=c
+comment9.target=boolean\ intersection(Creneau)
+numComments=10

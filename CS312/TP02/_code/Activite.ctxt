@@ -1,0 +1,15 @@
+#BlueJ class context
+comment0.target=Activite
+comment1.params=nom
+comment1.target=Activite(java.lang.String)
+comment2.params=groupe
+comment2.target=void\ addGroupe(Groupe)
+comment3.params=s
+comment3.target=void\ addSalle(Salle)
+comment4.params=
+comment4.target=java.util.ArrayList\ getSalles()
+comment5.params=
+comment5.target=java.util.ArrayList\ getGroupes()
+comment6.params=
+comment6.target=java.lang.String\ toString()
+numComments=7

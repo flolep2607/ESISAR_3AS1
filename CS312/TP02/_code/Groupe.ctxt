@@ -1,0 +1,11 @@
+#BlueJ class context
+comment0.target=Groupe
+comment1.params=n\ e
+comment1.target=Groupe(java.lang.String,\ int)
+comment2.params=
+comment2.target=int\ getEffectif()
+comment3.params=
+comment3.target=java.lang.String\ getNom()
+comment4.params=
+comment4.target=java.lang.String\ toString()
+numComments=5
