@@ -50,8 +50,7 @@ int main(int argc, char const *argv[])
 			printf("Erreur de reception\n");
 			return EXIT_FAILURE;
 		}
-		printf("SERVEUR: reception d'une requete de la part de: %d\n",
-			   msg->pid);
+		printf("SERVEUR: reception d'une requete de la part de: %d\n",msg->pid);
 		/* preparation de la reponse */
 		/* A COMPLETER */
 		/* envoi de la reponse */
@@ -80,5 +79,6 @@ int main(int argc, char const *argv[])
 		printf("SERVEUR: envoie de la réponse: %d\n", msg->resultat);
 		msgsnd(msg_id, msg, sizeof(struct msg_struct) - sizeof(long), 0);
 	}
+	unlink("key");
 	return EXIT_SUCCESS;
 }
