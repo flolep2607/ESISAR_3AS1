@@ -18,7 +18,10 @@ int main(int argc, char const *argv[])
 	}
 
 	/* il faut eviter la division par zero */
-	/* A COMPLETER */
+	if (argv[2][0] == '/' && atoi(argv[3]) == 0) {
+		printf("Erreur: Division par zero\n");
+		return EXIT_FAILURE;
+	}
 	/* ATTENTION : la file de messages doit avoir ete creee par le serveur. Il
 	 * faudrait tester la valeur de retour (msg_id) pour verifier que cette
 	 * creation a bien eu lieu. */
@@ -43,8 +46,8 @@ int main(int argc, char const *argv[])
 	msg->operande2 = atoi(argv[3]);
 	msg->operateur = argv[2][0];
 	msg->pid = getpid();
-	printf("YOLO %d\n", msg->pid);
-	int snd = msgsnd(msg_id, &msg, sizeof(struct msg_struct) - sizeof(long), 0);
+	// printf("YOLO %d\n", msg->pid);
+	int snd = msgsnd(msg_id, msg, sizeof(struct msg_struct) - sizeof(long), 0);
 	if (snd == -1)
 	{
 		printf("Erreur d'envoi\n");
@@ -52,10 +55,15 @@ int main(int argc, char const *argv[])
 	}
 
 	/* reception de la reponse */
-
-	msgrcv(msg_id, msg, sizeof(struct msg_struct) - sizeof(long), getpid(), 0);
+	// int rcv = msgrcv(msg_id, msg, sizeof(struct msg_struct) - sizeof(long), getpid(), 0);
+	if (msgrcv(msg_id, msg, sizeof(struct msg_struct) - sizeof(long), 1, 0) == -1)
+		{
+			printf("Erreur de reception\n");
+			return EXIT_FAILURE;
+		}
 	printf("CLIENT: resultat recu depuis le serveur %d : %d\n",
 
 		   msg->pid, msg->resultat);
+	free(msg);
 	return EXIT_SUCCESS;
 }
