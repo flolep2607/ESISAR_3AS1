@@ -30,17 +30,17 @@ int main() {
     // je suis le fils!
     // a completer : s'attacher au segment et affichage de son contenu
     // ...
-    printf("Je suis le fils et je lis le contenu du segment de memoire partagee : %s\n", mem);
-
+    afficher_info_segment(memory);
   }
   else {
     // je suis le pere!
     // a completer : attachement et ecriture sur le segment de memoire partagee
     // a completer : attendre la fin du fils + detacher le segment et le detruire
     // ...
-    printf("Je suis le pere et j'ecris dans le segment de memoire partagee : %s\n", mem);
+    mem = (char *) shmat(memory, NULL, 0);
+    strcpy(mem, "Bonjour\n");
+    printf("J'ai ecrit: %s\n", mem);
     waitpid(pid, NULL, 0);
-    printf("Je suis le pere et je detruit le segment de memoire partagee\n");
     detruire_segment(memory);
   }
   return 0;

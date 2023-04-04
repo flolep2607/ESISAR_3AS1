@@ -55,13 +55,13 @@ int detruire_segment(int shmid)
   return ctl;
 }
 
-int main()
-{
-  int shmid;
-  char *nom = (char *)malloc(100 * sizeof(char));
-  nom = "exo1.c";
-  shmid = cree_segment(100, nom, 1);
-  afficher_info_segment(shmid);
-  detruire_segment(shmid);
-  return 0;
-}
+// int main()
+// {
+//   int shmid;
+//   char *nom = (char *)malloc(100 * sizeof(char));
+//   nom = "exo1.c";
+//   shmid = cree_segment(100, nom, 1);
+//   afficher_info_segment(shmid);
+//   detruire_segment(shmid);
+//   return 0;
+// }
