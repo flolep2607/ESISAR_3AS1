@@ -1,0 +1,8 @@
+Le résultat obtenu sans argument est:
+	Nombre d'arguments : 1
+
+Le résultat obtenu avec la commande "./monProgramme 12 toto 20.5" est:
+	Nombre d'arguments : 4
+	20.5
+	toto
+	12

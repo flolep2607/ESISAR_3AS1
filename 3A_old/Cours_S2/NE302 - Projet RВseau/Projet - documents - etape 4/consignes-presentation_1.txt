@@ -1,0 +1,19 @@
+
+
+Soutenance:
+	- 15 minutes de présentation + 5 à 10 minutes de questions. 
+
+	(Prevoir une présentation powerpoint de 10 slides max) 
+
+ 	- PRESENTATION : principalement sur l'etape 3 et 4 
+		- liste des règles sémantiques appliquées 
+		- liste des fonctionnalités supportées 
+		- structure du programme (structure de données) 
+		- méthodes 
+	- QUESTIONS INDIVIDUELLES: 
+		- sur un point précis du code choisi par le jury. 
+		- sur HTTP en général. 
+
+	- UNE DEMO est possible si elle est bornée dans le temps (2 à 3 minutes max) et que la mise en oeuvre est très rapide. 
+
+

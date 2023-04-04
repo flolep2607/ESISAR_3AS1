@@ -1,0 +1,15 @@
+1) On note m, le message original, c le message envoyé (codé), e l'erreur introduite par le canal, r le message reçu, d le message décodé.
+c = m*G
+r = c + e
+Algo détection d'erreur: 
+- S= r.H^t (S = multiplication matricielle de r et de la transposée de H)
+- Si S=0, pas d'erreur le mot de code est valide (e=0 r=c)
+Algo correction:
+- soit n un vecteur de 3 bits tq n = r.H^t
+- si n != 0 alors on prends En le vecteur ligne de taille 7 ayant le nième bit a 1 et tous les autres à 0.
+  on retrouve bien c = r - En
+Algo décodage: 
+- d = c[0-3]
+- Si le message est valide d est égal au 4 premier bits de c
+
+2) 

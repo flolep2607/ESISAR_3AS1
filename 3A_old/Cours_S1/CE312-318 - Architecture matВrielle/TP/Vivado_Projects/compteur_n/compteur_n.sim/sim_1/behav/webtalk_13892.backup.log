@@ -1,0 +1,15 @@
+#-----------------------------------------------------------
+# Webtalk v2014.3.1 (64-bit)
+# SW Build 1056140 on Thu Oct 30 17:03:40 MDT 2014
+# IP Build 1028902 on Fri Sep 26 17:35:13 MDT 2014
+# Start of session at: Tue Nov 24 17:28:27 2020
+# Process ID: 10476
+# Log file: C:/Users/remi_cellard/Vivado_Projects/compteur_n/compteur_n.sim/sim_1/behav/webtalk.log
+# Journal file: C:/Users/remi_cellard/Vivado_Projects/compteur_n/compteur_n.sim/sim_1/behav\webtalk.jou
+#-----------------------------------------------------------
+source C:/Users/remi_cellard/Vivado_Projects/compteur_n/compteur_n.sim/sim_1/behav/xsim.dir/tb_compteur_N_behav/webtalk/xsim_webtalk.tcl -notrace
+
+    while executing
+"webtalk_transmit -clientid 3327798333 -regid "212074086_0_0_303" -xml C:/Users/remi_cellard/Vivado_Projects/compteur_n/compteur_n.sim/sim_1/behav/xsim..."
+    (file "C:/Users/remi_cellard/Vivado_Projects/compteur_n/compteur_n.sim/sim_1/behav/xsim.dir/tb_compteur_N_behav/webtalk/xsim_webtalk.tcl" line 32)
+INFO: [Common 17-206] Exiting Webtalk at Tue Nov 24 17:28:28 2020...

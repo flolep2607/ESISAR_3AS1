@@ -1,0 +1,33 @@
+Objects First with Java: A Practical Introduction Using BlueJ. By: David J. Barnes; Michael Kolling. Publisher: Pearson
+
+Objects First with Java: A Practical Introduction is an introduction to object-oriented programming for beginners. The main focus of the book is general object-oriented and programming concepts from a software engineering perspective.
+
+The first chapters are written for students with no programming experience with later chapters being more suitable for advanced or professional programmers. The Java programming language and BlueJ–the Java development environment – are the two tools used throughout the book.  BlueJ's clear visualization of classes and objects means that students can immediately appreciate the differences between them and gain a much better understanding of the nature of an object than they would from simply reading source code. Unlike traditional textbooks, the chapters are not ordered by language features but by software development concepts.
+
+https://www.bluej.org/objects-first/
+
+La présentation est accessible via la section "Progression".
+
+Chapter 1 Objects and Classes
+
+Chapter 2 Understanding Class Definitions
+
+Chapter 3 Object Interaction
+
+Chapter 4 Grouping Objects
+
+Chapter 5 Functional Processing of Collections (Advanced)
+
+Chapter 6 More-Sophisticated Behavior
+
+Chapter 7 Fixed-Size Collections—Arrays
+
+Chapter 8 Designing Classes
+
+Chapter 9 Well-Behaved Objects
+
+Chapter 10 Improving Structure with Inheritance
+
+Chapter 11 More about Inheritance
+
+Chapter 12 Further Abstraction Techniques

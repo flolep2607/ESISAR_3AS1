@@ -1,0 +1,42 @@
+Vous allez recevoir des messages proposant chacun une "tâche".  Une
+fois que vous l'avez résolue, envoyez un message en réponse au message
+définissant la tâche et indiquez votre réponse dans le corps du
+message en l'encadrant par les "balises" <<. et .>> (deux caractères
+inférieur et un caractère point, un caractère point et deux caractères
+supérieur), et sans ajouter d'espace.
+
+Par exemple si l'énoncé était :
+
+--------
+From: NE323 <ne323@free.fr>
+To: christophe.deleuze@esisar.grenoble-inp.fr
+Subject: tache sensdelavie
+
+Quelle est la réponse à la question sur le sens de la vie, l'univers
+et le reste ?
+
+La réponse est souhaitée avant le 1970-01-01 00:00:00. (0 heures, pas minuit)
+--------
+
+Et que vous savez comme tout le monde que la réponse est 42, envoyez
+votre réponse (avant la date limite indiquée) :
+
+--------
+From: Christophe Deleuze <christophe.deleuze@esisar.grenoble-inp.fr>
+To: NE323 <ne323@free.fr>
+Subject: Re: tache sensdelavie
+
+<<.42.>>
+--------
+
+Ce travail sera comptabilisé dans la note de contrôle continu. Les
+critères d'évaluation seront, pour chaque tâche :
+  1. la bonne réponse a été fournie,
+  2. la première réponse (pas nécessairement correcte) a été fournie
+     avant la date limite.
+
+
+Si vous êtes convaincus que votre réponse est la bonne et que vous
+respectez les modalités décrites ci-dessus, mais que le "système"
+prétend le contraire, il pourrait s'agir d'un bug.  Contactez-moi
+directement (par exemple par mail) pour tirer les choses au clair.

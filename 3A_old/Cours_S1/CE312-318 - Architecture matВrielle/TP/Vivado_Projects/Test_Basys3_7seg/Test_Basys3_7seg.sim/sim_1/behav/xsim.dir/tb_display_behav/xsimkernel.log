@@ -1,0 +1,5 @@
+Running: xsim.dir/tb_display_behav/xsimk.exe -simmode gui -wdb tb_display_behav.wdb -simrunnum 0 -socket 34346
+Design successfully loaded
+Design Loading CPU Usage: 889 ms
+Simulation completed
+Simulation CPU Usage: 889 ms

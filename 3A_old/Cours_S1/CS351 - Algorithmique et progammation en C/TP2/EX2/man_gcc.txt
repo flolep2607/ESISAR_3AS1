@@ -1,0 +1,8 @@
+Preprocessor Options
+           -Aquestion=answer -A-question[=answer] -C  -CC  -Dmacro[=defn] -dD  -dI  -dM  -dN  -dU -fdebug-cpp
+           -fdirectives-only  -fdollars-in-identifiers -fexec-charset=charset  -fextended-identifiers
+           -finput-charset=charset  -fmacro-prefix-map=old=new -fmax-include-depth=depth
+           -fno-canonical-system-headers  -fpch-deps  -fpch-preprocess -fpreprocessed  -ftabstop=width
+           -ftrack-macro-expansion -fwide-exec-charset=charset  -fworking-directory -H  -imacros file  -include file
+           -M  -MD  -MF  -MG  -MM  -MMD  -MP  -MQ  -MT -no-integrated-cpp  -P  -pthread  -remap -traditional
+           -traditional-cpp  -trigraphs -Umacro  -undef -Wp,option  -Xpreprocessor option

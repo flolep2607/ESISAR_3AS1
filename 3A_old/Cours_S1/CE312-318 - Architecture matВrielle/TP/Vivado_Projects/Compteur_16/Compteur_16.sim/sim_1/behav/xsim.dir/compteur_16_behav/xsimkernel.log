@@ -1,0 +1,5 @@
+Running: xsim.dir/compteur_16_behav/xsimk.exe -simmode gui -wdb compteur_16_behav.wdb -simrunnum 0 -socket 1139
+Design successfully loaded
+Design Loading CPU Usage: 1062 ms
+Simulation completed
+Simulation CPU Usage: 1124 ms

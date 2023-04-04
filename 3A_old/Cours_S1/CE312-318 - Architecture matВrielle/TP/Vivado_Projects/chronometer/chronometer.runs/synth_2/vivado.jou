@@ -1,0 +1,10 @@
+#-----------------------------------------------------------
+# Vivado v2014.3.1 (64-bit)
+# SW Build 1056140 on Thu Oct 30 17:03:40 MDT 2014
+# IP Build 1028902 on Fri Sep 26 17:35:13 MDT 2014
+# Start of session at: Tue Dec 15 17:40:10 2020
+# Process ID: 4268
+# Log file: C:/Users/remi_cellard/Vivado_Projects/chronometer/chronometer.runs/synth_2/chronometer.vds
+# Journal file: C:/Users/remi_cellard/Vivado_Projects/chronometer/chronometer.runs/synth_2\vivado.jou
+#-----------------------------------------------------------
+source chronometer.tcl

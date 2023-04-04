@@ -1,0 +1,10 @@
+#-----------------------------------------------------------
+# Webtalk v2014.3.1 (64-bit)
+# SW Build 1056140 on Thu Oct 30 17:03:40 MDT 2014
+# IP Build 1028902 on Fri Sep 26 17:35:13 MDT 2014
+# Start of session at: Fri Nov 20 09:26:28 2020
+# Process ID: 1212
+# Log file: C:/Users/remi_cellard/Vivado_Projects/Compteur_16/Compteur_16.sim/sim_1/behav/webtalk.log
+# Journal file: C:/Users/remi_cellard/Vivado_Projects/Compteur_16/Compteur_16.sim/sim_1/behav\webtalk.jou
+#-----------------------------------------------------------
+source C:/Users/remi_cellard/Vivado_Projects/Compteur_16/Compteur_16.sim/sim_1/behav/xsim.dir/tb_compteur_16_behav/webtalk/xsim_webtalk.tcl -notrace

@@ -1,0 +1,5 @@
+Determining compilation order of HDL files.
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/remi_cellard/Vivado_Projects/compteur_n/compteur_n.vhd" into library xil_defaultlib
+INFO: [VRFC 10-307] analyzing entity compteur_N
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/remi_cellard/Vivado_Projects/compteur_n/tb_compteur_n.vhd" into library xil_defaultlib
+INFO: [VRFC 10-307] analyzing entity tb_compteur_N

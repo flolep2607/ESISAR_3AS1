@@ -1,0 +1,150 @@
+\documentclass[a4paper,11pt]{article}
+%\usepackage[frenchb]{babel} % en conflit avec itemi
+\usepackage[latin1]{inputenc}
+%\usepackage[T1]{fontenc} % pb avec latexpdf
+\usepackage{amsmath}
+\usepackage{amsfonts}
+%\usepackage{vmargin}
+\usepackage{theorem}
+\usepackage{enumerate}
+\usepackage{graphicx}
+\usepackage[colorlinks,filecolor=blue,linkcolor=red]{hyperref}
+%pour simplifier les matrices
+\usepackage{delarray}
+%définition du style des théoremes
+\theoremheaderfont{\bf\scshape}%Forme de l'intitulé du theorème
+%Forme du texte des théorèmes
+\theorembodyfont{\upshape}
+\theoremstyle{plain}
+\renewcommand{\labelitemi}{$\bullet$} %item imbriqués
+\renewcommand{\labelitemii}{$\flec$}
+\newtheorem{Ex}{Exercice}
+\newtheorem{Thm}{Théorème}
+\newtheorem{Prop}{Proposition}
+\newtheorem{Lemme}{Lemme}
+\newtheorem{Def}{Définition}
+\newtheorem{qd}{Question}
+\newtheorem{cor}{Correction}
+\newtheorem{pbm}{Problème}
+\newtheorem{rem}{Remarque}
+
+\newcommand{\vect}{\overrightarrow}
+\newcommand{\f}{\frac}
+\newcommand{\C}{\mathbb{C}  }
+\newcommand{\R}{\mathbb{R}  }
+\newcommand{\N}{\mathbb{N}  }
+\newcommand{\Z}{\mathbb{Z}  }
+\newcommand{\Q}{\mathbb{Q}  }
+\newcommand{\q}{\forall }
+\newcommand{\e}{\exists }
+\newcommand{\inc}{\subset} %commandes pour les ensembles
+\newcommand{\inte}{\cap} %inter
+\newcommand{\un}{\cup} %union
+\newcommand{\<}{\Leftrightarrow} %pour l'équivalence
+\newcommand{\ba}{\overline} %conjugué
+\newcommand{\impl}{\Rightarrow}  % implique
+\newcommand{\tet}{\theta}
+\newcommand{\la}{\lambda}
+\newcommand{\al}{\alpha}
+\newcommand{\si}{\sigma}
+\newcommand{\Om}{\Omega}
+\newcommand{\dis}{\displaystyle}
+\newcommand{\flec}{\rightarrow}
+\newcommand{\infi}{\infty}
+\newcommand{\lp}{\left(} % les délimiteurs
+\newcommand{\rp}{\right)} % les délimiteurs.
+\newcommand{\priv}{\backslash}
+\newcommand{\prem}{1$^{\text{er }}$}
+\newcommand{\ieme}{$^{\text{ième \ }}$}
+%\setmarginsrb{1cm}{0.5cm}{1cm}{0.5cm}{0cm}{0cm}{0cm}{.5cm}
+\newcommand{\rac}{\sqrt}
+\newtheorem{Corr}{Correction de l'Exercice}
+\newcommand{\esp}{ (\Omega, \mathcal{A}, P)}
+\newcommand{\ro}{\rho}
+\newcommand{\card}{\mathrm{card}}
+\newcommand{\gug}{\textquotedblleft}
+\newcommand{\gud}{\textquotedblright \;}
+
+\begin{document}
+
+\title{MA 332 : Modélisation et analyse des processus stochastiques}
+\date{\textbf{Examen - mai 2019}} \maketitle
+
+\begin{center}
+\begin{minipage}{100mm}
+\noindent L'examen dure 1h30. Les calculatrices sont autorisées. L\rq{}étudiant peut disposer d'une feuille de notes manuscrites (recto et verso). {\bf Il doit remettre cette feuille manuscrite avec sa copie à la fin de l'examen}.
+\end{minipage}
+\end{center}
+
+%\begin{Ex}[Chaîne de Markov en temps discret - 4 points]\ On considère la chaîne de Markov en temps discret $(X_n)_{n\in \N}$ à valeurs dans $E:=\{1,\ldots,10\}$ dont la matrice de transition est donnée par :
+%
+%\[
+%\left(
+%\begin{array}{cccccccccc}
+%0 & 0 & 0 & 0 & 0 & \frac{1}{2} & 0 & \frac{1}{2} & 0 & 0 \\
+%0 & 0 & 0 & 0 & 1 & 0 & 0 & 0 & 0 & 0\\
+%0 & 0 & \frac{1}{2} & 0 & \frac{1}{4} & 0 & \frac{1}{4} & 0 & 0 & 0\\
+%0 & 0 & 0 & 0 & 0 & 0 & 1 & 0 & 0 & 0\\
+%0 & 0 & \frac{1}{4} & 0 & 0 & 0 & \frac{1}{4} & \frac{1}{2} & 0 & 0\\
+%\frac{1}{2} & 0 & 0 & 0 & 0 & 0 & 0 & \frac{1}{2} & 0 & 0\\
+%0 & 0 & 0 & \frac{1}{2} & 0 & 0 & 0 & 0 & 0 & \frac{1}{2}\\
+%\frac{1}{2} & 0 & 0 & 0 & 0 & \frac{1}{2} & 0 & 0 & 0 & 0\\
+%0 & \frac{3}{4} & 0 & 0 & 0 & 0 & 0 & 0 & \frac{1}{4} & 0\\
+%0 & 0 & 0 & 0 & 0 & 0 & 1 & 0 & 0 & 0
+%\end{array}
+%\right)
+%\]
+%
+%\begin{enumerate}
+%\item Dessiner le graphe de la chaîne de Markov associée en précisant les probabilités de transitions entre les différents états
+%\item Donner les classes d\rq{}équivalence de cette CMTD. Préciser les classes récurrentes, transitoires, périodiques ou apériodiques
+%\end{enumerate}
+%\end{Ex}
+
+\begin{Ex}[Processus de Poisson - 8 points]\  Le nombre de mails arrivant sur votre messagerie est modélisé par un processus de Poisson de paramètre $\lambda$. 
+Parmi ces mails, certains sont des spams. Sur les 24 heures précédentes,  2880 mails sont arrivés, dont 2592 spams. 
+\begin{enumerate}
+\item Quelle est la meilleure estimation possible pour $\lambda$ (c'est-à-dire l'estimation non biaisée de variance minimale obtenue par la méthode du maximum de vraisemblance)?
+\item Quelle est la probabilité que 5 mails arrivent dans les dix prochaines minutes?
+\item Soit $p$, la probabilité qu'un mail qui arrive soit un spam. Proposez une estimation non biaisée de variance minimale pour $p$.
+\item Quelle est la probabilité qu'au moins un spam arrive dans la prochaine minute?
+\item Sachant que 200 mails sont arrivés ces 12 dernières minutes, quel est le nombre moyen de spams (parmi ces 200 mails)
+\item 60 mails sont arrivés ces 8 dernières minutes. Quelle est la probabilité que 50 spams soient arrivés dans les 5 dernières minutes?
+\item Chaque spam vous fait perdre 1 seconde (détection et suppression). Combien de temps vous font perdre les spams en moyenne en une journée?
+\end{enumerate}
+\end{Ex}
+
+\begin{Ex}[Chaîne de Markov en temps discret - 8 points]\ On étudie la propagation des virus dans un réseau d'ordinateurs. Un ordinateur du réseau peut être dans 4 états :
+\begin{itemize}
+\item sain, avec un anti-virus obsolète (état 0), 
+\item sain, avec un anti-virus à mise à jour automatique (état 1), 
+\item infecté par un virus non pris en charge (état 2) et 
+\item détruit par un virus (état 3, toutes les données ont été détruites et l'ordinateur ne pourra être réparé).
+\end{itemize} On suppose que :
+\begin{itemize}
+\item si un ordinateur est infecté, il y a 20 \% de chances la semaine d'après que toutes les données qu'il contient soient détruites. Sur la moitié des ordinateurs "survivants" un anti-virus avec mise à jour automatique est installé, tandis que l'autre moitié est simplement réparée (débarassée de son virus, mais sans installation d'un nouvel anti-virus avec mise à jour automatique).
+\item Si un anti-virus avec mise à jour est installé sur un ordinateur, celui-ci n'est plus jamais infecté (ni, à fortiori, détruit).
+\item Si un ordinateur avec un anti-virus obsolète est sain une semaine, la semaine suivante il est infecté par un nouveau virus dans 20 \% des cas, reçoit un anti-virus avec mise à jour automatique dans 40\% des cas et reste sain sans anti-virus dans les autres cas.
+\end{itemize}
+
+\begin{enumerate}
+\item Modéliser cette situation par une chaine de Markov dont on donnera la matrice de transition \textbf{et} le graphe
+\item Supposons qu'à la semaine 0, le parc comporte 80\% d'ordinateurs sains, avec un anti-virus obsolète (ou sans anti-virus) et 20\% d'ordinateurs infectés. Un mois (quatre semaines) plus tard, quelle est la proportions d'ordinateurs avec anti-virus avec mise à jour automatique, sains sans anti-virus à mise à jour automatique, infectés et détruits~? 
+\item Montrer qu'au bout d'un certain temps, tous les ordinateurs sont nécessairement détruits ou dotés d'anti-virus avec mise à jour automatique. Donner la valeur moyenne de ce temps
+\item Votre ordinateur est sain et sans anti-virus installé. Quelle est la probabilité qu'il soit détruit~?  
+\end{enumerate}
+\end{Ex}
+
+\begin{Ex}[File avec impatience - 8 points]\
+On considère une {\em file avec impatience}, i.e. une file dans laquelle un client qui arrive et voit $n$ clients (dans le système) devant lui a une probabilité $p_n$ de s'insérer dans la file (et une probabilité $1-p_n$ de partir). Dans cet exercice, on considèrera que les clients arrivent selon un processus de Poisson de paramètre $\lambda$ (avant de décider si ils entrent dans le système). Le temps de service d'un client est une variable aléatoire avec une distribution exponentielle de paramètre $\mu$. La probabilité d'entrée effective dans le systèmes pour un nouveau client arrivant vaut 
+\[p_n:=\frac{1}{1+n} \; , \, \forall n \geq 0 \]
+où $n$ désigne le nombre de clients déjà dans le système lorsque le nouveau client arrive.
+\begin{enumerate}
+\item Modéliser cette file par une chaîne de Markov à temps continu 
+\item Calculer la distribution stationnaire de probabilité associée à cette chaîne
+\item Calculer le taux moyen stationnaire d'entrée ($X_e$) et le taux moyen stationnaire de sortie ($X_s$). A partir de ces deux résultats, discuter la stabilité de la file (éventuellement, en fonction des valeurs des paramètres $\lambda$ et $\mu$)
+\item calculer le nombre moyen de clients dans le système
+\item calculer le temps de séjour moyen d'un client dans le système (lorsqu'il y entre effectivement)
+\end{enumerate}
+\end{Ex}
+\end{document}

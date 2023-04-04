@@ -1,0 +1,5 @@
+# compile vhdl design source files
+vhdl xil_defaultlib  "../../../hex2led.vhd"
+vhdl xil_defaultlib  "../../../led_control.vhd"
+vhdl xil_defaultlib  "../../../display.vhd"
+vhdl xil_defaultlib  "../../../tb_display.vhd"
