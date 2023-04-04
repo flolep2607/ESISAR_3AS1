@@ -2,20 +2,18 @@
 
 // #include <stdlib.h>
 #include <stdio.h>
-#include <unistd.h>
 #include <sys/ipc.h>
 #include <sys/msg.h>
+#include <unistd.h>
 
-int main(int argc, char const *argv[])
-{
-	int msg_id;
-	struct msg_struct *msg = malloc(sizeof(struct msg_struct));
+int main(int argc, char const *argv[]) {
+    int msg_id;
+    struct msg_struct *msg = malloc(sizeof(struct msg_struct));
 
-	if (argc != 4)
-	{
-		printf("Usage: %s operande1 {+|-|*|/} operande2\n", argv[0]);
-		return EXIT_FAILURE;
-	}
+    if (argc != 4) {
+        printf("Usage: %s operande1 {+|-|*|/} operande2\n", argv[0]);
+        return EXIT_FAILURE;
+    }
 
 	/* il faut eviter la division par zero */
 	if (argv[2][0] == '/' && atoi(argv[3]) == 0) {
@@ -33,9 +31,10 @@ int main(int argc, char const *argv[])
 		exit(1);
 	}
 
-	printf("CLIENT %d: preparation du message contenant l'operation suivante:\
+    printf(
+        "CLIENT %d: preparation du message contenant l'operation suivante:\
 		   	%d %c %d\n",
-		   getpid(), atoi(argv[1]), argv[2][0], atoi(argv[3]));
+        getpid(), atoi(argv[1]), argv[2][0], atoi(argv[3]));
 
 	/* On prepare un message de type 1 à envoyer au serveur avec les
 	 * informations necessaires */

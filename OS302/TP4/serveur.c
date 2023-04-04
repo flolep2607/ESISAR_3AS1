@@ -51,8 +51,7 @@ int main(int argc, char const *argv[])
 			printf("Erreur de reception\n");
 			return EXIT_FAILURE;
 		}
-		printf("SERVEUR: reception d'une requete de la part de: %d\n",
-			   msg->pid);
+		printf("SERVEUR: reception d'une requete de la part de: %d\n",msg->pid);
 		/* preparation de la reponse */
 		/* A COMPLETER */
 		/* envoi de la reponse */

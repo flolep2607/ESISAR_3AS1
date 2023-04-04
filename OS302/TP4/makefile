@@ -6,8 +6,9 @@
 	./client.o 2 '*' 69
 
 2:
-	rm /tmp/cle1; touch /tmp/cle1
-	gcc ex2/client.c -g -o client.o
-	gcc ex2/server.c -g -o server.o
-	./server.o &
-	./client.o msglol
+	rm /tmp/key1; touch /tmp/key1; chmod 777 /tmp/key1
+	rm /tmp/key2; touch /tmp/key2; chmod 777 /tmp/key2
+	gcc ex2/client.c -g -o ex2/client.o
+	gcc ex2/server.c -g -o ex2/server.o
+	./ex2/server.o &
+	./ex2/client.o msglol
