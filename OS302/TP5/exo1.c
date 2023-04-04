@@ -25,6 +25,21 @@ int cree_segment(int taille, char *nom, int cle)
  * retourn -1 en cas d'erreur */
 int afficher_info_segment(int shmid)
 {
+  struct shmid_ds *buf = (struct shmid_ds *)malloc(sizeof(struct shmid_ds));
+  int aff = shmctl(shmid, IPC_STAT, buf);
+  if (aff == -1)
+  {
+    return -1;
+  }
+  printf("ID du segment : %d\n", shmid);
+  printf("Taille du segment : %d\n", buf->shm_segsz);
+  printf("Nombre de processus attaches : %d\n", buf->shm_nattch);
+  printf("Dernier PID attachant : %d\n", buf->shm_lpid);
+  printf("Dernier PID detachant : %d\n", buf->shm_cpid);
+  printf("Dernier attachement : %s", ctime(&buf->shm_atime));
+  printf("Dernier detachement : %s", ctime(&buf->shm_dtime));
+  printf("Derniere modification : %s", ctime(&buf->shm_ctime));
+  return aff;
 }
 
 /* Detruie un segment de m�moire
@@ -32,6 +47,12 @@ int afficher_info_segment(int shmid)
  * retourn -1 en cas d'erreur */
 int detruire_segment(int shmid)
 {
+  int ctl = shmctl(shmid, IPC_RMID, NULL);
+  if (ctl == -1)
+  {
+    return -1;
+  }
+  return ctl;
 }
 
 int main()
