@@ -4,6 +4,7 @@
  *********************************************************************/
 #ifndef SEGMENT_MEM_H
 #define SEGMENT_MEM_H
+#endif
 
 #include <errno.h>
 #include <sys/types.h>
@@ -26,7 +27,7 @@ int cree_segment(int taille, char* nom, int cle);
 int afficher_info_segment(int shmid);
 
 
-/* Detruie un segment de mémoire
+/* Detruie un segment de mï¿½moire
  * shmid : l'identificateur du segment
  * retourn -1 en cas d'erreur */
 int detruire_segment(int shmid);
