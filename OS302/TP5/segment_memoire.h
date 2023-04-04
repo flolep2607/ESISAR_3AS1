@@ -4,7 +4,6 @@
  *********************************************************************/
 #ifndef SEGMENT_MEM_H
 #define SEGMENT_MEM_H
-#endif
 
 #include <errno.h>
 #include <sys/types.h>

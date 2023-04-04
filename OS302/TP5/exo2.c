@@ -4,6 +4,8 @@
  *********************************************************************/
 #include <string.h>
 #include <unistd.h>
+#include <sys/types.h>
+#include <sys/wait.h>
 #include "segment_memoire.h"
 
 int main() {
@@ -41,5 +43,5 @@ int main() {
     printf("Je suis le pere et je detruit le segment de memoire partagee\n");
     detruire_segment(memory);
   }
-  return 0 ;
+  return 0;
 }
