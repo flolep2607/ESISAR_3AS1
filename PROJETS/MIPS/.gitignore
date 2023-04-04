@@ -1,0 +1,8 @@
+obj/
+__pycache__
+.pytest_cache
+*.o
+*.state
+*.bck
+emul-mips
+out/*
