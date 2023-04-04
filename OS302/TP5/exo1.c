@@ -32,8 +32,8 @@ int afficher_info_segment(int shmid)
     return -1;
   }
   printf("ID du segment : %d\n", shmid);
-  printf("Taille du segment : %d\n", buf->shm_segsz);
-  printf("Nombre de processus attaches : %d\n", buf->shm_nattch);
+  printf("Taille du segment : %ld\n", buf->shm_segsz);
+  printf("Nombre de processus attaches : %ld\n", buf->shm_nattch);
   printf("Dernier PID attachant : %d\n", buf->shm_lpid);
   printf("Dernier PID detachant : %d\n", buf->shm_cpid);
   printf("Dernier attachement : %s", ctime(&buf->shm_atime));

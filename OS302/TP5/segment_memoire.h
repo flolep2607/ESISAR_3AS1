@@ -11,6 +11,7 @@
 #include <sys/shm.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <time.h>
 
 /* Cree un segment de memoire
  * taille : la taille du segment memoire a creer
