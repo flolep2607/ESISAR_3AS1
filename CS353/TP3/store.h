@@ -101,3 +101,17 @@ int updateItem(uint32_t itemCode, char *itemName, float itemPrice);
  * la fonction de réorganisation in situ:
  *----------------------------------------------------------------------------*/
 void rebuildTable();
+
+// Deuxième partie
+
+
+typedef struct structResult
+{
+Item *item; 
+struct structResult *next; 
+} Result;
+
+Result* insertResult(Result **head, Item *newItem);
+Result* removeResult(Result **head, Item *itemToRemove);
+void printList(Result **head);
+Result *findItem(char* itemName);

@@ -204,3 +204,66 @@ void rebuildTable()
         hash_table->dirty = 0;
     }
 }
+
+// Deuxième partie du TP
+
+Result* createResult(Item *item)
+{
+    Result *newResult = (Result*) malloc(sizeof(Result));
+    newResult->item = item;
+    newResult->next = NULL;
+    return newResult;
+}
+
+Result* insertResult(Result **head, Item *newItem)
+{
+    Result *newResult = (Result*) malloc(sizeof(Result));
+    newResult->item = newItem;
+    newResult->next = *head;
+    *head = newResult;
+    return newResult;
+}
+
+Result* removeResult(Result **head, Item *itemToRemove)
+{
+    Result *current = *head;
+    Result *previous = (Result*) malloc(sizeof(Result));
+    while (current != NULL && current->item != itemToRemove)
+    {
+        previous = current;
+        current = current->next;
+    }
+    if (current == NULL)
+        return NULL;
+    if (previous == NULL)
+        *head = current->next;
+    else
+        previous->next = current->next;
+    free(current);
+    return *head;
+}
+
+void printList(Result **head)
+{
+    Result *current = *head;
+    while (current != NULL)
+    {
+        printf("%d\n", current->item->code);
+        printf("%s\n", current->item->name);
+        current = current->next;
+    }
+    printf("\n");
+}
+
+Result *findItem(char* itemName)
+{
+    Result *result = NULL;
+    for (int i = 0; i < TABLE_SIZE; i++)
+    {
+        if (hash_table[i].status == USED_ITEM && strcmp(hash_table[i].name, itemName) == 0)
+        {
+            insertResult(&result, &hash_table[i]);
+        }
+    }
+    return result;
+}
