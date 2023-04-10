@@ -151,7 +151,10 @@ On souhaite maintenant réaliser une classe plus générale, permettant de trait
 * D'autres classes sont fournies. 
 
 
-* 1) Que valaient T1 et T2  dans la V1 ? 
+* 1) Que valaient T1 et T2  dans la V1 ?  
+T1: c'est input donc:char[]  
+T2: c'est output donc:int
+
 * 2) Faire un diagramme de classe du code fourni. 
 * 3) Pour tester votre compréhension, on demande de compléter la commande `toString` de la classe `TransitionFunction` pour que l'exécution donne:
 ```
@@ -164,8 +167,8 @@ On souhaite maintenant réaliser une classe plus générale, permettant de trait
 	s4 -> s2 Tag= a/1
 	s4 -> s3 Tag= b/1
 ```
-* 4)  Dans le fichier de test, ajouter un automate `FSMIO<int,int>` quelconque.
-
+* 4)  Dans le fichier de test, ajouter un automate `FSMIO<int,int>` quelconque.  
+# TODO
 * 5) (BONUS) Réaliser un automate (int, int, 0 ou 1 uniquement) qui réalise la fonctionnalité suivante: "on se rappelle des 4 valeurs précédentes des entrées", la sortie courante nommée z:
 	* prend la valeur 1 si les quatre transitions précédentes ont "vu" quatre 0 (zéros) de suite ou quatre 1 (uns) de suite.
 	* Sinon, la sortie vaut 0.

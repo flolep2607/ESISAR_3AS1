@@ -17,18 +17,25 @@ public class TestFSMIO {
 	    SimpleFSMIO sfsm = new SimpleFSMIO(stateNames, "s1", inputs);
 	    sfsm.addTransition("s1", 'a', "s1", 0);
 	    sfsm.addTransition("s1", 'b', "s3", 0);
+	    sfsm.addTransition("s3", 'b', "s3", 1);
+	    sfsm.addTransition ("s3", 'a', "s2", 1);
 	    sfsm.addTransition("s2", 'a', "s1", 0);
 	    sfsm.addTransition("s2", 'b', "s2", 1);
-	    sfsm.addTransition ("s3", 'a', "s2", 1);
-	    sfsm.addTransition("s3", 'b', "s3", 1);
 
 	    // TODO (V1.Q2) test your functions...
 	    // Uncomment to test your first methods.
-	    //System.out.println(sfsm.getNextState("s1", 'a'));
-	    //System.out.println(sfsm.getOutput("s3", 'b')); 
+	    System.out.println(sfsm.getNextState("s1", 'a'));
+	    System.out.println(sfsm.getOutput("s3", 'b')); 
 
 	    sfsm.reset();
 	    // TODO (V1.Q3) : play string "abbaabbaaa"!
-	    
+		char[] sequence="abbaabbaaa".toCharArray();
+		String output=sfsm.getCurrentState();
+		for(char c : sequence){
+			int value=sfsm.doTransition(c);
+			output=output+"--("+c+"/"+value+")--"+sfsm.getCurrentState();
+		}
+		output=output+"--END";
+		System.out.println(output);
 	}
 }
