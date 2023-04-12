@@ -48,11 +48,11 @@ void testInsertButActuallyGood()
     insertItem(832, "Poudre bleue", 999.99);
     // suppressItem(1000);
     insertItem(666, "Fromage", 59.23);
-    //dumpItems();
     updateItem(60, "Sel de Guérin", 69.52);
     insertItem(1234, "Apple", 1.99);
     insertItem(5678, "Banana", 0.99);
     insertItem(32, "Orange", 2.49);
+    dumpItems();
     suppressItem(5678);
     suppressItem(32);
     insertItem(2468, "Grapes", 3.99);
@@ -67,10 +67,10 @@ int main() {
     init();
     //
     testInsertButActuallyGood();
-    Result *res = findItem("Sucre");
-    printList(&res);
+    // Result *res = findItem("Sucre");
+    // printList(&res);
     printf("=======Gestionnaire de magasin ======\n");
     rebuildTable();
-    // dumpItems();
+    dumpItems();
     return 0;
 }

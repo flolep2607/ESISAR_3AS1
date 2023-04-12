@@ -115,3 +115,6 @@ Result* insertResult(Result **head, Item *newItem);
 Result* removeResult(Result **head, Item *itemToRemove);
 void printList(Result **head);
 Result *findItem(char* itemName);
+
+unsigned int hashIndex(const char *buffer, int size);
+Result *findItemWithIndex(char* itemName);

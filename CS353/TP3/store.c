@@ -56,7 +56,7 @@ uint32_t hashkey(uint32_t itemCode, uint32_t nbTry)
 
 int insertItem(uint32_t itemCode, char *itemName, float itemPrice)
 {
-    //taille du tableau : TABLE_SIZE
+    // taille du tableau : TABLE_SIZE
     int empty_place = -1;
     int index;
     for (int i = 0; i < TABLE_SIZE; i++)
@@ -180,54 +180,87 @@ int updateItem(unsigned int itemCode, char *itemName, float itemPrice)
 /*----------------------------------------------------------------------------
  * la fonction de réorganisation in situ:
  *----------------------------------------------------------------------------*/
+int stillDirty()
+{
+    for (int i = 0; i < TABLE_SIZE; i++)
+    {
+        if (hash_table[i].dirty == 1)
+        {
+            return 1;
+        }
+    }
+    return 0;
+}
+
 void rebuildTable()
-{//TODO: faire fonctionner ça tout court lol
+{ // TODO: faire fonctionner ça tout court lol
     for (int i = 0; i < TABLE_SIZE; i++)
     {
         hash_table[i].dirty = 1;
     }
-    for (int i = 0; i < TABLE_SIZE; i++)
+    while (stillDirty())
     {
-        if (hash_table[i].status == DELETED_ITEM)
+        for (int i = 0; i < TABLE_SIZE; i++)
         {
-            hash_table[i].status = NULL_ITEM;
+            printf("i = %d\n", i);
+            printf("hash_table[i].dirty = %d\n", hash_table[i].dirty);
+            printf("hash_table[i].status = %d\n", hash_table[i].status);
+            printf("hash_table[i].code = %d\n", hash_table[i].code);
+            printf("hash_table[i].name = %s\n", hash_table[i].name);
+            printf("hash_table[i].price = %f\n", hash_table[i].price);
+            if (hash_table[i].status == DELETED_ITEM)
+            {
+                hash_table[i].status = NULL_ITEM;
+                // hash_table[i].dirty = 0;
+            }
+            else if (hash_table[i].status == USED_ITEM)
+            {
+                uint32_t codeTMP = hash_table[i].code;
+                char nameTMP[ITEM_NAME_SIZE];
+                strcpy(nameTMP, hash_table[i].name);
+                float priceTMP = hash_table[i].price;
+                suppressItem(hash_table[i].code);
+                insertItem(codeTMP, nameTMP, priceTMP);
+                hash_table[i].dirty = 0;
+            }
+            else if (hash_table[i].status == NULL_ITEM)
+            {
+                hash_table[i].dirty = 0;
+            }
+            printf("hash_table[i].dirty = %d\n", hash_table[i].dirty);
+            printf("hash_table[i].status = %d\n", hash_table[i].status);
+            printf("hash_table[i].code = %d\n", hash_table[i].code);
+            printf("hash_table[i].name = %s\n", hash_table[i].name);
+            printf("hash_table[i].price = %f\n", hash_table[i].price);
+            // hash_table->dirty = 0;
         }
-        else if (hash_table[i].status == USED_ITEM)
-        {
-            uint32_t codeTMP = hash_table[i].code;
-            char nameTMP[ITEM_NAME_SIZE];
-            strcpy(nameTMP, hash_table[i].name);
-            float priceTMP = hash_table[i].price;
-            suppressItem(hash_table[i].code);
-            insertItem(codeTMP, nameTMP, priceTMP);
-        }
-        hash_table->dirty = 0;
     }
 }
 
 // Deuxième partie du TP
 
-Result* createResult(Item *item)
+// Fonctions utilitaires pour gérer la liste chapinée de résultats
+Result *createResult(Item *item)
 {
-    Result *newResult = (Result*) malloc(sizeof(Result));
+    Result *newResult = (Result *)malloc(sizeof(Result));
     newResult->item = item;
     newResult->next = NULL;
     return newResult;
 }
 
-Result* insertResult(Result **head, Item *newItem)
+Result *insertResult(Result **head, Item *newItem)
 {
-    Result *newResult = (Result*) malloc(sizeof(Result));
+    Result *newResult = (Result *)malloc(sizeof(Result));
     newResult->item = newItem;
     newResult->next = *head;
     *head = newResult;
     return newResult;
 }
 
-Result* removeResult(Result **head, Item *itemToRemove)
+Result *removeResult(Result **head, Item *itemToRemove)
 {
     Result *current = *head;
-    Result *previous = (Result*) malloc(sizeof(Result));
+    Result *previous = (Result *)malloc(sizeof(Result));
     while (current != NULL && current->item != itemToRemove)
     {
         previous = current;
@@ -255,7 +288,7 @@ void printList(Result **head)
     printf("\n");
 }
 
-Result *findItem(char* itemName)
+Result *findItem(char *itemName)
 {
     Result *result = NULL;
     for (int i = 0; i < TABLE_SIZE; i++)
@@ -266,4 +299,20 @@ Result *findItem(char* itemName)
         }
     }
     return result;
+}
+
+unsigned int hashIndex(const char *buffer, int size)
+{
+    unsigned int h = 0;
+    for (int i = 0; i < size; i++)
+    {
+        h = (h * 1103515245u) + 12345u + buffer[i];
+    }
+    return h / 2;
+}
+
+Result *findItemWithIndex(char *itemName)
+{
+    unsigned int index = hashIndex(itemName, strlen(itemName));
+    Result *result = NULL;
 }
