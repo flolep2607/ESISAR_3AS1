@@ -1,0 +1,5 @@
+start list void s10
+s10 add task s20
+s10 remove task s30
+s20 task description s10
+s30 task description s10

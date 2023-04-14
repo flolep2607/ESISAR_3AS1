@@ -1,0 +1,4 @@
+start EUR USD void s10
+start cancel void start
+s10 amount EUR s20
+s20 amount*1.2 USD start

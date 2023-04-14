@@ -1,0 +1,5 @@
+start mood void s10
+s10 happy s20
+s10 sad s30
+s20 recommend upbeat playlist start
+s30 recommend mellow playlist start
