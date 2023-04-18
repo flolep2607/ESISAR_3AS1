@@ -12,7 +12,7 @@ all: run
 
 # Compile
 %.class: %.java
-	javac -cp ../V2/ -cp $(MAINCLASS) $^
+	javac -cp ../V2/ $^
 
 # Run
 run: $(SRC)/$(MAINCLASS).class
