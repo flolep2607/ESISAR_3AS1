@@ -21,7 +21,8 @@ public class TestFSMIO {
 		FSMIO<String, Integer> fsm = new FSMIO<String, Integer>(states, s1);
 
 		// remarquez que l'ordre des arguments n'est pas le même que la V1. Pourquoi ?
-		fsm.addTransition(s1, "a", 0, s2);		fsm.addTransition(s1, "b", 0, s3);
+		fsm.addTransition(s1, "a", 0, s2);
+		fsm.addTransition(s1, "b", 0, s3);
 		fsm.addTransition(s2, "a", 0, s3);
 		fsm.addTransition(s2, "b", 1, s2);
 		fsm.addTransition(s3, "a", 0, s4);
@@ -57,7 +58,8 @@ public class TestFSMIO {
 		states2.add(s29);
 		FSMIO<Integer, Integer> fsm2 = new FSMIO<Integer, Integer>(states2, s21);
 
-		fsm2.addTransition(s21, 0, 0, s22);		fsm2.addTransition(s21, 1, 0, s26);
+		fsm2.addTransition(s21, 0, 0, s22);
+		fsm2.addTransition(s21, 1, 0, s26);
 		fsm2.addTransition(s22, 0, 0, s23);
 		fsm2.addTransition(s22, 1, 0, s21);
 		fsm2.addTransition(s23, 0, 0, s24);
