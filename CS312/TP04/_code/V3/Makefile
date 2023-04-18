@@ -7,12 +7,16 @@ HERE=$(PWD)
 MAINCLASS=TestFSMIOString
 SRCJAVA=$(wildcard $(SRC)/*.java)
 CLASSFILES = $(SRCJAVA:.java=.class)
+CLASSPATH=$(SRC):../V2/FSMIO
 
 all: run
 
 # Compile
-%.class: %.java
-	javac -cp ../V2/ $^
+$(SRC)/FSMIOString.class: $(SRC)/FSMIOString.class
+	javac  $(SRC)/FSMIOString.java -d $(SRC)
+
+$(SRC)/TestFSMIOString.class: $(SRC)/TestFSMIOString.class $(SRC)/FSMIOString.class
+	javac  $(SRC)/TestFSMIOString.java -d $(SRC)
 
 # Run
 run: $(SRC)/$(MAINCLASS).class
