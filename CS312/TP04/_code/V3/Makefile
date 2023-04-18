@@ -2,21 +2,26 @@
 MYNAME=MoncorgeLeprat
 
 ## DO NOT change below
+SRC=FSMIOString
 HERE=$(PWD)
-MAINCLASS=FSMIOString
-SRCJAVA=$(wildcard *.java)
+MAINCLASS=TestFSMIOString
+SRCJAVA=$(wildcard $(SRC)/*.java)
 CLASSFILES = $(SRCJAVA:.java=.class)
 
 all: run
 
+# Compile
+%.class: %.java
+	javac -cp ../V2/ -cp $(MAINCLASS) $^
+
 # Run
-run: 
-	javac -cp ../V2/  FSMIOString.java TestFSMIOString.java
-	java Test$(MAINCLASS) task.fsm
+run: $(SRC)/$(MAINCLASS).class
+	java $(SRC)/$(MAINCLASS)
 
 tar: clean
 	dir=$$(basename $$PWD/$$SRC) && cd .. && \
 	tar cvfz "TP04-$(MYNAME).tgz" --exclude=".git" "$$dir"
 
 clean:
-	rm -f *.class *~ *~
+	rm -f $(SRC)/*.class $(SRC)/*~ *~
+
