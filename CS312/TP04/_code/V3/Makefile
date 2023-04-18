@@ -9,15 +9,9 @@ CLASSFILES = $(SRCJAVA:.java=.class)
 
 all: run
 
-# Compile
-$(MAINCLASS).class: $(MAINCLASS).java
-	javac  -cp ../V2/ $(MAINCLASS).java
-
-%.class: %.java
-	javac $<
-
 # Run
-run: Test$(MAINCLASS).class
+run: 
+	javac -cp ../V2/  FSMIOString.java TestFSMIOString.java
 	java Test$(MAINCLASS) task.fsm
 
 tar: clean
@@ -26,6 +20,3 @@ tar: clean
 
 clean:
 	rm -f *.class *~ *~
-
-## Change your name here:
-MYNAME=MoncorgeLeprat
