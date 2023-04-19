@@ -14,6 +14,7 @@
 #define DELETED_ITEM 2
 #define USED_ITEM 1
 #define ITEM_NAME_SIZE 32
+#define INDEX_SIZE 1000
 
 /*----------------------------------------------------------------------------
  * Definition des constantes pour les retours des fonctions
@@ -39,7 +40,7 @@ typedef struct structItem
 	uint32_t code;
 	char name[ITEM_NAME_SIZE];
 	float price;
-	uint8_t dirty; // 1 = sale, 0 = propre 
+	uint8_t dirty; // 1 = sale, 0 = propre
 } Item;
 
 /*----------------------------------------------------------------------------
@@ -104,17 +105,16 @@ void rebuildTable();
 
 // Deuxième partie
 
-
 typedef struct structResult
 {
-Item *item; 
-struct structResult *next; 
+	Item *item;
+	struct structResult *next;
 } Result;
 
-Result* insertResult(Result **head, Item *newItem);
-Result* removeResult(Result **head, Item *itemToRemove);
+Result *insertResult(Result **head, Item *newItem);
+Result *removeResult(Result **head, Item *itemToRemove);
 void printList(Result **head);
-Result *findItem(char* itemName);
+Result *findItem(char *itemName);
 
 unsigned int hashIndex(const char *buffer, int size);
-Result *findItemWithIndex(char* itemName);
+Result *findItemWithIndex(char *itemName);

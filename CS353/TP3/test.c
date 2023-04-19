@@ -45,13 +45,13 @@ void testInsertButActuallyGood()
 {
     insertItem(1000, "Sucre", 20.50);
     insertItem(60, "Sel", 695.23);
-    insertItem(832, "Poudre bleue", 999.99);
     // suppressItem(1000);
     insertItem(666, "Fromage", 59.23);
-    updateItem(60, "Sel de Guérin", 69.52);
+    updateItem(60, "Sel de Guerin", 69.52);
     insertItem(1234, "Apple", 1.99);
     insertItem(5678, "Banana", 0.99);
-    insertItem(32, "Orange", 2.49);
+    insertItem(990, "Orange", 2.49);
+    insertItem(1999, "Poudre bleue", 999.99);
     dumpItems();
     suppressItem(5678);
     suppressItem(32);

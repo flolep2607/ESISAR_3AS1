@@ -13,6 +13,7 @@
  * Variable globale contenant le tableau
  *----------------------------------------------------------------------------*/
 Item hash_table[TABLE_SIZE];
+Item index_table[INDEX_SIZE];
 
 /*----------------------------------------------------------------------------
  * Cette fonction initialise le tableau hash_table
@@ -126,12 +127,12 @@ int suppressItem(unsigned int itemCode)
  *----------------------------------------------------------------------------*/
 void dumpItems()
 {
-    printf("Code\t Libellé\t Prix\t Index\t\n");
+    printf("%-5s %-20s %-10s %-5s\n", "Code", "Libelle", "Prix", "Index");
     for (int i = 0; i < TABLE_SIZE; i++)
     {
         if (hash_table[i].status == USED_ITEM)
         {
-            printf("%d\t %s\t %f\t %d\t\n", hash_table[i].code, hash_table[i].name, hash_table[i].price, i);
+            printf("%-5d %-20s %-10f %-5d\n", hash_table[i].code, hash_table[i].name, hash_table[i].price, i);
         }
     }
 }
@@ -193,46 +194,50 @@ int stillDirty()
 }
 
 void rebuildTable()
-{ // TODO: faire fonctionner ça tout court lol
+{
     for (int i = 0; i < TABLE_SIZE; i++)
     {
         hash_table[i].dirty = 1;
     }
-    while (stillDirty())
+    for (int i = 0; i < TABLE_SIZE; i++)
     {
-        for (int i = 0; i < TABLE_SIZE; i++)
+        if (hash_table[i].dirty == 0)
+            continue;
+        switch (hash_table[i].status)
         {
-            printf("i = %d\n", i);
-            printf("hash_table[i].dirty = %d\n", hash_table[i].dirty);
-            printf("hash_table[i].status = %d\n", hash_table[i].status);
-            printf("hash_table[i].code = %d\n", hash_table[i].code);
-            printf("hash_table[i].name = %s\n", hash_table[i].name);
-            printf("hash_table[i].price = %f\n", hash_table[i].price);
-            if (hash_table[i].status == DELETED_ITEM)
+        case DELETED_ITEM:
+        case NULL_ITEM:
+            hash_table[i].status = NULL_ITEM;
+            hash_table[i].dirty = 0;
+            break;
+        case USED_ITEM:
+            uint32_t codeTMP = hash_table[i].code;
+            Item itemTMP = hash_table[i];
+            hash_table[i].status = NULL_ITEM;
+            hash_table[i].dirty = 0;
+            printf("Rebuilding %d\n", codeTMP);
+            for (int j = 0; j < TABLE_SIZE; j++)
             {
-                hash_table[i].status = NULL_ITEM;
-                // hash_table[i].dirty = 0;
+                int index = hashkey(codeTMP, j);
+                if (hash_table[index].status == NULL_ITEM || hash_table[index].status == DELETED_ITEM)
+                {
+                    hash_table[index] = itemTMP;
+                    hash_table[index].dirty = 0;
+                    j = TABLE_SIZE;
+                }
+                else if (hash_table[index].dirty)
+                {
+                    Item itemTMP2 = hash_table[index];
+                    hash_table[index] = itemTMP;
+                    hash_table[index].dirty = 0;
+                    itemTMP = itemTMP2;
+                    codeTMP = itemTMP.code;
+                    j = -1;
+                }
             }
-            else if (hash_table[i].status == USED_ITEM)
-            {
-                uint32_t codeTMP = hash_table[i].code;
-                char nameTMP[ITEM_NAME_SIZE];
-                strcpy(nameTMP, hash_table[i].name);
-                float priceTMP = hash_table[i].price;
-                suppressItem(hash_table[i].code);
-                insertItem(codeTMP, nameTMP, priceTMP);
-                hash_table[i].dirty = 0;
-            }
-            else if (hash_table[i].status == NULL_ITEM)
-            {
-                hash_table[i].dirty = 0;
-            }
-            printf("hash_table[i].dirty = %d\n", hash_table[i].dirty);
-            printf("hash_table[i].status = %d\n", hash_table[i].status);
-            printf("hash_table[i].code = %d\n", hash_table[i].code);
-            printf("hash_table[i].name = %s\n", hash_table[i].name);
-            printf("hash_table[i].price = %f\n", hash_table[i].price);
-            // hash_table->dirty = 0;
+            break;
+        default:
+            break;
         }
     }
 }
@@ -313,6 +318,27 @@ unsigned int hashIndex(const char *buffer, int size)
 
 Result *findItemWithIndex(char *itemName)
 {
-    unsigned int index = hashIndex(itemName, strlen(itemName));
-    Result *result = NULL;
+    // Result *liste = malloc(sizeof(Result));
+    Result *preced = NULL;
+    Result *ptr = index_table;
+    unsigned int Code = hashIndex(itemName, strlen(itemName));
+
+    uint32_t i = 0;
+    uint32_t key = hashkey(Code, i);
+    while (hash_table[key].status != NULL_ITEM && i < TABLE_SIZE)
+    {
+        if (hash_table[key].status == USED_ITEM && !strcmp(itemName, hash_table[key].name))
+        {
+            ptr->item = &(hash_table[key]);
+            ptr->next = malloc(sizeof(Result));
+            preced = ptr;
+            ptr = ptr->next;
+        }
+        key = hashkey(Code, ++i);
+    }
+
+    preced->next = NULL;
+    return ptr;
 }
+
+//TODO: mettre à jour les fonctions pour insérer le hashIndex + mettre des commentaires 
