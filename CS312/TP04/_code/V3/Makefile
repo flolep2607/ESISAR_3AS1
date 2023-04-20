@@ -2,30 +2,28 @@
 MYNAME=MoncorgeLeprat
 
 ## DO NOT change below
-SRC=FSMIOString
 HERE=$(PWD)
 MAINCLASS=TestFSMIOString
-SRCJAVA=$(wildcard $(SRC)/*.java)
-CLASSFILES = $(SRCJAVA:.java=.class)
-CLASSPATH=$(SRC):../V2/FSMIO
+CLASS_PATH=../V2/:.
 
 all: run
 
 # Compile
-$(SRC)/FSMIOString.class: $(SRC)/FSMIOString.class
-	javac  $(SRC)/FSMIOString.java -d $(SRC)
+FSMIOString.class: FSMIOString.class
+	javac -cp $(CLASS_PATH) FSMIOString.java
 
-$(SRC)/TestFSMIOString.class: $(SRC)/TestFSMIOString.class $(SRC)/FSMIOString.class
-	javac  $(SRC)/TestFSMIOString.java -d $(SRC)
+TestFSMIOString.class: TestFSMIOString.class FSMIOString.class
+	javac -cp $(CLASS_PATH) TestFSMIOString.java
 
+all: run
 # Run
-run: $(SRC)/$(MAINCLASS).class
-	java $(SRC)/$(MAINCLASS)
+run: $(MAINCLASS).class
+	java -cp $(CLASS_PATH) $(MAINCLASS) task.fsm
 
 tar: clean
 	dir=$$(basename $$PWD/$$SRC) && cd .. && \
 	tar cvfz "TP04-$(MYNAME).tgz" --exclude=".git" "$$dir"
 
 clean:
-	rm -f $(SRC)/*.class $(SRC)/*~ *~
+	rm -f *.class *~
 

@@ -1,5 +1,3 @@
-package FSMIOString;
-
 import java.util.*;
 import java.lang.*;
 

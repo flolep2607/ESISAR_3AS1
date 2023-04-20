@@ -1,5 +1,3 @@
-package FSMIOString;
-
 import FSMIO.*;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
@@ -49,11 +47,10 @@ public class FSMIOString {
 		String word[] = new String[4];
 		int cword = 0;
 		int pos = 0;
-		while (pos < line.length() && cword <= 3) {
+		while (line != null && pos < line.length() && cword <= 3) {
 			word[cword] = new String();
-			while (pos < line.length()
-					&& (line.charAt(pos) == ' '
-							|| line.charAt(pos) == '\t')) {
+			while (line != null && pos < line.length()
+					&& (line.charAt(pos) == ' ' || line.charAt(pos) == '\t')) {
 				pos++;
 			}
 			while (pos < line.length()
