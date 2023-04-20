@@ -95,6 +95,31 @@ int insertItem(uint32_t itemCode, char *itemName, float itemPrice)
     return TABLE_FULL;
 }
 
+// int insertItem(uint32_t itemCode, char *itemName, float itemPrice)
+// {
+//     // Ancien code d'insertion dans la table de hachage principale
+//     /* ... (code existant) ... */
+
+//     // Mettre à jour l'index (ajouté)
+//     unsigned int index_hash = hashIndex(itemName, strlen(itemName));
+//     int index = hashkey(index_hash, 0) % INDEX_SIZE;
+//     for (int i = 0; i < INDEX_SIZE; i++)
+//     {
+//         if (index_table[index].status == NULL_ITEM || index_table[index].status == DELETED_ITEM)
+//         {
+//             index_table[index].code = itemCode;
+//             strcpy(index_table[index].name, itemName);
+//             index_table[index].price = itemPrice;
+//             index_table[index].status = USED_ITEM;
+//             break;
+//         }
+//         index = (index++) % INDEX_SIZE;
+//     }
+
+//     return SUCCESS;
+// }
+
+
 /*----------------------------------------------------------------------------
  * fonction de suppression d'un produit du magasin
  * Si le produit est supprimé avec succès, alors la fonction retourne SUCCESS (0)
@@ -119,6 +144,28 @@ int suppressItem(unsigned int itemCode)
     }
     return DELETE_NO_ROW;
 }
+
+// int suppressItem(unsigned int itemCode)
+// {
+//     // Ancien code de suppression de la table de hachage principale
+//     /* ... (code existant) ... */
+
+//     // Mettre à jour l'index (ajouté)
+//     unsigned int index_hash = hashIndex(hash_table[index].name, strlen(hash_table[index].name));
+//     int index_label = hashkey(index_hash, 0) % INDEX_SIZE;
+//     for (int i = 0; i < INDEX_SIZE; i++)
+//     {
+//         if (index_table[index_label].status == USED_ITEM && index_table[index_label].code == itemCode)
+//         {
+//             index_table[index_label].status = DELETED_ITEM;
+//             break;
+//         }
+//         index_label = (index_label + 1) % INDEX_SIZE;
+//     }
+
+//     return SUCCESS;
+// }
+
 
 /*----------------------------------------------------------------------------
  * Pour chaque produit, cette fonction affiche sur une ligne
@@ -182,6 +229,29 @@ int updateItem(unsigned int itemCode, char *itemName, float itemPrice)
     }
     return UPDATE_NO_ROW;
 }
+
+// int updateItem(uint32_t itemCode, char *itemName, float itemPrice)
+// {
+//     // Ancien code de mise à jour de la table de hachage principale
+//     /* ... (code existant) ... */
+
+//     // Mettre à jour l'index (ajouté)
+//     unsigned int index_hash = hashIndex(itemName, strlen(itemName));
+//     int index_label = hashkey(index_hash, 0) % INDEX_SIZE;
+//     for (int i = 0; i < INDEX_SIZE; i++)
+//     {
+//         if (index_table[index_label].status == USED_ITEM && strcmp(index_table[index_label].name, itemName) == 0)
+//         {
+//             index_table[index_label].code = itemCode;
+//             index_table[index_label].price = itemPrice;
+//             break;
+//         }
+//         index_label = (index_label + 1) % INDEX_SIZE;
+//     }
+
+//     return SUCCESS;
+// }
+
 
 /*----------------------------------------------------------------------------
  * la fonction de réorganisation in situ:
