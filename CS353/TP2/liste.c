@@ -2,7 +2,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-typedef struct Client {
+typedef struct Client
+{
     int numero;
     int prixAppel;
     int nbAppel;
@@ -20,7 +21,11 @@ typedef struct Client {
 #define NBCLIENT 2000000
 #endif
 
-client *creerClient(int numeroTel, int nbAppel, int cout) {
+// À une différence dans la structure près, toutes ces fonctions sont similaires aux fonctions du TDM1
+
+// Fonction de création d'un client qui cette fois a 2 fils, car il s'agit d'un arbre binaire de recherche
+client *creerClient(int numeroTel, int nbAppel, int cout)
+{
     client *nouveau = (client *)malloc(sizeof(client));
     nouveau->numero = numeroTel;
     nouveau->nbAppel = nbAppel;
@@ -30,23 +35,32 @@ client *creerClient(int numeroTel, int nbAppel, int cout) {
     return nouveau;
 }
 
-client *inserer(client **abr, int numeroTel, int prixAppel) {
+// Fonction d'insertion d'un client dans l'arbre binaire de recherche
+client *inserer(client **abr, int numeroTel, int prixAppel)
+{
     client *start = *abr;
     bool end = false;
-    while (start != NULL && !end) {
-        if (start->numero == numeroTel) {
+    while (start != NULL && !end)
+    {
+        if (start->numero == numeroTel)
+        {
             start->nbAppel++;
             start->prixAppel += prixAppel;
             return *abr;
         }
-        if (start->numero > numeroTel) {
-            if (start->gauche == NULL) {
+        if (start->numero > numeroTel)
+        {
+            if (start->gauche == NULL)
+            {
                 start->gauche = creerClient(numeroTel, 1, prixAppel);
                 return *abr;
             }
             start = start->gauche;
-        } else {
-            if (start->droite == NULL) {
+        }
+        else
+        {
+            if (start->droite == NULL)
+            {
                 start->droite = creerClient(numeroTel, 1, prixAppel);
                 return *abr;
             }
@@ -56,7 +70,8 @@ client *inserer(client **abr, int numeroTel, int prixAppel) {
     *abr = creerClient(numeroTel, 1, prixAppel);
     return *abr;
 }
-client *createSampleTree() {
+client *createSampleTree()
+{
     client *abr = NULL;
     inserer(&abr, 15, 1);
     inserer(&abr, 12, 1);
@@ -70,58 +85,76 @@ client *createSampleTree() {
     inserer(&abr, 21, 1);
     return abr;
 }
-client *chercher(client *abr, int numeroTel) {
-    if (abr == NULL) return NULL;
-    if (abr->numero == numeroTel) return abr;
-    if (abr->numero > numeroTel) return chercher(abr->gauche, numeroTel);
+client *chercher(client *abr, int numeroTel)
+{
+    if (abr == NULL)
+        return NULL;
+    if (abr->numero == numeroTel)
+        return abr;
+    if (abr->numero > numeroTel)
+        return chercher(abr->gauche, numeroTel);
     return chercher(abr->droite, numeroTel);
 }
 
-client *supprimerClient(client **abr, int numeroTel) {
+// Fonction de suppression d'un client selon si il a 0, 1 ou 2 fils
+client *supprimerClient(client **abr, int numeroTel)
+{
     client *start = *abr;
     bool end = false;
-    while (start != NULL && !end) {
-        if (start->numero == numeroTel) {
-            if (start->gauche == NULL) start = start->droite;
-            else if (start->droite == NULL) start = start->gauche;
-            else {
+    while (start != NULL && !end)
+    {
+        if (start->numero == numeroTel)
+        {
+            if (start->gauche == NULL)
+                start = start->droite;
+            else if (start->droite == NULL)
+                start = start->gauche;
+            else
+            {
                 client *tmp = start;
                 start = start->droite;
-                while (start->gauche != NULL) {
+                while (start->gauche != NULL)
+                {
                     start = start->gauche;
                 }
-                tmp=start;
-                start=start->droite;
+                tmp = start;
+                start = start->droite;
             }
             return *abr;
-        } else if (start->numero > numeroTel) {
+        }
+        else if (start->numero > numeroTel)
+        {
             start = start->gauche;
-        } else {
+        }
+        else
+        {
             start = start->droite;
         }
     }
     return *abr;
 }
 
-void parcourirInfixe(client *abr) {
-    if (abr == NULL) return;
+// Fonction de parcours infixe de l'arbre binaire de recherche
+void parcourirInfixe(client *abr)
+{
+    if (abr == NULL)
+        return;
     parcourirInfixe(abr->gauche);
-    // printf("Numero : %d, nbAppel : %d, prixAppel : %d\n", abr->numero, abr->nbAppel, abr->prixAppel);
     parcourirInfixe(abr->droite);
 }
 
-int main() {
+// Fonction principale de test
+int main()
+{
     client *liste = NULL;
-    // liste=createSampleTree();
-    // parcourirInfixe(liste);
-    // return 0;
     int i;
     int numeroTel;
     int prixAppel;
 
     // Aide au calcul du pourcentage d'avancement
     int pas = NBLOGLINE / 100;
-    for (i = 0; i < NBLOGLINE; i++) {
+    for (i = 0; i < NBLOGLINE; i++)
+    {
         // Génération d'un numéro de telephone portable
         numeroTel = 600000000 + (rand() % NBCLIENT);
 
@@ -129,10 +162,12 @@ int main() {
         prixAppel = (rand() % 400) + 1;
 
         // Ajout de cette ligne de log dans la liste des clients
-        if (inserer(&liste, numeroTel, prixAppel) == NULL) break;
+        if (inserer(&liste, numeroTel, prixAppel) == NULL)
+            break;
 
         // Affichage du pourcentage d'avancement
-        if ((i % pas) == 0) {
+        if ((i % pas) == 0)
+        {
             printf("Done  = %d %%...\n", i / pas);
         }
     }
@@ -143,9 +178,11 @@ int main() {
 
     printf("****** Suppression de la facturation appels telephoniques ******\n");
 
-    for (i = 0; i < NBCLIENT; i++) {
+    for (i = 0; i < NBCLIENT; i++)
+    {
         client *tmp = NULL;
-        if ((tmp = supprimerClient(&liste, 600000000 + i)) != NULL) {
+        if ((tmp = supprimerClient(&liste, 600000000 + i)) != NULL)
+        {
             free(tmp);
         }
     }

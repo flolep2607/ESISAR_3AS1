@@ -18,6 +18,9 @@ typedef struct Client {
 #define NBCLIENT 2000
 #endif
 
+// Toutes ces fonctions sont des fonctions classiques de gestion d'une liste chainée
+
+// Fonction qui permet de créer une nouvelle structure Client
 struct Client *createClient(unsigned numero, unsigned nbAppel, unsigned prixAppel) {
      struct Client *client = malloc(sizeof(struct Client));
      client->numero = numero;
@@ -27,6 +30,7 @@ struct Client *createClient(unsigned numero, unsigned nbAppel, unsigned prixAppe
      return client;
 }
 
+// Fonction qui permet d'ajouter une ligne de log dans la liste des clients et de créer le client s'il n'est pas déjà enregistré
 struct Client* addLogLine(struct Client **liste, unsigned numero, unsigned prixAppel) {
      struct Client *client = *liste;
      struct Client *precedent = NULL;
@@ -52,6 +56,7 @@ struct Client* addLogLine(struct Client **liste, unsigned numero, unsigned prixA
      return *liste;
 }
 
+// Fonction qui permet d'afficher la liste des clients
 void dumpListe(struct Client *liste) {
      struct Client *client = liste;
      struct Client * tmp=NULL;
@@ -64,6 +69,7 @@ void dumpListe(struct Client *liste) {
      }
 }
 
+// Fonction principale qui permet de tester les fonctions
 int main() {
     client *liste = NULL;
 

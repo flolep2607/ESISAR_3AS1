@@ -57,15 +57,16 @@ uint32_t hashkey(uint32_t itemCode, uint32_t nbTry)
 
 int insertItem(uint32_t itemCode, char *itemName, float itemPrice)
 {
-    // taille du tableau : TABLE_SIZE
-    int empty_place = -1;
+    int empty_place = -1; // Utilisé pour stocker l'index de la première case vide
     int index;
     for (int i = 0; i < TABLE_SIZE; i++)
     {
-        index = hashkey(itemCode, i);
+        unsigned int index_hash = hashIndex(itemName, strlen(itemName));
+        index = hashkey(index_hash, 0) % INDEX_SIZE;
+        // index = hashkey(itemCode, i);
         if (hash_table[index].status == NULL_ITEM)
         {
-            if (empty_place != -1)
+            if (empty_place != -1) // Si on a trouvé une case vide avant, alors on va stocker le produit dans cette case
             {
                 hash_table[empty_place].code = itemCode;
                 strcpy(hash_table[empty_place].name, itemName);
@@ -88,7 +89,7 @@ int insertItem(uint32_t itemCode, char *itemName, float itemPrice)
         }
         else if (hash_table[index].status == DELETED_ITEM && empty_place == -1)
         {
-            empty_place = index;
+            empty_place = index; // On stocke l'index de la première case vide
         }
     }
     return TABLE_FULL;
@@ -104,7 +105,9 @@ int suppressItem(unsigned int itemCode)
     int index;
     for (int i = 0; i < TABLE_SIZE; i++)
     {
-        index = hashkey(itemCode, i);
+        // index = hashkey(itemCode, i);
+        unsigned int index_hash = hashIndex(hash_table[index].name, strlen(hash_table[index].name));
+        index = hashkey(index_hash, 0) % INDEX_SIZE;
         if (hash_table[index].status == USED_ITEM && hash_table[index].code == itemCode)
         {
             hash_table[index].status = DELETED_ITEM;
@@ -167,7 +170,9 @@ int updateItem(unsigned int itemCode, char *itemName, float itemPrice)
     int index;
     for (int i = 0; i < TABLE_SIZE; i++)
     {
-        index = hashkey(itemCode, i);
+        unsigned int index_hash = hashIndex(hash_table[index].name, strlen(hash_table[index].name));
+        index = hashkey(index_hash, 0) % INDEX_SIZE;
+        // index = hashkey(itemCode, i);
         if (hash_table[index].status == USED_ITEM && hash_table[index].code == itemCode)
         {
             strcpy(hash_table[index].name, itemName);
@@ -181,18 +186,6 @@ int updateItem(unsigned int itemCode, char *itemName, float itemPrice)
 /*----------------------------------------------------------------------------
  * la fonction de réorganisation in situ:
  *----------------------------------------------------------------------------*/
-int stillDirty()
-{
-    for (int i = 0; i < TABLE_SIZE; i++)
-    {
-        if (hash_table[i].dirty == 1)
-        {
-            return 1;
-        }
-    }
-    return 0;
-}
-
 void rebuildTable()
 {
     for (int i = 0; i < TABLE_SIZE; i++)
@@ -318,7 +311,6 @@ unsigned int hashIndex(const char *buffer, int size)
 
 Result *findItemWithIndex(char *itemName)
 {
-    // Result *liste = malloc(sizeof(Result));
     Result *preced = NULL;
     Result *ptr = index_table;
     unsigned int Code = hashIndex(itemName, strlen(itemName));
@@ -340,5 +332,3 @@ Result *findItemWithIndex(char *itemName)
     preced->next = NULL;
     return ptr;
 }
-
-//TODO: mettre à jour les fonctions pour insérer le hashIndex + mettre des commentaires 
