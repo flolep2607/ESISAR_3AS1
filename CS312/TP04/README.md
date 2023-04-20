@@ -168,7 +168,7 @@ T2: c'est output donc:int
 	s4 -> s3 Tag= b/1
 ```
 * 4)  Dans le fichier de test, ajouter un automate `FSMIO<int,int>` quelconque.  
-# TODO
+
 * 5) (BONUS) Réaliser un automate (int, int, 0 ou 1 uniquement) qui réalise la fonctionnalité suivante: "on se rappelle des 4 valeurs précédentes des entrées", la sortie courante nommée z:
 	* prend la valeur 1 si les quatre transitions précédentes ont "vu" quatre 0 (zéros) de suite ou quatre 1 (uns) de suite.
 	* Sinon, la sortie vaut 0.

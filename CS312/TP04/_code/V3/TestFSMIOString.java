@@ -6,7 +6,7 @@ public class TestFSMIOString {
 	public static void main(String[] args) {
 
 		if (args.length != 1) {
-			System.out.println("nom du fhicier svp");
+			System.out.println("nom du fichier svp");
 			System.exit(1);
 		}
 
