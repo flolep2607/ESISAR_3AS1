@@ -3,7 +3,6 @@ MYNAME=MoncorgeLeprat
 
 ## DO NOT change below
 HERE=$(PWD)
-MAINCLASS=TestFSMIOString
 CLASS_PATH=../V2/:.
 
 all: run
@@ -17,8 +16,8 @@ TestFSMIOString.class: TestFSMIOString.class FSMIOString.class
 
 all: run
 # Run
-run: $(MAINCLASS).class
-	java -cp $(CLASS_PATH) $(MAINCLASS) task.fsm
+run: TestFSMIOString.class
+	java -cp $(CLASS_PATH) TestFSMIOString task.fsm
 
 tar: clean
 	dir=$$(basename $$PWD/$$SRC) && cd .. && \
