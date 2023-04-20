@@ -23,15 +23,12 @@ int main() {
             sb.sem_op = -1;
             sb.sem_flg = 0;
             semop(semid, &sb, 1);  // réduction du sémaphore
-
             printf("%d\n", i);
             fflush(stdout);
-
             sb.sem_num = 0;
             sb.sem_op = 1;
             sb.sem_flg = 0;
             semop(semid, &sb, 1);  // augmentation du sémaphore
-
             exit(0);
         }
     }
