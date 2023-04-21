@@ -18,7 +18,7 @@ typedef struct Client
 #endif
 // Nombre de clients
 #ifndef NBCLIENT
-#define NBCLIENT 2000000
+#define NBCLIENT 200000
 #endif
 
 // À une différence dans la structure près, toutes ces fonctions sont similaires aux fonctions du TDM1
@@ -111,13 +111,11 @@ client *supprimerClient(client **abr, int numeroTel)
                 start = start->gauche;
             else
             {
-                client *tmp = start;
                 start = start->droite;
                 while (start->gauche != NULL)
                 {
                     start = start->gauche;
                 }
-                tmp = start;
                 start = start->droite;
             }
             return *abr;
@@ -134,12 +132,25 @@ client *supprimerClient(client **abr, int numeroTel)
     return *abr;
 }
 
+// Fonction qui permet de free l'allocation mémoire de l'arbre binaire de recherche
+void purgeTree(struct Client * abr)
+{
+	if(abr){
+		purgeTree(abr->gauche);
+		purgeTree(abr->droite);
+		free(abr);
+	}
+}
+
 // Fonction de parcours infixe de l'arbre binaire de recherche
 void parcourirInfixe(client *abr)
 {
     if (abr == NULL)
+    {
         return;
+    }
     parcourirInfixe(abr->gauche);
+    printf("Numéro : %d, Prix de l'Appel : %d, Nombre d'appels : %d\n", abr->numero, abr->nbAppel, abr->prixAppel);
     parcourirInfixe(abr->droite);
 }
 
@@ -178,13 +189,19 @@ int main()
 
     printf("****** Suppression de la facturation appels telephoniques ******\n");
 
-    for (i = 0; i < NBCLIENT; i++)
-    {
-        client *tmp = NULL;
-        if ((tmp = supprimerClient(&liste, 600000000 + i)) != NULL)
-        {
-            free(tmp);
-        }
-    }
+    // Puisque nous utilisons une fonction qui permet de free l'arbre, nous n'avons pas besoin de supprimer les clients un par un
+
+    // for (i = 0; i < NBCLIENT; i++)
+    // {
+    //     client *tmp = NULL;
+    //     printf("Suppression du pingas %d\n", i);
+    //     if ((tmp = supprimerClient(&liste, 600000000 + i)) != NULL)
+    //     {   
+    //         free(tmp);
+    //     }
+    // }
+
+    purgeTree(liste);
+    
     printf("****** Fin Facturation appels telephoniques ******\n");
 }

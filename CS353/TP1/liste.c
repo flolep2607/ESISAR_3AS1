@@ -10,12 +10,12 @@ typedef struct Client {
 
 // Nombre total de lignes dans le fichier
 #ifndef NBLOGLINE
-#define NBLOGLINE 200000
+#define NBLOGLINE 2000000
 #endif
 
 // Nombre de clients
 #ifndef NBCLIENT
-#define NBCLIENT 2000
+#define NBCLIENT 20000
 #endif
 
 // Toutes ces fonctions sont des fonctions classiques de gestion d'une liste chainée
