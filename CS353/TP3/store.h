@@ -10,11 +10,11 @@
  * Parametres globaux
  *----------------------------------------------------------------------------*/
 #define TABLE_SIZE 1009
+#define INDEX_SIZE TABLE_SIZE
 #define NULL_ITEM 4
 #define DELETED_ITEM 2
 #define USED_ITEM 1
 #define ITEM_NAME_SIZE 32
-#define INDEX_SIZE 1000
 
 /*----------------------------------------------------------------------------
  * Definition des constantes pour les retours des fonctions
