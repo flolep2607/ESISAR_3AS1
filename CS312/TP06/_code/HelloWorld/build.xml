@@ -1,0 +1,37 @@
+<project name="hello" basedir="." default="run">
+
+	<property name="src.dir" value="src"/>
+	<property name="build.dir" value="build"/>
+	<property name="classes.dir" value="${build.dir}/classes"/>
+	<property name="jar.dir" value="${build.dir}/jar"/>
+	
+	<target name="compile" depends="clean">
+		<mkdir dir="${classes.dir}"/>
+		<javac srcdir="${src.dir}" destdir="${classes.dir}" includeantruntime="false"/>
+	</target>
+	
+	<target name="package" depends="compile">
+		<mkdir dir="${jar.dir}"/>
+		<jar destfile="${jar.dir}/${ant.project.name}-v1.jar" basedir="${classes.dir}">
+			<manifest>
+				<attribute name="Main-Class" value="fr.esisar.hello.HelloWorld"/>
+			</manifest>
+		</jar>
+	</target>
+	
+	<target name="run" depends="package">
+		<java jar="${jar.dir}/${ant.project.name}-v1.jar" fork="true"/>
+	</target>
+	
+	<target name="run-2" depends="compile">
+		<java classname="fr.esisar.hello.HelloWorld">
+			<classpath>
+				<pathelement path="${classes.dir}"/>
+			</classpath>
+		</java>
+	</target>
+	
+	<target name="clean">
+		<delete dir="${build.dir}"/>
+	</target>
+</project>
